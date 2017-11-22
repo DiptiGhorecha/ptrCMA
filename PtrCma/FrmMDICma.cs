@@ -23,7 +23,6 @@ namespace PtrCma
             this.Text = Global.companyName;
             foreach (Control control in this.Controls)
             {
-
                 // #2
                 MdiClient client = control as MdiClient;
                 if (!(client == null))
