@@ -87,7 +87,7 @@
             // 
             this.txtFind.Location = new System.Drawing.Point(73, 36);
             this.txtFind.Name = "txtFind";
-            this.txtFind.Size = new System.Drawing.Size(183, 20);
+            this.txtFind.Size = new System.Drawing.Size(183, 21);
             this.txtFind.TabIndex = 1;
             // 
             // button1
@@ -246,107 +246,137 @@
             // 
             // txtCodeno
             // 
+            this.txtCodeno.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCodeno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodeno.Location = new System.Drawing.Point(413, 69);
             this.txtCodeno.Name = "txtCodeno";
-            this.txtCodeno.Size = new System.Drawing.Size(100, 20);
+            this.txtCodeno.Size = new System.Drawing.Size(100, 19);
             this.txtCodeno.TabIndex = 21;
             // 
             // txtActivity
             // 
+            this.txtActivity.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtActivity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtActivity.Location = new System.Drawing.Point(413, 93);
             this.txtActivity.Name = "txtActivity";
-            this.txtActivity.Size = new System.Drawing.Size(338, 20);
+            this.txtActivity.Size = new System.Drawing.Size(338, 19);
             this.txtActivity.TabIndex = 22;
             // 
             // txtName
             // 
+            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.Location = new System.Drawing.Point(413, 124);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(338, 20);
+            this.txtName.Size = new System.Drawing.Size(338, 19);
             this.txtName.TabIndex = 23;
             // 
             // textBox1
             // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(413, 148);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(338, 20);
+            this.textBox1.Size = new System.Drawing.Size(338, 19);
             this.textBox1.TabIndex = 24;
             // 
             // txtAdd2
             // 
+            this.txtAdd2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAdd2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAdd2.Location = new System.Drawing.Point(413, 171);
             this.txtAdd2.Name = "txtAdd2";
-            this.txtAdd2.Size = new System.Drawing.Size(338, 20);
+            this.txtAdd2.Size = new System.Drawing.Size(338, 19);
             this.txtAdd2.TabIndex = 25;
             // 
             // txtAdd3
             // 
+            this.txtAdd3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtAdd3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAdd3.Location = new System.Drawing.Point(413, 193);
             this.txtAdd3.Name = "txtAdd3";
-            this.txtAdd3.Size = new System.Drawing.Size(338, 20);
+            this.txtAdd3.Size = new System.Drawing.Size(338, 19);
             this.txtAdd3.TabIndex = 26;
             // 
             // txtCity
             // 
+            this.txtCity.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCity.Location = new System.Drawing.Point(413, 216);
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(190, 20);
+            this.txtCity.Size = new System.Drawing.Size(190, 19);
             this.txtCity.TabIndex = 27;
             // 
             // txtState
             // 
+            this.txtState.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtState.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtState.Location = new System.Drawing.Point(413, 239);
             this.txtState.Name = "txtState";
-            this.txtState.Size = new System.Drawing.Size(190, 20);
+            this.txtState.Size = new System.Drawing.Size(190, 19);
             this.txtState.TabIndex = 28;
             // 
             // txtPhone
             // 
+            this.txtPhone.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhone.Location = new System.Drawing.Point(413, 263);
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(338, 20);
+            this.txtPhone.Size = new System.Drawing.Size(338, 19);
             this.txtPhone.TabIndex = 29;
             // 
             // txtMobile
             // 
+            this.txtMobile.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMobile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMobile.Location = new System.Drawing.Point(413, 287);
             this.txtMobile.Name = "txtMobile";
-            this.txtMobile.Size = new System.Drawing.Size(338, 20);
+            this.txtMobile.Size = new System.Drawing.Size(338, 19);
             this.txtMobile.TabIndex = 30;
             // 
             // txtFax
             // 
+            this.txtFax.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtFax.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFax.Location = new System.Drawing.Point(413, 311);
             this.txtFax.Name = "txtFax";
-            this.txtFax.Size = new System.Drawing.Size(338, 20);
+            this.txtFax.Size = new System.Drawing.Size(338, 19);
             this.txtFax.TabIndex = 31;
             // 
             // txtEmail1
             // 
+            this.txtEmail1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtEmail1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail1.Location = new System.Drawing.Point(413, 336);
             this.txtEmail1.Name = "txtEmail1";
-            this.txtEmail1.Size = new System.Drawing.Size(338, 20);
+            this.txtEmail1.Size = new System.Drawing.Size(338, 19);
             this.txtEmail1.TabIndex = 32;
             // 
             // txtEmail2
             // 
+            this.txtEmail2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtEmail2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail2.Location = new System.Drawing.Point(413, 360);
             this.txtEmail2.Name = "txtEmail2";
-            this.txtEmail2.Size = new System.Drawing.Size(338, 20);
+            this.txtEmail2.Size = new System.Drawing.Size(338, 19);
             this.txtEmail2.TabIndex = 33;
             // 
             // txtPrepBy2
             // 
+            this.txtPrepBy2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPrepBy2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrepBy2.Location = new System.Drawing.Point(427, 407);
             this.txtPrepBy2.Name = "txtPrepBy2";
-            this.txtPrepBy2.Size = new System.Drawing.Size(324, 20);
+            this.txtPrepBy2.Size = new System.Drawing.Size(324, 19);
             this.txtPrepBy2.TabIndex = 34;
             // 
             // textBox2
             // 
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(427, 434);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(324, 20);
+            this.textBox2.Size = new System.Drawing.Size(324, 19);
             this.textBox2.TabIndex = 35;
             // 
             // cmdAdd
@@ -396,10 +426,12 @@
             // 
             // txtBranch
             // 
+            this.txtBranch.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBranch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBranch.ForeColor = System.Drawing.SystemColors.WindowText;
             this.txtBranch.Location = new System.Drawing.Point(592, 69);
             this.txtBranch.Name = "txtBranch";
-            this.txtBranch.Size = new System.Drawing.Size(159, 20);
+            this.txtBranch.Size = new System.Drawing.Size(159, 19);
             this.txtBranch.TabIndex = 41;
             // 
             // txtareanotes
@@ -412,8 +444,7 @@
             // 
             // FrmCMAParty
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(871, 616);
             this.Controls.Add(this.txtareanotes);
             this.Controls.Add(this.txtBranch);
@@ -458,6 +489,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtFind);
             this.Controls.Add(this.lblfind);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

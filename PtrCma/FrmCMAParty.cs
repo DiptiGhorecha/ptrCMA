@@ -18,7 +18,7 @@ namespace PtrCma
 
         private void FrmCMAParty_Load(object sender, EventArgs e)
         {
-            this.Dock = DockStyle.Fill;
+           
             this.Text = Global.PartyMaster;
             foreach (Control control in this.Controls)
             {
@@ -34,17 +34,15 @@ namespace PtrCma
                 
             }
 
-            foreach (Label l in Controls.OfType<Label>())
+            foreach (Label l in Controls.OfType<Label>()) //Set the Label Color
             {
-
                 l.BackColor = Global.lblColorPartyMst;
                 l.ForeColor = Global.lblForeColorPartyMst;
             }
 
-            foreach (TextBox t in Controls.OfType<TextBox>())
+            foreach (TextBox t in Controls.OfType<TextBox>())   //Set the TextBox Color
             {
-
-                t.BackColor = Global.lblColorPartyMst;
+                t.BackColor = Global.txtColorPartyMst;
                 
             }
 

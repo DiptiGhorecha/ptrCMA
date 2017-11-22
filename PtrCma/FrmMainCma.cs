@@ -64,8 +64,12 @@ namespace PtrCma
 
         private void cmdCMAProj_Click(object sender, EventArgs e)
         {
-            FrmCMAParty f = new FrmCMAParty();
-            f.Show();
+            FrmCMAParty p = new FrmCMAParty();
+            p.StartPosition = FormStartPosition.Manual;
+            p.Location = new Point(this.Parent.Location.X + (this.Parent.Width - p.Width) / 2, p.Location.Y + (this.Parent.Height - p.Height) / 2);
+            p.Show();
+
+           
             this.Close();
         }
     }
