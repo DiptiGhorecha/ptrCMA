@@ -18,21 +18,9 @@ namespace PtrCma
 
         private void FrmCMAParty_Load(object sender, EventArgs e)
         {
-            this.Dock = DockStyle.Fill;
+           // this.Dock = DockStyle.Fill;
             this.Text = Global.PartyMaster;
-            foreach (Control control in this.Controls)
-            {
-                // #2
-                MdiClient client = control as MdiClient;
-                if (!(client == null))
-                {
-                    // #3
-                    client.BackColor = Global.appBackColr;
-                    // 4#
-                    break;
-                }
-                
-            }
+
 
             foreach (Label l in Controls.OfType<Label>())
             {
@@ -50,11 +38,14 @@ namespace PtrCma
 
 
             this.BackColor = Global.backColorPartyMst;
-            FrmCMAParty p = new FrmCMAParty();
-            p.MdiParent = this;
+         //   FrmCMAParty p = new FrmCMAParty();
+          //  p.MdiChildren = true;
+          //  p.MdiParent = this;
     
-            p.StartPosition = FormStartPosition.CenterScreen;
-             p.Show();
+          ////  p.StartPosition = FormStartPosition.CenterParent;
+          //  p.StartPosition = FormStartPosition.Manual;
+          //  p.Location = new Point(this.Location.X + (this.Width - p.Width) / 2, p.Location.Y + (this.Height - p.Height) / 2);
+          //  p.Show();
             
 
 
