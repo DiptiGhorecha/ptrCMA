@@ -24,5 +24,12 @@ namespace PtrCma
         public static Color cmdFontColr = System.Drawing.Color.White;
         public static Font lblCMSfont = new System.Drawing.Font("Viner Hand ITC", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         public static Color lblCMSColr = System.Drawing.Color.White;
+        public static string PartyMaster = "Party Master";
+
+        public static Color backColorPartyMst = System.Drawing.Color.BurlyWood;
+        public static Color lblColorPartyMst = System.Drawing.Color.CadetBlue;
+        public static Color lblForeColorPartyMst = System.Drawing.Color.White;
+
+
     }
 }

@@ -61,5 +61,12 @@ namespace PtrCma
             lblCMSCaption.BackColor = System.Drawing.Color.Transparent;
             lblCMSCaption.Location= new System.Drawing.Point(cmdBnkStnd.Left, 100);
         }
+
+        private void cmdCMAProj_Click(object sender, EventArgs e)
+        {
+            FrmCMAParty f = new FrmCMAParty();
+            f.Show();
+            this.Close();
+        }
     }
 }

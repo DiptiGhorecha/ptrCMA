@@ -44,6 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmCMAParty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCMAParty.Designer.cs">
+      <DependentUpon>FrmCMAParty.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMainCma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +65,9 @@
     <Compile Include="Global.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmCMAParty.resx">
+      <DependentUpon>FrmCMAParty.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMainCma.resx">
       <DependentUpon>FrmMainCma.cs</DependentUpon>
     </EmbeddedResource>

@@ -59,6 +59,7 @@
             this.cmdCMAProj.TabIndex = 1;
             this.cmdCMAProj.Text = "button2";
             this.cmdCMAProj.UseVisualStyleBackColor = true;
+            this.cmdCMAProj.Click += new System.EventHandler(this.cmdCMAProj_Click);
             // 
             // cmdBackup
             // 
