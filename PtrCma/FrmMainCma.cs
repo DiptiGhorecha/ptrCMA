@@ -18,8 +18,48 @@ namespace PtrCma
 
         private void FrmMainCma_Load(object sender, EventArgs e)
         {
-            this.Dock= DockStyle.Fill;
+            settings();
+        }
+
+        public void settings()
+        {
+            this.Dock = DockStyle.Fill;
             this.BackgroundImage = Global.startFrmBackImg;
+
+     
+            foreach (Button c in Controls.OfType<Button>())
+            {
+
+                c.Width = Global.cmdBtnWidthMain;
+                c.Height = Global.cmdBtnHeightMain;
+                c.Top= this.Height - 200;
+                c.BackgroundImage = Global.cmdBtnBack;
+                c.Image = Global.cmdBnkStndIcon;
+                c.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+                c.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+                c.Font = Global.cmdBtnfont;
+                c.ForeColor = Global.cmdFontColr;
+
+            }
+            //set position of command buttons on form
+            int spacing = (this.Width - (Global.cmdBtnWidthMain * 5)) / 6;
+            cmdBnkStnd.Left = spacing;
+            cmdCMAProj.Left = cmdBnkStnd.Right + spacing;
+            cmdBackup.Left = cmdCMAProj.Right + spacing;
+            cmdRestore.Left = cmdBackup.Right + spacing;
+            cmdExit.Left = cmdRestore.Right + spacing;
+
+            //set command button text
+            cmdBnkStnd.Text = "  BANK STANDARD";
+            cmdCMAProj.Text = "  CMA PROJECT";
+            cmdBackup.Text = "  BACKUP DATA";
+            cmdRestore.Text = "  RESTORE DATA";
+            cmdExit.Text = "  EXIT DATA";
+
+            lblCMSCaption.Font = Global.lblCMSfont;
+            lblCMSCaption.ForeColor = Global.lblCMSColr;
+            lblCMSCaption.BackColor = System.Drawing.Color.Transparent;
+            lblCMSCaption.Location= new System.Drawing.Point(cmdBnkStnd.Left, 100);
         }
     }
 }

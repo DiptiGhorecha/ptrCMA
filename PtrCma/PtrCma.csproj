@@ -84,6 +84,21 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\bg.png" />
+    <Content Include="Resources\btn_icon1.png" />
+    <Content Include="Resources\btn_icon2.png" />
+    <Content Include="Resources\btn_icon3.png" />
+    <Content Include="Resources\btn_icon4.png" />
+    <Content Include="Resources\btn_icon5.png" />
+    <Content Include="Resources\button1.png" />
+    <Content Include="Resources\icon1.png" />
+    <Content Include="Resources\icon2.png" />
+    <Content Include="Resources\icon3.png" />
+    <Content Include="Resources\icon4.png" />
+    <Content Include="Resources\icon5.png" />
+    <Content Include="Resources\new_icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
