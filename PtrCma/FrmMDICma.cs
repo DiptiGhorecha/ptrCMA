@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -20,6 +21,13 @@ namespace PtrCma
 
         private void FrmMDICma_Load(object sender, EventArgs e)
         {
+            Assembly myAssembly = Assembly.GetExecutingAssembly();
+            string[] names = myAssembly.GetManifestResourceNames();
+            foreach (string name in names)
+            {
+                Console.WriteLine(name);
+            }
+            Bitmap bmp = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.bg.png"));
             this.Text = Global.companyName;
             foreach (Control control in this.Controls)
             {
