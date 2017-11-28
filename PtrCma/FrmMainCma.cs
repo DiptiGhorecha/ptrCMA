@@ -29,12 +29,13 @@ namespace PtrCma
      
             foreach (Button c in Controls.OfType<Button>())
             {
-
+                //set size of buttons
                 c.Width = Global.cmdBtnWidthMain;
                 c.Height = Global.cmdBtnHeightMain;
                 c.Top= this.Height - 200;
+                //set background image of buttons
                 c.BackgroundImage = Global.cmdBtnBack;
-                c.Image = Global.cmdBnkStndIcon;
+   
                 c.ImageAlign = System.Drawing.ContentAlignment.TopRight;
                 c.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
                 c.Font = Global.cmdBtnfont;
@@ -48,6 +49,13 @@ namespace PtrCma
             cmdBackup.Left = cmdCMAProj.Right + spacing;
             cmdRestore.Left = cmdBackup.Right + spacing;
             cmdExit.Left = cmdRestore.Right + spacing;
+
+            //set command button icon
+            cmdBnkStnd.Image = Global.cmdBnkStndIcon;
+            cmdCMAProj.Image = Global.cmdCmsProjIcon;
+            cmdBackup.Image = Global.cmdBackupIcon;
+            cmdRestore.Image = Global.cmdRestoreIcon;
+            cmdExit.Image = Global.cmdExitIcon;
 
             //set command button text
             cmdBnkStnd.Text = "  BANK STANDARD";
@@ -64,12 +72,8 @@ namespace PtrCma
 
         private void cmdCMAProj_Click(object sender, EventArgs e)
         {
-            FrmCMAParty p = new FrmCMAParty();
-            p.StartPosition = FormStartPosition.Manual;
-            p.Location = new Point(this.Parent.Location.X + (this.Parent.Width - p.Width) / 2, p.Location.Y + (this.Parent.Height - p.Height) / 2);
-            p.Show();
-
-           
+            FrmCMAParty f = new FrmCMAParty();
+            f.Show();
             this.Close();
         }
     }
