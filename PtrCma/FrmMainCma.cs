@@ -117,7 +117,7 @@ namespace PtrCma
                     frmParty.StartPosition = FormStartPosition.Manual;
                     frmParty.Location = new Point(this.Parent.Location.X + (this.Parent.Width - frmParty.Width) / 2, frmParty.Location.Y + (this.Parent.Height - frmParty.Height) / 2);
                     frmParty.Show();
-                    this.Close();
+                   // this.Close();
                     break;
                 }
             }

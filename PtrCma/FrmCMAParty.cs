@@ -138,7 +138,7 @@ namespace PtrCma
             grdViewParty.Columns[4].Visible = true;
             grdViewParty.Columns[4].HeaderText = "Party Name";
             grdViewParty.Columns[4].Width = 150;
-
+   
         }
 
 
@@ -260,8 +260,8 @@ namespace PtrCma
                 transaction.Commit();
                 con.Close();
                 fillgird();
-                rowNum = grdViewParty.RowCount;
-                grdViewParty.CurrentCell = grdViewParty.Rows[rowNum - 1].Cells[1]; //set current cell to show inserted record
+               // rowNum = grdViewParty.RowCount;
+              //  grdViewParty.CurrentCell = grdViewParty.Rows[rowNum - 1].Cells[1]; //set current cell to show inserted record
                 MessageBox.Show("Data Inserted Successfully");
             }
 
@@ -401,7 +401,7 @@ namespace PtrCma
            
             grdViewParty.Enabled = false;
             isAddEdit = "B";
-                txtBranch.Focus();
+            txtBranch.Focus();
         
             enableTextbox();
             txtCodeno.Enabled = false;
