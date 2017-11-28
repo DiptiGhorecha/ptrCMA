@@ -112,10 +112,7 @@ namespace PtrCma
             {
                 if (btn.Name == ("cmdCMAProj"))
                 {
-                    if(Application.OpenForms.OfType(Of FrmCMAParty).Any)
-                    {
 
-                    }
                     FrmCMAParty frmParty = new FrmCMAParty();
                     frmParty.StartPosition = FormStartPosition.Manual;
                     frmParty.Location = new Point(this.Parent.Location.X + (this.Parent.Width - frmParty.Width) / 2, frmParty.Location.Y + (this.Parent.Height - frmParty.Height) / 2);
