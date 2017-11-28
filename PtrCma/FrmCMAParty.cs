@@ -16,7 +16,7 @@ namespace PtrCma
 
     public partial class FrmCMAParty : Form
     {
-        string gp = "";
+        string gp = ""; 
         String connectionString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " + Application.StartupPath + "\\PtrCma.accdb;";
         OleDbConnection con;
         OleDbCommand cmd;
