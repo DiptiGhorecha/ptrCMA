@@ -37,7 +37,17 @@ namespace PtrCma
         public static Color lblColorPartyMst = System.Drawing.Color.CadetBlue;   //Label Backcolor
         public static Color lblForeColorPartyMst = System.Drawing.Color.White;   //Label Fore/Text Color
         public static Color txtColorPartyMst = System.Drawing.Color.White;     //Textbox color
-      
+        public static Size smallsizelbl = new System.Drawing.Size(40, 20);
+        public static Size medsizelbl = new System.Drawing.Size(65, 20);
+        public static Size largesizelbl = new System.Drawing.Size(720, 30);
+        public static Size txtCommonSize = new System.Drawing.Size(320, 20);
+        public static Size txtFindSize = new System.Drawing.Size(200, 20);
+        public static Size txtCodenoSize = new System.Drawing.Size(100, 20);
+        public static Size txtBranchSize = new System.Drawing.Size(100, 20);
+        public static Size txtNotesSize = new System.Drawing.Size(390, 70);
+        public static Size grdPartySize = new System.Drawing.Size(285, 505);
+
+
         //public static Size lbl = system
 
         //All Form after click

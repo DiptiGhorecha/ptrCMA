@@ -16,24 +16,55 @@ namespace PtrCma
 
     public partial class FrmCMAParty : Form
     {
-        string gp = ""; 
-        String connectionString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " + Application.StartupPath + "\\PtrCma.accdb;";
+        string isAddEdit = ""; //Variable to Store Current Action(Add,Edit)
+        String connectionString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " + Application.StartupPath + "\\PtrCma.accdb;";  //Connection String
         OleDbConnection con;
         OleDbCommand cmd;
-        OleDbDataAdapter da;
-        int rowNum;
+        OleDbDataAdapter dataAdapter;
+        OleDbTransaction transaction;
+        int rowNum;  // Variable to Store Current Row Number
+
+
         public FrmCMAParty()
         {
-
             InitializeComponent();
+        }
+
+        private void FrmCMAParty_Load(object sender, EventArgs e)
+        {
+            this.KeyPreview = true; //To handle enter key
+
+
+            Settings();  //set size and color of controls
+            fillgird();
+            grdViewParty.CurrentCell = grdViewParty.Rows[0].Cells[1];  //Set 1st row as current row by default
+            LoadDatatoTextBox();  // show data in Textbox from Gridview
+            controlvisible();   // Visible Button and Textbox
+            controlenable();    //Enable Button and Textbox
+            clearTextbox();     //Clear the Textbox
+            enableTextbox();    //Enable Textbox
 
 
         }
 
+        private void enableTextbox()
+        {
+            foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
+            {
+                txt.Enabled = true;
+            }
+        }
+
+        private void clearTextbox()
+        {
+            foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
+            {
+                txt.Clear();
+            }
+        }
+
         private void LoadDatatoTextBox()
         {
-            // int i = grdViewParty.CurrentRow.Index;
-
             DataGridViewRow row = this.grdViewParty.Rows[0];
             txtCodeno.Text = row.Cells["CL_CODENO"].Value.ToString();
             txtActivity.Text = row.Cells["CL_ACT"].Value.ToString();
@@ -57,8 +88,6 @@ namespace PtrCma
 
         private void LoadCurrentDatatoTextBox(int rowNum)
         {
-            // int i = grdViewParty.CurrentRow.Index;
-
             DataGridViewRow row = this.grdViewParty.Rows[rowNum];
             txtCodeno.Text = row.Cells["CL_CODENO"].Value.ToString();
             txtActivity.Text = row.Cells["CL_ACT"].Value.ToString();
@@ -96,59 +125,21 @@ namespace PtrCma
 
 
             //Show selected Column in Gridview
-            grdViewParty.Columns[0].Visible = false;
+            for (int i = 0; i <= grdViewParty.Columns.Count - 1; i++)
+            {
+                grdViewParty.Columns[i].ReadOnly = true;
+                grdViewParty.Columns[i].Visible = false; 
+            }
 
             grdViewParty.Columns[1].Visible = true;
             grdViewParty.Columns[1].HeaderText = "Party Code";
             grdViewParty.Columns[1].Width = 100;
-
-            grdViewParty.Columns[2].Visible = false;
-            grdViewParty.Columns[3].Visible = false;
-
             grdViewParty.Columns[4].Visible = true;
             grdViewParty.Columns[4].HeaderText = "Party Name";
             grdViewParty.Columns[4].Width = 150;
 
-            grdViewParty.Columns[5].Visible = false;
-            grdViewParty.Columns[6].Visible = false;
-            grdViewParty.Columns[7].Visible = false;
-            grdViewParty.Columns[8].Visible = false;
-            grdViewParty.Columns[9].Visible = false;
-            grdViewParty.Columns[10].Visible = false;
-            grdViewParty.Columns[11].Visible = false;
-            grdViewParty.Columns[12].Visible = false;
-            grdViewParty.Columns[13].Visible = false;
-            grdViewParty.Columns[14].Visible = false;
-            grdViewParty.Columns[15].Visible = false;
-            grdViewParty.Columns[16].Visible = false;
-            grdViewParty.Columns[17].Visible = false;
-
         }
 
-       
-        private void FrmCMAParty_Load(object sender, EventArgs e)
-        {
-            this.KeyPreview = true;
-
-            this.BackColor = Global.backColorPartyMst;   //Set the Background Color
-            this.Width = grdViewParty.Width + txtareanotes.Width + 190;
-
-            fillgird();
-            grdViewParty.CurrentCell = grdViewParty.Rows[0].Cells[1];
-
-            controlsize();  //Button and TextBox Resize
-            navigatecolor();  //Label and Textbox BackColor/Forecolor
-            LoadDatatoTextBox();  //Data show in Textbox from Gridview
-            controlvisible();   //Visible Button and Textbox
-            
-            controlenable();    //Enable Button and Textbox
-            
-
-        }
-
-      
-
-   
 
         private void controlenable()
         {
@@ -177,14 +168,24 @@ namespace PtrCma
             cmdReset.Visible = true;
         }
 
+        private void Settings()
+        {
+            setControlcolor(); //Label and Textbox BackColor/Forecolor
+            setControlsize(); //Label and TextBox Resize
+            this.BackColor = Global.backColorPartyMst;   //Set Background Color of the form
+            grdViewParty.Size = Global.grdPartySize;
+            this.Width = grdViewParty.Width + txtareanotes.Width + 190;
 
+           
+        }
        
-        private void navigatecolor()
+        private void setControlcolor()
         {
             foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
             {
                 txt.Enabled = false;
                 txtFind.Enabled = true;
+                txt.BackColor = Global.txtColorPartyMst;
             }
 
             foreach (Label lbl in Controls.OfType<Label>()) //Set the Label Color
@@ -193,100 +194,96 @@ namespace PtrCma
                 lbl.ForeColor = Global.lblForeColorPartyMst;
             }
 
-            foreach (TextBox txt in Controls.OfType<TextBox>())   //Set the TextBox Color
-            {
-                txt.BackColor = Global.txtColorPartyMst;
-            }
-
             lblparty.BackColor = Global.lblparty;
             lblparty.ForeColor = Global.lbltitle;
         }
 
-        private void controlsize()
+        private void setControlsize()
         {
             foreach (Label lbl in Controls.OfType<Label>())
             {
-                lbl.Size = new System.Drawing.Size(65, 20);
+                lbl.Size = Global.medsizelbl;
                 lbl.AutoSize = false;
             }
-            lblfind.Size = new System.Drawing.Size(40, 20);
-            lblparty.Size = new System.Drawing.Size(720, 30);
+            lblfind.Size = Global.smallsizelbl;
+            lblparty.Size = Global.largesizelbl;
 
             foreach (TextBox txt in Controls.OfType<TextBox>())
             {
-                txt.Size = new System.Drawing.Size(320, 20);
+                txt.Size = Global.txtCommonSize;
             }
-            txtFind.Size = new System.Drawing.Size(200, 20);
-            txtCodeno.Size = new System.Drawing.Size(100, 20);
-            txtBranch.Size = new System.Drawing.Size(100, 20);
-            txtareanotes.Size = new System.Drawing.Size(390, 70);
+            txtFind.Size = Global.txtFindSize;
+            txtCodeno.Size = Global.txtCodenoSize;
+            txtBranch.Size = Global.txtBranchSize;
+            txtareanotes.Size = Global.txtNotesSize;
         }
 
         private void cmdAdd_Click(object sender, EventArgs e)
         {
-
             cmdSave.Visible = true;
             cmdCancel.Visible = true;
             grdViewParty.Enabled = false;
             txtFind.Enabled = false;
             cmdReset.Enabled = false;
 
-            foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
-            {
-                txt.Enabled = true;
-                txt.Clear();
-            }
-            
-            txtCodeno.Focus();
+            clearTextbox();
+            enableTextbox();
+           
             cmdAdd.Visible = false;
             cmdEdit.Visible = false;
             cmdDelete.Visible = false;
             cmdSelect.Visible = false;
             cmdExit.Visible = false;
-            
-            gp = "A";
-            
+            txtCodeno.Focus();
+            isAddEdit = "A";
         }
         
-        private void btninsert()
+        private void btnInsert()
         {
-            if (gp == "A")
-            {
-                txtCodeno.Focus();
+            try {
                 OleDbConnection con = new OleDbConnection();
                 con.ConnectionString = connectionString;
-                con.Open();
-
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                transaction = con.BeginTransaction(IsolationLevel.ReadCommitted);
+               
+                if (isAddEdit == "A")  //Add button click
+            {
+                txtCodeno.Focus();
                 String sql = "insert into Cd_MsCln(CL_CODENO,CL_ACT,CL_BRANCH,CL_NAME,CL_ADD1,CL_ADD2,CL_ADD3,CL_CITY,CL_STATE,CL_FPH,CL_MOB,CL_FAX,CL_EMAIL1,CL_EMAIL2,CL_NOTES,CL_PREP1,CL_PREP2) values ('" + this.txtCodeno.Text + "','" + this.txtActivity.Text + "','" + this.txtBranch.Text + "','" + this.txtName.Text + "','" + this.txtAdd1.Text + "','" + this.txtAdd2.Text + "','" + this.txtAdd3.Text + "','" + this.txtCity.Text + "','" + this.txtState.Text + "','" + this.txtPhone.Text + "','" + this.txtMobile.Text + "','" + this.txtFax.Text + "','" + this.txtEmail1.Text + "','" + this.txtEmail2.Text + "','" + this.txtareanotes.Text + "','" + this.txtPrepBy1.Text + "','" + this.txtPrepBy2.Text + "') ";
                 OleDbCommand cmd = new OleDbCommand(sql, con);
+                cmd.Transaction = transaction;
                 cmd.ExecuteNonQuery();
+                transaction.Commit();
                 con.Close();
                 fillgird();
                 rowNum = grdViewParty.RowCount;
-                grdViewParty.CurrentCell = grdViewParty.Rows[rowNum - 1].Cells[1];
+                grdViewParty.CurrentCell = grdViewParty.Rows[rowNum - 1].Cells[1]; //set current cell to show inserted record
                 MessageBox.Show("Data Inserted Successfully");
             }
 
             else
 
-            {
+            {  //edit button click
               
                 rowNum = grdViewParty.CurrentRow.Index;
-              
-                txtCodeno.Focus();
-                con.ConnectionString = connectionString;
-                con.Open();
+            
+                txtBranch.Focus();
 
-                String sql1 = "Update Cd_MsCln set [CL_ACT]='" + this.txtActivity.Text + "' , [CL_BRANCH] ='" + this.txtBranch.Text + "', [CL_NAME] ='" + this.txtName.Text + "',[CL_ADD1]='" + this.txtAdd1.Text + "', [CL_ADD2]='" + this.txtAdd2.Text + "', [CL_ADD3]='" + this.txtAdd3.Text + "', [CL_CITY]='" + this.txtCity.Text + "', [CL_STATE]='" + this.txtState.Text + "', [CL_FPH]='" + this.txtPhone.Text + "', [CL_MOB]='" + this.txtMobile.Text + "', [CL_FAX]='" + this.txtFax.Text + "', [CL_EMAIL1]='" + this.txtEmail1.Text + "', [CL_EMAIL2]='" + this.txtEmail2.Text + "', [CL_NOTES]='" + this.txtareanotes.Text + "', [CL_PREP1]='" + this.txtPrepBy1.Text + "', [CL_PREP2]='" + this.txtPrepBy2.Text + "'  WHERE CL_CODENO= '" + this.txtCodeno.Text + "' ";
-                OleDbCommand cmd1 = new OleDbCommand(sql1, con);
-                cmd1.ExecuteNonQuery();
-                con.Close();
 
                 //Dialog Box for yes or no
                 DialogResult dialogResult1 = MessageBox.Show("Do You want to Update this Record?", "", MessageBoxButtons.YesNo);       //Cancel Button
                 if (dialogResult1 == DialogResult.Yes)
                 {
-                    fillgird();  //After inserting data display data in Gridview
+                        String sql1 = "Update Cd_MsCln set [CL_ACT]='" + this.txtActivity.Text + "' , [CL_BRANCH] ='" + this.txtBranch.Text + "', [CL_NAME] ='" + this.txtName.Text + "',[CL_ADD1]='" + this.txtAdd1.Text + "', [CL_ADD2]='" + this.txtAdd2.Text + "', [CL_ADD3]='" + this.txtAdd3.Text + "', [CL_CITY]='" + this.txtCity.Text + "', [CL_STATE]='" + this.txtState.Text + "', [CL_FPH]='" + this.txtPhone.Text + "', [CL_MOB]='" + this.txtMobile.Text + "', [CL_FAX]='" + this.txtFax.Text + "', [CL_EMAIL1]='" + this.txtEmail1.Text + "', [CL_EMAIL2]='" + this.txtEmail2.Text + "', [CL_NOTES]='" + this.txtareanotes.Text + "', [CL_PREP1]='" + this.txtPrepBy1.Text + "', [CL_PREP2]='" + this.txtPrepBy2.Text + "'  WHERE CL_CODENO= '" + this.txtCodeno.Text + "' ";
+                        OleDbCommand cmd1 = new OleDbCommand(sql1, con);
+                        cmd1.Transaction = transaction;
+                        cmd1.ExecuteNonQuery();
+                        transaction.Commit();
+                        con.Close();
+                        fillgird();  //After updating data display it in Gridview
                     grdViewParty.CurrentCell = grdViewParty.Rows[rowNum].Cells[1];
 
                     MessageBox.Show("Record Updated Successfully");
@@ -303,14 +300,18 @@ namespace PtrCma
                     cmdSave.Visible = false;
                     cmdCancel.Visible = false;
 
-
-                    //foreach (TextBox t2 in Controls.OfType<TextBox>())   //Disable Textbox
-                    //{
-                    //    t2.Clear();
-
-                    //}
-
                 }
+
+            }
+            }
+            catch (Exception e){
+                MessageBox.Show(e.Message);
+                try
+                {
+                    transaction.Rollback();
+                }catch
+                { }
+
 
             }
 
@@ -319,6 +320,7 @@ namespace PtrCma
 
         private void cmdSave_Click(object sender, EventArgs e)
         {
+            txtFind.Enabled = false;
             grdViewParty.Enabled = true;
             //Validations 
             if (txtCodeno.Text.Trim() == string.Empty)              //Code No  
@@ -336,7 +338,7 @@ namespace PtrCma
                 return; // return because we don't want to run normal code of buton click
             }
 
-            btninsert();
+            btnInsert();  //insert-update data in database
 
 
             foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
@@ -344,7 +346,6 @@ namespace PtrCma
                 txt.Enabled = false;
             }
             controlvisible();
-
             cmdSave.Visible = false;
             cmdCancel.Visible = false;
 
@@ -383,17 +384,15 @@ namespace PtrCma
                 cmdReset.Enabled = true;
                 txtFind.Enabled = true;
 
-                foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
-                {
-                    txt.Clear();
-                }
+                clearTextbox();
+
+                
+                
+            
             }
             else
             {
-                foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
-                {
-                    txt.Enabled = true;
-                }
+                enableTextbox();
             }
             LoadDatatoTextBox();
 
@@ -401,17 +400,13 @@ namespace PtrCma
 
         private void cmdEdit_Click(object sender, EventArgs e)
         {
+           
             grdViewParty.Enabled = false;
-           gp = "B";
-                txtCodeno.Focus();
-            
-            foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
-            {
-
-                txt.Enabled = true;
-
-
-            }
+            isAddEdit = "B";
+                txtBranch.Focus();
+        
+            enableTextbox();
+            txtCodeno.Enabled = false;
 
             txtFind.Enabled = true;
             txtCodeno.Focus();
@@ -431,36 +426,46 @@ namespace PtrCma
 
         private void cmdDelete_Click(object sender, EventArgs e)
         {
-            grdViewParty.Enabled = false;
-            OleDbConnection con = new OleDbConnection();
-            con.ConnectionString = connectionString;
-            con.Open();
-
-            String sql = "delete from Cd_MsCln where CL_CODENO='" + this.txtCodeno.Text + "' ";
-            cmd = new OleDbCommand(sql, con);
-            cmd.ExecuteNonQuery();
-            con.Close();
-
-            DialogResult dialogResult1 = MessageBox.Show("Are you sure want to delete this Record ?", "", MessageBoxButtons.YesNo);       //Cancel Button
-            if (dialogResult1 == DialogResult.Yes)
+            try
             {
-                fillgird();  //After inserting data display data in Gridview
-                MessageBox.Show("Record Successfully Deleted ");
-
-                cmdDelete.Enabled = true;
-                cmdEdit.Enabled = true;
-                grdViewParty.Enabled = true;
-
-                foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
+                DialogResult dialogResult1 = MessageBox.Show("Are you sure want to delete this Record ?", "", MessageBoxButtons.YesNo);       //Cancel Button
+                if (dialogResult1 == DialogResult.Yes)
                 {
-                    txt.Clear();
+                    grdViewParty.Enabled = false;
+                    OleDbConnection con = new OleDbConnection();
+                    con.ConnectionString = connectionString;
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+                    transaction = con.BeginTransaction(IsolationLevel.ReadCommitted);
+
+                    String sql = "delete from Cd_MsCln where CL_CODENO='" + this.txtCodeno.Text + "' ";
+                    cmd = new OleDbCommand(sql, con);
+                    cmd.Transaction = transaction;
+                    cmd.ExecuteNonQuery();
+                    transaction.Commit();
+                    con.Close();
+                    fillgird();  //After inserting data display data in Gridview
+                    MessageBox.Show("Record Successfully Deleted ");
+
+                    cmdDelete.Enabled = true;
+                    cmdEdit.Enabled = true;
+                    grdViewParty.Enabled = true;
+
+                    clearTextbox();
 
                 }
-
+                cmdReset.Enabled = true;
+                txtFind.Enabled = true;
+                txtFind.Focus();
+            }catch(Exception ex) {
+                MessageBox.Show("Exception: Data Insertion in Party table in database" + ex.Message);
+                try
+                {
+                    transaction.Rollback();
+                }catch{ }
             }
-            cmdReset.Enabled = true;
-            txtFind.Enabled = true;
-            txtFind.Focus();
         }
 
         private void cmdSelect_Click(object sender, EventArgs e)
@@ -475,8 +480,8 @@ namespace PtrCma
             if (dialogResult == DialogResult.Yes)
             {
                 this.Close();
-                FrmMDICma c = new FrmMDICma();
-                c.Show();
+                FrmMDICma frmCma = new FrmMDICma();
+                frmCma.Show();
             }
 
         }
@@ -485,11 +490,9 @@ namespace PtrCma
         {
             //cmdEdit.Enabled = true;
             //cmdDelete.Enabled = true;
-            foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
-            {
-                txt.Enabled = false;
-                txtFind.Enabled = true;
-            }
+            enableTextbox();
+            txtFind.Enabled = true;
+           
 
             if (e.RowIndex >= 0)
             {
@@ -519,16 +522,11 @@ namespace PtrCma
 
         private void cmdReset_Click(object sender, EventArgs e)
         {
+            clearTextbox();
             txtFind.Clear();
             fillgird();
-            foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
-            {
-                txt.Clear();
-                txtFind.Enabled = true;
-
-            }
-            //cmdEdit.Enabled = false;
-            //cmdDelete.Enabled = false;
+            txtFind.Enabled = true;
+            
         }
 
         private void txtFind_KeyUp(object sender, KeyEventArgs e)
@@ -539,10 +537,9 @@ namespace PtrCma
 
             con.Open();
 
-            da = new OleDbDataAdapter("SELECT * from Cd_MsCln where CL_NAME like '" + txtFind.Text + "%'", con);
+            dataAdapter = new OleDbDataAdapter("SELECT * from Cd_MsCln where CL_NAME like '" + txtFind.Text + "%'", con);
 
-            da.Fill(ds, "Cd_MsCln");
-            //grdViewParty.DataSource = ds.Tables("Cd_MsCln");
+            dataAdapter.Fill(ds, "Cd_MsCln");
             grdViewParty.DataMember = "Cd_MsCln";
             grdViewParty.DataSource = ds;
             con.Close();
@@ -584,20 +581,13 @@ namespace PtrCma
 
         private void grdViewParty_DoubleClick(object sender, EventArgs e)
         {
-            gp = "B";
-                txtCodeno.Focus();
-           
-
-
-
+            isAddEdit = "B";
+            txtCodeno.Focus();
+ 
             foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
             {
-
                 txt.Enabled = false;
-
-
             }
-
             txtFind.Enabled = true;
             
         }

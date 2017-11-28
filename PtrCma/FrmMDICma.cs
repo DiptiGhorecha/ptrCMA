@@ -21,13 +21,6 @@ namespace PtrCma
 
         private void FrmMDICma_Load(object sender, EventArgs e)
         {
-            Assembly myAssembly = Assembly.GetExecutingAssembly();
-            string[] names = myAssembly.GetManifestResourceNames();
-            foreach (string name in names)
-            {
-                Console.WriteLine(name);
-            }
-            Bitmap bmp = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.bg.png"));
             this.Text = Global.companyName;
             foreach (Control control in this.Controls)
             {
@@ -37,6 +30,7 @@ namespace PtrCma
                 {
                     // #3
                     client.BackColor = Global.appBackColr;
+                    client.BackgroundImage = Global.startFrmBackImg;
                     // 4#
                     break;
                 }
@@ -44,12 +38,12 @@ namespace PtrCma
             }
             this.BackColor = Global.appBackColr;
             //this.BackgroundImage = Global.startFrmBackImg;
-            FrmCMAParty p = new FrmCMAParty();
-            p.MdiParent = this;
-            FrmMainCma f = new FrmMainCma();
-            f.MdiParent = this;
-           // f.StartPosition = FormStartPosition.CenterScreen;
-            f.Show();
+            FrmCMAParty frmParty = new FrmCMAParty();
+            frmParty.MdiParent = this;
+            FrmMainCma frmMain = new FrmMainCma();
+            frmMain.MdiParent = this;
+            // f.StartPosition = FormStartPosition.CenterScreen;
+            frmMain.Show();
             
            // f.Refresh();
             
