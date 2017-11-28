@@ -34,6 +34,7 @@ namespace PtrCma
         public static Color lblColorPartyMst = System.Drawing.Color.CadetBlue;   //Label Backcolor
         public static Color lblForeColorPartyMst = System.Drawing.Color.White;   //Label Fore/Text Color
         public static Color txtColorPartyMst = System.Drawing.Color.White;     //Textbox color
+      
         //public static Size lbl = system
 
         //All Form after click

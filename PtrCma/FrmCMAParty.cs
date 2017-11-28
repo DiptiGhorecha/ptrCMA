@@ -110,7 +110,6 @@ namespace PtrCma
             grdViewParty.Columns[4].Width = 150;
 
             grdViewParty.Columns[5].Visible = false;
-
             grdViewParty.Columns[6].Visible = false;
             grdViewParty.Columns[7].Visible = false;
             grdViewParty.Columns[8].Visible = false;
@@ -126,96 +125,129 @@ namespace PtrCma
 
         }
 
+       
         private void FrmCMAParty_Load(object sender, EventArgs e)
         {
             this.KeyPreview = true;
-            // this.Parent.BackColor = Global.appBackColr;
-            foreach (Label l in Controls.OfType<Label>())
+
+            this.BackColor = Global.backColorPartyMst;   //Set the Background Color
+            this.Width = grdViewParty.Width + txtareanotes.Width + 190;
+
+            fillgird();
+            grdViewParty.CurrentCell = grdViewParty.Rows[0].Cells[1];
+
+            controlsize();  //Button and TextBox Resize
+            navigatecolor();  //Label and Textbox BackColor/Forecolor
+            LoadDatatoTextBox();  //Data show in Textbox from Gridview
+            controlvisible();   //Visible Button and Textbox
+            
+            controlenable();    //Enable Button and Textbox
+            
+
+        }
+
+      
+
+   
+
+        private void controlenable()
+        {
+            cmdAdd.Enabled = true;
+            cmdEdit.Enabled = true;
+            cmdDelete.Enabled = true;
+            cmdSelect.Enabled = true;
+            cmdExit.Enabled = true;
+            cmdSave.Enabled = true;
+            cmdCancel.Enabled = true;
+            cmdReset.Enabled = true;
+            grdViewParty.Enabled = true;
+            txtFind.Enabled = true;
+        }
+
+        
+        private void controlvisible()
+        {
+            cmdAdd.Visible = true;
+            cmdEdit.Visible = true;
+            cmdDelete.Visible = true;
+            cmdSelect.Visible = true;
+            cmdExit.Visible = true;
+            cmdSave.Visible = false;
+            cmdCancel.Visible = false;
+            cmdReset.Visible = true;
+        }
+
+
+       
+        private void navigatecolor()
+        {
+            foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
             {
-                l.Size = new System.Drawing.Size(65, 20);
-                l.AutoSize = false;
+                txt.Enabled = false;
+                txtFind.Enabled = true;
+            }
+
+            foreach (Label lbl in Controls.OfType<Label>()) //Set the Label Color
+            {
+                lbl.BackColor = Global.lblColorPartyMst;
+                lbl.ForeColor = Global.lblForeColorPartyMst;
+            }
+
+            foreach (TextBox txt in Controls.OfType<TextBox>())   //Set the TextBox Color
+            {
+                txt.BackColor = Global.txtColorPartyMst;
+            }
+
+            lblparty.BackColor = Global.lblparty;
+            lblparty.ForeColor = Global.lbltitle;
+        }
+
+        private void controlsize()
+        {
+            foreach (Label lbl in Controls.OfType<Label>())
+            {
+                lbl.Size = new System.Drawing.Size(65, 20);
+                lbl.AutoSize = false;
             }
             lblfind.Size = new System.Drawing.Size(40, 20);
             lblparty.Size = new System.Drawing.Size(720, 30);
 
-            foreach (TextBox t in Controls.OfType<TextBox>())
+            foreach (TextBox txt in Controls.OfType<TextBox>())
             {
-                t.Size = new System.Drawing.Size(320, 20);
-
-
+                txt.Size = new System.Drawing.Size(320, 20);
             }
             txtFind.Size = new System.Drawing.Size(200, 20);
             txtCodeno.Size = new System.Drawing.Size(100, 20);
             txtBranch.Size = new System.Drawing.Size(100, 20);
             txtareanotes.Size = new System.Drawing.Size(390, 70);
-
-            cmdEdit.Enabled = true;
-            cmdDelete.Enabled = true;
-
-            foreach (TextBox t1 in Controls.OfType<TextBox>())   //Disable Textbox
-            {
-
-                t1.Enabled = false;
-                txtFind.Enabled = true;
-            }
-
-            foreach (Label l in Controls.OfType<Label>()) //Set the Label Color
-            {
-                l.BackColor = Global.lblColorPartyMst;
-                l.ForeColor = Global.lblForeColorPartyMst;
-            }
-
-            foreach (TextBox t in Controls.OfType<TextBox>())   //Set the TextBox Color
-            {
-                t.BackColor = Global.txtColorPartyMst;
-            }
-
-            lblparty.BackColor = Global.lblparty;
-            lblparty.ForeColor = Global.lbltitle;
-
-
-            this.BackColor = Global.backColorPartyMst;   //Set the Background Color
-            this.Width = grdViewParty.Width + txtareanotes.Width + 190;
-            fillgird();
-            grdViewParty.CurrentCell = grdViewParty.Rows[0].Cells[1];
-            LoadDatatoTextBox();
-
         }
 
         private void cmdAdd_Click(object sender, EventArgs e)
         {
-            grdViewParty.Enabled = false;
-            cmdEdit.Enabled = false;
-            cmdDelete.Enabled = false;
 
-            foreach (TextBox t1 in Controls.OfType<TextBox>())   //Disable Textbox
-            {
-                t1.Enabled = true;
-                t1.Clear();
-
-            }
-
-            cmdReset.Enabled = false;
-            txtFind.Enabled = false;
-
-            txtCodeno.Focus();
             cmdSave.Visible = true;
             cmdCancel.Visible = true;
+            grdViewParty.Enabled = false;
+            txtFind.Enabled = false;
+            cmdReset.Enabled = false;
+
+            foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
+            {
+                txt.Enabled = true;
+                txt.Clear();
+            }
+            
+            txtCodeno.Focus();
             cmdAdd.Visible = false;
             cmdEdit.Visible = false;
             cmdDelete.Visible = false;
             cmdSelect.Visible = false;
             cmdExit.Visible = false;
-
-
+            
             gp = "A";
-
-
-
+            
         }
-
-
-
+        
         private void btninsert()
         {
             if (gp == "A")
@@ -238,13 +270,9 @@ namespace PtrCma
             else
 
             {
-                //if (grdViewParty.CurrentRow) {
+              
                 rowNum = grdViewParty.CurrentRow.Index;
-                //}else
-                //{
-                //    rowNum = 0;
-                //}
-
+              
                 txtCodeno.Focus();
                 con.ConnectionString = connectionString;
                 con.Open();
@@ -311,22 +339,16 @@ namespace PtrCma
             btninsert();
 
 
-            foreach (TextBox t2 in Controls.OfType<TextBox>())   //Disable Textbox
+            foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
             {
-
-                t2.Enabled = false;
+                txt.Enabled = false;
             }
-            cmdAdd.Visible = true;
-            cmdEdit.Visible = true;
-            cmdDelete.Visible = true;
-            cmdSelect.Visible = true;
-            cmdExit.Visible = true;
+            controlvisible();
+
             cmdSave.Visible = false;
             cmdCancel.Visible = false;
-            cmdEdit.Enabled = true;
-            cmdDelete.Enabled = true;
-            cmdReset.Enabled = true;
-            txtFind.Enabled = true;
+
+            controlenable();
             txtFind.Focus();
 
         }
@@ -341,9 +363,9 @@ namespace PtrCma
             cmdReset.Enabled = true;
 
             grdViewParty.Enabled = true;
-            foreach (TextBox t1 in Controls.OfType<TextBox>())   //Disable Textbox
+            foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
             {
-                t1.Enabled = false;
+                txt.Enabled = false;
             }
 
             DialogResult dialogResult = MessageBox.Show("Are You Sure Want to Cancel?", "", MessageBoxButtons.YesNo);       //Cancel Button
@@ -361,16 +383,16 @@ namespace PtrCma
                 cmdReset.Enabled = true;
                 txtFind.Enabled = true;
 
-                foreach (TextBox t2 in Controls.OfType<TextBox>())   //Disable Textbox
+                foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
                 {
-                    t2.Clear();
+                    txt.Clear();
                 }
             }
             else
             {
-                foreach (TextBox t1 in Controls.OfType<TextBox>())   //Disable Textbox
+                foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
                 {
-                    t1.Enabled = true;
+                    txt.Enabled = true;
                 }
             }
             LoadDatatoTextBox();
@@ -380,18 +402,13 @@ namespace PtrCma
         private void cmdEdit_Click(object sender, EventArgs e)
         {
             grdViewParty.Enabled = false;
-            foreach (TextBox t1 in Controls.OfType<TextBox>())   //Disable Textbox
-            {
-                gp = "B";
+           gp = "B";
                 txtCodeno.Focus();
-            }
-
-            //MessageBox.Show("Select Your Data First");
-            //grdViewParty.Focus();
-            foreach (TextBox t1 in Controls.OfType<TextBox>())   //Disable Textbox
+            
+            foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
             {
 
-                t1.Enabled = true;
+                txt.Enabled = true;
 
 
             }
@@ -434,9 +451,9 @@ namespace PtrCma
                 cmdEdit.Enabled = true;
                 grdViewParty.Enabled = true;
 
-                foreach (TextBox t2 in Controls.OfType<TextBox>())   //Disable Textbox
+                foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
                 {
-                    t2.Clear();
+                    txt.Clear();
 
                 }
 
@@ -468,9 +485,9 @@ namespace PtrCma
         {
             //cmdEdit.Enabled = true;
             //cmdDelete.Enabled = true;
-            foreach (TextBox t1 in Controls.OfType<TextBox>())   //Disable Textbox
+            foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
             {
-                t1.Enabled = false;
+                txt.Enabled = false;
                 txtFind.Enabled = true;
             }
 
@@ -504,9 +521,9 @@ namespace PtrCma
         {
             txtFind.Clear();
             fillgird();
-            foreach (TextBox t2 in Controls.OfType<TextBox>())   //Disable Textbox
+            foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
             {
-                t2.Clear();
+                txt.Clear();
                 txtFind.Enabled = true;
 
             }
@@ -567,28 +584,22 @@ namespace PtrCma
 
         private void grdViewParty_DoubleClick(object sender, EventArgs e)
         {
-            foreach (TextBox t1 in Controls.OfType<TextBox>())   //Disable Textbox
-            {
-                gp = "B";
+            gp = "B";
                 txtCodeno.Focus();
-            }
+           
 
 
 
-            foreach (TextBox t1 in Controls.OfType<TextBox>())   //Disable Textbox
+            foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
             {
 
-                t1.Enabled = false;
+                txt.Enabled = false;
 
 
             }
 
             txtFind.Enabled = true;
-
-
-
-
-
+            
         }
     }
 }

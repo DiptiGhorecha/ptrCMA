@@ -429,8 +429,7 @@
             // 
             // cmdEdit
             // 
-            this.cmdEdit.Enabled = false;
-            this.cmdEdit.Location = new System.Drawing.Point(456, 592);
+            this.cmdEdit.Location = new System.Drawing.Point(454, 592);
             this.cmdEdit.Name = "cmdEdit";
             this.cmdEdit.Size = new System.Drawing.Size(46, 23);
             this.cmdEdit.TabIndex = 4;
@@ -440,7 +439,6 @@
             // 
             // cmdDelete
             // 
-            this.cmdDelete.Enabled = false;
             this.cmdDelete.Location = new System.Drawing.Point(508, 592);
             this.cmdDelete.Name = "cmdDelete";
             this.cmdDelete.Size = new System.Drawing.Size(61, 23);
