@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -44,11 +44,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmBankingArrangements.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBankingArrangements.Designer.cs">
+      <DependentUpon>FrmBankingArrangements.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCMAParty.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmCMAParty.Designer.cs">
       <DependentUpon>FrmCMAParty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCredit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCredit.Designer.cs">
+      <DependentUpon>FrmCredit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDeatilAssociate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDeatilAssociate.Designer.cs">
+      <DependentUpon>FrmDeatilAssociate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDetailDirector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDetailDirector.Designer.cs">
+      <DependentUpon>FrmDetailDirector.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmMainCma.cs">
       <SubType>Form</SubType>
@@ -56,23 +80,80 @@
     <Compile Include="FrmMainCma.Designer.cs">
       <DependentUpon>FrmMainCma.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMajorBuyer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMajorBuyer.Designer.cs">
+      <DependentUpon>FrmMajorBuyer.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMDICma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmMDICma.Designer.cs">
       <DependentUpon>FrmMDICma.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPositionIncomeTax.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPositionIncomeTax.Designer.cs">
+      <DependentUpon>FrmPositionIncomeTax.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRegistration.Designer.cs">
+      <DependentUpon>FrmRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTermsPurchase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTermsPurchase.Designer.cs">
+      <DependentUpon>FrmTermsPurchase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTermsSales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTermsSales.Designer.cs">
+      <DependentUpon>FrmTermsSales.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmBankingArrangements.resx">
+      <DependentUpon>FrmBankingArrangements.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCMAParty.resx">
       <DependentUpon>FrmCMAParty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCredit.resx">
+      <DependentUpon>FrmCredit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDeatilAssociate.resx">
+      <DependentUpon>FrmDeatilAssociate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDetailDirector.resx">
+      <DependentUpon>FrmDetailDirector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMainCma.resx">
       <DependentUpon>FrmMainCma.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmMajorBuyer.resx">
+      <DependentUpon>FrmMajorBuyer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMDICma.resx">
       <DependentUpon>FrmMDICma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPositionIncomeTax.resx">
+      <DependentUpon>FrmPositionIncomeTax.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRegistration.resx">
+      <DependentUpon>FrmRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTermsPurchase.resx">
+      <DependentUpon>FrmTermsPurchase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTermsSales.resx">
+      <DependentUpon>FrmTermsSales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

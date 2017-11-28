@@ -35,10 +35,15 @@ namespace PtrCma
 
             }
             this.BackColor = Global.appBackColr;
+            //this.BackgroundImage = Global.startFrmBackImg;
+            FrmCMAParty p = new FrmCMAParty();
+            p.MdiParent = this;
             FrmMainCma f = new FrmMainCma();
             f.MdiParent = this;
-            f.StartPosition = FormStartPosition.CenterScreen;
+           // f.StartPosition = FormStartPosition.CenterScreen;
             f.Show();
+            
+           // f.Refresh();
             
         }
 
