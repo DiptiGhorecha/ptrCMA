@@ -17,7 +17,7 @@ namespace PtrCma
     public partial class FrmCMAParty : Form
     {
         string isAddEdit = ""; //Variable to Store Current Action(Add,Edit)
-        String connectionString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " + Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\PtrCma.accdb");    //Application.StartupPath + "\\PtrCma.accdb;";  //Connection String
+        String connectionString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " +Application.StartupPath + "\\Resources\\PtrCma.accdb;";  //Connection String
         //Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\PtrCma.accdb"); 
         OleDbConnection con;
         OleDbCommand cmd;
@@ -37,14 +37,14 @@ namespace PtrCma
 
 
             Settings();  //set size and color of controls
-            fillgird();
-            grdViewParty.CurrentCell = grdViewParty.Rows[0].Cells[1];  //Set 1st row as current row by default
-            LoadDatatoTextBox();  // show data in Textbox from Gridview
+   
             controlvisible();   // Visible Button and Textbox
             controlenable();    //Enable Button and Textbox
             clearTextbox();     //Clear the Textbox
             enableTextbox();    //Enable Textbox
-
+                     fillgird();
+            grdViewParty.CurrentCell = grdViewParty.Rows[0].Cells[1];  //Set 1st row as current row by default
+            LoadDatatoTextBox();  // show data in Textbox from Gridview
 
         }
 
@@ -478,8 +478,8 @@ namespace PtrCma
             if (dialogResult == DialogResult.Yes)
             {
                 this.Close();
-                FrmMDICma frmCma = new FrmMDICma();
-                frmCma.Show();
+               // FrmMDICma frmCma = new FrmMDICma();
+                //frmCma.Show();
             }
 
         }

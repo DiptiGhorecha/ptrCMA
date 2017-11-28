@@ -116,6 +116,7 @@ namespace PtrCma
                     FrmCMAParty frmParty = new FrmCMAParty();
                     frmParty.StartPosition = FormStartPosition.Manual;
                     frmParty.Location = new Point(this.Parent.Location.X + (this.Parent.Width - frmParty.Width) / 2, frmParty.Location.Y + (this.Parent.Height - frmParty.Height) / 2);
+                    frmParty.MdiParent = this.ParentForm;
                     frmParty.Show();
                    // this.Close();
                     break;

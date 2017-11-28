@@ -194,7 +194,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\PtrCma.accdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="Resources\bg.png" />
     <Content Include="Resources\btn_icon1.png" />
