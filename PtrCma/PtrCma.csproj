@@ -193,6 +193,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\PtrCma.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Resources\bg.png" />
     <Content Include="Resources\btn_icon1.png" />
     <Content Include="Resources\btn_icon2.png" />

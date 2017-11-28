@@ -8,8 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data.OleDb;
-
-
+using System.IO;
+using System.Reflection;
 
 namespace PtrCma
 {
@@ -17,7 +17,8 @@ namespace PtrCma
     public partial class FrmCMAParty : Form
     {
         string isAddEdit = ""; //Variable to Store Current Action(Add,Edit)
-        String connectionString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " + Application.StartupPath + "\\PtrCma.accdb;";  //Connection String
+        String connectionString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " + Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\PtrCma.accdb");    //Application.StartupPath + "\\PtrCma.accdb;";  //Connection String
+        //Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\PtrCma.accdb"); 
         OleDbConnection con;
         OleDbCommand cmd;
         OleDbDataAdapter dataAdapter;
@@ -353,9 +354,6 @@ namespace PtrCma
             txtFind.Focus();
 
         }
-
-
-
 
 
         private void cmdCancel_Click(object sender, EventArgs e)
