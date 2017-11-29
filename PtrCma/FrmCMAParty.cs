@@ -37,6 +37,7 @@ namespace PtrCma
 
         private void FrmCMAParty_Load(object sender, EventArgs e)
         {
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
             this.KeyPreview = true; //To handle enter key
            
             Settings();  //set size and color of controls
@@ -205,6 +206,8 @@ namespace PtrCma
             lblparty.BackColor = Global.lblparty;
             lblparty.ForeColor = Global.lbltitle;
             lblparty.Font = Global.lblPartyTitlefont;
+            lblparty.Image = Global.partyLblBackImg;
+            lblparty.ImageAlign= ContentAlignment.MiddleCenter;
 
             foreach (Button btn in Controls.OfType<Button>())
             {

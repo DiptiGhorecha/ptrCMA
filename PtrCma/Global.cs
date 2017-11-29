@@ -34,14 +34,15 @@ namespace PtrCma
         public static Bitmap partyFrmBackImg = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.center-bg.png"));
         public static Bitmap partyFrmCloseImg = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.close.png"));
         public static Bitmap cmdImg = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.buton.png"));
+        public static Bitmap partyLblBackImg = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.partybg.png"));
         public static Color btnfore = System.Drawing.Color.White;   //Button Fore Color
         public static string PartyMaster = "Party Master"; //Title
-        public static Color lblparty = System.Drawing.Color.FromArgb(171, 144, 132);   //.CadetBlue; //Label BackColor of title
-        public static Color lbltitle = System.Drawing.Color.White; //Label Fore Color of title
+        public static Color lblparty = System.Drawing.Color.CadetBlue; //Label BackColor of title
+        public static Color lbltitle = System.Drawing.Color.FromArgb(68, 77, 62); //Label Fore Color of title
         public static Font lblPartyTitlefont = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         public static Color backColorPartyMst = System.Drawing.Color.Transparent;   //.FromArgb(153,233,228);  //back ground color of partymaster table
-        public static Color lblColorPartyMst = System.Drawing.Color.Transparent;    //.CadetBlue;   //Label Backcolor
-        public static Color lblForeColorPartyMst = System.Drawing.Color.Black;   //Label Fore/Text Color
+        public static Color lblColorPartyMst = System.Drawing.Color.CadetBlue;   //Label Backcolor
+        public static Color lblForeColorPartyMst = System.Drawing.Color.White;   //Label Fore/Text Color
         public static Font  lblPartyfont = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         public static Color txtColorPartyMst = System.Drawing.Color.White;     //Textbox color
         public static Size smallsizelbl = new System.Drawing.Size(40, 20);
@@ -51,8 +52,8 @@ namespace PtrCma
         public static Size txtFindSize = new System.Drawing.Size(200, 20);
         public static Size txtCodenoSize = new System.Drawing.Size(100, 20);
         public static Size txtBranchSize = new System.Drawing.Size(100, 20);
-        public static Size txtNotesSize = new System.Drawing.Size(410, 70);
-        public static Size grdPartySize = new System.Drawing.Size(301, 474);
+        public static Size txtNotesSize = new System.Drawing.Size(410, 65);
+        public static Size grdPartySize = new System.Drawing.Size(301, 450);
 
 
         //public static Size lbl = system
