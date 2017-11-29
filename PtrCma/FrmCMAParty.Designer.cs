@@ -74,16 +74,16 @@
             this.lblparty = new System.Windows.Forms.Label();
             this.cmdSave = new System.Windows.Forms.Button();
             this.cmdCancel = new System.Windows.Forms.Button();
-            this.picFrmClose = new System.Windows.Forms.PictureBox();
+            this.pictFrmClose = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewParty)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picFrmClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictFrmClose)).BeginInit();
             this.SuspendLayout();
             // 
             // lblfind
             // 
             this.lblfind.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblfind.ForeColor = System.Drawing.Color.Black;
-            this.lblfind.Location = new System.Drawing.Point(67, 68);
+            this.lblfind.Location = new System.Drawing.Point(51, 68);
             this.lblfind.Name = "lblfind";
             this.lblfind.Size = new System.Drawing.Size(37, 21);
             this.lblfind.TabIndex = 0;
@@ -93,7 +93,7 @@
             // 
             this.txtFind.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFind.Location = new System.Drawing.Point(110, 68);
+            this.txtFind.Location = new System.Drawing.Point(91, 68);
             this.txtFind.Name = "txtFind";
             this.txtFind.Size = new System.Drawing.Size(183, 19);
             this.txtFind.TabIndex = 1;
@@ -120,9 +120,10 @@
             this.grdViewParty.AllowUserToResizeColumns = false;
             this.grdViewParty.AllowUserToResizeRows = false;
             this.grdViewParty.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdViewParty.Location = new System.Drawing.Point(70, 110);
+            this.grdViewParty.Location = new System.Drawing.Point(54, 110);
             this.grdViewParty.Name = "grdViewParty";
-            this.grdViewParty.Size = new System.Drawing.Size(285, 505);
+            this.grdViewParty.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.grdViewParty.Size = new System.Drawing.Size(301, 474);
             this.grdViewParty.TabIndex = 3;
             this.grdViewParty.TabStop = false;
             this.grdViewParty.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdViewParty_CellClick);
@@ -237,7 +238,7 @@
             // 
             // lblPrepBy1
             // 
-            this.lblPrepBy1.Location = new System.Drawing.Point(396, 417);
+            this.lblPrepBy1.Location = new System.Drawing.Point(396, 397);
             this.lblPrepBy1.Name = "lblPrepBy1";
             this.lblPrepBy1.Size = new System.Drawing.Size(63, 16);
             this.lblPrepBy1.TabIndex = 17;
@@ -245,7 +246,7 @@
             // 
             // lblPrepBy2
             // 
-            this.lblPrepBy2.Location = new System.Drawing.Point(396, 444);
+            this.lblPrepBy2.Location = new System.Drawing.Point(396, 424);
             this.lblPrepBy2.Name = "lblPrepBy2";
             this.lblPrepBy2.Size = new System.Drawing.Size(63, 16);
             this.lblPrepBy2.TabIndex = 18;
@@ -253,7 +254,7 @@
             // 
             // lblNotes
             // 
-            this.lblNotes.Location = new System.Drawing.Point(396, 470);
+            this.lblNotes.Location = new System.Drawing.Point(396, 449);
             this.lblNotes.Name = "lblNotes";
             this.lblNotes.Size = new System.Drawing.Size(52, 23);
             this.lblNotes.TabIndex = 19;
@@ -262,7 +263,7 @@
             // lblBranch
             // 
             this.lblBranch.ForeColor = System.Drawing.Color.Black;
-            this.lblBranch.Location = new System.Drawing.Point(607, 74);
+            this.lblBranch.Location = new System.Drawing.Point(627, 74);
             this.lblBranch.Name = "lblBranch";
             this.lblBranch.Size = new System.Drawing.Size(56, 20);
             this.lblBranch.TabIndex = 20;
@@ -272,7 +273,7 @@
             // 
             this.txtCodeno.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCodeno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodeno.Location = new System.Drawing.Point(468, 75);
+            this.txtCodeno.Location = new System.Drawing.Point(488, 75);
             this.txtCodeno.Name = "txtCodeno";
             this.txtCodeno.Size = new System.Drawing.Size(113, 19);
             this.txtCodeno.TabIndex = 8;
@@ -283,7 +284,7 @@
             // 
             this.txtActivity.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtActivity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtActivity.Location = new System.Drawing.Point(468, 100);
+            this.txtActivity.Location = new System.Drawing.Point(488, 100);
             this.txtActivity.Name = "txtActivity";
             this.txtActivity.Size = new System.Drawing.Size(338, 19);
             this.txtActivity.TabIndex = 10;
@@ -293,7 +294,7 @@
             // 
             this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.Location = new System.Drawing.Point(468, 131);
+            this.txtName.Location = new System.Drawing.Point(488, 131);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(338, 19);
             this.txtName.TabIndex = 11;
@@ -303,7 +304,7 @@
             // 
             this.txtAdd1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtAdd1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAdd1.Location = new System.Drawing.Point(468, 153);
+            this.txtAdd1.Location = new System.Drawing.Point(488, 153);
             this.txtAdd1.Name = "txtAdd1";
             this.txtAdd1.Size = new System.Drawing.Size(338, 19);
             this.txtAdd1.TabIndex = 12;
@@ -313,7 +314,7 @@
             // 
             this.txtAdd2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtAdd2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAdd2.Location = new System.Drawing.Point(468, 176);
+            this.txtAdd2.Location = new System.Drawing.Point(488, 176);
             this.txtAdd2.Name = "txtAdd2";
             this.txtAdd2.Size = new System.Drawing.Size(338, 19);
             this.txtAdd2.TabIndex = 13;
@@ -323,7 +324,7 @@
             // 
             this.txtAdd3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtAdd3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAdd3.Location = new System.Drawing.Point(468, 199);
+            this.txtAdd3.Location = new System.Drawing.Point(488, 199);
             this.txtAdd3.Name = "txtAdd3";
             this.txtAdd3.Size = new System.Drawing.Size(338, 19);
             this.txtAdd3.TabIndex = 14;
@@ -333,7 +334,7 @@
             // 
             this.txtCity.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCity.Location = new System.Drawing.Point(468, 222);
+            this.txtCity.Location = new System.Drawing.Point(488, 222);
             this.txtCity.Name = "txtCity";
             this.txtCity.Size = new System.Drawing.Size(190, 19);
             this.txtCity.TabIndex = 15;
@@ -343,7 +344,7 @@
             // 
             this.txtState.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtState.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtState.Location = new System.Drawing.Point(468, 245);
+            this.txtState.Location = new System.Drawing.Point(488, 245);
             this.txtState.Name = "txtState";
             this.txtState.Size = new System.Drawing.Size(190, 19);
             this.txtState.TabIndex = 16;
@@ -353,7 +354,7 @@
             // 
             this.txtPhone.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhone.Location = new System.Drawing.Point(468, 269);
+            this.txtPhone.Location = new System.Drawing.Point(488, 269);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(338, 19);
             this.txtPhone.TabIndex = 17;
@@ -363,7 +364,7 @@
             // 
             this.txtMobile.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtMobile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMobile.Location = new System.Drawing.Point(468, 293);
+            this.txtMobile.Location = new System.Drawing.Point(488, 293);
             this.txtMobile.Name = "txtMobile";
             this.txtMobile.Size = new System.Drawing.Size(338, 19);
             this.txtMobile.TabIndex = 18;
@@ -373,7 +374,7 @@
             // 
             this.txtFax.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtFax.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFax.Location = new System.Drawing.Point(468, 316);
+            this.txtFax.Location = new System.Drawing.Point(488, 316);
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(338, 19);
             this.txtFax.TabIndex = 19;
@@ -383,7 +384,7 @@
             // 
             this.txtEmail1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtEmail1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail1.Location = new System.Drawing.Point(468, 341);
+            this.txtEmail1.Location = new System.Drawing.Point(488, 341);
             this.txtEmail1.Name = "txtEmail1";
             this.txtEmail1.Size = new System.Drawing.Size(338, 19);
             this.txtEmail1.TabIndex = 20;
@@ -393,7 +394,7 @@
             // 
             this.txtEmail2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtEmail2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail2.Location = new System.Drawing.Point(468, 366);
+            this.txtEmail2.Location = new System.Drawing.Point(488, 366);
             this.txtEmail2.Name = "txtEmail2";
             this.txtEmail2.Size = new System.Drawing.Size(338, 19);
             this.txtEmail2.TabIndex = 21;
@@ -403,7 +404,7 @@
             // 
             this.txtPrepBy1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPrepBy1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrepBy1.Location = new System.Drawing.Point(468, 414);
+            this.txtPrepBy1.Location = new System.Drawing.Point(488, 394);
             this.txtPrepBy1.Name = "txtPrepBy1";
             this.txtPrepBy1.Size = new System.Drawing.Size(338, 19);
             this.txtPrepBy1.TabIndex = 22;
@@ -413,9 +414,9 @@
             // 
             this.txtPrepBy2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPrepBy2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrepBy2.Location = new System.Drawing.Point(468, 441);
+            this.txtPrepBy2.Location = new System.Drawing.Point(488, 421);
             this.txtPrepBy2.Name = "txtPrepBy2";
-            this.txtPrepBy2.Size = new System.Drawing.Size(324, 19);
+            this.txtPrepBy2.Size = new System.Drawing.Size(338, 19);
             this.txtPrepBy2.TabIndex = 23;
             this.txtPrepBy2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
@@ -423,7 +424,7 @@
             // 
             this.cmdAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.cmdAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdAdd.Location = new System.Drawing.Point(399, 592);
+            this.cmdAdd.Location = new System.Drawing.Point(399, 561);
             this.cmdAdd.Name = "cmdAdd";
             this.cmdAdd.Size = new System.Drawing.Size(46, 23);
             this.cmdAdd.TabIndex = 3;
@@ -433,7 +434,7 @@
             // 
             // cmdEdit
             // 
-            this.cmdEdit.Location = new System.Drawing.Point(454, 592);
+            this.cmdEdit.Location = new System.Drawing.Point(454, 561);
             this.cmdEdit.Name = "cmdEdit";
             this.cmdEdit.Size = new System.Drawing.Size(46, 23);
             this.cmdEdit.TabIndex = 4;
@@ -443,7 +444,7 @@
             // 
             // cmdDelete
             // 
-            this.cmdDelete.Location = new System.Drawing.Point(508, 592);
+            this.cmdDelete.Location = new System.Drawing.Point(508, 561);
             this.cmdDelete.Name = "cmdDelete";
             this.cmdDelete.Size = new System.Drawing.Size(61, 23);
             this.cmdDelete.TabIndex = 5;
@@ -453,7 +454,7 @@
             // 
             // cmdSelect
             // 
-            this.cmdSelect.Location = new System.Drawing.Point(585, 592);
+            this.cmdSelect.Location = new System.Drawing.Point(591, 561);
             this.cmdSelect.Name = "cmdSelect";
             this.cmdSelect.Size = new System.Drawing.Size(166, 23);
             this.cmdSelect.TabIndex = 6;
@@ -463,9 +464,9 @@
             // 
             // cmdExit
             // 
-            this.cmdExit.Location = new System.Drawing.Point(757, 592);
+            this.cmdExit.Location = new System.Drawing.Point(763, 561);
             this.cmdExit.Name = "cmdExit";
-            this.cmdExit.Size = new System.Drawing.Size(35, 23);
+            this.cmdExit.Size = new System.Drawing.Size(42, 23);
             this.cmdExit.TabIndex = 7;
             this.cmdExit.Text = "Exit";
             this.cmdExit.UseVisualStyleBackColor = true;
@@ -476,7 +477,7 @@
             this.txtBranch.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtBranch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBranch.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtBranch.Location = new System.Drawing.Point(686, 75);
+            this.txtBranch.Location = new System.Drawing.Point(706, 75);
             this.txtBranch.Name = "txtBranch";
             this.txtBranch.Size = new System.Drawing.Size(120, 19);
             this.txtBranch.TabIndex = 9;
@@ -486,10 +487,10 @@
             // 
             this.txtareanotes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtareanotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtareanotes.Location = new System.Drawing.Point(399, 496);
+            this.txtareanotes.Location = new System.Drawing.Point(399, 472);
             this.txtareanotes.Multiline = true;
             this.txtareanotes.Name = "txtareanotes";
-            this.txtareanotes.Size = new System.Drawing.Size(390, 59);
+            this.txtareanotes.Size = new System.Drawing.Size(427, 59);
             this.txtareanotes.TabIndex = 24;
             this.txtareanotes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
@@ -497,16 +498,16 @@
             // 
             this.lblparty.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblparty.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblparty.Location = new System.Drawing.Point(70, 21);
+            this.lblparty.Location = new System.Drawing.Point(196, 21);
             this.lblparty.Name = "lblparty";
-            this.lblparty.Size = new System.Drawing.Size(722, 26);
+            this.lblparty.Size = new System.Drawing.Size(509, 26);
             this.lblparty.TabIndex = 43;
             this.lblparty.Text = "Party Master";
-            this.lblparty.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblparty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cmdSave
             // 
-            this.cmdSave.Location = new System.Drawing.Point(553, 574);
+            this.cmdSave.Location = new System.Drawing.Point(553, 543);
             this.cmdSave.Name = "cmdSave";
             this.cmdSave.Size = new System.Drawing.Size(51, 23);
             this.cmdSave.TabIndex = 25;
@@ -517,7 +518,7 @@
             // 
             // cmdCancel
             // 
-            this.cmdCancel.Location = new System.Drawing.Point(609, 574);
+            this.cmdCancel.Location = new System.Drawing.Point(609, 543);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(54, 23);
             this.cmdCancel.TabIndex = 26;
@@ -526,21 +527,26 @@
             this.cmdCancel.Visible = false;
             this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
             // 
-            // picFrmClose
+            // pictFrmClose
             // 
-            this.picFrmClose.Image = global::PtrCma.Properties.Resources.close;
-            this.picFrmClose.Location = new System.Drawing.Point(811, 12);
-            this.picFrmClose.Name = "picFrmClose";
-            this.picFrmClose.Size = new System.Drawing.Size(32, 35);
-            this.picFrmClose.TabIndex = 44;
-            this.picFrmClose.TabStop = false;
+            this.pictFrmClose.BackgroundImage = global::PtrCma.Properties.Resources.closeBtnBg;
+            this.pictFrmClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictFrmClose.Image = global::PtrCma.Properties.Resources.close;
+            this.pictFrmClose.Location = new System.Drawing.Point(804, 12);
+            this.pictFrmClose.Name = "pictFrmClose";
+            this.pictFrmClose.Size = new System.Drawing.Size(49, 47);
+            this.pictFrmClose.TabIndex = 44;
+            this.pictFrmClose.TabStop = false;
+            this.pictFrmClose.Click += new System.EventHandler(this.pictFrmClose_Click);
             // 
             // FrmCMAParty
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(881, 629);
-            this.Controls.Add(this.picFrmClose);
+            this.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(881, 607);
+            this.Controls.Add(this.pictFrmClose);
             this.Controls.Add(this.cmdCancel);
             this.Controls.Add(this.cmdSave);
             this.Controls.Add(this.lblparty);
@@ -593,10 +599,14 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCMAParty";
+            this.Opacity = 0.7D;
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmCMAParty";
+            this.TransparencyKey = System.Drawing.Color.PaleTurquoise;
             this.Load += new System.EventHandler(this.FrmCMAParty_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdViewParty)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picFrmClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictFrmClose)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -650,6 +660,6 @@
         private System.Windows.Forms.Label lblparty;
         private System.Windows.Forms.Button cmdSave;
         private System.Windows.Forms.Button cmdCancel;
-        private System.Windows.Forms.PictureBox picFrmClose;
+        private System.Windows.Forms.PictureBox pictFrmClose;
     }
 }
