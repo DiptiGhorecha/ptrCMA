@@ -40,9 +40,9 @@
             this.txtLimit = new System.Windows.Forms.TextBox();
             this.txtOutstanding = new System.Windows.Forms.TextBox();
             this.txtSince = new System.Windows.Forms.TextBox();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.cmdExit = new System.Windows.Forms.Button();
+            this.cmdDelete = new System.Windows.Forms.Button();
+            this.cmdAdd = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.FrmBanking)).BeginInit();
             this.SuspendLayout();
@@ -141,33 +141,33 @@
             this.txtSince.Size = new System.Drawing.Size(301, 20);
             this.txtSince.TabIndex = 11;
             // 
-            // btnExit
+            // cmdExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(695, 298);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(40, 23);
-            this.btnExit.TabIndex = 19;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.cmdExit.Location = new System.Drawing.Point(695, 298);
+            this.cmdExit.Name = "cmdExit";
+            this.cmdExit.Size = new System.Drawing.Size(40, 23);
+            this.cmdExit.TabIndex = 19;
+            this.cmdExit.Text = "Exit";
+            this.cmdExit.UseVisualStyleBackColor = true;
+            this.cmdExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnDelete
+            // cmdDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(613, 298);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(47, 23);
-            this.btnDelete.TabIndex = 18;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.cmdDelete.Location = new System.Drawing.Point(613, 298);
+            this.cmdDelete.Name = "cmdDelete";
+            this.cmdDelete.Size = new System.Drawing.Size(47, 23);
+            this.cmdDelete.TabIndex = 18;
+            this.cmdDelete.Text = "Delete";
+            this.cmdDelete.UseVisualStyleBackColor = true;
             // 
-            // btnAdd
+            // cmdAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(542, 298);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(39, 23);
-            this.btnAdd.TabIndex = 17;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.cmdAdd.Location = new System.Drawing.Point(542, 298);
+            this.cmdAdd.Name = "cmdAdd";
+            this.cmdAdd.Size = new System.Drawing.Size(39, 23);
+            this.cmdAdd.TabIndex = 17;
+            this.cmdAdd.Text = "Add";
+            this.cmdAdd.UseVisualStyleBackColor = true;
             // 
             // btnClose
             // 
@@ -184,9 +184,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(770, 450);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.cmdExit);
+            this.Controls.Add(this.cmdDelete);
+            this.Controls.Add(this.cmdAdd);
             this.Controls.Add(this.txtSince);
             this.Controls.Add(this.txtOutstanding);
             this.Controls.Add(this.txtLimit);
@@ -223,9 +223,9 @@
         private System.Windows.Forms.TextBox txtLimit;
         private System.Windows.Forms.TextBox txtOutstanding;
         private System.Windows.Forms.TextBox txtSince;
-        private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button cmdExit;
+        private System.Windows.Forms.Button cmdDelete;
+        private System.Windows.Forms.Button cmdAdd;
         private System.Windows.Forms.Button btnClose;
     }
 }

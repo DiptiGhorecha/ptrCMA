@@ -12,8 +12,10 @@ namespace PtrCma
 {
     public partial class FrmMDICma : Form
     {
+        public Action NotifyMainFormToCloseChildFormParty;
         private FrmMainCma frmMain;
         private FrmCMAParty frmParty;
+        private FrmCredit frmCredit;
         public FrmMDICma()
         {
             InitializeComponent();
@@ -22,6 +24,7 @@ namespace PtrCma
 
         private void FrmMDICma_Load(object sender, EventArgs e)
         {
+
             this.Text = Global.companyName;
             foreach (Control control in this.Controls)
             {
@@ -41,6 +44,11 @@ namespace PtrCma
             frmParty = new FrmCMAParty();
             frmParty.MdiParent = this;
             frmParty.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
+
+            frmCredit = new FrmCredit();
+            frmCredit.MdiParent = this;
+            frmCredit.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
+
             frmMain = new FrmMainCma();
             frmMain.MdiParent = this;
             frmMain.NotifyMainFormToOpenChildFormParty += NotifyMainFormToOpenFormParty;

@@ -18,25 +18,31 @@ namespace PtrCma
 
         private void FrmDetailDirector_Load(object sender, EventArgs e)
         {
+            Settings();
             
-            foreach (Label l in Controls.OfType<Label>())
+            FrmDetailDirector frmDirector = new FrmDetailDirector();
+            frmDirector.MdiParent = this;
+            frmDirector.StartPosition = FormStartPosition.CenterScreen;
+            frmDirector.Show();
+
+        }
+
+        private void Settings()
+        {
+            this.BackgroundImage = Global.partyFrmBackImg;
+
+            foreach (Label lbl in Controls.OfType<Label>())
             {
-              
-                l.BackColor = Global.lblbackdetail;
-                l.ForeColor = Global.lblforedetail;
-                
+
+                lbl.BackColor = Global.lblbackdetail;
+                lbl.ForeColor = Global.lblforedetail;
+
             }
 
             lbltitle.BackColor = Global.lblbacktitle;
             lbltitle.ForeColor = Global.lblforetitle;
 
-            this.BackColor = Global.frmbgcolor;
-
-            FrmDetailDirector p = new FrmDetailDirector();
-            p.MdiParent = this;
-            p.StartPosition = FormStartPosition.CenterScreen;
-            p.Show();
-
+            
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -45,8 +51,8 @@ namespace PtrCma
             if (dialogResult == DialogResult.Yes)
             {
                 this.Close();
-                FrmMDICma c = new FrmMDICma();
-                c.Show();
+                FrmMDICma frmCma = new FrmMDICma();
+                frmCma.Show();
             }
         }
     }

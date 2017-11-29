@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.FrmGridPurchase = new System.Windows.Forms.DataGridView();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.cmdExit = new System.Windows.Forms.Button();
+            this.cmdDelete = new System.Windows.Forms.Button();
+            this.cmdAdd = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.txtDoc = new System.Windows.Forms.TextBox();
@@ -47,33 +47,33 @@
             this.FrmGridPurchase.Size = new System.Drawing.Size(712, 300);
             this.FrmGridPurchase.TabIndex = 0;
             // 
-            // btnExit
+            // cmdExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(705, 438);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(40, 23);
-            this.btnExit.TabIndex = 22;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.cmdExit.Location = new System.Drawing.Point(705, 438);
+            this.cmdExit.Name = "cmdExit";
+            this.cmdExit.Size = new System.Drawing.Size(40, 23);
+            this.cmdExit.TabIndex = 22;
+            this.cmdExit.Text = "Exit";
+            this.cmdExit.UseVisualStyleBackColor = true;
+            this.cmdExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnDelete
+            // cmdDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(623, 438);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(47, 23);
-            this.btnDelete.TabIndex = 21;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.cmdDelete.Location = new System.Drawing.Point(623, 438);
+            this.cmdDelete.Name = "cmdDelete";
+            this.cmdDelete.Size = new System.Drawing.Size(47, 23);
+            this.cmdDelete.TabIndex = 21;
+            this.cmdDelete.Text = "Delete";
+            this.cmdDelete.UseVisualStyleBackColor = true;
             // 
-            // btnAdd
+            // cmdAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(552, 438);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(39, 23);
-            this.btnAdd.TabIndex = 20;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.cmdAdd.Location = new System.Drawing.Point(552, 438);
+            this.cmdAdd.Name = "cmdAdd";
+            this.cmdAdd.Size = new System.Drawing.Size(39, 23);
+            this.cmdAdd.TabIndex = 20;
+            this.cmdAdd.Text = "Add";
+            this.cmdAdd.UseVisualStyleBackColor = true;
             // 
             // btnClose
             // 
@@ -109,9 +109,9 @@
             this.Controls.Add(this.txtDoc);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.cmdExit);
+            this.Controls.Add(this.cmdDelete);
+            this.Controls.Add(this.cmdAdd);
             this.Controls.Add(this.FrmGridPurchase);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmMajorBuyer";
@@ -126,9 +126,9 @@
         #endregion
 
         private System.Windows.Forms.DataGridView FrmGridPurchase;
-        private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button cmdExit;
+        private System.Windows.Forms.Button cmdDelete;
+        private System.Windows.Forms.Button cmdAdd;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.TextBox txtDoc;

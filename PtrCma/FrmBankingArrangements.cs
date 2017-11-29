@@ -18,23 +18,32 @@ namespace PtrCma
 
         private void FrmBankingArrangements_Load(object sender, EventArgs e)
         {
-            foreach (Label l in Controls.OfType<Label>())
+            Settings();
+
+            
+
+            FrmBankingArrangements frmBank = new FrmBankingArrangements();
+            frmBank.MdiParent = this;
+            frmBank.StartPosition = FormStartPosition.CenterScreen;
+            frmBank.Show();
+        }
+
+        private void Settings()
+        {
+            this.BackgroundImage = Global.partyFrmBackImg;
+
+            foreach (Label lbl in Controls.OfType<Label>())
             {
 
-                l.BackColor = Global.lblbackdetail;
-                l.ForeColor = Global.lblforedetail;
+                lbl.BackColor = Global.lblbackdetail;
+                lbl.ForeColor = Global.lblforedetail;
 
             }
 
             lblTitle.BackColor = Global.lblbacktitle;
             lblTitle.ForeColor = Global.lblforetitle;
 
-            this.BackColor = Global.frmbgcolor;
-
-            FrmBankingArrangements p = new FrmBankingArrangements();
-            p.MdiParent = this;
-            p.StartPosition = FormStartPosition.CenterScreen;
-            p.Show();
+          //  this.BackColor = Global.frmbgcolor;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -43,8 +52,8 @@ namespace PtrCma
             if (dialogResult == DialogResult.Yes)
             {
                 this.Close();
-                FrmMDICma c = new FrmMDICma();
-                c.Show();
+                FrmMDICma frmCma = new FrmMDICma();
+                frmCma.Show();
             }
         }
     }

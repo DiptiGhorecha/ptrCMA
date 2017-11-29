@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.lblCredit = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtCreditD = new System.Windows.Forms.TextBox();
+            this.txtCreditE = new System.Windows.Forms.TextBox();
             this.lblDomestic = new System.Windows.Forms.Label();
             this.lblExport = new System.Windows.Forms.Label();
             this.lblPeriod = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.btnExit = new System.Windows.Forms.Button();
+            this.lblAverage = new System.Windows.Forms.Label();
+            this.txtPeriodD = new System.Windows.Forms.TextBox();
+            this.txtPeriodE = new System.Windows.Forms.TextBox();
+            this.txtAverageD = new System.Windows.Forms.TextBox();
+            this.txtAverageE = new System.Windows.Forms.TextBox();
+            this.cmdExit = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -52,19 +52,19 @@
             this.lblCredit.TabIndex = 0;
             this.lblCredit.Text = "Credit Sales to Total Sales";
             // 
-            // textBox1
+            // txtCreditD
             // 
-            this.textBox1.Location = new System.Drawing.Point(354, 148);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
+            this.txtCreditD.Location = new System.Drawing.Point(354, 148);
+            this.txtCreditD.Name = "txtCreditD";
+            this.txtCreditD.Size = new System.Drawing.Size(100, 20);
+            this.txtCreditD.TabIndex = 1;
             // 
-            // textBox2
+            // txtCreditE
             // 
-            this.textBox2.Location = new System.Drawing.Point(469, 148);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 2;
+            this.txtCreditE.Location = new System.Drawing.Point(469, 148);
+            this.txtCreditE.Name = "txtCreditE";
+            this.txtCreditE.Size = new System.Drawing.Size(100, 20);
+            this.txtCreditE.TabIndex = 2;
             // 
             // lblDomestic
             // 
@@ -90,51 +90,51 @@
             this.lblPeriod.TabIndex = 5;
             this.lblPeriod.Text = "Period of Credit Given";
             // 
-            // label1
+            // lblAverage
             // 
-            this.label1.Location = new System.Drawing.Point(196, 219);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 20);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Average Receivable Level";
+            this.lblAverage.Location = new System.Drawing.Point(196, 219);
+            this.lblAverage.Name = "lblAverage";
+            this.lblAverage.Size = new System.Drawing.Size(143, 20);
+            this.lblAverage.TabIndex = 6;
+            this.lblAverage.Text = "Average Receivable Level";
             // 
-            // textBox3
+            // txtPeriodD
             // 
-            this.textBox3.Location = new System.Drawing.Point(354, 182);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 7;
+            this.txtPeriodD.Location = new System.Drawing.Point(354, 182);
+            this.txtPeriodD.Name = "txtPeriodD";
+            this.txtPeriodD.Size = new System.Drawing.Size(100, 20);
+            this.txtPeriodD.TabIndex = 7;
             // 
-            // textBox4
+            // txtPeriodE
             // 
-            this.textBox4.Location = new System.Drawing.Point(469, 182);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 8;
+            this.txtPeriodE.Location = new System.Drawing.Point(469, 182);
+            this.txtPeriodE.Name = "txtPeriodE";
+            this.txtPeriodE.Size = new System.Drawing.Size(100, 20);
+            this.txtPeriodE.TabIndex = 8;
             // 
-            // textBox5
+            // txtAverageD
             // 
-            this.textBox5.Location = new System.Drawing.Point(354, 216);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 9;
+            this.txtAverageD.Location = new System.Drawing.Point(354, 216);
+            this.txtAverageD.Name = "txtAverageD";
+            this.txtAverageD.Size = new System.Drawing.Size(100, 20);
+            this.txtAverageD.TabIndex = 9;
             // 
-            // textBox6
+            // txtAverageE
             // 
-            this.textBox6.Location = new System.Drawing.Point(469, 216);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 10;
+            this.txtAverageE.Location = new System.Drawing.Point(469, 216);
+            this.txtAverageE.Name = "txtAverageE";
+            this.txtAverageE.Size = new System.Drawing.Size(100, 20);
+            this.txtAverageE.TabIndex = 10;
             // 
-            // btnExit
+            // cmdExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(529, 265);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(40, 23);
-            this.btnExit.TabIndex = 23;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.cmdExit.Location = new System.Drawing.Point(529, 265);
+            this.cmdExit.Name = "cmdExit";
+            this.cmdExit.Size = new System.Drawing.Size(40, 23);
+            this.cmdExit.TabIndex = 23;
+            this.cmdExit.Text = "Exit";
+            this.cmdExit.UseVisualStyleBackColor = true;
+            this.cmdExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnClose
             // 
@@ -161,17 +161,17 @@
             this.ClientSize = new System.Drawing.Size(838, 417);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cmdExit);
+            this.Controls.Add(this.txtAverageE);
+            this.Controls.Add(this.txtAverageD);
+            this.Controls.Add(this.txtPeriodE);
+            this.Controls.Add(this.txtPeriodD);
+            this.Controls.Add(this.lblAverage);
             this.Controls.Add(this.lblPeriod);
             this.Controls.Add(this.lblExport);
             this.Controls.Add(this.lblDomestic);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtCreditE);
+            this.Controls.Add(this.txtCreditD);
             this.Controls.Add(this.lblCredit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmTermsSales";
@@ -185,17 +185,17 @@
         #endregion
 
         private System.Windows.Forms.Label lblCredit;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtCreditD;
+        private System.Windows.Forms.TextBox txtCreditE;
         private System.Windows.Forms.Label lblDomestic;
         private System.Windows.Forms.Label lblExport;
         private System.Windows.Forms.Label lblPeriod;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Label lblAverage;
+        private System.Windows.Forms.TextBox txtPeriodD;
+        private System.Windows.Forms.TextBox txtPeriodE;
+        private System.Windows.Forms.TextBox txtAverageD;
+        private System.Windows.Forms.TextBox txtAverageE;
+        private System.Windows.Forms.Button cmdExit;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblTitle;
     }

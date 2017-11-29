@@ -44,7 +44,8 @@ namespace PtrCma
             fillgird();         //Show Data in Gridview at Runtime
             grdViewParty.CurrentCell = grdViewParty.Rows[0].Cells[1];  //Set 1st row as current row by default
             LoadDatatoTextBox();  // show data in Textbox from Gridview
-            cmdAdd.BackgroundImage = Global.cmdAddImg;
+            
+            //.BackgroundImage = Global.cmdImg;
 
         }
 

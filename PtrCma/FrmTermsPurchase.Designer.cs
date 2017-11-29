@@ -43,7 +43,7 @@
             this.txtAverageI = new System.Windows.Forms.TextBox();
             this.txtPurchaseD = new System.Windows.Forms.TextBox();
             this.txtPurchaseI = new System.Windows.Forms.TextBox();
-            this.btnExit = new System.Windows.Forms.Button();
+            this.cmdExit = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -161,15 +161,15 @@
             this.txtPurchaseI.Size = new System.Drawing.Size(100, 20);
             this.txtPurchaseI.TabIndex = 14;
             // 
-            // btnExit
+            // cmdExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(542, 268);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(40, 23);
-            this.btnExit.TabIndex = 21;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.cmdExit.Location = new System.Drawing.Point(542, 268);
+            this.cmdExit.Name = "cmdExit";
+            this.cmdExit.Size = new System.Drawing.Size(40, 23);
+            this.cmdExit.TabIndex = 21;
+            this.cmdExit.Text = "Exit";
+            this.cmdExit.UseVisualStyleBackColor = true;
+            this.cmdExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnClose
             // 
@@ -186,7 +186,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(790, 423);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.cmdExit);
             this.Controls.Add(this.txtPurchaseI);
             this.Controls.Add(this.txtPurchaseD);
             this.Controls.Add(this.txtAverageI);
@@ -228,7 +228,7 @@
         private System.Windows.Forms.TextBox txtAverageI;
         private System.Windows.Forms.TextBox txtPurchaseD;
         private System.Windows.Forms.TextBox txtPurchaseI;
-        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button cmdExit;
         private System.Windows.Forms.Button btnClose;
     }
 }

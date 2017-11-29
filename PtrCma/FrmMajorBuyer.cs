@@ -19,32 +19,40 @@ namespace PtrCma
 
         private void FrmMajorBuyer_Load(object sender, EventArgs e)
         {
-            foreach (Label l in Controls.OfType<Label>())
+            Settings();
+            
+            FrmMajorBuyer frmBuyer = new FrmMajorBuyer();
+            frmBuyer.MdiParent = this;
+            frmBuyer.StartPosition = FormStartPosition.CenterScreen;
+            frmBuyer.Show();
+        }
+
+        private void Settings()
+        {
+            this.BackgroundImage = Global.partyFrmBackImg;
+
+            foreach (Label lbl in Controls.OfType<Label>())
             {
 
-                l.BackColor = Global.lblbackdetail;
-                l.ForeColor = Global.lblforedetail;
+                lbl.BackColor = Global.lblbackdetail;
+                lbl.ForeColor = Global.lblforedetail;
 
             }
 
             lblTitle.BackColor = Global.lblbacktitle;
             lblTitle.ForeColor = Global.lblforetitle;
 
-            this.BackColor = Global.frmbgcolor;
-
-            FrmMajorBuyer p = new FrmMajorBuyer();
-            p.MdiParent = this;
-            p.StartPosition = FormStartPosition.CenterScreen;
-            p.Show();
+            
         }
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Are You Sure Want to Exit ?", "", MessageBoxButtons.YesNo);       //Cancel Button
             if (dialogResult == DialogResult.Yes)
             {
                 this.Close();
-                FrmMDICma c = new FrmMDICma();
-                c.Show();
+                FrmMDICma frmCma = new FrmMDICma();
+                frmCma.Show();
             }
         }
     }

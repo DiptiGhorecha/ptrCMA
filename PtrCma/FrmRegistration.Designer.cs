@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.lblTitle = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.btnExit = new System.Windows.Forms.Button();
+            this.lblPan = new System.Windows.Forms.Label();
+            this.txtPan = new System.Windows.Forms.TextBox();
+            this.lblSales = new System.Windows.Forms.Label();
+            this.lblService = new System.Windows.Forms.Label();
+            this.lblExcise = new System.Windows.Forms.Label();
+            this.lblOther = new System.Windows.Forms.Label();
+            this.txtSales = new System.Windows.Forms.TextBox();
+            this.txtService = new System.Windows.Forms.TextBox();
+            this.txtExcise = new System.Windows.Forms.TextBox();
+            this.txtOther = new System.Windows.Forms.TextBox();
+            this.cmdExit = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -53,90 +53,90 @@
             this.lblTitle.Text = "Detail of Registration Under Sales Tax/Vat";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // label2
+            // lblPan
             // 
-            this.label2.Location = new System.Drawing.Point(234, 109);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(140, 23);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "PAN";
+            this.lblPan.Location = new System.Drawing.Point(234, 109);
+            this.lblPan.Name = "lblPan";
+            this.lblPan.Size = new System.Drawing.Size(140, 23);
+            this.lblPan.TabIndex = 1;
+            this.lblPan.Text = "PAN";
             // 
-            // textBox1
+            // txtPan
             // 
-            this.textBox1.Location = new System.Drawing.Point(392, 106);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(117, 20);
-            this.textBox1.TabIndex = 2;
+            this.txtPan.Location = new System.Drawing.Point(392, 106);
+            this.txtPan.Name = "txtPan";
+            this.txtPan.Size = new System.Drawing.Size(117, 20);
+            this.txtPan.TabIndex = 2;
             // 
-            // label3
+            // lblSales
             // 
-            this.label3.Location = new System.Drawing.Point(234, 145);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(140, 23);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Sales Tax";
+            this.lblSales.Location = new System.Drawing.Point(234, 145);
+            this.lblSales.Name = "lblSales";
+            this.lblSales.Size = new System.Drawing.Size(140, 23);
+            this.lblSales.TabIndex = 3;
+            this.lblSales.Text = "Sales Tax";
             // 
-            // label4
+            // lblService
             // 
-            this.label4.Location = new System.Drawing.Point(234, 183);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(140, 23);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Service Tax";
+            this.lblService.Location = new System.Drawing.Point(234, 183);
+            this.lblService.Name = "lblService";
+            this.lblService.Size = new System.Drawing.Size(140, 23);
+            this.lblService.TabIndex = 4;
+            this.lblService.Text = "Service Tax";
             // 
-            // label5
+            // lblExcise
             // 
-            this.label5.Location = new System.Drawing.Point(234, 226);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(140, 23);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Excise";
+            this.lblExcise.Location = new System.Drawing.Point(234, 226);
+            this.lblExcise.Name = "lblExcise";
+            this.lblExcise.Size = new System.Drawing.Size(140, 23);
+            this.lblExcise.TabIndex = 5;
+            this.lblExcise.Text = "Excise";
             // 
-            // label6
+            // lblOther
             // 
-            this.label6.Location = new System.Drawing.Point(234, 261);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(140, 23);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Other";
+            this.lblOther.Location = new System.Drawing.Point(234, 261);
+            this.lblOther.Name = "lblOther";
+            this.lblOther.Size = new System.Drawing.Size(140, 23);
+            this.lblOther.TabIndex = 6;
+            this.lblOther.Text = "Other";
             // 
-            // textBox2
+            // txtSales
             // 
-            this.textBox2.Location = new System.Drawing.Point(392, 142);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(117, 20);
-            this.textBox2.TabIndex = 7;
+            this.txtSales.Location = new System.Drawing.Point(392, 142);
+            this.txtSales.Name = "txtSales";
+            this.txtSales.Size = new System.Drawing.Size(117, 20);
+            this.txtSales.TabIndex = 7;
             // 
-            // textBox3
+            // txtService
             // 
-            this.textBox3.Location = new System.Drawing.Point(392, 180);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(117, 20);
-            this.textBox3.TabIndex = 8;
+            this.txtService.Location = new System.Drawing.Point(392, 180);
+            this.txtService.Name = "txtService";
+            this.txtService.Size = new System.Drawing.Size(117, 20);
+            this.txtService.TabIndex = 8;
             // 
-            // textBox4
+            // txtExcise
             // 
-            this.textBox4.Location = new System.Drawing.Point(392, 223);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(117, 20);
-            this.textBox4.TabIndex = 9;
+            this.txtExcise.Location = new System.Drawing.Point(392, 223);
+            this.txtExcise.Name = "txtExcise";
+            this.txtExcise.Size = new System.Drawing.Size(117, 20);
+            this.txtExcise.TabIndex = 9;
             // 
-            // textBox5
+            // txtOther
             // 
-            this.textBox5.Location = new System.Drawing.Point(392, 258);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(117, 20);
-            this.textBox5.TabIndex = 10;
+            this.txtOther.Location = new System.Drawing.Point(392, 258);
+            this.txtOther.Name = "txtOther";
+            this.txtOther.Size = new System.Drawing.Size(117, 20);
+            this.txtOther.TabIndex = 10;
             // 
-            // btnExit
+            // cmdExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(459, 307);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(49, 23);
-            this.btnExit.TabIndex = 11;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.cmdExit.Location = new System.Drawing.Point(459, 307);
+            this.cmdExit.Name = "cmdExit";
+            this.cmdExit.Size = new System.Drawing.Size(49, 23);
+            this.cmdExit.TabIndex = 11;
+            this.cmdExit.Text = "Exit";
+            this.cmdExit.UseVisualStyleBackColor = true;
+            this.cmdExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnClose
             // 
@@ -153,17 +153,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(815, 355);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cmdExit);
+            this.Controls.Add(this.txtOther);
+            this.Controls.Add(this.txtExcise);
+            this.Controls.Add(this.txtService);
+            this.Controls.Add(this.txtSales);
+            this.Controls.Add(this.lblOther);
+            this.Controls.Add(this.lblExcise);
+            this.Controls.Add(this.lblService);
+            this.Controls.Add(this.lblSales);
+            this.Controls.Add(this.txtPan);
+            this.Controls.Add(this.lblPan);
             this.Controls.Add(this.lblTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmRegistration";
@@ -177,17 +177,17 @@
         #endregion
 
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Label lblPan;
+        private System.Windows.Forms.TextBox txtPan;
+        private System.Windows.Forms.Label lblSales;
+        private System.Windows.Forms.Label lblService;
+        private System.Windows.Forms.Label lblExcise;
+        private System.Windows.Forms.Label lblOther;
+        private System.Windows.Forms.TextBox txtSales;
+        private System.Windows.Forms.TextBox txtService;
+        private System.Windows.Forms.TextBox txtExcise;
+        private System.Windows.Forms.TextBox txtOther;
+        private System.Windows.Forms.Button cmdExit;
         private System.Windows.Forms.Button btnClose;
     }
 }

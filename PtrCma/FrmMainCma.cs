@@ -121,7 +121,21 @@ namespace PtrCma
                     break;
                 }
             }
-            for (int i = 1; i < counter; i++)
+
+            for (int i = 0; i < counter; i++)
+            {
+                if (btn.Name == ("cmdBackup"))
+                {
+                    if (NotifyMainFormToOpenChildFormParty != null)
+                    {
+                        NotifyMainFormToOpenChildFormParty();
+                    }
+
+                    break;
+                }
+            }
+
+            for (int i = 0; i < counter; i++)
             {
                 if (btn.Name == ("cmdExit"))
                 {

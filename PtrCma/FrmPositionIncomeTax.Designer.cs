@@ -30,16 +30,16 @@
         {
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblIncome = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtIncome = new System.Windows.Forms.TextBox();
             this.lblSales = new System.Windows.Forms.Label();
             this.lblService = new System.Windows.Forms.Label();
             this.lblExcise = new System.Windows.Forms.Label();
             this.lblOther = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.btnExit = new System.Windows.Forms.Button();
+            this.txtSales = new System.Windows.Forms.TextBox();
+            this.txtService = new System.Windows.Forms.TextBox();
+            this.txtExcise = new System.Windows.Forms.TextBox();
+            this.txtOther = new System.Windows.Forms.TextBox();
+            this.cmdExit = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -60,12 +60,12 @@
             this.lblIncome.TabIndex = 1;
             this.lblIncome.Text = "Income Tax";
             // 
-            // textBox1
+            // txtIncome
             // 
-            this.textBox1.Location = new System.Drawing.Point(375, 112);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 2;
+            this.txtIncome.Location = new System.Drawing.Point(375, 112);
+            this.txtIncome.Name = "txtIncome";
+            this.txtIncome.Size = new System.Drawing.Size(100, 20);
+            this.txtIncome.TabIndex = 2;
             // 
             // lblSales
             // 
@@ -99,43 +99,43 @@
             this.lblOther.TabIndex = 6;
             this.lblOther.Text = "Other";
             // 
-            // textBox2
+            // txtSales
             // 
-            this.textBox2.Location = new System.Drawing.Point(375, 139);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 7;
+            this.txtSales.Location = new System.Drawing.Point(375, 139);
+            this.txtSales.Name = "txtSales";
+            this.txtSales.Size = new System.Drawing.Size(100, 20);
+            this.txtSales.TabIndex = 7;
             // 
-            // textBox3
+            // txtService
             // 
-            this.textBox3.Location = new System.Drawing.Point(375, 172);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 8;
+            this.txtService.Location = new System.Drawing.Point(375, 172);
+            this.txtService.Name = "txtService";
+            this.txtService.Size = new System.Drawing.Size(100, 20);
+            this.txtService.TabIndex = 8;
             // 
-            // textBox4
+            // txtExcise
             // 
-            this.textBox4.Location = new System.Drawing.Point(375, 203);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 9;
+            this.txtExcise.Location = new System.Drawing.Point(375, 203);
+            this.txtExcise.Name = "txtExcise";
+            this.txtExcise.Size = new System.Drawing.Size(100, 20);
+            this.txtExcise.TabIndex = 9;
             // 
-            // textBox5
+            // txtOther
             // 
-            this.textBox5.Location = new System.Drawing.Point(375, 233);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 10;
+            this.txtOther.Location = new System.Drawing.Point(375, 233);
+            this.txtOther.Name = "txtOther";
+            this.txtOther.Size = new System.Drawing.Size(100, 20);
+            this.txtOther.TabIndex = 10;
             // 
-            // btnExit
+            // cmdExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(435, 274);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(40, 23);
-            this.btnExit.TabIndex = 20;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.cmdExit.Location = new System.Drawing.Point(435, 274);
+            this.cmdExit.Name = "cmdExit";
+            this.cmdExit.Size = new System.Drawing.Size(40, 23);
+            this.cmdExit.TabIndex = 20;
+            this.cmdExit.Text = "Exit";
+            this.cmdExit.UseVisualStyleBackColor = true;
+            this.cmdExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnClose
             // 
@@ -152,16 +152,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(799, 451);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.cmdExit);
+            this.Controls.Add(this.txtOther);
+            this.Controls.Add(this.txtExcise);
+            this.Controls.Add(this.txtService);
+            this.Controls.Add(this.txtSales);
             this.Controls.Add(this.lblOther);
             this.Controls.Add(this.lblExcise);
             this.Controls.Add(this.lblService);
             this.Controls.Add(this.lblSales);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtIncome);
             this.Controls.Add(this.lblIncome);
             this.Controls.Add(this.lblTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -177,16 +177,16 @@
 
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblIncome;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtIncome;
         private System.Windows.Forms.Label lblSales;
         private System.Windows.Forms.Label lblService;
         private System.Windows.Forms.Label lblExcise;
         private System.Windows.Forms.Label lblOther;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.TextBox txtSales;
+        private System.Windows.Forms.TextBox txtService;
+        private System.Windows.Forms.TextBox txtExcise;
+        private System.Windows.Forms.TextBox txtOther;
+        private System.Windows.Forms.Button cmdExit;
         private System.Windows.Forms.Button btnClose;
     }
 }

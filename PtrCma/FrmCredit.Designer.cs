@@ -68,7 +68,7 @@
             this.lblExisting = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
+            this.cmdExit = new System.Windows.Forms.Button();
             this.txtTTotal1 = new System.Windows.Forms.TextBox();
             this.txtTTeam1 = new System.Windows.Forms.TextBox();
             this.txtTLC1 = new System.Windows.Forms.TextBox();
@@ -422,15 +422,15 @@
             this.btnClose.Text = "X";
             this.btnClose.UseVisualStyleBackColor = true;
             // 
-            // btnExit
+            // cmdExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(828, 355);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(40, 23);
-            this.btnExit.TabIndex = 58;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.cmdExit.Location = new System.Drawing.Point(828, 355);
+            this.cmdExit.Name = "cmdExit";
+            this.cmdExit.Size = new System.Drawing.Size(40, 23);
+            this.cmdExit.TabIndex = 58;
+            this.cmdExit.Text = "Exit";
+            this.cmdExit.UseVisualStyleBackColor = true;
+            this.cmdExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // txtTTotal1
             // 
@@ -581,7 +581,7 @@
             this.Controls.Add(this.txtFPC1);
             this.Controls.Add(this.txtFDraft1);
             this.Controls.Add(this.txtFCash1);
-            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.cmdExit);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblExisting);
@@ -673,7 +673,7 @@
         private System.Windows.Forms.Label lblExisting;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button cmdExit;
         private System.Windows.Forms.TextBox txtTTotal1;
         private System.Windows.Forms.TextBox txtTTeam1;
         private System.Windows.Forms.TextBox txtTLC1;

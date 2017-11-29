@@ -33,12 +33,8 @@ namespace PtrCma
         //Party Master Form
         public static Bitmap partyFrmBackImg = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.center-bg.png"));
         public static Bitmap partyFrmCloseImg = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.close.png"));
-        public static Bitmap cmdAddImg = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.buton.png"));
-        public static Bitmap cmdEditImg = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.buton.png"));
-        public static Bitmap cmdDeleteImg = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.buton.png"));
-        public static Bitmap cmdSelectImg = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.buton.png"));
-        public static Bitmap cmdExitImg = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.buton.png"));
-        public static Color btnfore = System.Drawing.Color.White;
+        public static Bitmap cmdImg = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.buton.png"));
+        public static Color btnfore = System.Drawing.Color.White;   //Button Fore Color
         public static string PartyMaster = "Party Master"; //Title
         public static Color lblparty = System.Drawing.Color.CadetBlue; //Label BackColor of title
         public static Color lbltitle = System.Drawing.Color.White; //Label Fore Color of title
@@ -60,6 +56,7 @@ namespace PtrCma
         //public static Size lbl = system
 
         //All Form after click
+      //  public static Bitmap partyFrmBackImg = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.center-bg.png"));
         public static Color frmbgcolor = System.Drawing.Color.FromArgb(102, 166, 173);  //back ground color of Detail of Director table
         public static Color lblbacktitle = System.Drawing.Color.FromArgb(122, 204, 203); //Label Back Color of title
         public static Color lblforetitle = System.Drawing.Color.DarkRed; //Label Fore Color of title
