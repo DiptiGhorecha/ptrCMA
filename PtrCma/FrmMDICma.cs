@@ -52,7 +52,9 @@ namespace PtrCma
         }
         private void NotifyMainFormToOpenFormParty()
         {
-           frmParty.Show();
+            frmParty.Location = new Point(this.Location.X + (this.Width - frmParty.Width) / 2, (frmParty.Location.Y + (this.Height - frmParty.Height) / 2)-100);
+            
+            frmParty.Show();
            frmMain.Enabled = false;
         }
         private void NotifyMainFormToCloseFormParty()

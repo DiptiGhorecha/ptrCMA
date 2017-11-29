@@ -40,7 +40,7 @@
             this.lblCompanyName.BackColor = System.Drawing.Color.Transparent;
             this.lblCompanyName.Location = new System.Drawing.Point(5, 8);
             this.lblCompanyName.Name = "lblCompanyName";
-            this.lblCompanyName.Size = new System.Drawing.Size(410, 66);
+            this.lblCompanyName.Size = new System.Drawing.Size(410, 58);
             this.lblCompanyName.TabIndex = 1;
             this.lblCompanyName.Text = " ";
             this.lblCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

@@ -30,6 +30,9 @@ namespace PtrCma
         public FrmCMAParty()
         {
             InitializeComponent();
+            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            this.BackColor = Color.PaleTurquoise;
+            this.TransparencyKey = Color.PaleTurquoise; // I had to add this to get it to work.
         }
 
         private void FrmCMAParty_Load(object sender, EventArgs e)
@@ -54,7 +57,8 @@ namespace PtrCma
             this.BackgroundImage = Global.partyFrmBackImg;
             setControlcolor(); //Label and Textbox BackColor/Forecolor
             setControlsize(); //Label and TextBox Resize
-            this.BackColor = Global.backColorPartyMst;   //Set Background Color of the form
+                              // this.BackColor = Global.backColorPartyMst;   //Set Background Color of the form
+  
             grdViewParty.Size = Global.grdPartySize;
             this.Width = grdViewParty.Width + txtareanotes.Width + 190;
             //this.picFrmClose. = 5;
@@ -195,6 +199,7 @@ namespace PtrCma
             {
                 lbl.BackColor = Global.lblColorPartyMst;
                 lbl.ForeColor = Global.lblForeColorPartyMst;
+                lbl.Font = Global.lblPartyfont;
             }
 
             lblparty.BackColor = Global.lblparty;
@@ -597,5 +602,22 @@ namespace PtrCma
             txtFind.Enabled = true;
             
         }
+
+        private void pictFrmClose_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are You Sure Want to Exit ?", "", MessageBoxButtons.YesNo);       //Cancel Button
+            if (dialogResult == DialogResult.Yes)
+            {
+                NotifyMainFormToCloseChildFormParty();
+                this.Hide();
+              
+            }
+        }
+        //protected override void OnPaintBackground(PaintEventArgs e)
+        //{
+        //    e.Graphics.FillRectangle(Brushes.PaleTurquoise, e.ClipRectangle);
+
+        //    this.BackgroundImage = Global.partyFrmBackImg;
+        //}
     }
 }
