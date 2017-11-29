@@ -194,9 +194,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\center-bg.png" />
+    <EmbeddedResource Include="Resources\lblBack.png" />
+    <EmbeddedResource Include="Resources\mini.png" />
     <EmbeddedResource Include="Resources\close.png" />
-    <EmbeddedResource Include="Resources\buton.png" />
     <Content Include="Resources\PtrCma.accdb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
