@@ -74,7 +74,9 @@
             this.lblparty = new System.Windows.Forms.Label();
             this.cmdSave = new System.Windows.Forms.Button();
             this.cmdCancel = new System.Windows.Forms.Button();
+            this.picFrmClose = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewParty)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picFrmClose)).BeginInit();
             this.SuspendLayout();
             // 
             // lblfind
@@ -419,6 +421,8 @@
             // 
             // cmdAdd
             // 
+            this.cmdAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.cmdAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdAdd.Location = new System.Drawing.Point(399, 592);
             this.cmdAdd.Name = "cmdAdd";
             this.cmdAdd.Size = new System.Drawing.Size(46, 23);
@@ -522,11 +526,21 @@
             this.cmdCancel.Visible = false;
             this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
             // 
+            // picFrmClose
+            // 
+            this.picFrmClose.Image = global::PtrCma.Properties.Resources.close;
+            this.picFrmClose.Location = new System.Drawing.Point(811, 12);
+            this.picFrmClose.Name = "picFrmClose";
+            this.picFrmClose.Size = new System.Drawing.Size(32, 35);
+            this.picFrmClose.TabIndex = 44;
+            this.picFrmClose.TabStop = false;
+            // 
             // FrmCMAParty
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(811, 629);
+            this.ClientSize = new System.Drawing.Size(881, 629);
+            this.Controls.Add(this.picFrmClose);
             this.Controls.Add(this.cmdCancel);
             this.Controls.Add(this.cmdSave);
             this.Controls.Add(this.lblparty);
@@ -582,6 +596,7 @@
             this.Text = "FrmCMAParty";
             this.Load += new System.EventHandler(this.FrmCMAParty_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdViewParty)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picFrmClose)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -635,5 +650,6 @@
         private System.Windows.Forms.Label lblparty;
         private System.Windows.Forms.Button cmdSave;
         private System.Windows.Forms.Button cmdCancel;
+        private System.Windows.Forms.PictureBox picFrmClose;
     }
 }

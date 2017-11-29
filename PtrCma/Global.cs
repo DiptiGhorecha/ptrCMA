@@ -30,6 +30,14 @@ namespace PtrCma
         public static Color lblCMSColr = System.Drawing.Color.White;
 
         //Party Master Form
+        public static Bitmap partyFrmBackImg = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.center-bg.png"));
+        public static Bitmap partyFrmCloseImg = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.close.png"));
+        public static Bitmap cmdAddImg = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.buton.png"));
+        public static Bitmap cmdEditImg = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.buton.png"));
+        public static Bitmap cmdDeleteImg = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.buton.png"));
+        public static Bitmap cmdSelectImg = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.buton.png"));
+        public static Bitmap cmdExitImg = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.buton.png"));
+        public static Color btnfore = System.Drawing.Color.White;
         public static string PartyMaster = "Party Master"; //Title
         public static Color lblparty = System.Drawing.Color.CadetBlue; //Label BackColor of title
         public static Color lbltitle = System.Drawing.Color.White; //Label Fore Color of title

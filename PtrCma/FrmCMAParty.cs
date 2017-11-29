@@ -36,18 +36,67 @@ namespace PtrCma
         {
             this.KeyPreview = true; //To handle enter key
            
-
             Settings();  //set size and color of controls
-   
             controlvisible();   // Visible Button and Textbox
             controlenable();    //Enable Button and Textbox
             clearTextbox();     //Clear the Textbox
             enableTextbox();    //Enable Textbox
-                     fillgird();
+            fillgird();         //Show Data in Gridview at Runtime
             grdViewParty.CurrentCell = grdViewParty.Rows[0].Cells[1];  //Set 1st row as current row by default
             LoadDatatoTextBox();  // show data in Textbox from Gridview
+            cmdAdd.BackgroundImage = Global.cmdAddImg;
 
         }
+
+
+        private void Settings()
+        {
+            this.BackgroundImage = Global.partyFrmBackImg;
+            setControlcolor(); //Label and Textbox BackColor/Forecolor
+            setControlsize(); //Label and TextBox Resize
+            this.BackColor = Global.backColorPartyMst;   //Set Background Color of the form
+            grdViewParty.Size = Global.grdPartySize;
+            this.Width = grdViewParty.Width + txtareanotes.Width + 190;
+            //this.picFrmClose. = 5;
+        }
+
+
+        private void controlvisible()
+        {
+            cmdAdd.Visible = true;
+            cmdEdit.Visible = true;
+            cmdDelete.Visible = true;
+            cmdSelect.Visible = true;
+            cmdExit.Visible = true;
+            cmdSave.Visible = false;
+            cmdCancel.Visible = false;
+            cmdReset.Visible = true;
+        }
+
+
+        private void controlenable()
+        {
+            cmdAdd.Enabled = true;
+            cmdEdit.Enabled = true;
+            cmdDelete.Enabled = true;
+            cmdSelect.Enabled = true;
+            cmdExit.Enabled = true;
+            cmdSave.Enabled = true;
+            cmdCancel.Enabled = true;
+            cmdReset.Enabled = true;
+            grdViewParty.Enabled = true;
+            txtFind.Enabled = true;
+        }
+
+
+        private void clearTextbox()
+        {
+            foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
+            {
+                txt.Clear();
+            }
+        }
+
 
         private void enableTextbox()
         {
@@ -57,13 +106,36 @@ namespace PtrCma
             }
         }
 
-        private void clearTextbox()
+
+        private void fillgird()   //For Fill DataGridView
         {
-            foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
+            //Displaying data in Gridview
+            con = new OleDbConnection(connectionString);
+            DataSet ds = new DataSet();
+            OleDbDataAdapter da = new OleDbDataAdapter();
+            da = new OleDbDataAdapter("Select * from Cd_MsCln", con);
+            da.Fill(ds, "Cd_MsCln");
+            grdViewParty.DataMember = "Cd_MsCln";
+            grdViewParty.DataSource = ds;
+            con.Close();
+            grdViewParty.Refresh();
+
+            //Show selected Column in Gridview
+            for (int i = 0; i <= grdViewParty.Columns.Count - 1; i++)
             {
-                txt.Clear();
+                grdViewParty.Columns[i].ReadOnly = true;
+                grdViewParty.Columns[i].Visible = false;
             }
+
+            grdViewParty.Columns[1].Visible = true;
+            grdViewParty.Columns[1].HeaderText = "Party Code";
+            grdViewParty.Columns[1].Width = 100;
+            grdViewParty.Columns[4].Visible = true;
+            grdViewParty.Columns[4].HeaderText = "Party Name";
+            grdViewParty.Columns[4].Width = 150;
+
         }
+
 
         private void LoadDatatoTextBox()
         {
@@ -85,7 +157,6 @@ namespace PtrCma
             txtPrepBy1.Text = row.Cells["CL_PREP1"].Value.ToString();
             txtPrepBy2.Text = row.Cells["CL_PREP2"].Value.ToString();
             txtareanotes.Text = row.Cells["CL_NOTES"].Value.ToString();
-
         }
 
         private void LoadCurrentDatatoTextBox(int rowNum)
@@ -108,80 +179,10 @@ namespace PtrCma
             txtPrepBy1.Text = row.Cells["CL_PREP1"].Value.ToString();
             txtPrepBy2.Text = row.Cells["CL_PREP2"].Value.ToString();
             txtareanotes.Text = row.Cells["CL_NOTES"].Value.ToString();
-
         }
-
-        private void fillgird()   //For Fill DataGridView
-        {
-            //Displaying data in Gridview
-            con = new OleDbConnection(connectionString);
-            DataSet ds = new DataSet();
-            OleDbDataAdapter da = new OleDbDataAdapter();
-            da = new OleDbDataAdapter("Select * from Cd_MsCln", con);
-            da.Fill(ds, "Cd_MsCln");
-            grdViewParty.DataMember = "Cd_MsCln";
-            grdViewParty.DataSource = ds;
-            con.Close();
-            grdViewParty.Refresh();
-
-
-
-            //Show selected Column in Gridview
-            for (int i = 0; i <= grdViewParty.Columns.Count - 1; i++)
-            {
-                grdViewParty.Columns[i].ReadOnly = true;
-                grdViewParty.Columns[i].Visible = false; 
-            }
-
-            grdViewParty.Columns[1].Visible = true;
-            grdViewParty.Columns[1].HeaderText = "Party Code";
-            grdViewParty.Columns[1].Width = 100;
-            grdViewParty.Columns[4].Visible = true;
-            grdViewParty.Columns[4].HeaderText = "Party Name";
-            grdViewParty.Columns[4].Width = 150;
-   
-        }
-
-
-        private void controlenable()
-        {
-            cmdAdd.Enabled = true;
-            cmdEdit.Enabled = true;
-            cmdDelete.Enabled = true;
-            cmdSelect.Enabled = true;
-            cmdExit.Enabled = true;
-            cmdSave.Enabled = true;
-            cmdCancel.Enabled = true;
-            cmdReset.Enabled = true;
-            grdViewParty.Enabled = true;
-            txtFind.Enabled = true;
-        }
-
         
-        private void controlvisible()
-        {
-            cmdAdd.Visible = true;
-            cmdEdit.Visible = true;
-            cmdDelete.Visible = true;
-            cmdSelect.Visible = true;
-            cmdExit.Visible = true;
-            cmdSave.Visible = false;
-            cmdCancel.Visible = false;
-            cmdReset.Visible = true;
-        }
 
-        private void Settings()
-        {
-            setControlcolor(); //Label and Textbox BackColor/Forecolor
-            setControlsize(); //Label and TextBox Resize
-            this.BackColor = Global.backColorPartyMst;   //Set Background Color of the form
-            grdViewParty.Size = Global.grdPartySize;
-            this.Width = grdViewParty.Width + txtareanotes.Width + 190;
-
-           
-        }
-       
-        private void setControlcolor()
+        private void setControlcolor()      //Set Color in Control
         {
             foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
             {
@@ -198,9 +199,14 @@ namespace PtrCma
 
             lblparty.BackColor = Global.lblparty;
             lblparty.ForeColor = Global.lbltitle;
+
+            foreach (Button btn in Controls.OfType<Button>())
+            {
+                btn.ForeColor = Global.btnfore;
+            }
         }
 
-        private void setControlsize()
+        private void setControlsize()           //Set Size of Control
         {
             foreach (Label lbl in Controls.OfType<Label>())
             {
@@ -220,8 +226,10 @@ namespace PtrCma
             txtareanotes.Size = Global.txtNotesSize;
         }
 
-        private void cmdAdd_Click(object sender, EventArgs e)
+        private void cmdAdd_Click(object sender, EventArgs e)       
         {
+            
+
             cmdSave.Visible = true;
             cmdCancel.Visible = true;
             grdViewParty.Enabled = false;
@@ -240,9 +248,10 @@ namespace PtrCma
             isAddEdit = "A";
         }
         
-        private void btnInsert()
+        private void btnInsert()            //Perform Insert/Update After Clicking
         {
-            try {
+            try
+            {
                 OleDbConnection con = new OleDbConnection();
                 con.ConnectionString = connectionString;
                 if (con.State == ConnectionState.Closed)
@@ -260,9 +269,7 @@ namespace PtrCma
                 cmd.ExecuteNonQuery();
                 transaction.Commit();
                 con.Close();
-                fillgird();
-               // rowNum = grdViewParty.RowCount;
-              //  grdViewParty.CurrentCell = grdViewParty.Rows[rowNum - 1].Cells[1]; //set current cell to show inserted record
+                fillgird();           
                 MessageBox.Show("Data Inserted Successfully");
             }
 
@@ -273,7 +280,6 @@ namespace PtrCma
                 rowNum = grdViewParty.CurrentRow.Index;
             
                 txtBranch.Focus();
-
 
                 //Dialog Box for yes or no
                 DialogResult dialogResult1 = MessageBox.Show("Do You want to Update this Record?", "", MessageBoxButtons.YesNo);       //Cancel Button
@@ -301,23 +307,18 @@ namespace PtrCma
                     cmdExit.Visible = true;
                     cmdSave.Visible = false;
                     cmdCancel.Visible = false;
-
                 }
-
             }
             }
-            catch (Exception e){
+            catch (Exception e)
+            {
                 MessageBox.Show(e.Message);
                 try
                 {
                     transaction.Rollback();
                 }catch
                 { }
-
-
             }
-
-
         }
 
         private void cmdSave_Click(object sender, EventArgs e)
@@ -338,6 +339,17 @@ namespace PtrCma
                 MessageBox.Show("Name Field cannnot be blank");
                 txtName.Focus();
                 return; // return because we don't want to run normal code of buton click
+            }
+
+            for (int nCounter = 0; nCounter <= grdViewParty.RowCount - 1; nCounter++)
+            {
+                if (txtCodeno.Text == grdViewParty[1, nCounter].Value.ToString())
+                {
+                    MessageBox.Show("That product has been selected already.", "Repeat", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtCodeno.Focus();
+                    return;
+                }
+
             }
 
             btnInsert();  //insert-update data in database
@@ -371,11 +383,7 @@ namespace PtrCma
             DialogResult dialogResult = MessageBox.Show("Are You Sure Want to Cancel?", "", MessageBoxButtons.YesNo);       //Cancel Button
             if (dialogResult == DialogResult.Yes)
             {
-                cmdAdd.Visible = true;
-                cmdEdit.Visible = true;
-                cmdDelete.Visible = true;
-                cmdSelect.Visible = true;
-                cmdExit.Visible = true;
+                controlvisible();
                 cmdSave.Visible = false;
                 cmdCancel.Visible = false;
                 cmdEdit.Enabled = true;
@@ -383,16 +391,14 @@ namespace PtrCma
                 cmdReset.Enabled = true;
                 txtFind.Enabled = true;
 
-                clearTextbox();
-
-                
-                
-            
+                clearTextbox(); 
             }
+
             else
             {
                 enableTextbox();
             }
+
             LoadDatatoTextBox();
 
         }
