@@ -12,7 +12,8 @@ namespace PtrCma
 {
     public partial class FrmMDICma : Form
     {
-
+        private FrmMainCma frmMain;
+        private FrmCMAParty frmParty;
         public FrmMDICma()
         {
             InitializeComponent();
@@ -38,16 +39,36 @@ namespace PtrCma
             }
             this.BackColor = Global.appBackColr;
             //this.BackgroundImage = Global.startFrmBackImg;
-            FrmCMAParty frmParty = new FrmCMAParty();
+            frmParty = new FrmCMAParty();
             frmParty.MdiParent = this;
-            FrmMainCma frmMain = new FrmMainCma();
+            frmParty.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
+            frmMain = new FrmMainCma();
             frmMain.MdiParent = this;
+            frmMain.NotifyMainFormToOpenChildFormParty += NotifyMainFormToOpenFormParty;
             // f.StartPosition = FormStartPosition.CenterScreen;
             frmMain.Show();
             
            // f.Refresh();
             
         }
-
+        private void NotifyMainFormToOpenFormParty()
+        {
+            //if (frmParty.IsDisposed) { 
+            //    frmParty = new FrmCMAParty();
+            //    frmParty.Show();
+            //}else
+            //{
+                frmParty.Show();
+           // }
+        
+           frmMain.Enabled = false;
+            
+        }
+        private void NotifyMainFormToCloseFormParty()
+        {
+            frmMain.Enabled = true;
+            
+        }
     }
+ 
 }

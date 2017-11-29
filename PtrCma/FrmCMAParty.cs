@@ -16,6 +16,7 @@ namespace PtrCma
 
     public partial class FrmCMAParty : Form
     {
+        public Action NotifyMainFormToCloseChildFormParty;
         string isAddEdit = ""; //Variable to Store Current Action(Add,Edit)
         String connectionString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " +Application.StartupPath + "\\Resources\\PtrCma.accdb;";  //Connection String
         //Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\PtrCma.accdb"); 
@@ -34,7 +35,7 @@ namespace PtrCma
         private void FrmCMAParty_Load(object sender, EventArgs e)
         {
             this.KeyPreview = true; //To handle enter key
-
+           
 
             Settings();  //set size and color of controls
    
@@ -477,9 +478,10 @@ namespace PtrCma
             DialogResult dialogResult = MessageBox.Show("Are You Sure Want to Exit ?", "", MessageBoxButtons.YesNo);       //Cancel Button
             if (dialogResult == DialogResult.Yes)
             {
-                this.Close();
-               // FrmMDICma frmCma = new FrmMDICma();
-                //frmCma.Show();
+                NotifyMainFormToCloseChildFormParty();
+                this.Hide();
+               // FrmMainCma frmCma = new FrmMainCma();
+                //frmCma.Activate();
             }
 
         }

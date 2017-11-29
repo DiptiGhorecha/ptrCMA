@@ -40,6 +40,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmMainCma";
             this.Text = "FrmMainCma";
+            this.Activated += new System.EventHandler(this.FrmMainCma_Activated);
             this.Load += new System.EventHandler(this.FrmMainCma_Load);
             this.ResumeLayout(false);
 

@@ -11,6 +11,7 @@ namespace PtrCma
 {
     public partial class FrmMainCma : Form
     {
+        public Action NotifyMainFormToOpenChildFormParty;
         public FrmMainCma()
         {
             this.Visible = false;
@@ -112,13 +113,11 @@ namespace PtrCma
             {
                 if (btn.Name == ("cmdCMAProj"))
                 {
+                    if (NotifyMainFormToOpenChildFormParty != null)
+                    {
+                        NotifyMainFormToOpenChildFormParty();
+                    }
 
-                    FrmCMAParty frmParty = new FrmCMAParty();
-                    frmParty.StartPosition = FormStartPosition.Manual;
-                    frmParty.Location = new Point(this.Parent.Location.X + (this.Parent.Width - frmParty.Width) / 2, frmParty.Location.Y + (this.Parent.Height - frmParty.Height) / 2);
-                    frmParty.MdiParent = this.ParentForm;
-                    frmParty.Show();
-                   // this.Close();
                     break;
                 }
             }
@@ -137,6 +136,11 @@ namespace PtrCma
 
         private void cmdBackup_Click(object sender, EventArgs e)
         {
+        }
+
+        private void FrmMainCma_Activated(object sender, EventArgs e)
+        {
+            
         }
     }
 }
