@@ -13,7 +13,8 @@ namespace PtrCma
         //MDI Form
         public static string companyName = "Perfect Tax Reporter - CMA 1.0";
         public static Color appBackColr = System.Drawing.Color.LightSeaGreen;
-        
+        public static Font lblCompNamefont = new System.Drawing.Font("Arial Rounded Mt", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        public static Color lblCompColr = System.Drawing.Color.White;
         //MAIN form
         public static Bitmap startFrmBackImg = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.bg.png"));
         public static int cmdBtnWidthMain = 200;
