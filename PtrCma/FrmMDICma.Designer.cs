@@ -40,7 +40,7 @@
             this.lblCompanyName.BackColor = System.Drawing.Color.Transparent;
             this.lblCompanyName.Location = new System.Drawing.Point(5, 8);
             this.lblCompanyName.Name = "lblCompanyName";
-            this.lblCompanyName.Size = new System.Drawing.Size(410, 58);
+            this.lblCompanyName.Size = new System.Drawing.Size(410, 50);
             this.lblCompanyName.TabIndex = 1;
             this.lblCompanyName.Text = " ";
             this.lblCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -54,7 +54,7 @@
             this.pictCloseBtn.InitialImage = global::PtrCma.Properties.Resources.mini1;
             this.pictCloseBtn.Location = new System.Drawing.Point(224, 98);
             this.pictCloseBtn.Name = "pictCloseBtn";
-            this.pictCloseBtn.Size = new System.Drawing.Size(66, 66);
+            this.pictCloseBtn.Size = new System.Drawing.Size(60, 60);
             this.pictCloseBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictCloseBtn.TabIndex = 3;
             this.pictCloseBtn.TabStop = false;
@@ -69,7 +69,7 @@
             this.pictMinBtn.InitialImage = global::PtrCma.Properties.Resources.mini1;
             this.pictMinBtn.Location = new System.Drawing.Point(49, 116);
             this.pictMinBtn.Name = "pictMinBtn";
-            this.pictMinBtn.Size = new System.Drawing.Size(66, 66);
+            this.pictMinBtn.Size = new System.Drawing.Size(60, 60);
             this.pictMinBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictMinBtn.TabIndex = 2;
             this.pictMinBtn.TabStop = false;

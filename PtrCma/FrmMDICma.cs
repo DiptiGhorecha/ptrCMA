@@ -47,7 +47,7 @@ namespace PtrCma
 
             frmCredit = new FrmCredit();
             frmCredit.MdiParent = this;
-            frmCredit.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
+           // frmCredit.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
 
             frmMain = new FrmMainCma();
             frmMain.MdiParent = this;
@@ -60,7 +60,7 @@ namespace PtrCma
         }
         private void NotifyMainFormToOpenFormParty()
         {
-            frmParty.Location = new Point(this.Location.X + (this.Width - frmParty.Width) / 2, (frmParty.Location.Y + (this.Height - frmParty.Height) / 2)-100);
+            frmParty.Location = new Point(this.Location.X + (this.Width - frmParty.Width) / 2, (frmParty.Location.Y + (this.Height - frmParty.Height) / 2)+35);
             
             frmParty.Show();
            frmMain.Enabled = false;

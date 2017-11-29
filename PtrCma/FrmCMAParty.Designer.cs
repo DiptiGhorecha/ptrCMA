@@ -601,7 +601,7 @@
             this.Name = "FrmCMAParty";
             this.Opacity = 0.7D;
             this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "FrmCMAParty";
             this.TransparencyKey = System.Drawing.Color.PaleTurquoise;
             this.Load += new System.EventHandler(this.FrmCMAParty_Load);

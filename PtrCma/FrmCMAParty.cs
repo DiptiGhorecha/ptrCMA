@@ -209,7 +209,7 @@ namespace PtrCma
             foreach (Button btn in Controls.OfType<Button>())
             {
                 btn.ForeColor = Global.btnfore;
-                btn.BackgroundImage = Global.cmdAddImg;
+                btn.BackgroundImage = Global.cmdImg;
                 btn.FlatStyle = FlatStyle.Flat;
                 btn.BackgroundImageLayout = ImageLayout.Stretch;
             }
