@@ -29,8 +29,11 @@
         private void InitializeComponent()
         {
             this.lblCompanyName = new System.Windows.Forms.Label();
+            this.pictLogo = new System.Windows.Forms.PictureBox();
             this.pictCloseBtn = new System.Windows.Forms.PictureBox();
             this.pictMinBtn = new System.Windows.Forms.PictureBox();
+            this.lblCopyright = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictCloseBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictMinBtn)).BeginInit();
             this.SuspendLayout();
@@ -38,12 +41,26 @@
             // lblCompanyName
             // 
             this.lblCompanyName.BackColor = System.Drawing.Color.Transparent;
-            this.lblCompanyName.Location = new System.Drawing.Point(5, 8);
+            this.lblCompanyName.Location = new System.Drawing.Point(69, 8);
             this.lblCompanyName.Name = "lblCompanyName";
             this.lblCompanyName.Size = new System.Drawing.Size(410, 50);
             this.lblCompanyName.TabIndex = 1;
             this.lblCompanyName.Text = " ";
             this.lblCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictLogo
+            // 
+            this.pictLogo.BackColor = System.Drawing.Color.Transparent;
+            this.pictLogo.BackgroundImage = global::PtrCma.Properties.Resources.lblBack;
+            this.pictLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictLogo.Image = global::PtrCma.Properties.Resources.ptr_logo;
+            this.pictLogo.InitialImage = null;
+            this.pictLogo.Location = new System.Drawing.Point(5, 4);
+            this.pictLogo.Name = "pictLogo";
+            this.pictLogo.Size = new System.Drawing.Size(60, 60);
+            this.pictLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictLogo.TabIndex = 5;
+            this.pictLogo.TabStop = false;
             // 
             // pictCloseBtn
             // 
@@ -75,12 +92,26 @@
             this.pictMinBtn.TabStop = false;
             this.pictMinBtn.Click += new System.EventHandler(this.pictMinBtn_Click);
             // 
+            // lblCopyright
+            // 
+            this.lblCopyright.BackColor = System.Drawing.Color.Transparent;
+            this.lblCopyright.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCopyright.ForeColor = System.Drawing.Color.White;
+            this.lblCopyright.Location = new System.Drawing.Point(102, 201);
+            this.lblCopyright.Name = "lblCopyright";
+            this.lblCopyright.Size = new System.Drawing.Size(262, 24);
+            this.lblCopyright.TabIndex = 6;
+            this.lblCopyright.Text = "Copyright 2017, Perfect Tax Reporter";
+            this.lblCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FrmMDICma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSeaGreen;
             this.ClientSize = new System.Drawing.Size(514, 262);
+            this.Controls.Add(this.lblCopyright);
+            this.Controls.Add(this.pictLogo);
             this.Controls.Add(this.pictCloseBtn);
             this.Controls.Add(this.pictMinBtn);
             this.Controls.Add(this.lblCompanyName);
@@ -91,6 +122,7 @@
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmMDICma_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictCloseBtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictMinBtn)).EndInit();
             this.ResumeLayout(false);
@@ -102,6 +134,8 @@
         private System.Windows.Forms.Label lblCompanyName;
         private System.Windows.Forms.PictureBox pictMinBtn;
         private System.Windows.Forms.PictureBox pictCloseBtn;
+        private System.Windows.Forms.PictureBox pictLogo;
+        private System.Windows.Forms.Label lblCopyright;
     }
 }
 

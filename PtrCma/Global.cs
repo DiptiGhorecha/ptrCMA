@@ -49,7 +49,7 @@ namespace PtrCma
         public static Size medsizelbl = new System.Drawing.Size(85, 20);
         public static Size largesizelbl = new System.Drawing.Size(490, 30);
         public static Size txtCommonSize = new System.Drawing.Size(320, 20);
-        public static Size txtFindSize = new System.Drawing.Size(200, 20);
+        public static Size txtFindSize = new System.Drawing.Size(195, 20);
         public static Size txtCodenoSize = new System.Drawing.Size(100, 20);
         public static Size txtBranchSize = new System.Drawing.Size(100, 20);
         public static Size txtNotesSize = new System.Drawing.Size(410, 65);

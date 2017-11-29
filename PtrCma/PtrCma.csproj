@@ -202,7 +202,8 @@
     <EmbeddedResource Include="Resources\buton.png" />
     <EmbeddedResource Include="Resources\closeBtnBg.png" />
     <EmbeddedResource Include="Resources\partybg.png" />
-    <Content Include="Resources\ptr-logo.png" />
+    <EmbeddedResource Include="Resources\ptr-logo.png" />
+    <EmbeddedResource Include="Resources\footerbg.png" />
     <Content Include="Resources\PtrCma.accdb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

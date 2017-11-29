@@ -208,7 +208,8 @@ namespace PtrCma
             lblparty.Font = Global.lblPartyTitlefont;
             lblparty.Image = Global.partyLblBackImg;
             lblparty.ImageAlign= ContentAlignment.MiddleCenter;
-
+            Bitmap bm = Global.partyLblBackImg;
+            pictureBox1.Image = bm;
             foreach (Button btn in Controls.OfType<Button>())
             {
                 btn.ForeColor = Global.btnfore;
@@ -217,6 +218,53 @@ namespace PtrCma
                 btn.BackgroundImageLayout = ImageLayout.Stretch;
             }
         }
+
+        //public enum RoundedCorners
+        //{
+        //    None = 0x00,
+        //    TopLeft = 0x02,
+        //    TopRight = 0x04,
+        //    BottomLeft = 0x08,
+        //    BottomRight = 0x10,
+        //    All = 0x1F
+        //}
+        //public static void DrawRoundedRectangle(this Graphics g, Color color, Rectangle rec, int radius,
+        //                                   RoundedCorners corners)
+        //{
+        //    using (var b = new SolidBrush(color))
+        //    {
+        //        int x = rec.X;
+        //        int y = rec.Y;
+        //        int diameter = radius * 2;
+        //        var horiz = new Rectangle(x, y + radius, rec.Width, rec.Height - diameter);
+        //        var vert = new Rectangle(x + radius, y, rec.Width - diameter, rec.Height);
+
+        //        g.FillRectangle(b, horiz);
+        //        g.FillRectangle(b, vert);
+
+        //        if ((corners & RoundedCorners.TopLeft) == RoundedCorners.TopLeft)
+        //            g.FillEllipse(b, x, y, diameter, diameter);
+        //        else
+        //            g.FillRectangle(b, x, y, diameter, diameter);
+
+        //        if ((corners & RoundedCorners.TopRight) == RoundedCorners.TopRight)
+        //            g.FillEllipse(b, x + rec.Width - (diameter + 1), y, diameter, diameter);
+        //        else
+        //            g.FillRectangle(b, x + rec.Width - (diameter + 1), y, diameter, diameter);
+
+        //        if ((corners & RoundedCorners.BottomLeft) == RoundedCorners.BottomLeft)
+        //            g.FillEllipse(b, x, y + rec.Height - (diameter + 1), diameter, diameter);
+        //        else
+        //            g.FillRectangle(b, x, y + rec.Height - (diameter + 1), diameter, diameter);
+
+        //        if ((corners & RoundedCorners.BottomRight) == RoundedCorners.BottomRight)
+        //            g.FillEllipse(b, x + rec.Width - (diameter + 1), y + rec.Height - (diameter + 1), diameter, diameter);
+        //        else
+        //            g.FillRectangle(b, x + rec.Width - (diameter + 1), y + rec.Height - (diameter + 1), diameter,
+        //                            diameter);
+        //    }
+        //}
+
 
         private void setControlsize()           //Set Size of Control
         {
@@ -294,7 +342,7 @@ namespace PtrCma
                 txtBranch.Focus();
 
                 //Dialog Box for yes or no
-                DialogResult dialogResult1 = MessageBox.Show("Do You want to Update this Record?", "", MessageBoxButtons.YesNo);       //Cancel Button
+                DialogResult dialogResult1 = MessageBox.Show("Do You want to Update this Record?", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
                 if (dialogResult1 == DialogResult.Yes)
                 {
                         String sql1 = "Update Cd_MsCln set [CL_ACT]='" + this.txtActivity.Text + "' , [CL_BRANCH] ='" + this.txtBranch.Text + "', [CL_NAME] ='" + this.txtName.Text + "',[CL_ADD1]='" + this.txtAdd1.Text + "', [CL_ADD2]='" + this.txtAdd2.Text + "', [CL_ADD3]='" + this.txtAdd3.Text + "', [CL_CITY]='" + this.txtCity.Text + "', [CL_STATE]='" + this.txtState.Text + "', [CL_FPH]='" + this.txtPhone.Text + "', [CL_MOB]='" + this.txtMobile.Text + "', [CL_FAX]='" + this.txtFax.Text + "', [CL_EMAIL1]='" + this.txtEmail1.Text + "', [CL_EMAIL2]='" + this.txtEmail2.Text + "', [CL_NOTES]='" + this.txtareanotes.Text + "', [CL_PREP1]='" + this.txtPrepBy1.Text + "', [CL_PREP2]='" + this.txtPrepBy2.Text + "'  WHERE CL_CODENO= '" + this.txtCodeno.Text + "' ";
@@ -357,7 +405,7 @@ namespace PtrCma
             {
                 if (txtCodeno.Text == grdViewParty[1, nCounter].Value.ToString())
                 {
-                    MessageBox.Show("That product has been selected already.", "Repeat", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("That product has been selected already.", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     txtCodeno.Focus();
                     return;
                 }
@@ -392,7 +440,7 @@ namespace PtrCma
                 txt.Enabled = false;
             }
 
-            DialogResult dialogResult = MessageBox.Show("Are You Sure Want to Cancel?", "", MessageBoxButtons.YesNo);       //Cancel Button
+            DialogResult dialogResult = MessageBox.Show("Are You Sure Want to Cancel?", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
             if (dialogResult == DialogResult.Yes)
             {
                 controlvisible();
@@ -445,7 +493,7 @@ namespace PtrCma
         {
             try
             {
-                DialogResult dialogResult1 = MessageBox.Show("Are you sure want to delete this Record ?", "", MessageBoxButtons.YesNo);       //Cancel Button
+                DialogResult dialogResult1 = MessageBox.Show("Are you sure want to delete this Record ?", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
                 if (dialogResult1 == DialogResult.Yes)
                 {
                     grdViewParty.Enabled = false;
@@ -482,7 +530,9 @@ namespace PtrCma
                 {
                     transaction.Rollback();
                 }catch{ }
+
             }
+            LoadDatatoTextBox();
         }
 
         private void cmdSelect_Click(object sender, EventArgs e)
@@ -493,7 +543,7 @@ namespace PtrCma
 
         private void cmdExit_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are You Sure Want to Exit ?", "", MessageBoxButtons.YesNo);       //Cancel Button
+            DialogResult dialogResult = MessageBox.Show("Are You Sure Want to Exit ?", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
             if (dialogResult == DialogResult.Yes)
             {
                 NotifyMainFormToCloseChildFormParty();
@@ -501,6 +551,7 @@ namespace PtrCma
                // FrmMainCma frmCma = new FrmMainCma();
                 //frmCma.Activate();
             }
+           
 
         }
 

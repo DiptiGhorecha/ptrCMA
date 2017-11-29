@@ -139,7 +139,14 @@ namespace PtrCma
             {
                 if (btn.Name == ("cmdExit"))
                 {
-                    System.Environment.Exit(1);
+                    DialogResult dialogResult = MessageBox.Show("Are You Sure Want to Exit ?", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        System.Environment.Exit(1);
+                    }
+
+                    
+                    
                 }
             }
         }

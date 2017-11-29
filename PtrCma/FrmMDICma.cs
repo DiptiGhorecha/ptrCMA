@@ -86,6 +86,9 @@ namespace PtrCma
             this.pictMinBtn.Left = this.Width - this.pictMinBtn.Width - this.pictCloseBtn.Width-5;
             this.pictCloseBtn.Top = 5;
             this.pictCloseBtn.Left = this.Width - this.pictCloseBtn.Width - 5;
+            lblCopyright.BackgroundImage = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.footerbg.png"));
+            lblCopyright.Left = this.Location.X + (this.Width - lblCopyright.Width) / 2;
+            lblCopyright.Top = this.Bottom - lblCopyright.Height-5;
         }
 
         private void pictMinBtn_Click(object sender, EventArgs e)
@@ -95,7 +98,11 @@ namespace PtrCma
 
         private void pictCloseBtn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult dialogResult = MessageBox.Show("Are You Sure Want to Exit ?", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
     }
  
