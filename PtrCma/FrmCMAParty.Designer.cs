@@ -93,7 +93,7 @@
             // 
             this.txtFind.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtFind.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFind.Location = new System.Drawing.Point(103, 68);
+            this.txtFind.Location = new System.Drawing.Point(91, 68);
             this.txtFind.Name = "txtFind";
             this.txtFind.Size = new System.Drawing.Size(183, 19);
             this.txtFind.TabIndex = 1;
@@ -123,7 +123,7 @@
             this.grdViewParty.Location = new System.Drawing.Point(54, 110);
             this.grdViewParty.Name = "grdViewParty";
             this.grdViewParty.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.grdViewParty.Size = new System.Drawing.Size(301, 505);
+            this.grdViewParty.Size = new System.Drawing.Size(301, 474);
             this.grdViewParty.TabIndex = 3;
             this.grdViewParty.TabStop = false;
             this.grdViewParty.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdViewParty_CellClick);
@@ -238,7 +238,7 @@
             // 
             // lblPrepBy1
             // 
-            this.lblPrepBy1.Location = new System.Drawing.Point(396, 417);
+            this.lblPrepBy1.Location = new System.Drawing.Point(396, 397);
             this.lblPrepBy1.Name = "lblPrepBy1";
             this.lblPrepBy1.Size = new System.Drawing.Size(63, 16);
             this.lblPrepBy1.TabIndex = 17;
@@ -246,7 +246,7 @@
             // 
             // lblPrepBy2
             // 
-            this.lblPrepBy2.Location = new System.Drawing.Point(396, 444);
+            this.lblPrepBy2.Location = new System.Drawing.Point(396, 424);
             this.lblPrepBy2.Name = "lblPrepBy2";
             this.lblPrepBy2.Size = new System.Drawing.Size(63, 16);
             this.lblPrepBy2.TabIndex = 18;
@@ -254,7 +254,7 @@
             // 
             // lblNotes
             // 
-            this.lblNotes.Location = new System.Drawing.Point(396, 470);
+            this.lblNotes.Location = new System.Drawing.Point(396, 449);
             this.lblNotes.Name = "lblNotes";
             this.lblNotes.Size = new System.Drawing.Size(52, 23);
             this.lblNotes.TabIndex = 19;
@@ -404,7 +404,7 @@
             // 
             this.txtPrepBy1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPrepBy1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrepBy1.Location = new System.Drawing.Point(488, 414);
+            this.txtPrepBy1.Location = new System.Drawing.Point(488, 394);
             this.txtPrepBy1.Name = "txtPrepBy1";
             this.txtPrepBy1.Size = new System.Drawing.Size(338, 19);
             this.txtPrepBy1.TabIndex = 22;
@@ -414,7 +414,7 @@
             // 
             this.txtPrepBy2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPrepBy2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrepBy2.Location = new System.Drawing.Point(488, 441);
+            this.txtPrepBy2.Location = new System.Drawing.Point(488, 421);
             this.txtPrepBy2.Name = "txtPrepBy2";
             this.txtPrepBy2.Size = new System.Drawing.Size(338, 19);
             this.txtPrepBy2.TabIndex = 23;
@@ -424,7 +424,7 @@
             // 
             this.cmdAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.cmdAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdAdd.Location = new System.Drawing.Point(399, 592);
+            this.cmdAdd.Location = new System.Drawing.Point(399, 561);
             this.cmdAdd.Name = "cmdAdd";
             this.cmdAdd.Size = new System.Drawing.Size(46, 23);
             this.cmdAdd.TabIndex = 3;
@@ -434,7 +434,7 @@
             // 
             // cmdEdit
             // 
-            this.cmdEdit.Location = new System.Drawing.Point(454, 592);
+            this.cmdEdit.Location = new System.Drawing.Point(454, 561);
             this.cmdEdit.Name = "cmdEdit";
             this.cmdEdit.Size = new System.Drawing.Size(46, 23);
             this.cmdEdit.TabIndex = 4;
@@ -444,7 +444,7 @@
             // 
             // cmdDelete
             // 
-            this.cmdDelete.Location = new System.Drawing.Point(508, 592);
+            this.cmdDelete.Location = new System.Drawing.Point(508, 561);
             this.cmdDelete.Name = "cmdDelete";
             this.cmdDelete.Size = new System.Drawing.Size(61, 23);
             this.cmdDelete.TabIndex = 5;
@@ -454,7 +454,7 @@
             // 
             // cmdSelect
             // 
-            this.cmdSelect.Location = new System.Drawing.Point(585, 592);
+            this.cmdSelect.Location = new System.Drawing.Point(591, 561);
             this.cmdSelect.Name = "cmdSelect";
             this.cmdSelect.Size = new System.Drawing.Size(166, 23);
             this.cmdSelect.TabIndex = 6;
@@ -464,9 +464,9 @@
             // 
             // cmdExit
             // 
-            this.cmdExit.Location = new System.Drawing.Point(757, 592);
+            this.cmdExit.Location = new System.Drawing.Point(763, 561);
             this.cmdExit.Name = "cmdExit";
-            this.cmdExit.Size = new System.Drawing.Size(35, 23);
+            this.cmdExit.Size = new System.Drawing.Size(42, 23);
             this.cmdExit.TabIndex = 7;
             this.cmdExit.Text = "Exit";
             this.cmdExit.UseVisualStyleBackColor = true;
@@ -487,7 +487,7 @@
             // 
             this.txtareanotes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtareanotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtareanotes.Location = new System.Drawing.Point(399, 496);
+            this.txtareanotes.Location = new System.Drawing.Point(399, 472);
             this.txtareanotes.Multiline = true;
             this.txtareanotes.Name = "txtareanotes";
             this.txtareanotes.Size = new System.Drawing.Size(427, 59);
@@ -503,11 +503,11 @@
             this.lblparty.Size = new System.Drawing.Size(509, 26);
             this.lblparty.TabIndex = 43;
             this.lblparty.Text = "Party Master";
-            this.lblparty.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblparty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cmdSave
             // 
-            this.cmdSave.Location = new System.Drawing.Point(553, 574);
+            this.cmdSave.Location = new System.Drawing.Point(553, 543);
             this.cmdSave.Name = "cmdSave";
             this.cmdSave.Size = new System.Drawing.Size(51, 23);
             this.cmdSave.TabIndex = 25;
@@ -518,7 +518,7 @@
             // 
             // cmdCancel
             // 
-            this.cmdCancel.Location = new System.Drawing.Point(609, 574);
+            this.cmdCancel.Location = new System.Drawing.Point(609, 543);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(54, 23);
             this.cmdCancel.TabIndex = 26;
@@ -545,7 +545,7 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.PaleTurquoise;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(881, 629);
+            this.ClientSize = new System.Drawing.Size(881, 607);
             this.Controls.Add(this.pictFrmClose);
             this.Controls.Add(this.cmdCancel);
             this.Controls.Add(this.cmdSave);

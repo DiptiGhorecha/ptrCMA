@@ -47,7 +47,7 @@ namespace PtrCma
             fillgird();         //Show Data in Gridview at Runtime
             grdViewParty.CurrentCell = grdViewParty.Rows[0].Cells[1];  //Set 1st row as current row by default
             LoadDatatoTextBox();  // show data in Textbox from Gridview
-            cmdAdd.BackgroundImage = Global.cmdAddImg;
+            
 
         }
 
@@ -60,7 +60,7 @@ namespace PtrCma
                               // this.BackColor = Global.backColorPartyMst;   //Set Background Color of the form
   
             grdViewParty.Size = Global.grdPartySize;
-            this.Width = grdViewParty.Width + txtareanotes.Width + 190;
+            this.Width = grdViewParty.Width + txtareanotes.Width + 155;
             //this.picFrmClose. = 5;
         }
 
@@ -136,7 +136,7 @@ namespace PtrCma
             grdViewParty.Columns[1].Width = 100;
             grdViewParty.Columns[4].Visible = true;
             grdViewParty.Columns[4].HeaderText = "Party Name";
-            grdViewParty.Columns[4].Width = 150;
+            grdViewParty.Columns[4].Width = 158;
 
         }
 
@@ -204,10 +204,14 @@ namespace PtrCma
 
             lblparty.BackColor = Global.lblparty;
             lblparty.ForeColor = Global.lbltitle;
+            lblparty.Font = Global.lblPartyTitlefont;
 
             foreach (Button btn in Controls.OfType<Button>())
             {
                 btn.ForeColor = Global.btnfore;
+                btn.BackgroundImage = Global.cmdAddImg;
+                btn.FlatStyle = FlatStyle.Flat;
+                btn.BackgroundImageLayout = ImageLayout.Stretch;
             }
         }
 
