@@ -120,10 +120,6 @@ namespace PtrCma
 
                     break;
                 }
-            }
-
-            for (int i = 0; i < counter; i++)
-            {
                 if (btn.Name == ("cmdBackup"))
                 {
                     if (NotifyMainFormToOpenChildFormParty != null)
@@ -133,10 +129,7 @@ namespace PtrCma
 
                     break;
                 }
-            }
 
-            for (int i = 0; i < counter; i++)
-            {
                 if (btn.Name == ("cmdExit"))
                 {
                     DialogResult dialogResult = MessageBox.Show("Are You Sure Want to Exit ?", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
@@ -145,19 +138,13 @@ namespace PtrCma
                         System.Environment.Exit(1);
                     }
 
-                    
-                    
+
+
                 }
             }
-        }
-        
-        private void cmdCMAProj_Click(object sender, EventArgs e)
-        {
-        }
 
-        private void cmdBackup_Click(object sender, EventArgs e)
-        {
         }
+   
 
         private void FrmMainCma_Activated(object sender, EventArgs e)
         {

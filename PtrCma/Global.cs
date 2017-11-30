@@ -66,8 +66,13 @@ namespace PtrCma
         public static Color lblbackdetail = System.Drawing.Color.CadetBlue;  //Label Back Color
         public static Color lblforedetail = System.Drawing.Color.White;  //Label Fore/Text Color
 
+        //CMS form
+        public static Color lstBxBackColorCMS = System.Drawing.Color.LightGoldenrodYellow;
+        public static Color chartBackColorCMS = System.Drawing.Color.LightGoldenrodYellow;
+        public static Color gridBackColorCMS = System.Drawing.Color.LightGray;
+        public static Color gridHeaderColorCMS = System.Drawing.Color.Orange;
+        public static int chrtLstViewHeight = 150;
 
-    
 
     }
 }

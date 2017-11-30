@@ -99,6 +99,7 @@
             this.txtFind.Name = "txtFind";
             this.txtFind.Size = new System.Drawing.Size(163, 19);
             this.txtFind.TabIndex = 1;
+            this.txtFind.TextChanged += new System.EventHandler(this.txtFind_TextChanged);
             this.txtFind.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             this.txtFind.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtFind_KeyUp);
             // 
@@ -561,7 +562,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
-            this.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.BackColor = System.Drawing.Color.LightCyan;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(881, 607);
             this.Controls.Add(this.pictureBox1);
@@ -618,11 +619,10 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCMAParty";
-            this.Opacity = 0.7D;
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "FrmCMAParty";
-            this.TransparencyKey = System.Drawing.Color.PaleTurquoise;
+            this.TransparencyKey = System.Drawing.Color.LightCyan;
             this.Load += new System.EventHandler(this.FrmCMAParty_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdViewParty)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

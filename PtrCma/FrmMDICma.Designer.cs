@@ -32,7 +32,7 @@
             this.pictLogo = new System.Windows.Forms.PictureBox();
             this.pictCloseBtn = new System.Windows.Forms.PictureBox();
             this.pictMinBtn = new System.Windows.Forms.PictureBox();
-            this.lblCopyright = new System.Windows.Forms.Label();
+            this.lblCopyright = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictCloseBtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictMinBtn)).BeginInit();
@@ -94,22 +94,28 @@
             // 
             // lblCopyright
             // 
+            this.lblCopyright.ActiveLinkColor = System.Drawing.Color.White;
             this.lblCopyright.BackColor = System.Drawing.Color.Transparent;
-            this.lblCopyright.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCopyright.ForeColor = System.Drawing.Color.White;
-            this.lblCopyright.Location = new System.Drawing.Point(102, 201);
+            this.lblCopyright.LinkArea = new System.Windows.Forms.LinkArea(16, 36);
+            this.lblCopyright.LinkColor = System.Drawing.Color.White;
+            this.lblCopyright.Location = new System.Drawing.Point(5, 225);
             this.lblCopyright.Name = "lblCopyright";
-            this.lblCopyright.Size = new System.Drawing.Size(262, 24);
-            this.lblCopyright.TabIndex = 6;
+            this.lblCopyright.Size = new System.Drawing.Size(835, 22);
+            this.lblCopyright.TabIndex = 8;
+            this.lblCopyright.TabStop = true;
             this.lblCopyright.Text = "Copyright 2017, Perfect Tax Reporter";
             this.lblCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCopyright.UseCompatibleTextRendering = true;
+            this.lblCopyright.VisitedLinkColor = System.Drawing.Color.White;
+            this.lblCopyright.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblCopyright_LinkClicked);
             // 
             // FrmMDICma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.ClientSize = new System.Drawing.Size(514, 262);
+            this.ClientSize = new System.Drawing.Size(905, 262);
+            this.ControlBox = false;
             this.Controls.Add(this.lblCopyright);
             this.Controls.Add(this.pictLogo);
             this.Controls.Add(this.pictCloseBtn);
@@ -119,6 +125,7 @@
             this.IsMdiContainer = true;
             this.MaximizeBox = false;
             this.Name = "FrmMDICma";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmMDICma_Load);
@@ -135,7 +142,7 @@
         private System.Windows.Forms.PictureBox pictMinBtn;
         private System.Windows.Forms.PictureBox pictCloseBtn;
         private System.Windows.Forms.PictureBox pictLogo;
-        private System.Windows.Forms.Label lblCopyright;
+        private System.Windows.Forms.LinkLabel lblCopyright;
     }
 }
 

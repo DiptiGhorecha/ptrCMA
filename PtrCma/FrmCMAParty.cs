@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using System.Data.OleDb;
 using System.IO;
 using System.Reflection;
+using MessageBoxExample;
 
 namespace PtrCma
 {
@@ -17,6 +18,7 @@ namespace PtrCma
     public partial class FrmCMAParty : Form
     {
         public Action NotifyMainFormToCloseChildFormParty;
+        public Action NotifyMainFormToOpenChildFormCma;
         string isAddEdit = ""; //Variable to Store Current Action(Add,Edit)
         String connectionString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " +Application.StartupPath + "\\Resources\\PtrCma.accdb;";  //Connection String
         //Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"Resources\PtrCma.accdb"); 
@@ -31,8 +33,8 @@ namespace PtrCma
         {
             InitializeComponent();
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
-            this.BackColor = Color.PaleTurquoise;
-            this.TransparencyKey = Color.PaleTurquoise; // I had to add this to get it to work.
+           // this.BackColor = Color.PaleTurquoise;
+           // this.TransparencyKey = Color.PaleTurquoise; // I had to add this to get it to work.
         }
 
         private void FrmCMAParty_Load(object sender, EventArgs e)
@@ -288,17 +290,15 @@ namespace PtrCma
 
         private void cmdAdd_Click(object sender, EventArgs e)       
         {
-            
 
+            //fillgird();
             cmdSave.Visible = true;
             cmdCancel.Visible = true;
             grdViewParty.Enabled = false;
-            txtFind.Enabled = false;
             cmdReset.Enabled = false;
-
             clearTextbox();
             enableTextbox();
-           
+            txtFind.Enabled = false;
             cmdAdd.Visible = false;
             cmdEdit.Visible = false;
             cmdDelete.Visible = false;
@@ -330,7 +330,7 @@ namespace PtrCma
                 transaction.Commit();
                 con.Close();
                 fillgird();           
-                MessageBox.Show("Data Inserted Successfully");
+                MessageBox.Show("Data Inserted Successfully", "Perfect Tax Reporter - CMA 1.0");
             }
 
             else
@@ -354,7 +354,7 @@ namespace PtrCma
                         fillgird();  //After updating data display it in Gridview
                     grdViewParty.CurrentCell = grdViewParty.Rows[rowNum].Cells[1];
 
-                    MessageBox.Show("Record Updated Successfully");
+                    MessageBox.Show("Record Updated Successfully", "Perfect Tax Reporter - CMA 1.0");
 
                     txtCodeno.Focus();
                     cmdEdit.Enabled = false;
@@ -372,7 +372,7 @@ namespace PtrCma
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                MessageBox.Show(e.Message, "Perfect Tax Reporter - CMA 1.0");
                 try
                 {
                     transaction.Rollback();
@@ -388,7 +388,8 @@ namespace PtrCma
             //Validations 
             if (txtCodeno.Text.Trim() == string.Empty)              //Code No  
             {
-                MessageBox.Show("Code Number Field cannnot be blank");
+                MessageBox.Show("Code Number Field cannnot be blank","Perfect Tax Reporter - CMA 1.0");
+               // MyMessageBox.ShowBox("Code Number Field cannnot be blank");
                 txtCodeno.Focus();
                 return; // return because we don't want to run normal code of buton click
             }
@@ -396,22 +397,26 @@ namespace PtrCma
 
             if (txtName.Text.Trim() == string.Empty)              //Name
             {
-                MessageBox.Show("Name Field cannnot be blank");
+                MessageBox.Show("Name Field cannnot be blank","Perfect Tax Reporter - CMA 1.0");
+                //MyMessageBox.ShowBox("Name Field cannnot be blank", "Perfect Tax Reporter - CMA 1.0");
                 txtName.Focus();
                 return; // return because we don't want to run normal code of buton click
             }
 
-            for (int nCounter = 0; nCounter <= grdViewParty.RowCount - 1; nCounter++)
+            if (isAddEdit == "A")  //Add button click
             {
-                if (txtCodeno.Text == grdViewParty[1, nCounter].Value.ToString())
+                for (int nCounter = 0; nCounter <= grdViewParty.RowCount - 1; nCounter++)
                 {
-                    MessageBox.Show("That product has been selected already.", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    txtCodeno.Focus();
-                    return;
+                    if (txtCodeno.Text == grdViewParty[1, nCounter].Value.ToString())
+                    {
+                        MessageBox.Show("That product has been selected already.", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        txtCodeno.Focus();
+                        return;
+                    }
+
                 }
 
             }
-
             btnInsert();  //insert-update data in database
 
 
@@ -484,6 +489,7 @@ namespace PtrCma
             cmdExit.Visible = false;
             cmdReset.Enabled = false;
             txtFind.Enabled = false;
+            
 
         }
 
@@ -512,7 +518,7 @@ namespace PtrCma
                     transaction.Commit();
                     con.Close();
                     fillgird();  //After inserting data display data in Gridview
-                    MessageBox.Show("Record Successfully Deleted ");
+                    MessageBox.Show("Record Successfully Deleted ", "Perfect Tax Reporter - CMA 1.0");
 
                     cmdDelete.Enabled = true;
                     cmdEdit.Enabled = true;
@@ -525,7 +531,7 @@ namespace PtrCma
                 txtFind.Enabled = true;
                 txtFind.Focus();
             }catch(Exception ex) {
-                MessageBox.Show("Exception: Data Insertion in Party table in database" + ex.Message);
+                MessageBox.Show("Exception: Data Insertion in Party table in database" + ex.Message, "Perfect Tax Reporter - CMA 1.0");
                 try
                 {
                     transaction.Rollback();
@@ -537,7 +543,10 @@ namespace PtrCma
 
         private void cmdSelect_Click(object sender, EventArgs e)
         {
-
+            if (NotifyMainFormToOpenChildFormCma != null)
+            {
+                NotifyMainFormToOpenChildFormCma();
+            }
 
         }
 
@@ -557,11 +566,12 @@ namespace PtrCma
 
         private void grdViewParty_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //cmdEdit.Enabled = true;
-            //cmdDelete.Enabled = true;
-            enableTextbox();
+            foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
+            {
+                txt.Enabled = false;
+            }
             txtFind.Enabled = true;
-           
+            cmdReset.Enabled = true;
 
             if (e.RowIndex >= 0)
             {
@@ -595,7 +605,7 @@ namespace PtrCma
             txtFind.Clear();
             fillgird();
             txtFind.Enabled = true;
-            
+            LoadDatatoTextBox();
         }
 
         private void txtFind_KeyUp(object sender, KeyEventArgs e)
@@ -606,7 +616,7 @@ namespace PtrCma
 
             con.Open();
 
-            dataAdapter = new OleDbDataAdapter("SELECT * from Cd_MsCln where CL_NAME like '" + txtFind.Text + "%'", con);
+            dataAdapter = new OleDbDataAdapter("SELECT * from Cd_MsCln where CL_NAME like '%" + txtFind.Text + "%'", con);
 
             dataAdapter.Fill(ds, "Cd_MsCln");
             grdViewParty.DataMember = "Cd_MsCln";
@@ -658,18 +668,23 @@ namespace PtrCma
                 txt.Enabled = false;
             }
             txtFind.Enabled = true;
-            
+            cmdReset.Enabled = true;
         }
 
         private void pictFrmClose_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are You Sure Want to Exit ?", "", MessageBoxButtons.YesNo);       //Cancel Button
+            DialogResult dialogResult = MessageBox.Show("Are You Sure Want to Exit ?", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
             if (dialogResult == DialogResult.Yes)
             {
                 NotifyMainFormToCloseChildFormParty();
                 this.Hide();
               
             }
+        }
+
+        private void txtFind_TextChanged(object sender, EventArgs e)
+        {
+
         }
         //protected override void OnPaintBackground(PaintEventArgs e)
         //{
