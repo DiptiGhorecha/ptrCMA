@@ -126,6 +126,7 @@
             this.grdViewParty.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdViewParty.Location = new System.Drawing.Point(51, 131);
             this.grdViewParty.Name = "grdViewParty";
+            this.grdViewParty.RowHeadersVisible = false;
             this.grdViewParty.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.grdViewParty.Size = new System.Drawing.Size(301, 450);
             this.grdViewParty.TabIndex = 3;
@@ -242,7 +243,7 @@
             // 
             // lblPrepBy1
             // 
-            this.lblPrepBy1.Location = new System.Drawing.Point(396, 412);
+            this.lblPrepBy1.Location = new System.Drawing.Point(396, 411);
             this.lblPrepBy1.Name = "lblPrepBy1";
             this.lblPrepBy1.Size = new System.Drawing.Size(63, 16);
             this.lblPrepBy1.TabIndex = 17;
@@ -250,7 +251,7 @@
             // 
             // lblPrepBy2
             // 
-            this.lblPrepBy2.Location = new System.Drawing.Point(396, 436);
+            this.lblPrepBy2.Location = new System.Drawing.Point(396, 435);
             this.lblPrepBy2.Name = "lblPrepBy2";
             this.lblPrepBy2.Size = new System.Drawing.Size(63, 16);
             this.lblPrepBy2.TabIndex = 18;
@@ -258,7 +259,7 @@
             // 
             // lblNotes
             // 
-            this.lblNotes.Location = new System.Drawing.Point(396, 460);
+            this.lblNotes.Location = new System.Drawing.Point(396, 459);
             this.lblNotes.Name = "lblNotes";
             this.lblNotes.Size = new System.Drawing.Size(52, 23);
             this.lblNotes.TabIndex = 19;
@@ -428,51 +429,51 @@
             // 
             this.cmdAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.cmdAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdAdd.Location = new System.Drawing.Point(396, 558);
+            this.cmdAdd.Location = new System.Drawing.Point(396, 545);
             this.cmdAdd.Name = "cmdAdd";
             this.cmdAdd.Size = new System.Drawing.Size(46, 23);
             this.cmdAdd.TabIndex = 3;
-            this.cmdAdd.Text = "Add";
+            this.cmdAdd.Text = "&Add";
             this.cmdAdd.UseVisualStyleBackColor = true;
             this.cmdAdd.Click += new System.EventHandler(this.cmdAdd_Click);
             // 
             // cmdEdit
             // 
-            this.cmdEdit.Location = new System.Drawing.Point(448, 558);
+            this.cmdEdit.Location = new System.Drawing.Point(448, 545);
             this.cmdEdit.Name = "cmdEdit";
             this.cmdEdit.Size = new System.Drawing.Size(46, 23);
             this.cmdEdit.TabIndex = 4;
-            this.cmdEdit.Text = "Edit";
+            this.cmdEdit.Text = "&Edit";
             this.cmdEdit.UseVisualStyleBackColor = true;
             this.cmdEdit.Click += new System.EventHandler(this.cmdEdit_Click);
             // 
             // cmdDelete
             // 
-            this.cmdDelete.Location = new System.Drawing.Point(502, 558);
+            this.cmdDelete.Location = new System.Drawing.Point(502, 545);
             this.cmdDelete.Name = "cmdDelete";
             this.cmdDelete.Size = new System.Drawing.Size(61, 23);
             this.cmdDelete.TabIndex = 5;
-            this.cmdDelete.Text = "Delete";
+            this.cmdDelete.Text = "&Delete";
             this.cmdDelete.UseVisualStyleBackColor = true;
             this.cmdDelete.Click += new System.EventHandler(this.cmdDelete_Click);
             // 
             // cmdSelect
             // 
-            this.cmdSelect.Location = new System.Drawing.Point(593, 558);
+            this.cmdSelect.Location = new System.Drawing.Point(584, 545);
             this.cmdSelect.Name = "cmdSelect";
             this.cmdSelect.Size = new System.Drawing.Size(166, 23);
             this.cmdSelect.TabIndex = 6;
-            this.cmdSelect.Text = "Select Party And Continue";
+            this.cmdSelect.Text = "&Select Party And Continue";
             this.cmdSelect.UseVisualStyleBackColor = true;
             this.cmdSelect.Click += new System.EventHandler(this.cmdSelect_Click);
             // 
             // cmdExit
             // 
-            this.cmdExit.Location = new System.Drawing.Point(765, 558);
+            this.cmdExit.Location = new System.Drawing.Point(757, 545);
             this.cmdExit.Name = "cmdExit";
             this.cmdExit.Size = new System.Drawing.Size(42, 23);
             this.cmdExit.TabIndex = 7;
-            this.cmdExit.Text = "Exit";
+            this.cmdExit.Text = "&Exit";
             this.cmdExit.UseVisualStyleBackColor = true;
             this.cmdExit.Click += new System.EventHandler(this.cmdExit_Click);
             // 
@@ -491,7 +492,7 @@
             // 
             this.txtareanotes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtareanotes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtareanotes.Location = new System.Drawing.Point(396, 486);
+            this.txtareanotes.Location = new System.Drawing.Point(396, 485);
             this.txtareanotes.Multiline = true;
             this.txtareanotes.Name = "txtareanotes";
             this.txtareanotes.Size = new System.Drawing.Size(436, 52);
@@ -500,22 +501,22 @@
             // 
             // cmdSave
             // 
-            this.cmdSave.Location = new System.Drawing.Point(546, 558);
+            this.cmdSave.Location = new System.Drawing.Point(546, 545);
             this.cmdSave.Name = "cmdSave";
             this.cmdSave.Size = new System.Drawing.Size(51, 23);
             this.cmdSave.TabIndex = 25;
-            this.cmdSave.Text = "Save";
+            this.cmdSave.Text = "&Save";
             this.cmdSave.UseVisualStyleBackColor = true;
             this.cmdSave.Visible = false;
             this.cmdSave.Click += new System.EventHandler(this.cmdSave_Click);
             // 
             // cmdCancel
             // 
-            this.cmdCancel.Location = new System.Drawing.Point(603, 558);
+            this.cmdCancel.Location = new System.Drawing.Point(603, 545);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(68, 23);
             this.cmdCancel.TabIndex = 26;
-            this.cmdCancel.Text = "Cancel";
+            this.cmdCancel.Text = "&Cancel";
             this.cmdCancel.UseVisualStyleBackColor = true;
             this.cmdCancel.Visible = false;
             this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);

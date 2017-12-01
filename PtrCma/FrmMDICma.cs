@@ -27,7 +27,8 @@ namespace PtrCma
 
         private void FrmMDICma_Load(object sender, EventArgs e)
         {
-
+            base.OnHandleCreated(e);
+            this.Bounds = Screen.PrimaryScreen.WorkingArea;
             this.Text = Global.companyName;
             foreach (Control control in this.Controls)
             {
@@ -111,6 +112,8 @@ namespace PtrCma
             lblCopyright.BackgroundImage = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.footerbg.png"));
             lblCopyright.Left = this.Location.X + (this.Width - lblCopyright.Width) / 2;
             lblCopyright.Top = this.Bottom - lblCopyright.Height-6;
+            
+
         }
 
         private void pictMinBtn_Click(object sender, EventArgs e)

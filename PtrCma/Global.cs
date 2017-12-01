@@ -52,14 +52,17 @@ namespace PtrCma
         public static Size txtFindSize = new System.Drawing.Size(195, 20);
         public static Size txtCodenoSize = new System.Drawing.Size(100, 20);
         public static Size txtBranchSize = new System.Drawing.Size(100, 20);
-        public static Size txtNotesSize = new System.Drawing.Size(410, 65);
+        public static Size txtNotesSize = new System.Drawing.Size(410, 50);
         public static Size grdPartySize = new System.Drawing.Size(301, 450);
-
-
+        public static Size btnSmallSize = new System.Drawing.Size(50, 35);         // For add edit save exit Button
+        public static Size btnmedSize = new System.Drawing.Size(60, 35);            // For Delete Cancel Butoon
+        public static Size btnLargeSize = new System.Drawing.Size(170, 35);     // For Select Party Button
+        public static Size smallBtn = new System.Drawing.Size(50, 22);          //For Reset Button
+        public static Color grdPartyBackColor = System.Drawing.Color.Orange;
         //public static Size lbl = system
 
         //All Form after click
-      //  public static Bitmap partyFrmBackImg = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.center-bg.png"));
+        //  public static Bitmap partyFrmBackImg = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.center-bg.png"));
         public static Color frmbgcolor = System.Drawing.Color.FromArgb(102, 166, 173);  //back ground color of Detail of Director table
         public static Color lblbacktitle = System.Drawing.Color.FromArgb(122, 204, 203); //Label Back Color of title
         public static Color lblforetitle = System.Drawing.Color.DarkRed; //Label Fore Color of title

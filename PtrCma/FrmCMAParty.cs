@@ -48,9 +48,15 @@ namespace PtrCma
             clearTextbox();     //Clear the Textbox
             enableTextbox();    //Enable Textbox
             fillgird();         //Show Data in Gridview at Runtime
-            grdViewParty.CurrentCell = grdViewParty.Rows[0].Cells[1];  //Set 1st row as current row by default
-            LoadDatatoTextBox();  // show data in Textbox from Gridview
-            
+            if (grdViewParty.RowCount>0) {
+                grdViewParty.CurrentCell = grdViewParty.Rows[0].Cells[1];  //Set 1st row as current row by default
+                LoadDatatoTextBox();  // show data in Textbox from Gridview
+            }else
+            {
+                cmdDelete.Visible = false;
+                cmdEdit.Visible = false;
+            }
+
 
         }
 
@@ -64,6 +70,13 @@ namespace PtrCma
   
             grdViewParty.Size = Global.grdPartySize;
             this.Width = grdViewParty.Width + txtareanotes.Width + 155;
+            grdViewParty.RowsDefaultCellStyle.BackColor = Color.LightGray;
+            grdViewParty.ColumnHeadersDefaultCellStyle.BackColor = Global.grdPartyBackColor;
+           
+            grdViewParty.ColumnHeadersHeight = 30;
+            grdViewParty.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            grdViewParty.EnableHeadersVisualStyles = false;
+
             //this.picFrmClose. = 5;
         }
 
@@ -139,13 +152,14 @@ namespace PtrCma
             grdViewParty.Columns[1].Width = 100;
             grdViewParty.Columns[4].Visible = true;
             grdViewParty.Columns[4].HeaderText = "Party Name";
-            grdViewParty.Columns[4].Width = 158;
+            grdViewParty.Columns[4].Width = 198;
 
         }
 
 
         private void LoadDatatoTextBox()
         {
+            if (grdViewParty.RowCount>0) {
             DataGridViewRow row = this.grdViewParty.Rows[0];
             txtCodeno.Text = row.Cells["CL_CODENO"].Value.ToString();
             txtActivity.Text = row.Cells["CL_ACT"].Value.ToString();
@@ -164,6 +178,12 @@ namespace PtrCma
             txtPrepBy1.Text = row.Cells["CL_PREP1"].Value.ToString();
             txtPrepBy2.Text = row.Cells["CL_PREP2"].Value.ToString();
             txtareanotes.Text = row.Cells["CL_NOTES"].Value.ToString();
+            }else
+            {
+                cmdDelete.Visible = false;
+                cmdEdit.Visible = false;
+            }
+
         }
 
         private void LoadCurrentDatatoTextBox(int rowNum)
@@ -219,6 +239,8 @@ namespace PtrCma
                 btn.FlatStyle = FlatStyle.Flat;
                 btn.BackgroundImageLayout = ImageLayout.Stretch;
             }
+           
+            
         }
 
         //public enum RoundedCorners
@@ -286,6 +308,17 @@ namespace PtrCma
             txtCodeno.Size = Global.txtCodenoSize;
             txtBranch.Size = Global.txtBranchSize;
             txtareanotes.Size = Global.txtNotesSize;
+
+            //button size
+            foreach (Button btn in Controls.OfType<Button>())
+            {
+                btn.Size = Global.btnSmallSize;
+            }
+            cmdReset.Size = Global.smallBtn;
+            cmdCancel.Size = Global.btnmedSize;
+            cmdDelete.Size = Global.btnmedSize;
+            cmdSelect.Size = Global.btnLargeSize;
+
         }
 
         private void cmdAdd_Click(object sender, EventArgs e)       
@@ -409,7 +442,7 @@ namespace PtrCma
                 {
                     if (txtCodeno.Text == grdViewParty[1, nCounter].Value.ToString())
                     {
-                        MessageBox.Show("That product has been selected already.", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show("Duplicate code is not allowed.", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         txtCodeno.Focus();
                         return;
                     }

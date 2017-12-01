@@ -48,7 +48,7 @@ namespace PtrCma
                 if (i == 0)
                 {
                     newButton.Name = "cmdBnkStnd";
-                    newButton.Text = "  BANK STANDARD";
+                    newButton.Text = "  BANK &STANDARD";
                     newButton.Left = spacing;
                     newButton.Image = Global.cmdBnkStndIcon;
                     
@@ -56,7 +56,7 @@ namespace PtrCma
                 if (i == 1)
                 {
                     newButton.Name = "cmdCMAProj";
-                    newButton.Text = "  CMA PROJECT";
+                    newButton.Text = "  CMA &PROJECT";
                     newButton.Left = buttons[0].Right + spacing;
                     newButton.Image = Global.cmdCmsProjIcon;
 
@@ -64,21 +64,21 @@ namespace PtrCma
                 if (i == 2)
                 {
                     newButton.Name = "cmdBackup";
-                    newButton.Text = "  BACKUP DATA";
+                    newButton.Text = "  &BACKUP DATA";
                     newButton.Left = buttons[1].Right + spacing;
                     newButton.Image = Global.cmdBackupIcon;
                 }
                 if (i == 3)
                 {
                     newButton.Name = "cmdRestore";
-                    newButton.Text = "  RESTORE DATA";
+                    newButton.Text = "  &RESTORE DATA";
                     newButton.Left = buttons[2].Right + spacing;
                     newButton.Image = Global.cmdRestoreIcon;
                 }
                 if (i == 4)
                 {
                     newButton.Name = "cmdExit";
-                    newButton.Text = "  EXIT";
+                    newButton.Text = "  E&XIT";
                     newButton.Left = buttons[3].Right + spacing;
                     newButton.Image = Global.cmdExitIcon;
                 }
@@ -93,9 +93,13 @@ namespace PtrCma
             newLbl.Font = Global.lblCMSfont;
             newLbl.ForeColor = Global.lblCMSColr;
             newLbl.BackColor = System.Drawing.Color.Transparent;
-            newLbl.Text = "CMS DATA v 1.0";
+            newLbl.Text = "CMA DATA v 1.0";
             newLbl.Location = new System.Drawing.Point(spacing, 100);
             newLbl.Visible = true;
+            newLbl.BringToFront();
+            newLbl.Width= 865;
+            newLbl.Height = 89;
+            this.Controls.Add(newLbl);
             foreach (Button c in Controls.OfType<Button>())
             {
                 //set size of buttons
