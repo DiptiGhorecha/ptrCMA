@@ -719,11 +719,11 @@ namespace PtrCma
         {
 
         }
-        //protected override void OnPaintBackground(PaintEventArgs e)
-        //{
-        //    e.Graphics.FillRectangle(Brushes.PaleTurquoise, e.ClipRectangle);
 
-        //    this.BackgroundImage = Global.partyFrmBackImg;
-        //}
+        private void cmdReset_EnabledChanged(object sender, EventArgs e)
+        {
+            cmdReset.ForeColor = cmdReset.Enabled ? Color.White : Color.White;
+        }
+
     }
 }

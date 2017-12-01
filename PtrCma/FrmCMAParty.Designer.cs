@@ -114,6 +114,7 @@
             this.cmdReset.TabIndex = 2;
             this.cmdReset.Text = "Reset";
             this.cmdReset.UseVisualStyleBackColor = false;
+            this.cmdReset.EnabledChanged += new System.EventHandler(this.cmdReset_EnabledChanged);
             this.cmdReset.Click += new System.EventHandler(this.cmdReset_Click);
             // 
             // grdViewParty

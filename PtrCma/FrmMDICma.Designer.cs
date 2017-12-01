@@ -96,6 +96,7 @@
             // 
             this.lblCopyright.ActiveLinkColor = System.Drawing.Color.White;
             this.lblCopyright.BackColor = System.Drawing.Color.Transparent;
+            this.lblCopyright.ForeColor = System.Drawing.Color.White;
             this.lblCopyright.LinkArea = new System.Windows.Forms.LinkArea(16, 36);
             this.lblCopyright.LinkColor = System.Drawing.Color.White;
             this.lblCopyright.Location = new System.Drawing.Point(5, 225);

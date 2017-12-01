@@ -140,6 +140,9 @@ namespace PtrCma
                     if (dialogResult == DialogResult.Yes)
                     {
                         System.Environment.Exit(1);
+                    }else
+                    {
+                        break;
                     }
 
 
