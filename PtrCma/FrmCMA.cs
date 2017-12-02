@@ -41,10 +41,20 @@ namespace PtrCma
             gridViewCMA.Top = lstViewTopic.Bottom+50;
             gridViewCMA.Height = this.Height - Global.chrtLstViewHeight - 50;
             gridViewCMA.Left = this.Left+1;
-            gridViewCMA.ColumnHeadersDefaultCellStyle.BackColor = Global.gridHeaderColorCMS;
+
+            // Column Header Color of Gridview
+            gridViewCMA.ColumnHeadersDefaultCellStyle.BackColor = Global.grdPartyBackColor;
+            gridViewCMA.ColumnHeadersDefaultCellStyle.ForeColor = Global.grdPartyForeColor;
             gridViewCMA.ColumnHeadersHeight = 30;
             gridViewCMA.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             gridViewCMA.EnableHeadersVisualStyles = false;
+
+            gridViewCMA.RowsDefaultCellStyle.BackColor = Color.White;     // Row Color of Gridview
+
+           
+          
+            
+           
 
         }
         void gridViewCMA_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
