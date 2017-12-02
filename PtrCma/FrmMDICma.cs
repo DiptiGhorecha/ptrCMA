@@ -9,6 +9,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace PtrCma
 {
@@ -22,8 +23,8 @@ namespace PtrCma
         public FrmMDICma()
         {
             InitializeComponent();
-            
         }
+
 
         private void FrmMDICma_Load(object sender, EventArgs e)
         {
@@ -112,10 +113,25 @@ namespace PtrCma
             lblCopyright.BackgroundImage = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.footerbg.png"));
             lblCopyright.Left = this.Location.X + (this.Width - lblCopyright.Width) / 2;
             lblCopyright.Top = this.Bottom - lblCopyright.Height-6;
-            
 
-        }
 
+             Mutex mutex = new Mutex(true, "{8F6F0AC4-B9A1-45fd-A8CF-72F04E6BDE8F}");
+ 
+    
+            if (mutex.WaitOne(TimeSpan.Zero, true))
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new FrmMDICma());
+                mutex.ReleaseMutex();
+            }
+            else
+            {
+                MessageBox.Show("only one instance at a time");
+            }
+        
+    }
+    
         private void pictMinBtn_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;

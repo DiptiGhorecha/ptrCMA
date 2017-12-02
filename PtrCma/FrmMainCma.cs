@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace PtrCma
@@ -14,16 +16,25 @@ namespace PtrCma
         public Action NotifyMainFormToOpenChildFormParty;
         public FrmMainCma()
         {
+           
+
             this.Visible = false;
             InitializeComponent();
 
-        }
+          
 
+        }
+     
+  
         private void FrmMainCma_Load(object sender, EventArgs e)
         {
+
             settings();
             this.Visible = true;
-        }
+
+            
+        
+    }
 
         public void settings()
         {

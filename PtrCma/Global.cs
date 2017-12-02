@@ -29,6 +29,7 @@ namespace PtrCma
         public static Color cmdFontColr = System.Drawing.Color.White;
         public static Font lblCMSfont = new System.Drawing.Font("Viner Hand ITC", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         public static Color lblCMSColr = System.Drawing.Color.White;
+        
 
         //Party Master Form
         public static Bitmap partyFrmBackImg = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.center-bg.png"));
@@ -45,20 +46,23 @@ namespace PtrCma
         public static Color lblForeColorPartyMst = System.Drawing.Color.White;   //Label Fore/Text Color
         public static Font  lblPartyfont = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         public static Color txtColorPartyMst = System.Drawing.Color.White;     //Textbox color
-        public static Size smallsizelbl = new System.Drawing.Size(40, 20);
-        public static Size medsizelbl = new System.Drawing.Size(85, 20);
-        public static Size largesizelbl = new System.Drawing.Size(490, 30);
+        public static Size smallsizelbl = new System.Drawing.Size(40, 16);          //Find Label Size
+        public static Size medsizelbl = new System.Drawing.Size(85, 16);            //All Label Size    
+        public static Size largesizelbl = new System.Drawing.Size(490, 30);         //Party Label Size
         public static Size txtCommonSize = new System.Drawing.Size(320, 20);
         public static Size txtFindSize = new System.Drawing.Size(195, 20);
         public static Size txtCodenoSize = new System.Drawing.Size(100, 20);
         public static Size txtBranchSize = new System.Drawing.Size(100, 20);
-        public static Size txtNotesSize = new System.Drawing.Size(410, 50);
-        public static Size grdPartySize = new System.Drawing.Size(301, 450);
+        public static Size txtNotesSize = new System.Drawing.Size(410, 70);
+        public static Size grdPartySize = new System.Drawing.Size(301, 415);
         public static Size btnSmallSize = new System.Drawing.Size(50, 35);         // For add edit save exit Button
         public static Size btnmedSize = new System.Drawing.Size(60, 35);            // For Delete Cancel Butoon
         public static Size btnLargeSize = new System.Drawing.Size(170, 35);     // For Select Party Button
         public static Size smallBtn = new System.Drawing.Size(50, 22);          //For Reset Button
-        public static Color grdPartyBackColor = System.Drawing.Color.Orange;
+        public static Color grdPartyBackColor = System.Drawing.Color.CadetBlue;//FromArgb(31, 109, 96);
+        public static Color grdPartyForeColor = System.Drawing.Color.White;
+        public static Font txtSize=new System.Drawing.Font("Arial",10F);
+        public static Font lblSize = new System.Drawing.Font("Arial", 10F);
         //public static Size lbl = system
 
         //All Form after click

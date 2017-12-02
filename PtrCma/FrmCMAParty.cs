@@ -11,6 +11,7 @@ using System.Data.OleDb;
 using System.IO;
 using System.Reflection;
 using MessageBoxExample;
+using System.Threading;
 
 namespace PtrCma
 {
@@ -39,19 +40,23 @@ namespace PtrCma
 
         private void FrmCMAParty_Load(object sender, EventArgs e)
         {
+
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true);
             this.KeyPreview = true; //To handle enter key
            
             Settings();  //set size and color of controls
             controlvisible();   // Visible Button and Textbox
-            controlenable();    //Enable Button and Textbox
+           controlenable();    //Enable Button and Textbox
             clearTextbox();     //Clear the Textbox
-            enableTextbox();    //Enable Textbox
+                                // enableTextbox();    //Enable Textbox
+            richAreaNotes.Enabled = false;
             fillgird();         //Show Data in Gridview at Runtime
+
             if (grdViewParty.RowCount>0) {
                 grdViewParty.CurrentCell = grdViewParty.Rows[0].Cells[1];  //Set 1st row as current row by default
                 LoadDatatoTextBox();  // show data in Textbox from Gridview
-            }else
+            }
+            else
             {
                 cmdDelete.Visible = false;
                 cmdEdit.Visible = false;
@@ -63,21 +68,27 @@ namespace PtrCma
 
         private void Settings()
         {
-            this.BackgroundImage = Global.partyFrmBackImg;
+            this.BackgroundImage = Global.partyFrmBackImg;      // Show BackGround Image
             setControlcolor(); //Label and Textbox BackColor/Forecolor
             setControlsize(); //Label and TextBox Resize
                               // this.BackColor = Global.backColorPartyMst;   //Set Background Color of the form
   
             grdViewParty.Size = Global.grdPartySize;
-            this.Width = grdViewParty.Width + txtareanotes.Width + 155;
-            grdViewParty.RowsDefaultCellStyle.BackColor = Color.LightGray;
-            grdViewParty.ColumnHeadersDefaultCellStyle.BackColor = Global.grdPartyBackColor;
-           
+            this.Width = grdViewParty.Width + richAreaNotes.Width + 155;
+
+            grdViewParty.RowsDefaultCellStyle.BackColor = Color.White;     // Row Color of Gridview
+         
+            // Column Header Color of Gridview
             grdViewParty.ColumnHeadersHeight = 30;
             grdViewParty.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             grdViewParty.EnableHeadersVisualStyles = false;
+            grdViewParty.ColumnHeadersDefaultCellStyle.ForeColor = Global.grdPartyForeColor;
+            grdViewParty.ColumnHeadersDefaultCellStyle.BackColor = Global.grdPartyBackColor;
 
-            //this.picFrmClose. = 5;
+            richAreaNotes.AppendText(Environment.NewLine);   // After Pressing Enter Inserting New Line
+                                                             //this.picFrmClose. = 5;
+
+          
         }
 
 
@@ -114,6 +125,7 @@ namespace PtrCma
             foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
             {
                 txt.Clear();
+                richAreaNotes.Clear();
             }
         }
 
@@ -123,6 +135,7 @@ namespace PtrCma
             foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
             {
                 txt.Enabled = true;
+                richAreaNotes.Enabled = true;
             }
         }
 
@@ -150,6 +163,7 @@ namespace PtrCma
             grdViewParty.Columns[1].Visible = true;
             grdViewParty.Columns[1].HeaderText = "Party Code";
             grdViewParty.Columns[1].Width = 100;
+
             grdViewParty.Columns[4].Visible = true;
             grdViewParty.Columns[4].HeaderText = "Party Name";
             grdViewParty.Columns[4].Width = 198;
@@ -159,6 +173,26 @@ namespace PtrCma
 
         private void LoadDatatoTextBox()
         {
+          
+                txtCodeno.MaxLength = 10;
+                txtActivity.MaxLength = 10;
+                txtBranch.MaxLength = 20;
+                txtName.MaxLength = 40;
+                txtAdd1.MaxLength = 20;
+                txtAdd2.MaxLength = 20;
+                txtAdd3.MaxLength = 20;
+                txtCity.MaxLength = 15;
+                txtState.MaxLength = 20;
+                txtPhone.MaxLength = 15;
+                txtMobile.MaxLength = 15;
+                txtFax.MaxLength = 20;
+                txtEmail1.MaxLength = 30;
+                txtEmail2.MaxLength = 30;
+                txtPrepBy1.MaxLength = 20;
+                txtPrepBy2.MaxLength = 20;
+                richAreaNotes.MaxLength = 300;
+
+
             if (grdViewParty.RowCount>0) {
             DataGridViewRow row = this.grdViewParty.Rows[0];
             txtCodeno.Text = row.Cells["CL_CODENO"].Value.ToString();
@@ -177,7 +211,7 @@ namespace PtrCma
             txtEmail2.Text = row.Cells["CL_EMAIL2"].Value.ToString();
             txtPrepBy1.Text = row.Cells["CL_PREP1"].Value.ToString();
             txtPrepBy2.Text = row.Cells["CL_PREP2"].Value.ToString();
-            txtareanotes.Text = row.Cells["CL_NOTES"].Value.ToString();
+            richAreaNotes.Text = row.Cells["CL_NOTES"].Value.ToString();
             }else
             {
                 cmdDelete.Visible = false;
@@ -205,7 +239,7 @@ namespace PtrCma
             txtEmail2.Text = row.Cells["CL_EMAIL2"].Value.ToString();
             txtPrepBy1.Text = row.Cells["CL_PREP1"].Value.ToString();
             txtPrepBy2.Text = row.Cells["CL_PREP2"].Value.ToString();
-            txtareanotes.Text = row.Cells["CL_NOTES"].Value.ToString();
+            richAreaNotes.Text = row.Cells["CL_NOTES"].Value.ToString();
         }
         
 
@@ -216,6 +250,7 @@ namespace PtrCma
                 txt.Enabled = false;
                 txtFind.Enabled = true;
                 txt.BackColor = Global.txtColorPartyMst;
+                
             }
 
             foreach (Label lbl in Controls.OfType<Label>()) //Set the Label Color
@@ -232,6 +267,7 @@ namespace PtrCma
             lblparty.ImageAlign= ContentAlignment.MiddleCenter;
             Bitmap bm = Global.partyLblBackImg;
             pictureBox1.Image = bm;
+
             foreach (Button btn in Controls.OfType<Button>())
             {
                 btn.ForeColor = Global.btnfore;
@@ -294,8 +330,11 @@ namespace PtrCma
         {
             foreach (Label lbl in Controls.OfType<Label>())
             {
+                lbl.Font = Global.lblSize;
                 lbl.Size = Global.medsizelbl;
                 lbl.AutoSize = false;
+                
+
             }
             lblfind.Size = Global.smallsizelbl;
             lblparty.Size = Global.largesizelbl;
@@ -303,11 +342,13 @@ namespace PtrCma
             foreach (TextBox txt in Controls.OfType<TextBox>())
             {
                 txt.Size = Global.txtCommonSize;
+                txt.Font = Global.txtSize;
+
             }
             txtFind.Size = Global.txtFindSize;
             txtCodeno.Size = Global.txtCodenoSize;
             txtBranch.Size = Global.txtBranchSize;
-            txtareanotes.Size = Global.txtNotesSize;
+            richAreaNotes.Size = Global.txtNotesSize;
 
             //button size
             foreach (Button btn in Controls.OfType<Button>())
@@ -319,6 +360,7 @@ namespace PtrCma
             cmdDelete.Size = Global.btnmedSize;
             cmdSelect.Size = Global.btnLargeSize;
 
+
         }
 
         private void cmdAdd_Click(object sender, EventArgs e)       
@@ -329,9 +371,9 @@ namespace PtrCma
             cmdCancel.Visible = true;
             grdViewParty.Enabled = false;
             cmdReset.Enabled = false;
+            txtFind.Enabled = false;
             clearTextbox();
             enableTextbox();
-            txtFind.Enabled = false;
             cmdAdd.Visible = false;
             cmdEdit.Visible = false;
             cmdDelete.Visible = false;
@@ -339,6 +381,8 @@ namespace PtrCma
             cmdExit.Visible = false;
             txtCodeno.Focus();
             isAddEdit = "A";
+            lblData.Visible = true;
+            lblData.Text = "ADD";
         }
         
         private void btnInsert()            //Perform Insert/Update After Clicking
@@ -356,7 +400,7 @@ namespace PtrCma
                 if (isAddEdit == "A")  //Add button click
             {
                 txtCodeno.Focus();
-                String sql = "insert into Cd_MsCln(CL_CODENO,CL_ACT,CL_BRANCH,CL_NAME,CL_ADD1,CL_ADD2,CL_ADD3,CL_CITY,CL_STATE,CL_FPH,CL_MOB,CL_FAX,CL_EMAIL1,CL_EMAIL2,CL_NOTES,CL_PREP1,CL_PREP2) values ('" + this.txtCodeno.Text + "','" + this.txtActivity.Text + "','" + this.txtBranch.Text + "','" + this.txtName.Text + "','" + this.txtAdd1.Text + "','" + this.txtAdd2.Text + "','" + this.txtAdd3.Text + "','" + this.txtCity.Text + "','" + this.txtState.Text + "','" + this.txtPhone.Text + "','" + this.txtMobile.Text + "','" + this.txtFax.Text + "','" + this.txtEmail1.Text + "','" + this.txtEmail2.Text + "','" + this.txtareanotes.Text + "','" + this.txtPrepBy1.Text + "','" + this.txtPrepBy2.Text + "') ";
+                String sql = "insert into Cd_MsCln(CL_CODENO,CL_ACT,CL_BRANCH,CL_NAME,CL_ADD1,CL_ADD2,CL_ADD3,CL_CITY,CL_STATE,CL_FPH,CL_MOB,CL_FAX,CL_EMAIL1,CL_EMAIL2,CL_NOTES,CL_PREP1,CL_PREP2) values ('" + this.txtCodeno.Text + "','" + this.txtActivity.Text + "','" + this.txtBranch.Text + "','" + this.txtName.Text + "','" + this.txtAdd1.Text + "','" + this.txtAdd2.Text + "','" + this.txtAdd3.Text + "','" + this.txtCity.Text + "','" + this.txtState.Text + "','" + this.txtPhone.Text + "','" + this.txtMobile.Text + "','" + this.txtFax.Text + "','" + this.txtEmail1.Text + "','" + this.txtEmail2.Text + "','" + this.richAreaNotes.Text + "','" + this.txtPrepBy1.Text + "','" + this.txtPrepBy2.Text + "') ";
                 OleDbCommand cmd = new OleDbCommand(sql, con);
                 cmd.Transaction = transaction;
                 cmd.ExecuteNonQuery();
@@ -378,7 +422,7 @@ namespace PtrCma
                 DialogResult dialogResult1 = MessageBox.Show("Do You want to Update this Record?", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
                 if (dialogResult1 == DialogResult.Yes)
                 {
-                        String sql1 = "Update Cd_MsCln set [CL_ACT]='" + this.txtActivity.Text + "' , [CL_BRANCH] ='" + this.txtBranch.Text + "', [CL_NAME] ='" + this.txtName.Text + "',[CL_ADD1]='" + this.txtAdd1.Text + "', [CL_ADD2]='" + this.txtAdd2.Text + "', [CL_ADD3]='" + this.txtAdd3.Text + "', [CL_CITY]='" + this.txtCity.Text + "', [CL_STATE]='" + this.txtState.Text + "', [CL_FPH]='" + this.txtPhone.Text + "', [CL_MOB]='" + this.txtMobile.Text + "', [CL_FAX]='" + this.txtFax.Text + "', [CL_EMAIL1]='" + this.txtEmail1.Text + "', [CL_EMAIL2]='" + this.txtEmail2.Text + "', [CL_NOTES]='" + this.txtareanotes.Text + "', [CL_PREP1]='" + this.txtPrepBy1.Text + "', [CL_PREP2]='" + this.txtPrepBy2.Text + "'  WHERE CL_CODENO= '" + this.txtCodeno.Text + "' ";
+                        String sql1 = "Update Cd_MsCln set [CL_ACT]='" + this.txtActivity.Text + "' , [CL_BRANCH] ='" + this.txtBranch.Text + "', [CL_NAME] ='" + this.txtName.Text + "',[CL_ADD1]='" + this.txtAdd1.Text + "', [CL_ADD2]='" + this.txtAdd2.Text + "', [CL_ADD3]='" + this.txtAdd3.Text + "', [CL_CITY]='" + this.txtCity.Text + "', [CL_STATE]='" + this.txtState.Text + "', [CL_FPH]='" + this.txtPhone.Text + "', [CL_MOB]='" + this.txtMobile.Text + "', [CL_FAX]='" + this.txtFax.Text + "', [CL_EMAIL1]='" + this.txtEmail1.Text + "', [CL_EMAIL2]='" + this.txtEmail2.Text + "', [CL_NOTES]='" + this.richAreaNotes.Text + "', [CL_PREP1]='" + this.txtPrepBy1.Text + "', [CL_PREP2]='" + this.txtPrepBy2.Text + "'  WHERE CL_CODENO= '" + this.txtCodeno.Text + "' ";
                         OleDbCommand cmd1 = new OleDbCommand(sql1, con);
                         cmd1.Transaction = transaction;
                         cmd1.ExecuteNonQuery();
@@ -419,15 +463,16 @@ namespace PtrCma
             txtFind.Enabled = false;
             grdViewParty.Enabled = true;
             //Validations 
-            if (txtCodeno.Text.Trim() == string.Empty)              //Code No  
-            {
-                MessageBox.Show("Code Number Field cannnot be blank","Perfect Tax Reporter - CMA 1.0");
-               // MyMessageBox.ShowBox("Code Number Field cannnot be blank");
-                txtCodeno.Focus();
-                return; // return because we don't want to run normal code of buton click
-            }
-
-
+           // var lblCodeno = document.getElementById("lblCodeno").innerText;
+            
+                if (txtCodeno.Text.Trim() == string.Empty)              //Code No  
+                {
+                    MessageBox.Show("Code Number Field cannnot be blank", "Perfect Tax Reporter - CMA 1.0");
+                    // MyMessageBox.ShowBox("Code Number Field cannnot be blank");
+                    txtCodeno.Focus();
+                    return; // return because we don't want to run normal code of buton click
+                }
+       
             if (txtName.Text.Trim() == string.Empty)              //Name
             {
                 MessageBox.Show("Name Field cannnot be blank","Perfect Tax Reporter - CMA 1.0");
@@ -471,11 +516,12 @@ namespace PtrCma
         {
             txtFind.Enabled = true;
             cmdReset.Enabled = true;
-
+            
             grdViewParty.Enabled = true;
             foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
             {
                 txt.Enabled = false;
+                richAreaNotes.Enabled = false;
             }
 
             DialogResult dialogResult = MessageBox.Show("Are You Sure Want to Cancel?", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
@@ -498,7 +544,7 @@ namespace PtrCma
             }
 
             LoadDatatoTextBox();
-
+            lblData.Visible = false;
         }
 
         private void cmdEdit_Click(object sender, EventArgs e)
@@ -509,6 +555,7 @@ namespace PtrCma
             txtBranch.Focus();
         
             enableTextbox();
+            
             txtCodeno.Enabled = false;
 
             txtFind.Enabled = true;
@@ -522,7 +569,9 @@ namespace PtrCma
             cmdExit.Visible = false;
             cmdReset.Enabled = false;
             txtFind.Enabled = false;
-            
+           
+            lblData.Visible = true;
+            lblData.Text = "Edit";
 
         }
 
@@ -576,10 +625,24 @@ namespace PtrCma
 
         private void cmdSelect_Click(object sender, EventArgs e)
         {
-            if (NotifyMainFormToOpenChildFormCma != null)
+            if (grdViewParty.RowCount > 0)
             {
-                NotifyMainFormToOpenChildFormCma();
+                grdViewParty.CurrentCell = grdViewParty.Rows[0].Cells[1];  //Set 1st row as current row by default
+                if (NotifyMainFormToOpenChildFormCma != null)
+                {
+                    NotifyMainFormToOpenChildFormCma();
+                }
             }
+            else
+            {
+                this.Hide();
+                NotifyMainFormToCloseChildFormParty();
+                MessageBox.Show("Please Create or Select Data First", "Perfect Tax Reporter - CMA 1.0");
+            }
+            
+               
+
+            
 
         }
 
@@ -625,7 +688,7 @@ namespace PtrCma
                 txtEmail2.Text = row.Cells["CL_EMAIL2"].Value.ToString();
                 txtPrepBy1.Text = row.Cells["CL_PREP1"].Value.ToString();
                 txtPrepBy2.Text = row.Cells["CL_PREP2"].Value.ToString();
-                txtareanotes.Text = row.Cells["CL_NOTES"].Value.ToString();
+                richAreaNotes.Text = row.Cells["CL_NOTES"].Value.ToString();
 
             }
         }
@@ -723,6 +786,11 @@ namespace PtrCma
         private void cmdReset_EnabledChanged(object sender, EventArgs e)
         {
             cmdReset.ForeColor = cmdReset.Enabled ? Color.White : Color.White;
+        }
+
+        private void richAreaNotes_KeyDown(object sender, KeyEventArgs e)
+        {
+
         }
 
     }
