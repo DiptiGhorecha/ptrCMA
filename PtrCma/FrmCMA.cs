@@ -12,51 +12,15 @@ namespace PtrCma
 {
     public partial class FrmCMA : Form
     {
+
         public Action NotifyMainFormToCloseChildFormParty;
+        public Action NotifyMainFormToOpenChildFormCma;
         public FrmCMA()
         {
             InitializeComponent();
         }
 
-        public void Settings()
-        {
-            this.Width = this.Parent.Width-4;
-            this.Height = this.Parent.Height - 105;
-            
-            this.BackColor = Global.appBackColr;
-            //Topic list box label
-            lstViewTopic.Top = 0;
-            lstViewTopic.Left = this.Left+1;
-            lstViewTopic.Width = (this.Width-panelCmdBtns.Width-10)/2;
-            lstViewTopic.Height = Global.chrtLstViewHeight;
-            lstViewTopic.BackColor = Global.lstBxBackColorCMS;
-            chart2.BackColor = Global.chartBackColorCMS;
-           
-            panelCmdBtns.Left = lstViewTopic.Right + 1;
-            chart2.Left = panelCmdBtns.Right+2;
-            chart2.Width= (this.Width - panelCmdBtns.Width) / 2 ;
-            chart2.Height = Global.chrtLstViewHeight;
-            gridViewCMA.Width = this.Width-3;
-            
-            gridViewCMA.Top = lstViewTopic.Bottom+50;
-            gridViewCMA.Height = this.Height - Global.chrtLstViewHeight - 50;
-            gridViewCMA.Left = this.Left+1;
-
-            // Column Header Color of Gridview
-            gridViewCMA.ColumnHeadersDefaultCellStyle.BackColor = Global.grdPartyBackColor;
-            gridViewCMA.ColumnHeadersDefaultCellStyle.ForeColor = Global.grdPartyForeColor;
-            gridViewCMA.ColumnHeadersHeight = 30;
-            gridViewCMA.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            gridViewCMA.EnableHeadersVisualStyles = false;
-
-            gridViewCMA.RowsDefaultCellStyle.BackColor = Color.White;     // Row Color of Gridview
-
-           
-          
-            
-           
-
-        }
+       
         void gridViewCMA_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             DataGridViewCell cell = gridViewCMA.Rows[e.RowIndex].Cells[e.ColumnIndex];
@@ -74,11 +38,148 @@ namespace PtrCma
 
         private void FrmCMA_Load(object sender, EventArgs e)
         {
-
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true); //Stop the Flickering
             Settings();
             checkTables();
             fillTopicListBox();
             fillCMSDataGrid();
+            setControlSize();
+            foreach (Button btn in Controls.OfType<Button>())
+            {
+                btn.BackgroundImage = Global.cmdBackImg;
+            }
+        }
+
+    
+
+        private void setControlSize()
+        {
+            
+            lblPic.Size = Global.lblPicTitle;
+        }
+
+        public void Settings()
+        {
+            this.BackgroundImage = Global.cmsFrmBackImg;
+            // panelCmdBtns.BackgroundImage = Global.cmsFrmBackImg;
+            this.Width = this.Parent.Width - 4;
+            this.Height = this.Parent.Height - 105;
+
+            this.picFrmClose.Top = 7;
+            this.picFrmClose.Left = this.Width - this.picFrmClose.Width - 15;
+
+            this.BackColor = Global.appBackColr;
+            //Topic list box label
+            // lstViewTopic.Top = 0;
+            lstViewTopic.Left = this.Left + 1;
+            lstViewTopic.Width = (this.Width - panelCmdBtns.Width - 10) / 2;
+            lstViewTopic.Height = Global.chrtLstViewHeight;
+            lstViewTopic.BackColor = Global.lstBxBackColorCMS;
+            
+            chart2.BackColor = Global.chartBackColorCMS;
+
+            panelCmdBtns.Left = lstViewTopic.Right + 1;
+            chart2.Left = panelCmdBtns.Right + 2;
+            chart2.Width = (this.Width - panelCmdBtns.Width) / 2;
+            chart2.Height = Global.chrtLstViewHeight;
+            gridViewCMA.Width = this.Width - 3;
+
+            gridViewCMA.Top = lstViewTopic.Bottom + 25;
+            gridViewCMA.Height = this.Height - Global.chrtLstViewHeight - 50;
+            gridViewCMA.Left = this.Left + 1;
+
+            // Column Header Color of Gridview
+            gridViewCMA.ColumnHeadersDefaultCellStyle.BackColor = Global.grdPartyBackColor;
+            gridViewCMA.ColumnHeadersDefaultCellStyle.ForeColor = Global.grdPartyForeColor;
+            gridViewCMA.ColumnHeadersHeight = 30;
+            gridViewCMA.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            gridViewCMA.EnableHeadersVisualStyles = false;
+
+            gridViewCMA.RowsDefaultCellStyle.BackColor = Color.White;    // Row Color of Gridview
+           
+            setPanelControlColor();
+        }
+
+        private void listView1_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
+        {
+            e.Graphics.FillRectangle(Brushes.Pink, e.Bounds);
+            e.DrawText();
+        }
+        private void setPanelControlColor()
+        {
+            // Set Back  of Control Panel
+            cmdChngPrty.BackgroundImage = Global.cmdImg;
+            cmdCurYr.BackgroundImage = Global.cmdImg;
+            cmdCopyYr.BackgroundImage = Global.cmdImg;
+            cmdRsIn.BackgroundImage = Global.cmdImg;
+            cmdInsRow.BackgroundImage = Global.cmdImg;
+            cmdDelRow.BackgroundImage = Global.cmdImg;
+            cmdChngDesc.BackgroundImage = Global.cmdImg;
+            cmdResetDeta.BackgroundImage = Global.cmdImg;
+            cmdPrntGrph.BackgroundImage = Global.cmdImg;
+            cmdEdit.BackgroundImage = Global.cmdImg;
+            cmdSave.BackgroundImage = Global.cmdImg;
+            cmdCancel.BackgroundImage = Global.cmdImg;
+            cmdRefresh.BackgroundImage = Global.cmdImg;
+            cmdFormula.BackgroundImage = Global.cmdImg;
+            cmdExport.BackgroundImage = Global.cmdImg;
+            cmdPrint.BackgroundImage = Global.cmdImg;
+
+            // Set Fore Color of Control Panel
+            cmdChngPrty.ForeColor = Global.btnfore;
+            cmdCurYr.ForeColor = Global.btnfore;
+            cmdCopyYr.ForeColor = Global.btnfore;
+            cmdRsIn.ForeColor = Global.btnfore;
+            cmdInsRow.ForeColor = Global.btnfore;
+            cmdDelRow.ForeColor = Global.btnfore;
+            cmdChngDesc.ForeColor = Global.btnfore;
+            cmdResetDeta.ForeColor = Global.btnfore;
+            cmdPrntGrph.ForeColor = Global.btnfore;
+            cmdEdit.ForeColor = Global.btnfore;
+            cmdSave.ForeColor = Global.btnfore;
+            cmdCancel.ForeColor = Global.btnfore;
+            cmdRefresh.ForeColor = Global.btnfore;
+            cmdFormula.ForeColor = Global.btnfore;
+            cmdExport.ForeColor = Global.btnfore;
+            cmdPrint.ForeColor = Global.btnfore;
+
+            //Set Style of Button
+            cmdChngPrty.FlatStyle = FlatStyle.Flat;
+            cmdCurYr.FlatStyle = FlatStyle.Flat;
+            cmdCopyYr.FlatStyle = FlatStyle.Flat;
+            cmdRsIn.FlatStyle = FlatStyle.Flat;
+            cmdInsRow.FlatStyle = FlatStyle.Flat;
+            cmdDelRow.FlatStyle = FlatStyle.Flat;
+            cmdChngDesc.FlatStyle = FlatStyle.Flat;
+            cmdResetDeta.FlatStyle = FlatStyle.Flat;
+            cmdPrntGrph.FlatStyle = FlatStyle.Flat;
+            cmdEdit.FlatStyle = FlatStyle.Flat;
+            cmdSave.FlatStyle = FlatStyle.Flat;
+            cmdCancel.FlatStyle = FlatStyle.Flat;
+            cmdRefresh.FlatStyle = FlatStyle.Flat;
+            cmdFormula.FlatStyle = FlatStyle.Flat;
+            cmdExport.FlatStyle = FlatStyle.Flat;
+            cmdPrint.FlatStyle = FlatStyle.Flat;
+
+            cmdChngPrty.BackgroundImageLayout = ImageLayout.Stretch;
+            cmdCurYr.BackgroundImageLayout = ImageLayout.Stretch;
+            cmdCopyYr.BackgroundImageLayout = ImageLayout.Stretch;
+            cmdRsIn.BackgroundImageLayout = ImageLayout.Stretch;
+            cmdInsRow.BackgroundImageLayout = ImageLayout.Stretch;
+            cmdDelRow.BackgroundImageLayout = ImageLayout.Stretch;
+            cmdChngDesc.BackgroundImageLayout = ImageLayout.Stretch;
+            cmdResetDeta.BackgroundImageLayout = ImageLayout.Stretch;
+            cmdPrntGrph.BackgroundImageLayout = ImageLayout.Stretch;
+            cmdEdit.BackgroundImageLayout = ImageLayout.Stretch;
+            cmdSave.BackgroundImageLayout = ImageLayout.Stretch;
+            cmdCancel.BackgroundImageLayout = ImageLayout.Stretch;
+            cmdRefresh.BackgroundImageLayout = ImageLayout.Stretch;
+            cmdFormula.BackgroundImageLayout = ImageLayout.Stretch;
+            cmdExport.BackgroundImageLayout = ImageLayout.Stretch;
+            cmdPrint.BackgroundImageLayout = ImageLayout.Stretch;
+            
+            picFrmClose.BackColor = System.Drawing.Color.FromArgb(124,236,246);
+            //picFrmClose.BackColor = System.Drawing.Color.Transparent;
         }
 
         private void checkTables()
@@ -193,6 +294,32 @@ namespace PtrCma
             lstViewTopic.Items.Add("Assessement of working capital required");
             lstViewTopic.Items.Add("As per Nayak Comitee");
             lstViewTopic.Items.Add("Calculation of Drawing power");
+        }
+
+        private void cmdEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmdSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmdCancel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picFrmClose_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are You Sure Want to Exit ?", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
+            if (dialogResult == DialogResult.Yes)
+            {
+                NotifyMainFormToCloseChildFormParty();
+                this.Hide();
+
+            }
         }
     }
 }

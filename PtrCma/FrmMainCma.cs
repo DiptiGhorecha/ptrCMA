@@ -71,6 +71,7 @@ namespace PtrCma
                     newButton.Left = buttons[0].Right + spacing;
                     newButton.Image = Global.cmdCmsProjIcon;
 
+
                 }
                 if (i == 2)
                 {

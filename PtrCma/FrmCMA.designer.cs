@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCMA));
             this.lstViewTopic = new System.Windows.Forms.ListView();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.gridViewCMA = new System.Windows.Forms.DataGridView();
@@ -51,19 +52,23 @@
             this.cmdResetDeta = new System.Windows.Forms.Button();
             this.cmdChngDesc = new System.Windows.Forms.Button();
             this.cmdDelRow = new System.Windows.Forms.Button();
-            this.btnInsRow = new System.Windows.Forms.Button();
+            this.cmdInsRow = new System.Windows.Forms.Button();
             this.cmdRsIn = new System.Windows.Forms.Button();
             this.cmdCopyYr = new System.Windows.Forms.Button();
             this.cmdCurYr = new System.Windows.Forms.Button();
             this.cmdChngPrty = new System.Windows.Forms.Button();
+            this.lblPic = new System.Windows.Forms.PictureBox();
+            this.picFrmClose = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCMA)).BeginInit();
             this.panelCmdBtns.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lblPic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picFrmClose)).BeginInit();
             this.SuspendLayout();
             // 
             // lstViewTopic
             // 
-            this.lstViewTopic.Location = new System.Drawing.Point(0, 31);
+            this.lstViewTopic.Location = new System.Drawing.Point(0, 47);
             this.lstViewTopic.Name = "lstViewTopic";
             this.lstViewTopic.Size = new System.Drawing.Size(265, 87);
             this.lstViewTopic.TabIndex = 0;
@@ -71,16 +76,17 @@
             // 
             // chart2
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chart2.Legends.Add(legend5);
-            this.chart2.Location = new System.Drawing.Point(718, 0);
+            this.chart2.BackColor = System.Drawing.Color.Transparent;
+            chartArea8.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea8);
+            legend8.Name = "Legend1";
+            this.chart2.Legends.Add(legend8);
+            this.chart2.Location = new System.Drawing.Point(718, 47);
             this.chart2.Name = "chart2";
-            series5.ChartArea = "ChartArea1";
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            this.chart2.Series.Add(series5);
+            series8.ChartArea = "ChartArea1";
+            series8.Legend = "Legend1";
+            series8.Name = "Series1";
+            this.chart2.Series.Add(series8);
             this.chart2.Size = new System.Drawing.Size(328, 118);
             this.chart2.TabIndex = 2;
             this.chart2.Text = "chart2";
@@ -100,6 +106,7 @@
             // 
             // panelCmdBtns
             // 
+            this.panelCmdBtns.BackColor = System.Drawing.Color.Transparent;
             this.panelCmdBtns.Controls.Add(this.textBox2);
             this.panelCmdBtns.Controls.Add(this.comboBox3);
             this.panelCmdBtns.Controls.Add(this.textBox1);
@@ -116,19 +123,19 @@
             this.panelCmdBtns.Controls.Add(this.cmdResetDeta);
             this.panelCmdBtns.Controls.Add(this.cmdChngDesc);
             this.panelCmdBtns.Controls.Add(this.cmdDelRow);
-            this.panelCmdBtns.Controls.Add(this.btnInsRow);
+            this.panelCmdBtns.Controls.Add(this.cmdInsRow);
             this.panelCmdBtns.Controls.Add(this.cmdRsIn);
             this.panelCmdBtns.Controls.Add(this.cmdCopyYr);
             this.panelCmdBtns.Controls.Add(this.cmdCurYr);
             this.panelCmdBtns.Controls.Add(this.cmdChngPrty);
-            this.panelCmdBtns.Location = new System.Drawing.Point(271, 31);
+            this.panelCmdBtns.Location = new System.Drawing.Point(271, 47);
             this.panelCmdBtns.Name = "panelCmdBtns";
-            this.panelCmdBtns.Size = new System.Drawing.Size(449, 120);
+            this.panelCmdBtns.Size = new System.Drawing.Size(449, 149);
             this.panelCmdBtns.TabIndex = 26;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(79, 31);
+            this.textBox2.Location = new System.Drawing.Point(79, 38);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(48, 20);
             this.textBox2.TabIndex = 44;
@@ -136,14 +143,14 @@
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(384, 32);
+            this.comboBox3.Location = new System.Drawing.Point(384, 39);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(55, 21);
             this.comboBox3.TabIndex = 43;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(95, 6);
+            this.textBox1.Location = new System.Drawing.Point(95, 9);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(348, 20);
             this.textBox1.TabIndex = 42;
@@ -151,7 +158,7 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(197, 30);
+            this.comboBox2.Location = new System.Drawing.Point(197, 37);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(58, 21);
             this.comboBox2.TabIndex = 41;
@@ -159,14 +166,14 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(133, 30);
+            this.comboBox1.Location = new System.Drawing.Point(133, 37);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(58, 21);
             this.comboBox1.TabIndex = 40;
             // 
             // cmdPrint
             // 
-            this.cmdPrint.Location = new System.Drawing.Point(384, 82);
+            this.cmdPrint.Location = new System.Drawing.Point(384, 107);
             this.cmdPrint.Name = "cmdPrint";
             this.cmdPrint.Size = new System.Drawing.Size(58, 35);
             this.cmdPrint.TabIndex = 39;
@@ -175,7 +182,7 @@
             // 
             // cmdExport
             // 
-            this.cmdExport.Location = new System.Drawing.Point(321, 82);
+            this.cmdExport.Location = new System.Drawing.Point(321, 107);
             this.cmdExport.Name = "cmdExport";
             this.cmdExport.Size = new System.Drawing.Size(58, 35);
             this.cmdExport.TabIndex = 38;
@@ -184,7 +191,7 @@
             // 
             // cmdFormula
             // 
-            this.cmdFormula.Location = new System.Drawing.Point(258, 82);
+            this.cmdFormula.Location = new System.Drawing.Point(258, 107);
             this.cmdFormula.Name = "cmdFormula";
             this.cmdFormula.Size = new System.Drawing.Size(58, 35);
             this.cmdFormula.TabIndex = 37;
@@ -193,7 +200,7 @@
             // 
             // cmdRefresh
             // 
-            this.cmdRefresh.Location = new System.Drawing.Point(195, 82);
+            this.cmdRefresh.Location = new System.Drawing.Point(195, 107);
             this.cmdRefresh.Name = "cmdRefresh";
             this.cmdRefresh.Size = new System.Drawing.Size(58, 35);
             this.cmdRefresh.TabIndex = 36;
@@ -202,36 +209,41 @@
             // 
             // cmdCancel
             // 
-            this.cmdCancel.Location = new System.Drawing.Point(132, 82);
+            this.cmdCancel.Location = new System.Drawing.Point(132, 107);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(58, 35);
             this.cmdCancel.TabIndex = 35;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.UseVisualStyleBackColor = true;
+            this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
             // 
             // cmdSave
             // 
-            this.cmdSave.Location = new System.Drawing.Point(69, 82);
+            this.cmdSave.Location = new System.Drawing.Point(69, 107);
             this.cmdSave.Name = "cmdSave";
             this.cmdSave.Size = new System.Drawing.Size(58, 35);
             this.cmdSave.TabIndex = 34;
             this.cmdSave.Text = "Save";
             this.cmdSave.UseVisualStyleBackColor = true;
+            this.cmdSave.Click += new System.EventHandler(this.cmdSave_Click);
             // 
             // cmdEdit
             // 
-            this.cmdEdit.Location = new System.Drawing.Point(6, 82);
+            this.cmdEdit.BackColor = System.Drawing.Color.CadetBlue;
+            this.cmdEdit.ForeColor = System.Drawing.Color.White;
+            this.cmdEdit.Location = new System.Drawing.Point(6, 107);
             this.cmdEdit.Name = "cmdEdit";
             this.cmdEdit.Size = new System.Drawing.Size(58, 35);
             this.cmdEdit.TabIndex = 33;
             this.cmdEdit.Text = "Edit";
-            this.cmdEdit.UseVisualStyleBackColor = true;
+            this.cmdEdit.UseVisualStyleBackColor = false;
+            this.cmdEdit.Click += new System.EventHandler(this.cmdEdit_Click);
             // 
             // cmdPrntGrph
             // 
-            this.cmdPrntGrph.Location = new System.Drawing.Point(362, 56);
+            this.cmdPrntGrph.Location = new System.Drawing.Point(360, 68);
             this.cmdPrntGrph.Name = "cmdPrntGrph";
-            this.cmdPrntGrph.Size = new System.Drawing.Size(81, 23);
+            this.cmdPrntGrph.Size = new System.Drawing.Size(81, 32);
             this.cmdPrntGrph.TabIndex = 32;
             this.cmdPrntGrph.Text = "Print Graph";
             this.cmdPrntGrph.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -239,9 +251,9 @@
             // 
             // cmdResetDeta
             // 
-            this.cmdResetDeta.Location = new System.Drawing.Point(273, 56);
+            this.cmdResetDeta.Location = new System.Drawing.Point(281, 68);
             this.cmdResetDeta.Name = "cmdResetDeta";
-            this.cmdResetDeta.Size = new System.Drawing.Size(86, 23);
+            this.cmdResetDeta.Size = new System.Drawing.Size(76, 32);
             this.cmdResetDeta.TabIndex = 31;
             this.cmdResetDeta.Text = "Reset Data";
             this.cmdResetDeta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -249,37 +261,37 @@
             // 
             // cmdChngDesc
             // 
-            this.cmdChngDesc.Location = new System.Drawing.Point(184, 56);
+            this.cmdChngDesc.Location = new System.Drawing.Point(161, 68);
             this.cmdChngDesc.Name = "cmdChngDesc";
-            this.cmdChngDesc.Size = new System.Drawing.Size(86, 23);
+            this.cmdChngDesc.Size = new System.Drawing.Size(117, 32);
             this.cmdChngDesc.TabIndex = 30;
-            this.cmdChngDesc.Text = "Change Desc.";
+            this.cmdChngDesc.Text = "Change Description";
             this.cmdChngDesc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.cmdChngDesc.UseVisualStyleBackColor = true;
             // 
             // cmdDelRow
             // 
-            this.cmdDelRow.Location = new System.Drawing.Point(95, 56);
+            this.cmdDelRow.Location = new System.Drawing.Point(78, 68);
             this.cmdDelRow.Name = "cmdDelRow";
-            this.cmdDelRow.Size = new System.Drawing.Size(86, 23);
+            this.cmdDelRow.Size = new System.Drawing.Size(80, 32);
             this.cmdDelRow.TabIndex = 29;
             this.cmdDelRow.Text = "Delete Row";
             this.cmdDelRow.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.cmdDelRow.UseVisualStyleBackColor = true;
             // 
-            // btnInsRow
+            // cmdInsRow
             // 
-            this.btnInsRow.Location = new System.Drawing.Point(6, 56);
-            this.btnInsRow.Name = "btnInsRow";
-            this.btnInsRow.Size = new System.Drawing.Size(86, 23);
-            this.btnInsRow.TabIndex = 28;
-            this.btnInsRow.Text = "Insert Row";
-            this.btnInsRow.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInsRow.UseVisualStyleBackColor = true;
+            this.cmdInsRow.Location = new System.Drawing.Point(6, 68);
+            this.cmdInsRow.Name = "cmdInsRow";
+            this.cmdInsRow.Size = new System.Drawing.Size(69, 32);
+            this.cmdInsRow.TabIndex = 28;
+            this.cmdInsRow.Text = "Insert Row";
+            this.cmdInsRow.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cmdInsRow.UseVisualStyleBackColor = true;
             // 
             // cmdRsIn
             // 
-            this.cmdRsIn.Location = new System.Drawing.Point(334, 30);
+            this.cmdRsIn.Location = new System.Drawing.Point(334, 37);
             this.cmdRsIn.Name = "cmdRsIn";
             this.cmdRsIn.Size = new System.Drawing.Size(45, 23);
             this.cmdRsIn.TabIndex = 27;
@@ -288,7 +300,7 @@
             // 
             // cmdCopyYr
             // 
-            this.cmdCopyYr.Location = new System.Drawing.Point(261, 30);
+            this.cmdCopyYr.Location = new System.Drawing.Point(261, 37);
             this.cmdCopyYr.Name = "cmdCopyYr";
             this.cmdCopyYr.Size = new System.Drawing.Size(67, 23);
             this.cmdCopyYr.TabIndex = 26;
@@ -297,7 +309,7 @@
             // 
             // cmdCurYr
             // 
-            this.cmdCurYr.Location = new System.Drawing.Point(6, 30);
+            this.cmdCurYr.Location = new System.Drawing.Point(6, 37);
             this.cmdCurYr.Name = "cmdCurYr";
             this.cmdCurYr.Size = new System.Drawing.Size(67, 23);
             this.cmdCurYr.TabIndex = 25;
@@ -306,19 +318,47 @@
             // 
             // cmdChngPrty
             // 
-            this.cmdChngPrty.Location = new System.Drawing.Point(6, 3);
+            this.cmdChngPrty.Location = new System.Drawing.Point(6, 6);
             this.cmdChngPrty.Name = "cmdChngPrty";
             this.cmdChngPrty.Size = new System.Drawing.Size(81, 23);
             this.cmdChngPrty.TabIndex = 24;
             this.cmdChngPrty.Text = "Change Party";
             this.cmdChngPrty.UseVisualStyleBackColor = true;
             // 
+            // lblPic
+            // 
+            this.lblPic.BackColor = System.Drawing.Color.Transparent;
+            this.lblPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.lblPic.Image = ((System.Drawing.Image)(resources.GetObject("lblPic.Image")));
+            this.lblPic.Location = new System.Drawing.Point(0, 5);
+            this.lblPic.Name = "lblPic";
+            this.lblPic.Size = new System.Drawing.Size(733, 30);
+            this.lblPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.lblPic.TabIndex = 45;
+            this.lblPic.TabStop = false;
+            // 
+            // picFrmClose
+            // 
+            this.picFrmClose.BackColor = System.Drawing.SystemColors.Control;
+            this.picFrmClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picFrmClose.Image = ((System.Drawing.Image)(resources.GetObject("picFrmClose.Image")));
+            this.picFrmClose.Location = new System.Drawing.Point(690, 9);
+            this.picFrmClose.Name = "picFrmClose";
+            this.picFrmClose.Size = new System.Drawing.Size(28, 26);
+            this.picFrmClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picFrmClose.TabIndex = 46;
+            this.picFrmClose.TabStop = false;
+            this.picFrmClose.Click += new System.EventHandler(this.picFrmClose_Click);
+            // 
             // FrmCMA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1049, 417);
             this.ControlBox = false;
+            this.Controls.Add(this.picFrmClose);
+            this.Controls.Add(this.lblPic);
             this.Controls.Add(this.panelCmdBtns);
             this.Controls.Add(this.gridViewCMA);
             this.Controls.Add(this.chart2);
@@ -334,6 +374,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCMA)).EndInit();
             this.panelCmdBtns.ResumeLayout(false);
             this.panelCmdBtns.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lblPic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picFrmClose)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -360,10 +402,12 @@
         private System.Windows.Forms.Button cmdResetDeta;
         private System.Windows.Forms.Button cmdChngDesc;
         private System.Windows.Forms.Button cmdDelRow;
-        private System.Windows.Forms.Button btnInsRow;
+        private System.Windows.Forms.Button cmdInsRow;
         private System.Windows.Forms.Button cmdRsIn;
         private System.Windows.Forms.Button cmdCopyYr;
         private System.Windows.Forms.Button cmdCurYr;
         private System.Windows.Forms.Button cmdChngPrty;
+        private System.Windows.Forms.PictureBox lblPic;
+        private System.Windows.Forms.PictureBox picFrmClose;
     }
 }
