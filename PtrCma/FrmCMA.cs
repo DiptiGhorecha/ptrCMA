@@ -193,6 +193,7 @@ namespace PtrCma
         {
             OleDbConnection conn = GetConnection();
             OleDbDataAdapter myadapter = new OleDbDataAdapter();
+
             DataSet ds = new DataSet();
             String STR = "Select * from Cp_CdFm1 where CM_CLREFNO=" + Global.prtyCode + "";
             myadapter.SelectCommand = new OleDbCommand("Select * from Cp_CdFm1 where CM_CLREFNO=" + Global.prtyCode + "", conn);
