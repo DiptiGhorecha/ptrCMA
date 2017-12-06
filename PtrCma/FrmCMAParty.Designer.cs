@@ -77,6 +77,7 @@
             this.lblparty = new System.Windows.Forms.Label();
             this.richAreaNotes = new System.Windows.Forms.RichTextBox();
             this.lblData = new System.Windows.Forms.Label();
+            this.txtRefParty = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewParty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictFrmClose)).BeginInit();
@@ -570,6 +571,14 @@
             this.lblData.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lblData.Visible = false;
             // 
+            // txtRefParty
+            // 
+            this.txtRefParty.Location = new System.Drawing.Point(30, 15);
+            this.txtRefParty.Name = "txtRefParty";
+            this.txtRefParty.Size = new System.Drawing.Size(68, 21);
+            this.txtRefParty.TabIndex = 47;
+            this.txtRefParty.Visible = false;
+            // 
             // FrmCMAParty
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -577,6 +586,7 @@
             this.BackColor = System.Drawing.Color.LightGray;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(881, 564);
+            this.Controls.Add(this.txtRefParty);
             this.Controls.Add(this.lblData);
             this.Controls.Add(this.richAreaNotes);
             this.Controls.Add(this.pictureBox1);
@@ -696,5 +706,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.RichTextBox richAreaNotes;
         private System.Windows.Forms.Label lblData;
+        private System.Windows.Forms.TextBox txtRefParty;
     }
 }

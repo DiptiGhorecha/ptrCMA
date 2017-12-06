@@ -86,7 +86,8 @@ namespace PtrCma
         public static Color lblforedetail = System.Drawing.Color.White;  //Label Fore/Text Color
 
       
-
+        //Global variable
+        public static String prtyCode;
 
     }
 }

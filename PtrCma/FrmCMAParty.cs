@@ -190,6 +190,7 @@ namespace PtrCma
             if (grdViewParty.RowCount>0)    // No Crashing problem when there is no data in gridview
             {
             DataGridViewRow row = this.grdViewParty.Rows[0];
+            txtRefParty.Text = row.Cells["CL_REFNO"].Value.ToString();
             txtCodeno.Text = row.Cells["CL_CODENO"].Value.ToString();
             txtActivity.Text = row.Cells["CL_ACT"].Value.ToString();
             txtBranch.Text = row.Cells["CL_BRANCH"].Value.ToString();
@@ -222,6 +223,7 @@ namespace PtrCma
         {
             //Current Selected Value Show in Textbox
             DataGridViewRow row = this.grdViewParty.Rows[rowNum];
+            txtRefParty.Text= row.Cells["CL_REFNO"].Value.ToString();
             txtCodeno.Text = row.Cells["CL_CODENO"].Value.ToString();
             txtActivity.Text = row.Cells["CL_ACT"].Value.ToString();
             txtBranch.Text = row.Cells["CL_BRANCH"].Value.ToString();
@@ -681,6 +683,7 @@ namespace PtrCma
             if (grdViewParty.RowCount > 0)
             {
                 grdViewParty.CurrentCell = grdViewParty.Rows[0].Cells[1];  //Set 1st row as current row by default
+                Global.prtyCode = txtRefParty.Text;  //grdViewParty.Rows[0].Cells[0].Value.ToString;  // txtCodeno.Text;
                 if (NotifyMainFormToOpenChildFormCma != null)
                 {
                     NotifyMainFormToOpenChildFormCma();

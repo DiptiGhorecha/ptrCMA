@@ -107,76 +107,83 @@ namespace PtrCma
         }
         private void setPanelControlColor()
         {
-            // Set Back  of Control Panel
-            cmdChngPrty.BackgroundImage = Global.cmdImg;
-            cmdCurYr.BackgroundImage = Global.cmdImg;
-            cmdCopyYr.BackgroundImage = Global.cmdImg;
-            cmdRsIn.BackgroundImage = Global.cmdImg;
-            cmdInsRow.BackgroundImage = Global.cmdImg;
-            cmdDelRow.BackgroundImage = Global.cmdImg;
-            cmdChngDesc.BackgroundImage = Global.cmdImg;
-            cmdResetDeta.BackgroundImage = Global.cmdImg;
-            cmdPrntGrph.BackgroundImage = Global.cmdImg;
-            cmdEdit.BackgroundImage = Global.cmdImg;
-            cmdSave.BackgroundImage = Global.cmdImg;
-            cmdCancel.BackgroundImage = Global.cmdImg;
-            cmdRefresh.BackgroundImage = Global.cmdImg;
-            cmdFormula.BackgroundImage = Global.cmdImg;
-            cmdExport.BackgroundImage = Global.cmdImg;
-            cmdPrint.BackgroundImage = Global.cmdImg;
+            foreach (Button btn in panelCmdBtns.Controls.OfType<Button>())   //Disable Textbox
+            {
+                btn.BackgroundImage = Global.cmdImg;
+                btn.ForeColor = Global.btnfore;
+                btn.FlatStyle = FlatStyle.Flat;
+                btn.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+            //// Set Back  of Control Panel
+            //cmdChngPrty.BackgroundImage = Global.cmdImg;
+            //cmdCurYr.BackgroundImage = Global.cmdImg;
+            //cmdCopyYr.BackgroundImage = Global.cmdImg;
+            //cmdRsIn.BackgroundImage = Global.cmdImg;
+            //cmdInsRow.BackgroundImage = Global.cmdImg;
+            //cmdDelRow.BackgroundImage = Global.cmdImg;
+            //cmdChngDesc.BackgroundImage = Global.cmdImg;
+            //cmdResetDeta.BackgroundImage = Global.cmdImg;
+            //cmdPrntGrph.BackgroundImage = Global.cmdImg;
+            //cmdEdit.BackgroundImage = Global.cmdImg;
+            //cmdSave.BackgroundImage = Global.cmdImg;
+            //cmdCancel.BackgroundImage = Global.cmdImg;
+            //cmdRefresh.BackgroundImage = Global.cmdImg;
+            //cmdFormula.BackgroundImage = Global.cmdImg;
+            //cmdExport.BackgroundImage = Global.cmdImg;
+            //cmdPrint.BackgroundImage = Global.cmdImg;
 
-            // Set Fore Color of Control Panel
-            cmdChngPrty.ForeColor = Global.btnfore;
-            cmdCurYr.ForeColor = Global.btnfore;
-            cmdCopyYr.ForeColor = Global.btnfore;
-            cmdRsIn.ForeColor = Global.btnfore;
-            cmdInsRow.ForeColor = Global.btnfore;
-            cmdDelRow.ForeColor = Global.btnfore;
-            cmdChngDesc.ForeColor = Global.btnfore;
-            cmdResetDeta.ForeColor = Global.btnfore;
-            cmdPrntGrph.ForeColor = Global.btnfore;
-            cmdEdit.ForeColor = Global.btnfore;
-            cmdSave.ForeColor = Global.btnfore;
-            cmdCancel.ForeColor = Global.btnfore;
-            cmdRefresh.ForeColor = Global.btnfore;
-            cmdFormula.ForeColor = Global.btnfore;
-            cmdExport.ForeColor = Global.btnfore;
-            cmdPrint.ForeColor = Global.btnfore;
+            //// Set Fore Color of Control Panel
+            //cmdChngPrty.ForeColor = Global.btnfore;
+            //cmdCurYr.ForeColor = Global.btnfore;
+            //cmdCopyYr.ForeColor = Global.btnfore;
+            //cmdRsIn.ForeColor = Global.btnfore;
+            //cmdInsRow.ForeColor = Global.btnfore;
+            //cmdDelRow.ForeColor = Global.btnfore;
+            //cmdChngDesc.ForeColor = Global.btnfore;
+            //cmdResetDeta.ForeColor = Global.btnfore;
+            //cmdPrntGrph.ForeColor = Global.btnfore;
+            //cmdEdit.ForeColor = Global.btnfore;
+            //cmdSave.ForeColor = Global.btnfore;
+            //cmdCancel.ForeColor = Global.btnfore;
+            //cmdRefresh.ForeColor = Global.btnfore;
+            //cmdFormula.ForeColor = Global.btnfore;
+            //cmdExport.ForeColor = Global.btnfore;
+            //cmdPrint.ForeColor = Global.btnfore;
 
-            //Set Style of Button
-            cmdChngPrty.FlatStyle = FlatStyle.Flat;
-            cmdCurYr.FlatStyle = FlatStyle.Flat;
-            cmdCopyYr.FlatStyle = FlatStyle.Flat;
-            cmdRsIn.FlatStyle = FlatStyle.Flat;
-            cmdInsRow.FlatStyle = FlatStyle.Flat;
-            cmdDelRow.FlatStyle = FlatStyle.Flat;
-            cmdChngDesc.FlatStyle = FlatStyle.Flat;
-            cmdResetDeta.FlatStyle = FlatStyle.Flat;
-            cmdPrntGrph.FlatStyle = FlatStyle.Flat;
-            cmdEdit.FlatStyle = FlatStyle.Flat;
-            cmdSave.FlatStyle = FlatStyle.Flat;
-            cmdCancel.FlatStyle = FlatStyle.Flat;
-            cmdRefresh.FlatStyle = FlatStyle.Flat;
-            cmdFormula.FlatStyle = FlatStyle.Flat;
-            cmdExport.FlatStyle = FlatStyle.Flat;
-            cmdPrint.FlatStyle = FlatStyle.Flat;
+            ////Set Style of Button
+            //cmdChngPrty.FlatStyle = FlatStyle.Flat;
+            //cmdCurYr.FlatStyle = FlatStyle.Flat;
+            //cmdCopyYr.FlatStyle = FlatStyle.Flat;
+            //cmdRsIn.FlatStyle = FlatStyle.Flat;
+            //cmdInsRow.FlatStyle = FlatStyle.Flat;
+            //cmdDelRow.FlatStyle = FlatStyle.Flat;
+            //cmdChngDesc.FlatStyle = FlatStyle.Flat;
+            //cmdResetDeta.FlatStyle = FlatStyle.Flat;
+            //cmdPrntGrph.FlatStyle = FlatStyle.Flat;
+            //cmdEdit.FlatStyle = FlatStyle.Flat;
+            //cmdSave.FlatStyle = FlatStyle.Flat;
+            //cmdCancel.FlatStyle = FlatStyle.Flat;
+            //cmdRefresh.FlatStyle = FlatStyle.Flat;
+            //cmdFormula.FlatStyle = FlatStyle.Flat;
+            //cmdExport.FlatStyle = FlatStyle.Flat;
+            //cmdPrint.FlatStyle = FlatStyle.Flat;
 
-            cmdChngPrty.BackgroundImageLayout = ImageLayout.Stretch;
-            cmdCurYr.BackgroundImageLayout = ImageLayout.Stretch;
-            cmdCopyYr.BackgroundImageLayout = ImageLayout.Stretch;
-            cmdRsIn.BackgroundImageLayout = ImageLayout.Stretch;
-            cmdInsRow.BackgroundImageLayout = ImageLayout.Stretch;
-            cmdDelRow.BackgroundImageLayout = ImageLayout.Stretch;
-            cmdChngDesc.BackgroundImageLayout = ImageLayout.Stretch;
-            cmdResetDeta.BackgroundImageLayout = ImageLayout.Stretch;
-            cmdPrntGrph.BackgroundImageLayout = ImageLayout.Stretch;
-            cmdEdit.BackgroundImageLayout = ImageLayout.Stretch;
-            cmdSave.BackgroundImageLayout = ImageLayout.Stretch;
-            cmdCancel.BackgroundImageLayout = ImageLayout.Stretch;
-            cmdRefresh.BackgroundImageLayout = ImageLayout.Stretch;
-            cmdFormula.BackgroundImageLayout = ImageLayout.Stretch;
-            cmdExport.BackgroundImageLayout = ImageLayout.Stretch;
-            cmdPrint.BackgroundImageLayout = ImageLayout.Stretch;
+            //cmdChngPrty.BackgroundImageLayout = ImageLayout.Stretch;
+            //cmdCurYr.BackgroundImageLayout = ImageLayout.Stretch;
+            //cmdCopyYr.BackgroundImageLayout = ImageLayout.Stretch;
+            //cmdRsIn.BackgroundImageLayout = ImageLayout.Stretch;
+            //cmdInsRow.BackgroundImageLayout = ImageLayout.Stretch;
+            //cmdDelRow.BackgroundImageLayout = ImageLayout.Stretch;
+            //cmdChngDesc.BackgroundImageLayout = ImageLayout.Stretch;
+            //cmdResetDeta.BackgroundImageLayout = ImageLayout.Stretch;
+            //cmdPrntGrph.BackgroundImageLayout = ImageLayout.Stretch;
+            //cmdEdit.BackgroundImageLayout = ImageLayout.Stretch;
+            //cmdSave.BackgroundImageLayout = ImageLayout.Stretch;
+            //cmdCancel.BackgroundImageLayout = ImageLayout.Stretch;
+            //cmdRefresh.BackgroundImageLayout = ImageLayout.Stretch;
+            //cmdFormula.BackgroundImageLayout = ImageLayout.Stretch;
+            //cmdExport.BackgroundImageLayout = ImageLayout.Stretch;
+            //cmdPrint.BackgroundImageLayout = ImageLayout.Stretch;
             
             picFrmClose.BackColor = System.Drawing.Color.FromArgb(124,236,246);
             //picFrmClose.BackColor = System.Drawing.Color.Transparent;
@@ -187,21 +194,18 @@ namespace PtrCma
             OleDbConnection conn = GetConnection();
             OleDbDataAdapter myadapter = new OleDbDataAdapter();
             DataSet ds = new DataSet();
-            myadapter.SelectCommand = new OleDbCommand("Select * from Cp_CdFm1", conn);
+            String STR = "Select * from Cp_CdFm1 where CM_CLREFNO=" + Global.prtyCode + "";
+            myadapter.SelectCommand = new OleDbCommand("Select * from Cp_CdFm1 where CM_CLREFNO=" + Global.prtyCode + "", conn);
             myadapter.Fill(ds, "Cp_CdFm1");
             if (ds.Tables[0].Rows.Count == 0) {
                 OleDbDataAdapter myadapter1 = new OleDbDataAdapter();
                 DataSet ds1 = new DataSet();
-                String sql = "INSERT INTO Cp_CdFm1 SELECT * FROM Cp_CdFm11;";
+                String sql = "Update Cp_CdFm11 set [CM_CLREFNO]=" + Global.prtyCode + ";";
                 myadapter1.SelectCommand = new OleDbCommand(sql, conn);
                 myadapter1.Fill(ds1, "Cp_CdFm11");
-                //foreach (DataRow item in ds1.Tables[0].Rows) //Iterate through each row of 2nd data table
-                //{
-                //    DataRow newRow = ds.Tables[0].NewRow();
-                //    newRow.ItemArray = item.ItemArray;
-                //    ds.Tables[0].Rows.Add(newRow); //Import the row in 1st data table
-                //}
-               // ds.Tables[0].Merge(ds1.Tables[0]);
+                sql = "INSERT INTO Cp_CdFm1 SELECT CM_SEQNO,CM_TYPE,CM_FC,CM_BN,CM_DBNO,CM_MTNO,CM_HEAD,CM_DESC,CM_LNKFRM,CM_CLREFNO FROM Cp_CdFm11;";
+                myadapter1.SelectCommand = new OleDbCommand(sql, conn);
+                myadapter1.Fill(ds1, "Cp_CdFm11");
                 ds1.Dispose();
             }
             ds.Dispose();
@@ -251,18 +255,18 @@ namespace PtrCma
                 gridViewCMA.Columns[i].ReadOnly = true;
                 gridViewCMA.Columns[i].Visible = false;
                     }
-            gridViewCMA.Columns[1].Visible = true;
-            gridViewCMA.Columns[1].HeaderText = "Sr. No.";
-            gridViewCMA.Columns[1].Width = 100;
+            gridViewCMA.Columns[0].Visible = true;
+            gridViewCMA.Columns[0].HeaderText = "Sr. No.";
+            gridViewCMA.Columns[0].Width = 100;
 
-            gridViewCMA.Columns[9].Visible = true;
-            gridViewCMA.Columns[9].HeaderText = "Description";
-            gridViewCMA.Columns[9].Width = ((gridViewCMA.Width-100)*70)/100;
+            gridViewCMA.Columns[8].Visible = true;
+            gridViewCMA.Columns[8].HeaderText = "Description";
+            gridViewCMA.Columns[8].Width = ((gridViewCMA.Width-100)*70)/100;
 
-            gridViewCMA.Columns[12].Visible = true;
-            gridViewCMA.Columns[12].ReadOnly = false;
-            gridViewCMA.Columns[12].HeaderText = "Data";
-            gridViewCMA.Columns[12].Width = ((gridViewCMA.Width-100)*30)/100;
+            gridViewCMA.Columns[11].Visible = true;
+            gridViewCMA.Columns[11].ReadOnly = false;
+            gridViewCMA.Columns[11].HeaderText = "Data";
+            gridViewCMA.Columns[11].Width = ((gridViewCMA.Width-100)*30)/100;
 
             gridViewCMA.Refresh();
         }
