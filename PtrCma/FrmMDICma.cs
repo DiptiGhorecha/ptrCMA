@@ -28,7 +28,17 @@ namespace PtrCma
 
         private void FrmMDICma_Load(object sender, EventArgs e)
         {
-          
+           Double ScreenWidth = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
+            Double ScreenHeight = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
+            if (ScreenWidth < 1280 || ScreenHeight < 768)
+            {
+                MessageBox.Show(GlobalMsg.resolutionMsg, "Perfect Tax Reporter - CMA 1.0");
+            }
+            
+            //string screenWidth = Screen.PrimaryScreen.Bounds.Width.ToString();
+            //string screenHeight = Screen.PrimaryScreen.Bounds.Height.ToString();
+         
+           // label1.Text = ("Resolution: " + screenWidth + "x" + screenHeight);
             base.OnHandleCreated(e);
             this.Bounds = Screen.PrimaryScreen.WorkingArea;
             this.Text = Global.companyName;
