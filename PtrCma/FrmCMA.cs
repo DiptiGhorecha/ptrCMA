@@ -114,76 +114,6 @@ namespace PtrCma
                 btn.FlatStyle = FlatStyle.Flat;
                 btn.BackgroundImageLayout = ImageLayout.Stretch;
             }
-            //// Set Back  of Control Panel
-            //cmdChngPrty.BackgroundImage = Global.cmdImg;
-            //cmdCurYr.BackgroundImage = Global.cmdImg;
-            //cmdCopyYr.BackgroundImage = Global.cmdImg;
-            //cmdRsIn.BackgroundImage = Global.cmdImg;
-            //cmdInsRow.BackgroundImage = Global.cmdImg;
-            //cmdDelRow.BackgroundImage = Global.cmdImg;
-            //cmdChngDesc.BackgroundImage = Global.cmdImg;
-            //cmdResetDeta.BackgroundImage = Global.cmdImg;
-            //cmdPrntGrph.BackgroundImage = Global.cmdImg;
-            //cmdEdit.BackgroundImage = Global.cmdImg;
-            //cmdSave.BackgroundImage = Global.cmdImg;
-            //cmdCancel.BackgroundImage = Global.cmdImg;
-            //cmdRefresh.BackgroundImage = Global.cmdImg;
-            //cmdFormula.BackgroundImage = Global.cmdImg;
-            //cmdExport.BackgroundImage = Global.cmdImg;
-            //cmdPrint.BackgroundImage = Global.cmdImg;
-
-            //// Set Fore Color of Control Panel
-            //cmdChngPrty.ForeColor = Global.btnfore;
-            //cmdCurYr.ForeColor = Global.btnfore;
-            //cmdCopyYr.ForeColor = Global.btnfore;
-            //cmdRsIn.ForeColor = Global.btnfore;
-            //cmdInsRow.ForeColor = Global.btnfore;
-            //cmdDelRow.ForeColor = Global.btnfore;
-            //cmdChngDesc.ForeColor = Global.btnfore;
-            //cmdResetDeta.ForeColor = Global.btnfore;
-            //cmdPrntGrph.ForeColor = Global.btnfore;
-            //cmdEdit.ForeColor = Global.btnfore;
-            //cmdSave.ForeColor = Global.btnfore;
-            //cmdCancel.ForeColor = Global.btnfore;
-            //cmdRefresh.ForeColor = Global.btnfore;
-            //cmdFormula.ForeColor = Global.btnfore;
-            //cmdExport.ForeColor = Global.btnfore;
-            //cmdPrint.ForeColor = Global.btnfore;
-
-            ////Set Style of Button
-            //cmdChngPrty.FlatStyle = FlatStyle.Flat;
-            //cmdCurYr.FlatStyle = FlatStyle.Flat;
-            //cmdCopyYr.FlatStyle = FlatStyle.Flat;
-            //cmdRsIn.FlatStyle = FlatStyle.Flat;
-            //cmdInsRow.FlatStyle = FlatStyle.Flat;
-            //cmdDelRow.FlatStyle = FlatStyle.Flat;
-            //cmdChngDesc.FlatStyle = FlatStyle.Flat;
-            //cmdResetDeta.FlatStyle = FlatStyle.Flat;
-            //cmdPrntGrph.FlatStyle = FlatStyle.Flat;
-            //cmdEdit.FlatStyle = FlatStyle.Flat;
-            //cmdSave.FlatStyle = FlatStyle.Flat;
-            //cmdCancel.FlatStyle = FlatStyle.Flat;
-            //cmdRefresh.FlatStyle = FlatStyle.Flat;
-            //cmdFormula.FlatStyle = FlatStyle.Flat;
-            //cmdExport.FlatStyle = FlatStyle.Flat;
-            //cmdPrint.FlatStyle = FlatStyle.Flat;
-
-            //cmdChngPrty.BackgroundImageLayout = ImageLayout.Stretch;
-            //cmdCurYr.BackgroundImageLayout = ImageLayout.Stretch;
-            //cmdCopyYr.BackgroundImageLayout = ImageLayout.Stretch;
-            //cmdRsIn.BackgroundImageLayout = ImageLayout.Stretch;
-            //cmdInsRow.BackgroundImageLayout = ImageLayout.Stretch;
-            //cmdDelRow.BackgroundImageLayout = ImageLayout.Stretch;
-            //cmdChngDesc.BackgroundImageLayout = ImageLayout.Stretch;
-            //cmdResetDeta.BackgroundImageLayout = ImageLayout.Stretch;
-            //cmdPrntGrph.BackgroundImageLayout = ImageLayout.Stretch;
-            //cmdEdit.BackgroundImageLayout = ImageLayout.Stretch;
-            //cmdSave.BackgroundImageLayout = ImageLayout.Stretch;
-            //cmdCancel.BackgroundImageLayout = ImageLayout.Stretch;
-            //cmdRefresh.BackgroundImageLayout = ImageLayout.Stretch;
-            //cmdFormula.BackgroundImageLayout = ImageLayout.Stretch;
-            //cmdExport.BackgroundImageLayout = ImageLayout.Stretch;
-            //cmdPrint.BackgroundImageLayout = ImageLayout.Stretch;
             
             picFrmClose.BackColor = System.Drawing.Color.FromArgb(124,236,246);
             //picFrmClose.BackColor = System.Drawing.Color.Transparent;
@@ -247,7 +177,7 @@ namespace PtrCma
             OleDbConnection conn = GetConnection();
             OleDbDataAdapter myadapter = new OleDbDataAdapter();
             DataSet ds = new DataSet();
-            myadapter.SelectCommand = new OleDbCommand("Select * from Cp_CdFm1", conn);
+            myadapter.SelectCommand = new OleDbCommand("Select * from Cp_CdFm1 where CM_CLREFNO=" + Global.prtyCode, conn);
             myadapter.Fill(ds, "Cp_CdFm1");
             gridViewCMA.DataMember = "Cp_CdFm1";
             gridViewCMA.DataSource = ds;

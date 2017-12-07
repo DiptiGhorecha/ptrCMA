@@ -731,6 +731,7 @@ namespace PtrCma
             foreach (TextBox txt in Controls.OfType<TextBox>())   //Disable Textbox
             {
                 txt.Enabled = false;
+
             }
             txtFind.Enabled = true;
             cmdReset.Enabled = true;
@@ -738,6 +739,7 @@ namespace PtrCma
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.grdViewParty.Rows[e.RowIndex];
+                txtRefParty.Text = row.Cells["CL_REFNO"].Value.ToString();
                 txtCodeno.Text = row.Cells["CL_CODENO"].Value.ToString();
                 txtActivity.Text = row.Cells["CL_ACT"].Value.ToString();
                 txtBranch.Text = row.Cells["CL_BRANCH"].Value.ToString();
