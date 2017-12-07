@@ -28,6 +28,7 @@ namespace PtrCma
 
         private void FrmMDICma_Load(object sender, EventArgs e)
         {
+          
             base.OnHandleCreated(e);
             this.Bounds = Screen.PrimaryScreen.WorkingArea;
             this.Text = Global.companyName;

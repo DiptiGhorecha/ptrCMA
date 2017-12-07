@@ -411,7 +411,7 @@ namespace PtrCma
                     con.Close();
                     fillgird();
                     
-                    MessageBox.Show("Data Inserted Successfully", "Perfect Tax Reporter - CMA 1.0");
+                    MessageBox.Show(GlobalMsg.insertMsg, "Perfect Tax Reporter - CMA 1.0");
                     lblData.Visible = false;
                 }
 
@@ -422,7 +422,7 @@ namespace PtrCma
 
                 txtBranch.Focus();
                     //rowNum = grdViewParty.CurrentRow.Index; 
-                    DialogResult dialogResult1 = MessageBox.Show("Do You want to Update this Record?", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
+                    DialogResult dialogResult1 = MessageBox.Show(GlobalMsg.updateMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
                 if (dialogResult1 == DialogResult.Yes)
                 {
                       
@@ -442,7 +442,7 @@ namespace PtrCma
                         txtBranch.Focus();
                         
                         lblData.Visible = false;
-                        MessageBox.Show("Record Updated Successfully", "Perfect Tax Reporter - CMA 1.0");
+                        MessageBox.Show(GlobalMsg.updateMsg, "Perfect Tax Reporter - CMA 1.0");
                         txtCodeno.Enabled = false;
                         controlvisible();
                         cmdSave.Visible = false;
@@ -499,14 +499,14 @@ namespace PtrCma
             if (txtCodeno.Text.Trim() == string.Empty)              // Code No  
             {
 
-                MessageBox.Show("Code Number Field cannnot be blank", "Perfect Tax Reporter - CMA 1.0");
+                MessageBox.Show(GlobalMsg.codeMsg, "Perfect Tax Reporter - CMA 1.0");
                  txtCodeno.Focus();
                  return; // return because we don't want to run normal code of buton click
             }
        
             if (txtName.Text.Trim() == string.Empty)              // Name
             {
-                MessageBox.Show("Name Field cannnot be blank","Perfect Tax Reporter - CMA 1.0");
+                MessageBox.Show(GlobalMsg.nameMsg,"Perfect Tax Reporter - CMA 1.0");
                 //MyMessageBox.ShowBox("Name Field cannnot be blank", "Perfect Tax Reporter - CMA 1.0");
                 txtName.Focus();
                 return; // return because we don't want to run normal code of buton click
@@ -518,7 +518,7 @@ namespace PtrCma
                 {
                     if (txtCodeno.Text == grdViewParty[1, nCounter].Value.ToString())
                     {
-                        MessageBox.Show("Duplicate code is not allowed.", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show(GlobalMsg.duplicateMsg, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         txtCodeno.Focus();
                         return;
                     }
@@ -554,7 +554,7 @@ namespace PtrCma
                 richAreaNotes.Enabled = false;
             }
 
-            DialogResult dialogResult = MessageBox.Show("Are You Sure Want to Cancel?", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
+            DialogResult dialogResult = MessageBox.Show(GlobalMsg.cancelMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
             if (dialogResult == DialogResult.Yes)
             {
                 controlvisible();
@@ -631,7 +631,7 @@ namespace PtrCma
         {
             try
             {
-                DialogResult dialogResult1 = MessageBox.Show("Are you sure want to delete this Record ?", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
+                DialogResult dialogResult1 = MessageBox.Show(GlobalMsg.deleteMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
                 if (dialogResult1 == DialogResult.Yes)
                 {
                     grdViewParty.Enabled = true;
@@ -641,23 +641,37 @@ namespace PtrCma
                     {
                         con.Open();
                     }
-                    transaction = con.BeginTransaction(IsolationLevel.ReadCommitted);
+                    OleDbDataAdapter myadapter = new OleDbDataAdapter();
+                    DataSet ds = new DataSet();
+                    myadapter.SelectCommand = new OleDbCommand("Select * from Cp_CdFm1 where CM_CLREFNO = " + txtRefParty.Text,con);
+                   myadapter.Fill(ds, "Cp_cdFm1");
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        MessageBox.Show("Data Already Exist You Can't Delete Record");
+                        return;
+                    }
+                    else
+                    {
+                        if (con.State == ConnectionState.Closed)
+                        {
+                            con.Open();
+                        }
+                        transaction = con.BeginTransaction(IsolationLevel.ReadCommitted);
+                        String sql = "delete from Cd_MsCln where CL_CODENO='" + this.txtCodeno.Text.Replace("'", "''") + "' ";
+                        cmd = new OleDbCommand(sql, con);
+                        cmd.Transaction = transaction;
+                        cmd.ExecuteNonQuery();
+                        transaction.Commit();
+                       // con.Close();
+                        fillgird();  //After inserting data display data in Gridview
+                        MessageBox.Show(GlobalMsg.deleteMsg, "Perfect Tax Reporter - CMA 1.0");
+                        cmdDelete.Enabled = true;
+                        cmdEdit.Enabled = true;
+                        grdViewParty.Enabled = true;
 
-                    String sql = "delete from Cd_MsCln where CL_CODENO='" + this.txtCodeno.Text.Replace("'", "''") + "' ";
-                    cmd = new OleDbCommand(sql, con);
-                    cmd.Transaction = transaction;
-                    cmd.ExecuteNonQuery();
-                    transaction.Commit();
-                    con.Close();
-                    fillgird();  //After inserting data display data in Gridview
-                    MessageBox.Show("Record Successfully Deleted ", "Perfect Tax Reporter - CMA 1.0");
-
-                    cmdDelete.Enabled = true;
-                    cmdEdit.Enabled = true;
-                    grdViewParty.Enabled = true;
-
-                    clearTextbox();
-                    LoadDatatoTextBox();
+                        clearTextbox();
+                        LoadDatatoTextBox();
+                    }
                 }
                 else
                 {
@@ -693,8 +707,9 @@ namespace PtrCma
             {
                 this.Hide();
                 NotifyMainFormToCloseChildFormParty();
-                MessageBox.Show("Please Create or Select Data First", "Perfect Tax Reporter - CMA 1.0");
+                MessageBox.Show(GlobalMsg.selectMsg, "Perfect Tax Reporter - CMA 1.0");
             }
+            
         }
 
         private void cmdExit_Click(object sender, EventArgs e)      // Close the Current Form
@@ -705,7 +720,7 @@ namespace PtrCma
             grdViewParty.Enabled = true;
             //rowNum = grdViewParty.CurrentRow.Index;
           
-            DialogResult dialogResult = MessageBox.Show("Are You Sure Want to Exit ?", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
+            DialogResult dialogResult = MessageBox.Show(GlobalMsg.exitMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
             if (dialogResult == DialogResult.Yes)
             {
                 NotifyMainFormToCloseChildFormParty();
@@ -781,6 +796,7 @@ namespace PtrCma
             dataAdapter.Fill(ds, "Cd_MsCln");
             grdViewParty.DataMember = "Cd_MsCln";
             grdViewParty.DataSource = ds;
+            grdViewParty.Focus();
             con.Close();
         }
 
@@ -833,7 +849,7 @@ namespace PtrCma
 
         private void pictFrmClose_Click(object sender, EventArgs e) // Close Button
         {
-            DialogResult dialogResult = MessageBox.Show("Are You Sure Want to Exit ?", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
+            DialogResult dialogResult = MessageBox.Show(GlobalMsg.exitMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
             if (dialogResult == DialogResult.Yes)
             {
                 NotifyMainFormToCloseChildFormParty();
