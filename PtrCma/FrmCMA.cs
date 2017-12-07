@@ -25,6 +25,12 @@ namespace PtrCma
         {
             DataGridViewCell cell = gridViewCMA.Rows[e.RowIndex].Cells[e.ColumnIndex];
             e.CellStyle.BackColor = Global.gridBackColorCMS;
+
+            if (e.ColumnIndex == 1) {
+                // string currentValue =e.Value;
+                e.Value = Convert.ToString(e.Value).Substring(2, 2);
+               // MessageBox.Show(Convert.ToString(e.Value));
+}
         }
         private void chart2_Click(object sender, EventArgs e)
         {
@@ -186,9 +192,9 @@ namespace PtrCma
                 gridViewCMA.Columns[i].ReadOnly = true;
                 gridViewCMA.Columns[i].Visible = false;
                     }
-            gridViewCMA.Columns[0].Visible = true;
-            gridViewCMA.Columns[0].HeaderText = "Sr. No.";
-            gridViewCMA.Columns[0].Width = 100;
+            gridViewCMA.Columns[1].Visible = true;
+            gridViewCMA.Columns[1].HeaderText = "Sr. No.";
+            gridViewCMA.Columns[1].Width = 100;
 
             gridViewCMA.Columns[8].Visible = true;
             gridViewCMA.Columns[8].HeaderText = "Description";
