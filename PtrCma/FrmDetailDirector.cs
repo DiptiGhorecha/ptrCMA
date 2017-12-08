@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.OleDb;
 
 namespace PtrCma
 {
@@ -13,6 +14,10 @@ namespace PtrCma
     {
         public Action NotifyMainFormToCloseChildFormParty;
         public Action NotifyMainFormToCloseChildFormDirector;
+        String connectionString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " + Application.StartupPath + "\\Resources\\PtrCma.accdb;";  //Connection String
+        OleDbConnection con;
+        OleDbCommand cmd;
+        OleDbDataAdapter dataAdapter;
 
         public FrmDetailDirector()
         {
@@ -23,18 +28,49 @@ namespace PtrCma
         {
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true); //Stop the Flickering
             Settings();
-            
+            fillgrid();
             FrmDetailDirector frmDirector = new FrmDetailDirector();
             frmDirector.MdiParent = this;
             frmDirector.StartPosition = FormStartPosition.CenterParent;
-            //frmDirector.StartPosition = FormStartPosition.CenterScreen;
             frmDirector.Show();
+
+          
+        }
+
+        private void fillgrid()
+        {
+            con = new OleDbConnection(connectionString);
+            DataSet ds = new DataSet();
+            dataAdapter = new OleDbDataAdapter("select * from Cx_Cd101",con);
+            dataAdapter.Fill(ds, "Cx_Cd101");
+            grdViewDirectors.DataMember = "Cx_Cd101";
+            grdViewDirectors.DataSource = ds;
+            con.Close();
+
+            //Show selected Column in Gridview
+            for (int i = 0; i <= grdViewDirectors.Columns.Count - 1; i++)
+            {
+                grdViewDirectors.Columns[i].ReadOnly = true;
+                grdViewDirectors.Columns[i].Visible = false;
+            }
+
+            grdViewDirectors.Columns[1].Visible = true;
+            grdViewDirectors.Columns[1].HeaderText = "Director Name";
+            grdViewDirectors.Columns[1].Width = 250;
 
         }
 
         private void Settings()
         {
             this.BackgroundImage = Global.partyFrmBackImg;
+            grdViewDirectors.RowsDefaultCellStyle.BackColor = Color.White;     // Row Color of Gridview
+
+            // Column Header Color of Gridview
+            grdViewDirectors.ColumnHeadersHeight = 30;
+            grdViewDirectors.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            grdViewDirectors.EnableHeadersVisualStyles = false;
+            grdViewDirectors.ColumnHeadersDefaultCellStyle.ForeColor = Global.grdPartyForeColor;
+            grdViewDirectors.ColumnHeadersDefaultCellStyle.BackColor = Global.grdPartyBackColor;
             setControlColor();
             setControlSize();
         }
@@ -91,6 +127,22 @@ namespace PtrCma
             grdViewDirectors.DefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
+        private void cmdAdd_Click(object sender, EventArgs e)
+        {
+            OleDbConnection con = new OleDbConnection();
+            con.ConnectionString = connectionString;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            String sql = "insert into Cx_Cd101(CD_NAME,CD_AGE,CD_PAN,CD_ADD,CD_PHONE,CD_NET)values('" + txtName.Text + "','" + txtAge.Text + "','" + txtPan.Text + "','" + txtAdd.Text + "','" + txtPhone.Text + "','" + txtNet.Text + "')";
+            OleDbCommand cmd = new OleDbCommand(sql, con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            fillgrid();
+        }
+       
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Are You Sure Want to Exit ?", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
@@ -116,9 +168,6 @@ namespace PtrCma
 
         }
 
-        private void cmdAdd_Click(object sender, EventArgs e)
-        {
-
-        }
+      
     }
 }

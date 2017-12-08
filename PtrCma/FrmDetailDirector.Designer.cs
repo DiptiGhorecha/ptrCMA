@@ -56,12 +56,21 @@
             // 
             // grdViewDirectors
             // 
+            this.grdViewDirectors.AllowUserToAddRows = false;
+            this.grdViewDirectors.AllowUserToDeleteRows = false;
+            this.grdViewDirectors.AllowUserToResizeColumns = false;
+            this.grdViewDirectors.AllowUserToResizeRows = false;
             this.grdViewDirectors.BackgroundColor = System.Drawing.Color.White;
+            this.grdViewDirectors.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.grdViewDirectors.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.grdViewDirectors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdViewDirectors.Location = new System.Drawing.Point(26, 113);
             this.grdViewDirectors.Name = "grdViewDirectors";
-            this.grdViewDirectors.Size = new System.Drawing.Size(240, 189);
+            this.grdViewDirectors.RowHeadersVisible = false;
+            this.grdViewDirectors.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.grdViewDirectors.Size = new System.Drawing.Size(240, 182);
             this.grdViewDirectors.TabIndex = 0;
+            this.grdViewDirectors.TabStop = false;
             // 
             // lblName
             // 

@@ -149,7 +149,7 @@ namespace PtrCma
             grdViewParty.Refresh();
 
             //Show selected Column in Gridview
-            for (int i = 0; i <= grdViewParty.Columns.Count - 1; i++)
+            for (int i = 0; i <= grdViewParty.Columns.Count - 1; i++)      
             {
                 grdViewParty.Columns[i].ReadOnly = true;
                 grdViewParty.Columns[i].Visible = false;
