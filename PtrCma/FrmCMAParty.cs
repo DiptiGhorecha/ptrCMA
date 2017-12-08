@@ -21,6 +21,7 @@ namespace PtrCma
     {
         public Action NotifyMainFormToCloseChildFormParty;
         public Action NotifyMainFormToOpenChildFormCma;
+      
         string isAddEdit = ""; //Variable to Store Current Action(Add,Edit)
         String connectionString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " +Application.StartupPath + "\\Resources\\PtrCma.accdb;";  //Connection String
         OleDbConnection con;

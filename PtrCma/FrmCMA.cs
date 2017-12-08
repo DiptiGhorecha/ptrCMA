@@ -14,7 +14,8 @@ namespace PtrCma
     {
 
         public Action NotifyMainFormToCloseChildFormParty;
-        public Action NotifyMainFormToOpenChildFormCma;
+        //public Action NotifyMainFormToOpenChildFormCma;
+        public Action NotifyMainFormToOpenChildFormDirector;
         public FrmCMA()
         {
             InitializeComponent();
@@ -27,17 +28,20 @@ namespace PtrCma
             e.CellStyle.BackColor = Global.gridBackColorCMS;
 
             if (e.ColumnIndex == 1) {
-                // string currentValue =e.Value;
-                e.Value = Convert.ToString(e.Value).Substring(2, 2);
-               // MessageBox.Show(Convert.ToString(e.Value));
-}
+               e.Value = Convert.ToString(e.Value).Substring(2, 2);
+            }
+            var list = new List<int> {14, 15, 16, 17, 18, 13, 23, 30, 31, 35, 36, 37, 40, 41, 42, 44, 45};
+            if (list.Contains(e.RowIndex))
+            {
+               e.CellStyle.ForeColor = Color.Green;
+            }
         }
         private void chart2_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void gridViewCMA_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
@@ -45,6 +49,7 @@ namespace PtrCma
         private void FrmCMA_Load(object sender, EventArgs e)
         {
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true); //Stop the Flickering
+            this.KeyPreview = true; //To handle enter key
             Settings();
             checkTables();
             fillTopicListBox();
@@ -183,7 +188,7 @@ namespace PtrCma
             OleDbConnection conn = GetConnection();
             OleDbDataAdapter myadapter = new OleDbDataAdapter();
             DataSet ds = new DataSet();
-            myadapter.SelectCommand = new OleDbCommand("Select * from Cp_CdFm1 where CM_CLREFNO=" + Global.prtyCode, conn);
+            myadapter.SelectCommand = new OleDbCommand("Select * from Cp_CdFm1 where CM_CLREFNO=" + Global.prtyCode+" order by CM_SEQNO", conn);
             myadapter.Fill(ds, "Cp_CdFm1");
             gridViewCMA.DataMember = "Cp_CdFm1";
             gridViewCMA.DataSource = ds;
@@ -260,6 +265,28 @@ namespace PtrCma
                 NotifyMainFormToCloseChildFormParty();
                 this.Hide();
 
+            }
+        }
+
+        private void gridViewCMA_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == 13)
+            {
+                if (NotifyMainFormToOpenChildFormDirector != null)
+                {
+                    NotifyMainFormToOpenChildFormDirector();
+                }
+            }
+            
+        }
+
+        private void gridViewCMA_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var list = new List<int> { 14, 15, 16, 17, 18, 13, 23, 30, 31, 35, 36, 37, 40, 41, 42, 44, 45 };
+            if (list.Contains(e.RowIndex) && e.ColumnIndex == 11)
+            {
+                DataGridViewCell cell = gridViewCMA.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                cell.Value = "Double click to open form";
             }
         }
     }

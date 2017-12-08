@@ -11,6 +11,9 @@ namespace PtrCma
 {
     public partial class FrmDetailDirector : Form
     {
+        public Action NotifyMainFormToCloseChildFormParty;
+        public Action NotifyMainFormToCloseChildFormDirector;
+
         public FrmDetailDirector()
         {
             InitializeComponent();
@@ -41,8 +44,6 @@ namespace PtrCma
 
             lbltitle.BackColor = Global.lblbacktitle;
             lbltitle.ForeColor = Global.lblforetitle;
-
-            
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -50,9 +51,8 @@ namespace PtrCma
             DialogResult dialogResult = MessageBox.Show("Are You Sure Want to Exit ?", "", MessageBoxButtons.YesNo);       //Cancel Button
             if (dialogResult == DialogResult.Yes)
             {
-                this.Close();
-                FrmMDICma frmCma = new FrmMDICma();
-                frmCma.Show();
+                NotifyMainFormToCloseChildFormDirector();
+                this.Hide();
             }
         }
     }

@@ -16,10 +16,12 @@ namespace PtrCma
     public partial class FrmMDICma : Form
     {
         public Action NotifyMainFormToCloseChildFormParty;
+        public Action NotifyMainFormToCloseChildFormDirector;
         private FrmMainCma frmMain;
         private FrmCMAParty frmParty;
         private FrmCredit frmCredit;
         private FrmCMA frmCmaa;
+        private FrmDetailDirector frmDirector;
         public FrmMDICma()
         {
             InitializeComponent();
@@ -57,6 +59,12 @@ namespace PtrCma
 
             }
             Settings();
+            frmDirector = new FrmDetailDirector();
+            frmDirector.MdiParent = this;
+            frmDirector.Location = new Point(0, 70);
+            frmDirector.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
+            frmDirector.NotifyMainFormToCloseChildFormDirector += NotifyMainFormToCloseFormDirector;
+
             frmParty = new FrmCMAParty();
             frmParty.MdiParent = this;
             frmParty.Location = new Point(this.Location.X + (this.Width - frmParty.Width) / 2, (frmParty.Location.Y + (this.Height - frmParty.Height) / 2) + 20);
@@ -67,7 +75,8 @@ namespace PtrCma
             frmCmaa.MdiParent = this;
             frmCmaa.Location = new Point(0, 70);
             frmCmaa.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
-
+            frmCmaa.NotifyMainFormToOpenChildFormDirector += NotifyMainFormToOpenFormDirector;
+      
 
             frmCredit = new FrmCredit();
             frmCredit.MdiParent = this;
@@ -83,6 +92,18 @@ namespace PtrCma
            // f.Refresh();
             
         }
+
+
+        private void NotifyMainFormToOpenFormDirector()
+        {
+
+            //frmParty.Location = new Point(this.Location.X + (this.Width - frmParty.Width) / 2, (frmParty.Location.Y + (this.Height - frmParty.Height) / 2)+35);
+            frmMain.Enabled = false;
+            frmCmaa.Enabled = false;
+            frmDirector.Show();
+            
+        }
+
 
         private void NotifyMainFormToOpenFormCma()
         {
@@ -105,6 +126,12 @@ namespace PtrCma
         {
             frmMain.Enabled = true;
             
+        }
+
+        private void NotifyMainFormToCloseFormDirector()
+        {
+            frmCmaa.Enabled = true;
+
         }
         public void Settings()
         {
