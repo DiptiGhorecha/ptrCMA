@@ -84,10 +84,16 @@ namespace PtrCma
         public static Color lblforetitle = System.Drawing.Color.DarkRed; //Label Fore Color of title
         public static Color lblbackdetail = System.Drawing.Color.CadetBlue;  //Label Back Color
         public static Color lblforedetail = System.Drawing.Color.White;  //Label Fore/Text Color
+        public static Size smallbtn = new System.Drawing.Size(50,30);
+        public static Size lblmedSize = new System.Drawing.Size(170,18); // Label Size
+        public static Size txtmedSize = new System.Drawing.Size(230,20);
+        public static Size titlelbl = new System.Drawing.Size(500,30);
+      //  public static Color title = System.Drawing.Color.Transparent;
 
       
         //Global variable
         public static String prtyCode;
 
+        
     }
 }

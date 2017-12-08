@@ -17,11 +17,13 @@ namespace PtrCma
     {
         public Action NotifyMainFormToCloseChildFormParty;
         public Action NotifyMainFormToCloseChildFormDirector;
+        public Action NotifyMainFormToCloseChildFormBanking;
         private FrmMainCma frmMain;
         private FrmCMAParty frmParty;
         private FrmCredit frmCredit;
         private FrmCMA frmCmaa;
         private FrmDetailDirector frmDirector;
+        private FrmBankingArrangements frmBanking;
         public FrmMDICma()
         {
             InitializeComponent();
@@ -30,11 +32,22 @@ namespace PtrCma
 
         private void FrmMDICma_Load(object sender, EventArgs e)
         {
-           Double ScreenWidth = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
+            Double ScreenWidth = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
             Double ScreenHeight = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
-            if (ScreenWidth < 1280 || ScreenHeight < 768)
+            DialogResult dialogResult1 = MessageBox.Show(GlobalMsg.resolutionMsg, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
+            if (dialogResult1 == DialogResult.Yes)
             {
-                MessageBox.Show(GlobalMsg.resolutionMsg, "Perfect Tax Reporter - CMA 1.0");
+                if (dialogResult1 == DialogResult.Yes)
+                {
+                    if (ScreenWidth < 1280 || ScreenHeight < 768)
+                    {
+                        //Settings();
+                    }
+                }
+                else
+                {
+                    this.Close();
+                }
             }
             
             //string screenWidth = Screen.PrimaryScreen.Bounds.Width.ToString();
@@ -59,11 +72,6 @@ namespace PtrCma
 
             }
             Settings();
-            frmDirector = new FrmDetailDirector();
-            frmDirector.MdiParent = this;
-            frmDirector.Location = new Point(0, 70);
-            frmDirector.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
-            frmDirector.NotifyMainFormToCloseChildFormDirector += NotifyMainFormToCloseFormDirector;
 
             frmParty = new FrmCMAParty();
             frmParty.MdiParent = this;
@@ -76,7 +84,8 @@ namespace PtrCma
             frmCmaa.Location = new Point(0, 70);
             frmCmaa.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
             frmCmaa.NotifyMainFormToOpenChildFormDirector += NotifyMainFormToOpenFormDirector;
-      
+            frmCmaa.NotifyMainFormToOpenChildFormBanking += NotifyMainFormToOpenFormBanking;
+
 
             frmCredit = new FrmCredit();
             frmCredit.MdiParent = this;
@@ -85,21 +94,53 @@ namespace PtrCma
             frmMain = new FrmMainCma();
             frmMain.MdiParent = this;
             frmMain.NotifyMainFormToOpenChildFormParty += NotifyMainFormToOpenFormParty;
-            
-            // f.StartPosition = FormStartPosition.CenterScreen;
             frmMain.Show();
-            
-           // f.Refresh();
-            
+
+            frmDirector = new FrmDetailDirector();
+            frmDirector.MdiParent = this;
+            frmDirector.Location = new Point(this.Location.X + (this.Width - frmDirector.Width) / 2, (frmDirector.Location.Y + (this.Height - frmDirector.Height) / 2) + 20);
+            //frmDirector.Location = new Point(0, 70);
+            frmDirector.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
+            frmDirector.NotifyMainFormToCloseChildFormDirector += NotifyMainFormToCloseFormDirector;
+
+            frmBanking = new FrmBankingArrangements();
+            frmBanking.MdiParent = this;
+            frmBanking.Location = new Point(this.Location.X + (this.Width - frmBanking.Width) / 2, (frmBanking.Location.Y + (this.Height - frmBanking.Height) / 2) + 20);
+            //frmDirector.Location = new Point(0, 70);
+            frmBanking.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
+            frmBanking.NotifyMainFormToCloseChildFormBanking += NotifyMainFormToCloseFormBanking;
+
+
+            // f.StartPosition = FormStartPosition.CenterScreen;
+
+
+            // f.Refresh();
+
         }
 
+        private void NotifyMainFormToOpenFormBanking()
+        {
+            frmMain.Enabled = false;
+            frmCmaa.Enabled = false;
+
+            frmBanking.Show();
+        }
+
+        private void NotifyMainFormToCloseFormBanking()
+        {
+            frmMain.Enabled = true;
+            frmCmaa.Enabled = true;
+
+            //frmBanking.Show();
+        }
 
         private void NotifyMainFormToOpenFormDirector()
         {
-
+            
             //frmParty.Location = new Point(this.Location.X + (this.Width - frmParty.Width) / 2, (frmParty.Location.Y + (this.Height - frmParty.Height) / 2)+35);
             frmMain.Enabled = false;
             frmCmaa.Enabled = false;
+            
             frmDirector.Show();
             
         }

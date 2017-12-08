@@ -16,6 +16,7 @@ namespace PtrCma
         public Action NotifyMainFormToCloseChildFormParty;
         //public Action NotifyMainFormToOpenChildFormCma;
         public Action NotifyMainFormToOpenChildFormDirector;
+        public Action NotifyMainFormToOpenChildFormBanking;
         public FrmCMA()
         {
             InitializeComponent();
@@ -228,7 +229,7 @@ namespace PtrCma
             lstViewTopic.Columns.Add(header1);
             //Add items in the listview
 
-            lstViewTopic.Items.Add("Parety Information");
+            lstViewTopic.Items.Add("Party Information");
             lstViewTopic.Items.Add("Operating Statement");
             lstViewTopic.Items.Add("Liability Statement");
             lstViewTopic.Items.Add("Assets Statement");
@@ -275,6 +276,13 @@ namespace PtrCma
                 if (NotifyMainFormToOpenChildFormDirector != null)
                 {
                     NotifyMainFormToOpenChildFormDirector();
+                }
+            }
+            if(e.RowIndex == 14)
+            {
+                if(NotifyMainFormToOpenChildFormBanking !=null)
+                {
+                    NotifyMainFormToOpenChildFormBanking();
                 }
             }
             

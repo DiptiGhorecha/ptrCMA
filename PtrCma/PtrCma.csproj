@@ -227,6 +227,9 @@
     <EmbeddedResource Include="Resources\footerbg.png" />
     <EmbeddedResource Include="Resources\frm_bg.png" />
     <EmbeddedResource Include="Resources\close-1.png" />
+    <EmbeddedResource Include="Resources\detail.png" />
+    <Content Include="Resources\close_2.png" />
+    <EmbeddedResource Include="Resources\demo_11.png" />
     <Content Include="Resources\PtrCma.accdb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.lblTitle = new System.Windows.Forms.Label();
-            this.FrmBanking = new System.Windows.Forms.DataGridView();
+            this.grdBanking = new System.Windows.Forms.DataGridView();
             this.lblBank = new System.Windows.Forms.Label();
             this.lblFacility = new System.Windows.Forms.Label();
             this.lblLimit = new System.Windows.Forms.Label();
@@ -44,7 +44,7 @@
             this.cmdDelete = new System.Windows.Forms.Button();
             this.cmdAdd = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.FrmBanking)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdBanking)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -57,14 +57,14 @@
             this.lblTitle.Text = "Detail of existing Banking arrangements";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // FrmBanking
+            // grdBanking
             // 
-            this.FrmBanking.BackgroundColor = System.Drawing.Color.White;
-            this.FrmBanking.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.FrmBanking.Location = new System.Drawing.Point(22, 121);
-            this.FrmBanking.Name = "FrmBanking";
-            this.FrmBanking.Size = new System.Drawing.Size(258, 200);
-            this.FrmBanking.TabIndex = 1;
+            this.grdBanking.BackgroundColor = System.Drawing.Color.White;
+            this.grdBanking.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdBanking.Location = new System.Drawing.Point(22, 121);
+            this.grdBanking.Name = "grdBanking";
+            this.grdBanking.Size = new System.Drawing.Size(258, 200);
+            this.grdBanking.TabIndex = 1;
             // 
             // lblBank
             // 
@@ -197,13 +197,13 @@
             this.Controls.Add(this.lblLimit);
             this.Controls.Add(this.lblFacility);
             this.Controls.Add(this.lblBank);
-            this.Controls.Add(this.FrmBanking);
+            this.Controls.Add(this.grdBanking);
             this.Controls.Add(this.lblTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmBankingArrangements";
             this.Text = "FrmBankingArrangements";
             this.Load += new System.EventHandler(this.FrmBankingArrangements_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.FrmBanking)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdBanking)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -212,7 +212,7 @@
         #endregion
 
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.DataGridView FrmBanking;
+        private System.Windows.Forms.DataGridView grdBanking;
         private System.Windows.Forms.Label lblBank;
         private System.Windows.Forms.Label lblFacility;
         private System.Windows.Forms.Label lblLimit;

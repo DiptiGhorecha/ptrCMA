@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.FrmDirectors = new System.Windows.Forms.DataGridView();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDetailDirector));
+            this.grdViewDirectors = new System.Windows.Forms.DataGridView();
             this.lblName = new System.Windows.Forms.Label();
             this.lblAge = new System.Windows.Forms.Label();
             this.lblPan = new System.Windows.Forms.Label();
@@ -46,65 +47,68 @@
             this.cmdAdd = new System.Windows.Forms.Button();
             this.cmdDelete = new System.Windows.Forms.Button();
             this.cmdExit = new System.Windows.Forms.Button();
-            this.lbltitle = new System.Windows.Forms.Label();
-            this.btnClose = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.FrmDirectors)).BeginInit();
+            this.pictitle = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.grdViewDirectors)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictitle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
-            // FrmDirectors
+            // grdViewDirectors
             // 
-            this.FrmDirectors.BackgroundColor = System.Drawing.Color.White;
-            this.FrmDirectors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.FrmDirectors.Location = new System.Drawing.Point(10, 120);
-            this.FrmDirectors.Name = "FrmDirectors";
-            this.FrmDirectors.Size = new System.Drawing.Size(240, 189);
-            this.FrmDirectors.TabIndex = 0;
+            this.grdViewDirectors.BackgroundColor = System.Drawing.Color.White;
+            this.grdViewDirectors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdViewDirectors.Location = new System.Drawing.Point(26, 113);
+            this.grdViewDirectors.Name = "grdViewDirectors";
+            this.grdViewDirectors.Size = new System.Drawing.Size(240, 189);
+            this.grdViewDirectors.TabIndex = 0;
             // 
             // lblName
             // 
-            this.lblName.Location = new System.Drawing.Point(273, 124);
+            this.lblName.Location = new System.Drawing.Point(297, 135);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(134, 19);
+            this.lblName.Size = new System.Drawing.Size(160, 17);
             this.lblName.TabIndex = 1;
             this.lblName.Text = "Name and Qualifications";
             // 
             // lblAge
             // 
-            this.lblAge.Location = new System.Drawing.Point(273, 151);
+            this.lblAge.Location = new System.Drawing.Point(297, 160);
             this.lblAge.Name = "lblAge";
-            this.lblAge.Size = new System.Drawing.Size(134, 14);
+            this.lblAge.Size = new System.Drawing.Size(160, 16);
             this.lblAge.TabIndex = 2;
             this.lblAge.Text = "Age";
             // 
             // lblPan
             // 
-            this.lblPan.Location = new System.Drawing.Point(273, 176);
+            this.lblPan.Location = new System.Drawing.Point(297, 183);
             this.lblPan.Name = "lblPan";
-            this.lblPan.Size = new System.Drawing.Size(134, 14);
+            this.lblPan.Size = new System.Drawing.Size(160, 15);
             this.lblPan.TabIndex = 3;
             this.lblPan.Text = "PAN";
             // 
             // lblAdd
             // 
-            this.lblAdd.Location = new System.Drawing.Point(273, 201);
+            this.lblAdd.Location = new System.Drawing.Point(297, 206);
             this.lblAdd.Name = "lblAdd";
-            this.lblAdd.Size = new System.Drawing.Size(134, 14);
+            this.lblAdd.Size = new System.Drawing.Size(160, 15);
             this.lblAdd.TabIndex = 4;
             this.lblAdd.Text = "Residential Address ";
             // 
             // lblPhone
             // 
-            this.lblPhone.Location = new System.Drawing.Point(273, 226);
+            this.lblPhone.Location = new System.Drawing.Point(297, 228);
             this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(134, 14);
+            this.lblPhone.Size = new System.Drawing.Size(160, 15);
             this.lblPhone.TabIndex = 5;
             this.lblPhone.Text = "Phone No";
+            this.lblPhone.Click += new System.EventHandler(this.lblPhone_Click);
             // 
             // lblNet
             // 
-            this.lblNet.Location = new System.Drawing.Point(273, 251);
+            this.lblNet.Location = new System.Drawing.Point(297, 252);
             this.lblNet.Name = "lblNet";
-            this.lblNet.Size = new System.Drawing.Size(134, 14);
+            this.lblNet.Size = new System.Drawing.Size(160, 15);
             this.lblNet.TabIndex = 6;
             this.lblNet.Text = "Net Worth";
             // 
@@ -115,67 +119,70 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(413, 121);
+            this.txtName.Location = new System.Drawing.Point(477, 134);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(278, 20);
+            this.txtName.Size = new System.Drawing.Size(241, 20);
             this.txtName.TabIndex = 8;
             // 
             // txtAge
             // 
-            this.txtAge.Location = new System.Drawing.Point(413, 145);
+            this.txtAge.Location = new System.Drawing.Point(477, 159);
             this.txtAge.Name = "txtAge";
-            this.txtAge.Size = new System.Drawing.Size(278, 20);
+            this.txtAge.Size = new System.Drawing.Size(241, 20);
             this.txtAge.TabIndex = 9;
             // 
             // txtPan
             // 
-            this.txtPan.Location = new System.Drawing.Point(413, 170);
+            this.txtPan.Location = new System.Drawing.Point(477, 183);
             this.txtPan.Name = "txtPan";
-            this.txtPan.Size = new System.Drawing.Size(278, 20);
+            this.txtPan.Size = new System.Drawing.Size(241, 20);
             this.txtPan.TabIndex = 10;
             // 
             // txtAdd
             // 
-            this.txtAdd.Location = new System.Drawing.Point(413, 195);
+            this.txtAdd.Location = new System.Drawing.Point(477, 206);
             this.txtAdd.Name = "txtAdd";
-            this.txtAdd.Size = new System.Drawing.Size(278, 20);
+            this.txtAdd.Size = new System.Drawing.Size(241, 20);
             this.txtAdd.TabIndex = 11;
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(413, 220);
+            this.txtPhone.Location = new System.Drawing.Point(477, 228);
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(278, 20);
+            this.txtPhone.Size = new System.Drawing.Size(241, 20);
             this.txtPhone.TabIndex = 12;
+            this.txtPhone.TextChanged += new System.EventHandler(this.txtPhone_TextChanged);
             // 
             // txtNet
             // 
-            this.txtNet.Location = new System.Drawing.Point(413, 245);
+            this.txtNet.Location = new System.Drawing.Point(477, 252);
             this.txtNet.Name = "txtNet";
-            this.txtNet.Size = new System.Drawing.Size(278, 20);
+            this.txtNet.Size = new System.Drawing.Size(241, 20);
             this.txtNet.TabIndex = 13;
             // 
             // cmdAdd
             // 
-            this.cmdAdd.Location = new System.Drawing.Point(498, 286);
+            this.cmdAdd.Location = new System.Drawing.Point(510, 312);
             this.cmdAdd.Name = "cmdAdd";
             this.cmdAdd.Size = new System.Drawing.Size(39, 23);
             this.cmdAdd.TabIndex = 14;
             this.cmdAdd.Text = "Add";
             this.cmdAdd.UseVisualStyleBackColor = true;
+            this.cmdAdd.Click += new System.EventHandler(this.cmdAdd_Click);
             // 
             // cmdDelete
             // 
-            this.cmdDelete.Location = new System.Drawing.Point(569, 286);
+            this.cmdDelete.Location = new System.Drawing.Point(581, 312);
             this.cmdDelete.Name = "cmdDelete";
             this.cmdDelete.Size = new System.Drawing.Size(47, 23);
             this.cmdDelete.TabIndex = 15;
             this.cmdDelete.Text = "Delete";
             this.cmdDelete.UseVisualStyleBackColor = true;
+            this.cmdDelete.Click += new System.EventHandler(this.cmdDelete_Click);
             // 
             // cmdExit
             // 
-            this.cmdExit.Location = new System.Drawing.Point(651, 286);
+            this.cmdExit.Location = new System.Drawing.Point(660, 312);
             this.cmdExit.Name = "cmdExit";
             this.cmdExit.Size = new System.Drawing.Size(40, 23);
             this.cmdExit.TabIndex = 16;
@@ -183,32 +190,37 @@
             this.cmdExit.UseVisualStyleBackColor = true;
             this.cmdExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // lbltitle
+            // pictitle
             // 
-            this.lbltitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltitle.Location = new System.Drawing.Point(6, 12);
-            this.lbltitle.Name = "lbltitle";
-            this.lbltitle.Size = new System.Drawing.Size(650, 23);
-            this.lbltitle.TabIndex = 17;
-            this.lbltitle.Text = "Detail of Directors";
-            this.lbltitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.pictitle.BackColor = System.Drawing.Color.Transparent;
+            this.pictitle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictitle.Image = ((System.Drawing.Image)(resources.GetObject("pictitle.Image")));
+            this.pictitle.Location = new System.Drawing.Point(99, 20);
+            this.pictitle.Name = "pictitle";
+            this.pictitle.Size = new System.Drawing.Size(511, 30);
+            this.pictitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictitle.TabIndex = 17;
+            this.pictitle.TabStop = false;
             // 
-            // btnClose
+            // pictureBox2
             // 
-            this.btnClose.Location = new System.Drawing.Point(655, 10);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(32, 25);
-            this.btnClose.TabIndex = 18;
-            this.btnClose.Text = "X";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.pictureBox2.BackgroundImage = global::PtrCma.Properties.Resources.closeBtnBg;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Image = global::PtrCma.Properties.Resources.close;
+            this.pictureBox2.Location = new System.Drawing.Point(684, 20);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(25, 30);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 18;
+            this.pictureBox2.TabStop = false;
             // 
             // FrmDetailDirector
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 385);
-            this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.lbltitle);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(737, 367);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictitle);
             this.Controls.Add(this.cmdExit);
             this.Controls.Add(this.cmdDelete);
             this.Controls.Add(this.cmdAdd);
@@ -224,12 +236,18 @@
             this.Controls.Add(this.lblPan);
             this.Controls.Add(this.lblAge);
             this.Controls.Add(this.lblName);
-            this.Controls.Add(this.FrmDirectors);
+            this.Controls.Add(this.grdViewDirectors);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmDetailDirector";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "FrmDetailDirector";
             this.Load += new System.EventHandler(this.FrmDetailDirector_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.FrmDirectors)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdViewDirectors)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictitle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,7 +255,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView FrmDirectors;
+        private System.Windows.Forms.DataGridView grdViewDirectors;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblAge;
         private System.Windows.Forms.Label lblPan;
@@ -254,7 +272,7 @@
         private System.Windows.Forms.Button cmdAdd;
         private System.Windows.Forms.Button cmdDelete;
         private System.Windows.Forms.Button cmdExit;
-        private System.Windows.Forms.Label lbltitle;
-        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.PictureBox pictitle;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

@@ -112,7 +112,7 @@
             this.cmdReset.Location = new System.Drawing.Point(300, 99);
             this.cmdReset.Name = "cmdReset";
             this.cmdReset.Size = new System.Drawing.Size(56, 21);
-            this.cmdReset.TabIndex = 2;
+            this.cmdReset.TabIndex = 200;
             this.cmdReset.Text = "Reset";
             this.cmdReset.UseVisualStyleBackColor = false;
             this.cmdReset.EnabledChanged += new System.EventHandler(this.cmdReset_EnabledChanged);
@@ -137,7 +137,9 @@
             this.grdViewParty.TabStop = false;
             this.grdViewParty.Tag = "40";
             this.grdViewParty.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdViewParty_CellClick);
+            this.grdViewParty.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdViewParty_CellContentClick);
             this.grdViewParty.DoubleClick += new System.EventHandler(this.grdViewParty_DoubleClick);
+            this.grdViewParty.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdViewParty_KeyDown);
             // 
             // lblCodeno
             // 

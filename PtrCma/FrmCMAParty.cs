@@ -292,8 +292,6 @@ namespace PtrCma
                 lbl.Font = Global.lblSize;
                 lbl.Size = Global.medsizelbl;
                 lbl.AutoSize = false;
-                
-
             }
             lblfind.Size = Global.smallsizelbl;
             lblparty.Size = Global.largesizelbl;
@@ -815,6 +813,43 @@ namespace PtrCma
         private void cmdReset_EnabledChanged(object sender, EventArgs e)
         {
             cmdReset.ForeColor = cmdReset.Enabled ? Color.White : Color.White;
+        }
+
+        private void grdViewParty_KeyDown(object sender, KeyEventArgs e)
+        {   if (grdViewParty.CurrentRow.Index < grdViewParty.RowCount - 1)
+            {
+                if (e.KeyCode.Equals(Keys.Enter))
+                {
+                    if (grdViewParty.RowCount > 0)    // No Crashing problem when there is no data in gridview
+                    {
+                        int i = grdViewParty.CurrentRow.Index + 1;
+                        DataGridViewRow row = this.grdViewParty.Rows[i];
+                        txtRefParty.Text = row.Cells["CL_REFNO"].Value.ToString();
+                        txtCodeno.Text = row.Cells["CL_CODENO"].Value.ToString();
+                        txtActivity.Text = row.Cells["CL_ACT"].Value.ToString();
+                        txtBranch.Text = row.Cells["CL_BRANCH"].Value.ToString();
+                        txtName.Text = row.Cells["CL_NAME"].Value.ToString();
+                        txtAdd1.Text = row.Cells["CL_ADD1"].Value.ToString();
+                        txtAdd2.Text = row.Cells["CL_ADD2"].Value.ToString();
+                        txtAdd3.Text = row.Cells["CL_ADD3"].Value.ToString();
+                        txtCity.Text = row.Cells["CL_CITY"].Value.ToString();
+                        txtState.Text = row.Cells["CL_STATE"].Value.ToString();
+                        txtPhone.Text = row.Cells["CL_FPH"].Value.ToString();
+                        txtMobile.Text = row.Cells["CL_MOB"].Value.ToString();
+                        txtFax.Text = row.Cells["CL_FAX"].Value.ToString();
+                        txtEmail1.Text = row.Cells["CL_EMAIL1"].Value.ToString();
+                        txtEmail2.Text = row.Cells["CL_EMAIL2"].Value.ToString();
+                        txtPrepBy1.Text = row.Cells["CL_PREP1"].Value.ToString();
+                        txtPrepBy2.Text = row.Cells["CL_PREP2"].Value.ToString();
+                        richAreaNotes.Text = row.Cells["CL_NOTES"].Value.ToString();
+                    }
+                }
+            }
+        }
+
+        private void grdViewParty_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
