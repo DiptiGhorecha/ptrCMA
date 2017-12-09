@@ -48,10 +48,11 @@
             this.cmdDelete = new System.Windows.Forms.Button();
             this.cmdExit = new System.Windows.Forms.Button();
             this.pictitle = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.picFrmClose = new System.Windows.Forms.PictureBox();
+            this.txtRef = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewDirectors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictitle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picFrmClose)).BeginInit();
             this.SuspendLayout();
             // 
             // grdViewDirectors
@@ -71,10 +72,11 @@
             this.grdViewDirectors.Size = new System.Drawing.Size(240, 182);
             this.grdViewDirectors.TabIndex = 0;
             this.grdViewDirectors.TabStop = false;
+            this.grdViewDirectors.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdViewDirectors_CellClick);
             // 
             // lblName
             // 
-            this.lblName.Location = new System.Drawing.Point(297, 135);
+            this.lblName.Location = new System.Drawing.Point(297, 137);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(160, 17);
             this.lblName.TabIndex = 1;
@@ -111,11 +113,10 @@
             this.lblPhone.Size = new System.Drawing.Size(160, 15);
             this.lblPhone.TabIndex = 5;
             this.lblPhone.Text = "Phone No";
-            this.lblPhone.Click += new System.EventHandler(this.lblPhone_Click);
             // 
             // lblNet
             // 
-            this.lblNet.Location = new System.Drawing.Point(297, 252);
+            this.lblNet.Location = new System.Drawing.Point(297, 251);
             this.lblNet.Name = "lblNet";
             this.lblNet.Size = new System.Drawing.Size(160, 15);
             this.lblNet.TabIndex = 6;
@@ -128,10 +129,11 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(477, 134);
+            this.txtName.Location = new System.Drawing.Point(477, 136);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(241, 20);
             this.txtName.TabIndex = 8;
+            this.txtName.Click += new System.EventHandler(this.txtName_Click);
             // 
             // txtAge
             // 
@@ -142,14 +144,14 @@
             // 
             // txtPan
             // 
-            this.txtPan.Location = new System.Drawing.Point(477, 183);
+            this.txtPan.Location = new System.Drawing.Point(477, 182);
             this.txtPan.Name = "txtPan";
             this.txtPan.Size = new System.Drawing.Size(241, 20);
             this.txtPan.TabIndex = 10;
             // 
             // txtAdd
             // 
-            this.txtAdd.Location = new System.Drawing.Point(477, 206);
+            this.txtAdd.Location = new System.Drawing.Point(477, 205);
             this.txtAdd.Name = "txtAdd";
             this.txtAdd.Size = new System.Drawing.Size(241, 20);
             this.txtAdd.TabIndex = 11;
@@ -160,11 +162,10 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(241, 20);
             this.txtPhone.TabIndex = 12;
-            this.txtPhone.TextChanged += new System.EventHandler(this.txtPhone_TextChanged);
             // 
             // txtNet
             // 
-            this.txtNet.Location = new System.Drawing.Point(477, 252);
+            this.txtNet.Location = new System.Drawing.Point(477, 251);
             this.txtNet.Name = "txtNet";
             this.txtNet.Size = new System.Drawing.Size(241, 20);
             this.txtNet.TabIndex = 13;
@@ -211,24 +212,34 @@
             this.pictitle.TabIndex = 17;
             this.pictitle.TabStop = false;
             // 
-            // pictureBox2
+            // picFrmClose
             // 
-            this.pictureBox2.BackgroundImage = global::PtrCma.Properties.Resources.closeBtnBg;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Image = global::PtrCma.Properties.Resources.close;
-            this.pictureBox2.Location = new System.Drawing.Point(684, 20);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(25, 30);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 18;
-            this.pictureBox2.TabStop = false;
+            this.picFrmClose.BackgroundImage = global::PtrCma.Properties.Resources.closeBtnBg;
+            this.picFrmClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picFrmClose.Image = global::PtrCma.Properties.Resources.close;
+            this.picFrmClose.Location = new System.Drawing.Point(684, 20);
+            this.picFrmClose.Name = "picFrmClose";
+            this.picFrmClose.Size = new System.Drawing.Size(25, 30);
+            this.picFrmClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picFrmClose.TabIndex = 18;
+            this.picFrmClose.TabStop = false;
+            this.picFrmClose.Click += new System.EventHandler(this.picFrmClose_Click);
+            // 
+            // txtRef
+            // 
+            this.txtRef.Location = new System.Drawing.Point(26, 65);
+            this.txtRef.Name = "txtRef";
+            this.txtRef.Size = new System.Drawing.Size(100, 20);
+            this.txtRef.TabIndex = 19;
+            this.txtRef.Visible = false;
             // 
             // FrmDetailDirector
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(737, 367);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.txtRef);
+            this.Controls.Add(this.picFrmClose);
             this.Controls.Add(this.pictitle);
             this.Controls.Add(this.cmdExit);
             this.Controls.Add(this.cmdDelete);
@@ -256,7 +267,7 @@
             this.Load += new System.EventHandler(this.FrmDetailDirector_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdViewDirectors)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictitle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picFrmClose)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -282,6 +293,7 @@
         private System.Windows.Forms.Button cmdDelete;
         private System.Windows.Forms.Button cmdExit;
         private System.Windows.Forms.PictureBox pictitle;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox picFrmClose;
+        private System.Windows.Forms.TextBox txtRef;
     }
 }

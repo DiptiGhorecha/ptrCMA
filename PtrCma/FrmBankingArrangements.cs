@@ -20,29 +20,30 @@ namespace PtrCma
 
         private void FrmBankingArrangements_Load(object sender, EventArgs e)
         {
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true); //Stop the Flickering
             Settings();
-    
+            //FrmBankingArrangements frmBanking = new FrmBankingArrangements();
+            //frmBanking.MdiParent = this;
+            //frmBanking.StartPosition = FormStartPosition.CenterParent;
+            //frmBanking.Show();
+
         }
 
         private void Settings()
         {
-            setControlColor();
-            setControlSize();
-
             this.BackgroundImage = Global.partyFrmBackImg;
 
-            foreach (Label lbl in Controls.OfType<Label>())
-            {
+            grdBanking.RowsDefaultCellStyle.BackColor = Color.White;     // Row Color of Gridview
 
-                lbl.BackColor = Global.lblbackdetail;
-                lbl.ForeColor = Global.lblforedetail;
+            // Column Header Color of Gridview
+            grdBanking.ColumnHeadersHeight = 30;
+            grdBanking.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            grdBanking.EnableHeadersVisualStyles = false;
+            grdBanking.ColumnHeadersDefaultCellStyle.ForeColor = Global.grdPartyForeColor;
+            grdBanking.ColumnHeadersDefaultCellStyle.BackColor = Global.grdPartyBackColor;
 
-            }
-
-            lblTitle.BackColor = Global.lblbacktitle;
-            lblTitle.ForeColor = Global.lblforetitle;
-
-          //  this.BackColor = Global.frmbgcolor;
+            setControlColor();
+            setControlSize();
         }
 
         private void setControlSize()
@@ -59,8 +60,7 @@ namespace PtrCma
                 lbl.Size = Global.lblmedSize;
                 lbl.AutoSize = false;
             }
-           // pictitle.Size = Global.titlelbl;
-            // pictitle.BackColor = Global.title;
+            pictitle.Size = Global.titlelbl;
 
             foreach (TextBox txt in Controls.OfType<TextBox>())  //Set Size of TextBox
             {
@@ -72,25 +72,19 @@ namespace PtrCma
 
         private void setControlColor()
         {
-            this.BackgroundImage = Global.partyFrmBackImg;
-
-            foreach (Label lbl in Controls.OfType<Label>())
+            foreach (Label lbl in Controls.OfType<Label>())     //Set Label Color
             {
                 lbl.BackColor = Global.lblbackdetail;
                 lbl.ForeColor = Global.lblforedetail;
             }
 
-            //pictitle.BackColor = Global.lblbacktitle;
-            //pictitle.ForeColor = Global.lblforetitle;
-
-            foreach (Button btn in Controls.OfType<Button>())
+            foreach (Button btn in Controls.OfType<Button>())       // Set Button Color
             {
                 btn.ForeColor = Global.btnfore;
                 btn.BackgroundImage = Global.cmdImg;
                 btn.FlatStyle = FlatStyle.Flat;
                 btn.BackgroundImageLayout = ImageLayout.Stretch;
             }
-            //  picFrmClose.BackColor = System.Drawing.Color.FromArgb(124, 236, 246);
 
             //  Set the Gridview Color
             grdBanking.DefaultCellStyle.SelectionBackColor = Color.Gainsboro;
@@ -99,7 +93,17 @@ namespace PtrCma
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are You Sure Want to Exit ?", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
+            DialogResult dialogResult = MessageBox.Show(GlobalMsg.exitMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
+            if (dialogResult == DialogResult.Yes)
+            {
+                NotifyMainFormToCloseChildFormBanking();
+                this.Hide();
+            }
+        }
+
+        private void picFrmClose_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show(GlobalMsg.exitMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
             if (dialogResult == DialogResult.Yes)
             {
                 NotifyMainFormToCloseChildFormBanking();

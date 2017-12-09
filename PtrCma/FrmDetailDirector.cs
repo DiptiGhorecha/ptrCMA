@@ -26,6 +26,7 @@ namespace PtrCma
 
         private void FrmDetailDirector_Load(object sender, EventArgs e)
         {
+            cmdDelete.Enabled = false;
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true); //Stop the Flickering
             Settings();
             fillgrid();
@@ -33,9 +34,16 @@ namespace PtrCma
             frmDirector.MdiParent = this;
             frmDirector.StartPosition = FormStartPosition.CenterParent;
             frmDirector.Show();
-
-          
+            
+            if (grdViewDirectors.RowCount > 0)
+            {
+                grdViewDirectors.CurrentCell = grdViewDirectors.Rows[0].Cells[1];  //Set 1st row as current row by default
+                LoadDatatoTextBox();  // show data in Textbox from Gridview
+            }
+            
         }
+
+     
 
         private void fillgrid()
         {
@@ -60,6 +68,19 @@ namespace PtrCma
 
         }
 
+        private void LoadDatatoTextBox()
+        {
+            if (grdViewDirectors.RowCount > 0)    // No Crashing problem when there is no data in gridview
+            {
+                DataGridViewRow row = this.grdViewDirectors.Rows[0];
+                txtName.Text = row.Cells["CD_NAME"].Value.ToString();
+                txtAge.Text = row.Cells["CD_AGE"].Value.ToString();
+                txtPan.Text = row.Cells["CD_PAN"].Value.ToString();
+                txtAdd.Text = row.Cells["CD_ADD"].Value.ToString();
+                txtPhone.Text = row.Cells["CD_PHONE"].Value.ToString();
+                txtNet.Text = row.Cells["CD_NET"].Value.ToString();
+            }
+        }
         private void Settings()
         {
             this.BackgroundImage = Global.partyFrmBackImg;
@@ -90,7 +111,6 @@ namespace PtrCma
                 lbl.AutoSize = false;
             }
             pictitle.Size = Global.titlelbl;
-           // pictitle.BackColor = Global.title;
 
             foreach (TextBox txt in Controls.OfType<TextBox>())  //Set Size of TextBox
             {
@@ -102,25 +122,19 @@ namespace PtrCma
 
         private void setControlColor()
         {
-            
-
-            foreach (Label lbl in Controls.OfType<Label>())
+            foreach (Label lbl in Controls.OfType<Label>())     //Set Label Color
             {
                 lbl.BackColor = Global.lblbackdetail;
                 lbl.ForeColor = Global.lblforedetail;
             }
 
-            //pictitle.BackColor = Global.lblbacktitle;
-            //pictitle.ForeColor = Global.lblforetitle;
-
-            foreach (Button btn in Controls.OfType<Button>())
+            foreach (Button btn in Controls.OfType<Button>())       // Set Button Color
             {
                 btn.ForeColor = Global.btnfore;
                 btn.BackgroundImage = Global.cmdImg;
                 btn.FlatStyle = FlatStyle.Flat;
                 btn.BackgroundImageLayout = ImageLayout.Stretch;
             }
-          //  picFrmClose.BackColor = System.Drawing.Color.FromArgb(124, 236, 246);
 
             //  Set the Gridview Color
             grdViewDirectors.DefaultCellStyle.SelectionBackColor = Color.Gainsboro;
@@ -129,6 +143,10 @@ namespace PtrCma
 
         private void cmdAdd_Click(object sender, EventArgs e)
         {
+            foreach (TextBox txt in Controls.OfType<TextBox>())
+            {
+                txt.Enabled = true;
+            }
             OleDbConnection con = new OleDbConnection();
             con.ConnectionString = connectionString;
             if (con.State == ConnectionState.Closed)
@@ -140,12 +158,71 @@ namespace PtrCma
             cmd.ExecuteNonQuery();
             con.Close();
             fillgrid();
+            MessageBox.Show(GlobalMsg.insertMsg, "Perfect Tax Reporter - CMA 1.0");
+            foreach (TextBox txt in Controls.OfType<TextBox>())
+            {
+                txt.Clear();
+            }
         }
-       
+
+        private void cmdDelete_Click(object sender, EventArgs e)
+        {
+            con = new OleDbConnection(connectionString);
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            String sql = "delete from Cx_Cd101 where CD_NAME='"+ txtName.Text +"'";
+            cmd = new OleDbCommand(sql, con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            fillgrid();
+            MessageBox.Show(GlobalMsg.deleteMsg, "Perfect Tax Reporter - CMA 1.0");
+            foreach (TextBox txt in Controls.OfType<TextBox>())
+            {
+                txt.Clear();
+                txt.Enabled = true;
+               // txtName.Focus();
+            }
+            LoadDatatoTextBox();
+        }
+
+        private void grdViewDirectors_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //foreach (TextBox txt in Controls.OfType<TextBox>())
+            //{
+            //    txt.Enabled = false;
+            //}
+            cmdAdd.Enabled = false;
+            cmdDelete.Enabled = true;
+
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.grdViewDirectors.Rows[e.RowIndex];
+                //txtRef.Text = row.Cells["CD_REFNO"].Value.ToString();
+                txtName.Text = row.Cells["CD_NAME"].Value.ToString();
+                txtAge.Text = row.Cells["CD_AGE"].Value.ToString();
+                txtPan.Text = row.Cells["CD_PAN"].Value.ToString();
+                txtAdd.Text = row.Cells["CD_ADD"].Value.ToString();
+                txtPhone.Text = row.Cells["CD_PHONE"].Value.ToString();
+                txtNet.Text = row.Cells["CD_NET"].Value.ToString();
+            }
+        }
+
+        private void txtName_Click(object sender, EventArgs e)
+        {
+            foreach (TextBox txt in Controls.OfType<TextBox>())
+            {
+                txt.Clear();
+                txt.Focus();
+            }
+            cmdDelete.Enabled = false;
+            cmdAdd.Enabled = true;
+        }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are You Sure Want to Exit ?", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
+            DialogResult dialogResult = MessageBox.Show(GlobalMsg.exitMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
             if (dialogResult == DialogResult.Yes)
             {
                 NotifyMainFormToCloseChildFormDirector();
@@ -153,21 +230,14 @@ namespace PtrCma
             }
         }
 
-        private void txtPhone_TextChanged(object sender, EventArgs e)
+        private void picFrmClose_Click(object sender, EventArgs e)
         {
-
+            DialogResult dialogResult = MessageBox.Show(GlobalMsg.exitMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
+            if (dialogResult == DialogResult.Yes)
+            {
+                NotifyMainFormToCloseChildFormDirector();
+                this.Hide();
+            }
         }
-
-        private void lblPhone_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cmdDelete_Click(object sender, EventArgs e)
-        {
-
-        }
-
-      
     }
 }

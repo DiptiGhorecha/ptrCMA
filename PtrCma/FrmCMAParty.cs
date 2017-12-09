@@ -185,7 +185,7 @@ namespace PtrCma
                 txtEmail2.MaxLength = 30;
                 txtPrepBy1.MaxLength = 20;
                 txtPrepBy2.MaxLength = 20;
-                richAreaNotes.MaxLength = 300;
+                richAreaNotes.MaxLength = 500;
 
 
             if (grdViewParty.RowCount>0)    // No Crashing problem when there is no data in gridview

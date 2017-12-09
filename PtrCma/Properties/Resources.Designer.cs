@@ -139,5 +139,7 @@ namespace PtrCma.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+
+        public static object DialogWarningXP { get; internal set; }
     }
 }

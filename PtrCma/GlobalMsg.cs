@@ -21,9 +21,9 @@ namespace PtrCma
 
         //Dialog Message Box
         public static string updateMsgDialog = "Are you sure you want Cancel ?";
-        public static string cancelMsgDialog = "Are You Sure Want to Cancel?";
-        public static string deleteMsgDialog = "Are you sure want to delete this Record?";
-        public static string exitMsgDialog = "Please Create or Select Data First";
+        public static string cancelMsgDialog = "Are You Sure Want to Cancel ?";
+        public static string deleteMsgDialog = "Are you sure want to delete this Record ?";
+        public static string exitMsgDialog = "Are You sure you want to Cancel ?";
 
         //Validation
         public static string codeMsg = "Code Number Field cannot be Blank";
