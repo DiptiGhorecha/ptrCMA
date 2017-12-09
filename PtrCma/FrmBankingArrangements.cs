@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.OleDb;
 
 namespace PtrCma
 {
@@ -13,6 +14,11 @@ namespace PtrCma
     {
         public Action NotifyMainFormToCloseChildFormParty;
         public Action NotifyMainFormToCloseChildFormBanking;
+        String connectionString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " + Application.StartupPath + "\\Resources\\PtrCma.accdb;";  //Connection String
+        OleDbConnection con;
+        OleDbCommand cmd;
+        OleDbDataAdapter dataAdapter;
+
         public FrmBankingArrangements()
         {
             InitializeComponent();
@@ -109,6 +115,20 @@ namespace PtrCma
                 NotifyMainFormToCloseChildFormBanking();
                 this.Hide();
             }
+        }
+
+        private void cmdAdd_Click(object sender, EventArgs e)
+        {
+            con = new OleDbConnection(connectionString);
+            if(con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            String sql = "insert into Cx_Cd102(CD_NAME,CD_FACILITY,CD_LIMIT,CD_OUTST,CD_SINCE) VALUES ('"+ txtBank.Text +"','"+ txtFacility.Text +"','"+ txtLimit.Text +"','"+ txtOutstanding.Text +"','"+ txtSince.Text +"')";
+            cmd = new OleDbCommand(sql,con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show(GlobalMsg.insertMsg, "Perfect Tax Reporter - CMA 1.0");
         }
     }
 }

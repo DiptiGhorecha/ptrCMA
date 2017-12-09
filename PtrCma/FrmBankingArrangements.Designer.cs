@@ -170,6 +170,7 @@
             this.cmdAdd.TabIndex = 17;
             this.cmdAdd.Text = "Add";
             this.cmdAdd.UseVisualStyleBackColor = true;
+            this.cmdAdd.Click += new System.EventHandler(this.cmdAdd_Click);
             // 
             // pictitle
             // 

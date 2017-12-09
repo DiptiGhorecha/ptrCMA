@@ -28,33 +28,36 @@ namespace PtrCma
         {
             InitializeComponent();
         }
-       // static public DialogResult ShowDialog(string title, string largeHeading, string smallExplanation, string leftButton, string rightButton);
+        // static public DialogResult ShowDialog(string title, string largeHeading, string smallExplanation, string leftButton, string rightButton);
+
+ 
 
         private void FrmMDICma_Load(object sender, EventArgs e)
         {
+            
             Double ScreenWidth = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width;
             Double ScreenHeight = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height;
-            //DialogResult dialogResult1 = MessageBox.Show(GlobalMsg.resolutionMsg, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
-            //if (dialogResult1 == DialogResult.Yes)
-            //{
-            //    if (dialogResult1 == DialogResult.Yes)
-            //    {
-            //        if (ScreenWidth < 1280 || ScreenHeight < 768)
-            //        {
-            //            //Settings();
-            //        }
-            //    }
-            //    else
-            //    {
-            //        this.Close();
-            //    }
-            //}
+            DialogResult dialogResult1 = MessageBox.Show(GlobalMsg.resolutionMsg, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
+            if (dialogResult1 == DialogResult.Yes)
+            {
+                if (dialogResult1 == DialogResult.Yes)
+                {
+                    if (ScreenWidth < 1280 || ScreenHeight < 768)
+                    {
+                        //Settings();
+                    }
+                }
+                else
+                {
+                    this.Close();
+                }
+            }
             //ShowDialog();
-            
+
             //string screenWidth = Screen.PrimaryScreen.Bounds.Width.ToString();
             //string screenHeight = Screen.PrimaryScreen.Bounds.Height.ToString();
-         
-           // label1.Text = ("Resolution: " + screenWidth + "x" + screenHeight);
+
+            // label1.Text = ("Resolution: " + screenWidth + "x" + screenHeight);
             base.OnHandleCreated(e);
             this.Bounds = Screen.PrimaryScreen.WorkingArea;
             this.Text = Global.companyName;
@@ -116,7 +119,7 @@ namespace PtrCma
 
 
             // f.Refresh();
-
+            
         }
 
         private void NotifyMainFormToOpenFormBanking()
