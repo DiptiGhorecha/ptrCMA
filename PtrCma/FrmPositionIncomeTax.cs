@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.OleDb;
 
 namespace PtrCma
 {
@@ -13,7 +14,11 @@ namespace PtrCma
     {
         public Action NotifyMainFormToCloseChildFormParty;
         public Action NotifyMainFormToCloseChildFormPosition;
-        public FrmPositionIncomeTax()
+		String connectionString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " + Application.StartupPath + "\\Resources\\PtrCma.accdb;";  //Connection String
+		OleDbConnection con;
+		OleDbCommand cmd;
+		OleDbDataAdapter dataAdapter;
+		public FrmPositionIncomeTax()
         {
             InitializeComponent();
         }
@@ -26,7 +31,22 @@ namespace PtrCma
             setControlColor();
             setControlSize();
 
-        }
+			if (string.IsNullOrEmpty(txtIncome.Text) || String.IsNullOrEmpty(txtSales.Text) || String.IsNullOrEmpty(txtService.Text) || String.IsNullOrEmpty(txtExcise.Text) || String.IsNullOrEmpty(txtOther.Text))
+			{
+				OleDbConnection con = new OleDbConnection();
+				con.ConnectionString = connectionString;
+				if (con.State == ConnectionState.Closed)
+				{
+					con.Open();
+				}
+				String sql = "insert into Cx_Cd106(CD_DOC)values('" + txtDoc.Text + "')";
+				OleDbCommand cmd = new OleDbCommand(sql, con);
+				cmd.ExecuteNonQuery();
+				con.Close();
+				MessageBox.Show(GlobalMsg.insertMsg, "Perfect Tax Reporter - CMA 1.0");
+			}
+			
+		}
 
         private void setControlSize()
         {
