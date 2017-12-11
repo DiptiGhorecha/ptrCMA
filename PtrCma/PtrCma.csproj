@@ -214,6 +214,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\Terms_of_Sales.png" />
+    <EmbeddedResource Include="Resources\Terms_of_Purchase.png" />
     <EmbeddedResource Include="Resources\select_party.png" />
     <EmbeddedResource Include="Resources\lblBack.png" />
     <EmbeddedResource Include="Resources\mini.png" />
@@ -230,6 +232,11 @@
     <EmbeddedResource Include="Resources\detail.png" />
     <Content Include="Resources\close_2.png" />
     <EmbeddedResource Include="Resources\demo_11.png" />
+    <EmbeddedResource Include="Resources\Credit_Facility_Required.png" />
+    <EmbeddedResource Include="Resources\Detail_of_Associate.png" />
+    <EmbeddedResource Include="Resources\Detail_of_Registration.png" />
+    <EmbeddedResource Include="Resources\Position_Regarding_Statutory.png" />
+    <EmbeddedResource Include="Resources\Major_Buyers.png" />
     <Content Include="Resources\PtrCma.accdb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

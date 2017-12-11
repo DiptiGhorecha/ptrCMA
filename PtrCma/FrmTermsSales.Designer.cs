@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTermsSales));
             this.lblCredit = new System.Windows.Forms.Label();
             this.txtCreditD = new System.Windows.Forms.TextBox();
             this.txtCreditE = new System.Windows.Forms.TextBox();
@@ -40,8 +41,10 @@
             this.txtAverageD = new System.Windows.Forms.TextBox();
             this.txtAverageE = new System.Windows.Forms.TextBox();
             this.cmdExit = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.lblTitle = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictitle = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictitle)).BeginInit();
             this.SuspendLayout();
             // 
             // lblCredit
@@ -73,6 +76,7 @@
             this.lblDomestic.Size = new System.Drawing.Size(100, 20);
             this.lblDomestic.TabIndex = 3;
             this.lblDomestic.Text = "Domestic";
+            this.lblDomestic.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblExport
             // 
@@ -81,6 +85,7 @@
             this.lblExport.Size = new System.Drawing.Size(100, 20);
             this.lblExport.TabIndex = 4;
             this.lblExport.Text = "Export";
+            this.lblExport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblPeriod
             // 
@@ -136,31 +141,37 @@
             this.cmdExit.UseVisualStyleBackColor = true;
             this.cmdExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnClose
+            // pictureBox1
             // 
-            this.btnClose.Location = new System.Drawing.Point(770, 24);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(32, 25);
-            this.btnClose.TabIndex = 24;
-            this.btnClose.Text = "X";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.pictureBox1.BackgroundImage = global::PtrCma.Properties.Resources.closeBtnBg;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Image = global::PtrCma.Properties.Resources.close;
+            this.pictureBox1.Location = new System.Drawing.Point(766, 21);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(25, 30);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 80;
+            this.pictureBox1.TabStop = false;
             // 
-            // lblTitle
+            // pictitle
             // 
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(38, 24);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(729, 23);
-            this.lblTitle.TabIndex = 25;
-            this.lblTitle.Text = "Terms of Sales";
+            this.pictitle.BackColor = System.Drawing.Color.Transparent;
+            this.pictitle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictitle.Image = ((System.Drawing.Image)(resources.GetObject("pictitle.Image")));
+            this.pictitle.Location = new System.Drawing.Point(79, 23);
+            this.pictitle.Name = "pictitle";
+            this.pictitle.Size = new System.Drawing.Size(532, 30);
+            this.pictitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictitle.TabIndex = 79;
+            this.pictitle.TabStop = false;
             // 
             // FrmTermsSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(838, 417);
-            this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictitle);
             this.Controls.Add(this.cmdExit);
             this.Controls.Add(this.txtAverageE);
             this.Controls.Add(this.txtAverageD);
@@ -177,6 +188,8 @@
             this.Name = "FrmTermsSales";
             this.Text = "FrmTermsSales";
             this.Load += new System.EventHandler(this.FrmTermsSales_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictitle)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,7 +209,7 @@
         private System.Windows.Forms.TextBox txtAverageD;
         private System.Windows.Forms.TextBox txtAverageE;
         private System.Windows.Forms.Button cmdExit;
-        private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictitle;
     }
 }

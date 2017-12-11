@@ -67,10 +67,11 @@
             this.grdBanking.Size = new System.Drawing.Size(258, 200);
             this.grdBanking.TabIndex = 1;
             this.grdBanking.TabStop = false;
+            this.grdBanking.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdBanking_CellClick);
             // 
             // lblBank
             // 
-            this.lblBank.Location = new System.Drawing.Point(321, 155);
+            this.lblBank.Location = new System.Drawing.Point(321, 157);
             this.lblBank.Name = "lblBank";
             this.lblBank.Size = new System.Drawing.Size(117, 17);
             this.lblBank.TabIndex = 2;
@@ -78,7 +79,7 @@
             // 
             // lblFacility
             // 
-            this.lblFacility.Location = new System.Drawing.Point(321, 180);
+            this.lblFacility.Location = new System.Drawing.Point(321, 182);
             this.lblFacility.Name = "lblFacility";
             this.lblFacility.Size = new System.Drawing.Size(117, 17);
             this.lblFacility.TabIndex = 3;
@@ -86,7 +87,7 @@
             // 
             // lblLimit
             // 
-            this.lblLimit.Location = new System.Drawing.Point(321, 205);
+            this.lblLimit.Location = new System.Drawing.Point(321, 207);
             this.lblLimit.Name = "lblLimit";
             this.lblLimit.Size = new System.Drawing.Size(117, 17);
             this.lblLimit.TabIndex = 4;
@@ -94,7 +95,7 @@
             // 
             // lblOutstanding
             // 
-            this.lblOutstanding.Location = new System.Drawing.Point(321, 230);
+            this.lblOutstanding.Location = new System.Drawing.Point(321, 232);
             this.lblOutstanding.Name = "lblOutstanding";
             this.lblOutstanding.Size = new System.Drawing.Size(117, 17);
             this.lblOutstanding.TabIndex = 5;
@@ -102,7 +103,7 @@
             // 
             // lblSince
             // 
-            this.lblSince.Location = new System.Drawing.Point(321, 255);
+            this.lblSince.Location = new System.Drawing.Point(321, 257);
             this.lblSince.Name = "lblSince";
             this.lblSince.Size = new System.Drawing.Size(117, 17);
             this.lblSince.TabIndex = 6;
@@ -110,42 +111,43 @@
             // 
             // txtBank
             // 
-            this.txtBank.Location = new System.Drawing.Point(503, 155);
+            this.txtBank.Location = new System.Drawing.Point(503, 157);
             this.txtBank.Name = "txtBank";
             this.txtBank.Size = new System.Drawing.Size(220, 20);
             this.txtBank.TabIndex = 7;
+            this.txtBank.Click += new System.EventHandler(this.txtBank_Click);
             // 
             // txtFacility
             // 
-            this.txtFacility.Location = new System.Drawing.Point(503, 180);
+            this.txtFacility.Location = new System.Drawing.Point(503, 182);
             this.txtFacility.Name = "txtFacility";
             this.txtFacility.Size = new System.Drawing.Size(220, 20);
             this.txtFacility.TabIndex = 8;
             // 
             // txtLimit
             // 
-            this.txtLimit.Location = new System.Drawing.Point(503, 205);
+            this.txtLimit.Location = new System.Drawing.Point(503, 207);
             this.txtLimit.Name = "txtLimit";
             this.txtLimit.Size = new System.Drawing.Size(220, 20);
             this.txtLimit.TabIndex = 9;
             // 
             // txtOutstanding
             // 
-            this.txtOutstanding.Location = new System.Drawing.Point(503, 230);
+            this.txtOutstanding.Location = new System.Drawing.Point(503, 232);
             this.txtOutstanding.Name = "txtOutstanding";
             this.txtOutstanding.Size = new System.Drawing.Size(220, 20);
             this.txtOutstanding.TabIndex = 10;
             // 
             // txtSince
             // 
-            this.txtSince.Location = new System.Drawing.Point(503, 255);
+            this.txtSince.Location = new System.Drawing.Point(503, 257);
             this.txtSince.Name = "txtSince";
             this.txtSince.Size = new System.Drawing.Size(220, 20);
             this.txtSince.TabIndex = 11;
             // 
             // cmdExit
             // 
-            this.cmdExit.Location = new System.Drawing.Point(686, 332);
+            this.cmdExit.Location = new System.Drawing.Point(686, 329);
             this.cmdExit.Name = "cmdExit";
             this.cmdExit.Size = new System.Drawing.Size(40, 23);
             this.cmdExit.TabIndex = 19;
@@ -155,16 +157,17 @@
             // 
             // cmdDelete
             // 
-            this.cmdDelete.Location = new System.Drawing.Point(604, 332);
+            this.cmdDelete.Location = new System.Drawing.Point(604, 329);
             this.cmdDelete.Name = "cmdDelete";
             this.cmdDelete.Size = new System.Drawing.Size(47, 23);
             this.cmdDelete.TabIndex = 18;
             this.cmdDelete.Text = "Delete";
             this.cmdDelete.UseVisualStyleBackColor = true;
+            this.cmdDelete.Click += new System.EventHandler(this.cmdDelete_Click);
             // 
             // cmdAdd
             // 
-            this.cmdAdd.Location = new System.Drawing.Point(533, 332);
+            this.cmdAdd.Location = new System.Drawing.Point(533, 329);
             this.cmdAdd.Name = "cmdAdd";
             this.cmdAdd.Size = new System.Drawing.Size(39, 23);
             this.cmdAdd.TabIndex = 17;
@@ -177,7 +180,7 @@
             this.pictitle.BackColor = System.Drawing.Color.Transparent;
             this.pictitle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictitle.Image = ((System.Drawing.Image)(resources.GetObject("pictitle.Image")));
-            this.pictitle.Location = new System.Drawing.Point(117, 20);
+            this.pictitle.Location = new System.Drawing.Point(117, 23);
             this.pictitle.Name = "pictitle";
             this.pictitle.Size = new System.Drawing.Size(532, 30);
             this.pictitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -189,7 +192,7 @@
             this.pictureBox1.BackgroundImage = global::PtrCma.Properties.Resources.closeBtnBg;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Image = global::PtrCma.Properties.Resources.close;
-            this.pictureBox1.Location = new System.Drawing.Point(713, 20);
+            this.pictureBox1.Location = new System.Drawing.Point(713, 23);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(25, 30);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

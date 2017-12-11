@@ -17,6 +17,13 @@ namespace PtrCma
         //public Action NotifyMainFormToOpenChildFormCma;
         public Action NotifyMainFormToOpenChildFormDirector;
         public Action NotifyMainFormToOpenChildFormBanking;
+        public Action NotifyMainFormToOpenChildFormCredit;
+        public Action NotifyMainFormToOpenChildFormAssociate;
+        public Action NotifyMainFormToOpenChildFormRegistration;
+        public Action NotifyMainFormToOpenChildFormPosition;
+        public Action NotifyMainFormToOpenChildFormPurchase;
+        public Action NotifyMainFormToOpenChildFormSales;
+        public Action NotifyMainFormToOpenChildFormBuyer;
         public FrmCMA()
         {
             InitializeComponent();
@@ -31,7 +38,7 @@ namespace PtrCma
             if (e.ColumnIndex == 1) {
                e.Value = Convert.ToString(e.Value).Substring(2, 2);
             }
-            var list = new List<int> {14, 15, 16, 17, 18, 13, 23, 30, 31, 35, 36, 37, 40, 41, 42, 44, 45};
+            var list = new List<int> {13,14, 15, 16, 17, 18, 23, 30, 31, 35, 36, 37, 40, 41, 42, 44, 45};
             if (list.Contains(e.RowIndex))
             {
                e.CellStyle.ForeColor = Color.Green;
@@ -285,12 +292,61 @@ namespace PtrCma
                     NotifyMainFormToOpenChildFormBanking();
                 }
             }
-            
+            if (e.RowIndex == 15)
+            {
+                if (NotifyMainFormToOpenChildFormCredit != null)
+                {
+                    NotifyMainFormToOpenChildFormCredit();
+                }
+            }
+            if (e.RowIndex == 16)
+            {
+                if (NotifyMainFormToOpenChildFormAssociate != null)
+                {
+                    NotifyMainFormToOpenChildFormAssociate();
+                }
+            }
+            if (e.RowIndex == 17)
+            {
+                if (NotifyMainFormToOpenChildFormRegistration != null)
+                {
+                    NotifyMainFormToOpenChildFormRegistration();
+                }
+            }
+            if (e.RowIndex == 18)
+            {
+                if (NotifyMainFormToOpenChildFormPosition != null)
+                {
+                    NotifyMainFormToOpenChildFormPosition();
+                }
+            }
+            if (e.RowIndex == 23)
+            {
+                if (NotifyMainFormToOpenChildFormPurchase != null)
+                {
+                    NotifyMainFormToOpenChildFormPurchase();
+                }
+            }
+            if (e.RowIndex == 30)
+            {
+                if (NotifyMainFormToOpenChildFormBuyer != null)
+                {
+                    NotifyMainFormToOpenChildFormBuyer();
+                }
+            }
+            if (e.RowIndex == 31)
+            {
+                if (NotifyMainFormToOpenChildFormSales != null)
+                {
+                    NotifyMainFormToOpenChildFormSales();
+                }
+            }
+
         }
 
         private void gridViewCMA_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var list = new List<int> { 14, 15, 16, 17, 18, 13, 23, 30, 31, 35, 36, 37, 40, 41, 42, 44, 45 };
+            var list = new List<int> { 13, 14, 15, 16, 17, 18, 23, 30, 31, 35, 36, 37, 40, 41, 42, 44, 45 };
             if (list.Contains(e.RowIndex) && e.ColumnIndex == 11)
             {
                 DataGridViewCell cell = gridViewCMA.Rows[e.RowIndex].Cells[e.ColumnIndex];

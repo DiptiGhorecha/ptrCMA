@@ -11,6 +11,8 @@ namespace PtrCma
 {
     public partial class FrmTermsSales : Form
     {
+        public Action NotifyMainFormToCloseChildFormParty;
+        public Action NotifyMainFormToCloseChildFormSales;
         public FrmTermsSales()
         {
             InitializeComponent();
@@ -30,27 +32,58 @@ namespace PtrCma
         {
             this.BackgroundImage = Global.partyFrmBackImg;
 
-            foreach (Label lbl in Controls.OfType<Label>())
+            setControlColor();
+            setControlSize();
+
+        }
+
+        private void setControlSize()
+        {
+            foreach (Button btn in Controls.OfType<Button>())   //Set Size of Button
             {
-
-                lbl.BackColor = Global.lblbackdetail;
-                lbl.ForeColor = Global.lblforedetail;
-
+                btn.Size = Global.smallbtn;
             }
 
-            lblTitle.BackColor = Global.lblbacktitle;
-            lblTitle.ForeColor = Global.lblforetitle;
+            //foreach (Label lbl in Controls.OfType<Label>()) //Set Size of Label
+            //{
+            //    lbl.Font = Global.lblSize;
+            //    lbl.Size = Global.lblmedSize;
+            //    lbl.AutoSize = false;
+            //}
+            //pictitle.Size = Global.titlelbl;
 
+            //foreach (TextBox txt in Controls.OfType<TextBox>())  //Set Size of TextBox
+            //{
+            //    txt.Font = Global.txtSize;
+            //    txt.Size = Global.txtmedSize;
+            //    txt.AutoSize = false;
+            //}
+        }
+
+        private void setControlColor()
+        {
+            foreach (Label lbl in Controls.OfType<Label>())     //Set Label Color
+            {
+                lbl.BackColor = Global.lblbackdetail;
+                lbl.ForeColor = Global.lblforedetail;
+            }
+
+            foreach (Button btn in Controls.OfType<Button>())       // Set Button Color
+            {
+                btn.ForeColor = Global.btnfore;
+                btn.BackgroundImage = Global.cmdImg;
+                btn.FlatStyle = FlatStyle.Flat;
+                btn.BackgroundImageLayout = ImageLayout.Stretch;
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Are You Sure Want to Exit ?", "", MessageBoxButtons.YesNo);       //Cancel Button
+            DialogResult dialogResult = MessageBox.Show(GlobalMsg.exitMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
             if (dialogResult == DialogResult.Yes)
             {
-                this.Close();
-                FrmMDICma frmCma = new FrmMDICma();
-                frmCma.Show();
+                NotifyMainFormToCloseChildFormSales();
+                this.Hide();
             }
         }
     }

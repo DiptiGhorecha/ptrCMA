@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblTitle = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRegistration));
             this.lblPan = new System.Windows.Forms.Label();
             this.txtPan = new System.Windows.Forms.TextBox();
             this.lblSales = new System.Windows.Forms.Label();
@@ -40,22 +40,15 @@
             this.txtExcise = new System.Windows.Forms.TextBox();
             this.txtOther = new System.Windows.Forms.TextBox();
             this.cmdExit = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
+            this.picFrmClose = new System.Windows.Forms.PictureBox();
+            this.pictitle = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picFrmClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictitle)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(26, 9);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(731, 23);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Detail of Registration Under Sales Tax/Vat";
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblPan
             // 
-            this.lblPan.Location = new System.Drawing.Point(234, 109);
+            this.lblPan.Location = new System.Drawing.Point(207, 106);
             this.lblPan.Name = "lblPan";
             this.lblPan.Size = new System.Drawing.Size(140, 23);
             this.lblPan.TabIndex = 1;
@@ -63,14 +56,14 @@
             // 
             // txtPan
             // 
-            this.txtPan.Location = new System.Drawing.Point(392, 106);
+            this.txtPan.Location = new System.Drawing.Point(383, 106);
             this.txtPan.Name = "txtPan";
             this.txtPan.Size = new System.Drawing.Size(117, 20);
             this.txtPan.TabIndex = 2;
             // 
             // lblSales
             // 
-            this.lblSales.Location = new System.Drawing.Point(234, 145);
+            this.lblSales.Location = new System.Drawing.Point(207, 131);
             this.lblSales.Name = "lblSales";
             this.lblSales.Size = new System.Drawing.Size(140, 23);
             this.lblSales.TabIndex = 3;
@@ -78,7 +71,7 @@
             // 
             // lblService
             // 
-            this.lblService.Location = new System.Drawing.Point(234, 183);
+            this.lblService.Location = new System.Drawing.Point(207, 157);
             this.lblService.Name = "lblService";
             this.lblService.Size = new System.Drawing.Size(140, 23);
             this.lblService.TabIndex = 4;
@@ -86,7 +79,7 @@
             // 
             // lblExcise
             // 
-            this.lblExcise.Location = new System.Drawing.Point(234, 226);
+            this.lblExcise.Location = new System.Drawing.Point(207, 182);
             this.lblExcise.Name = "lblExcise";
             this.lblExcise.Size = new System.Drawing.Size(140, 23);
             this.lblExcise.TabIndex = 5;
@@ -94,7 +87,7 @@
             // 
             // lblOther
             // 
-            this.lblOther.Location = new System.Drawing.Point(234, 261);
+            this.lblOther.Location = new System.Drawing.Point(207, 207);
             this.lblOther.Name = "lblOther";
             this.lblOther.Size = new System.Drawing.Size(140, 23);
             this.lblOther.TabIndex = 6;
@@ -102,35 +95,35 @@
             // 
             // txtSales
             // 
-            this.txtSales.Location = new System.Drawing.Point(392, 142);
+            this.txtSales.Location = new System.Drawing.Point(383, 131);
             this.txtSales.Name = "txtSales";
             this.txtSales.Size = new System.Drawing.Size(117, 20);
             this.txtSales.TabIndex = 7;
             // 
             // txtService
             // 
-            this.txtService.Location = new System.Drawing.Point(392, 180);
+            this.txtService.Location = new System.Drawing.Point(383, 157);
             this.txtService.Name = "txtService";
             this.txtService.Size = new System.Drawing.Size(117, 20);
             this.txtService.TabIndex = 8;
             // 
             // txtExcise
             // 
-            this.txtExcise.Location = new System.Drawing.Point(392, 223);
+            this.txtExcise.Location = new System.Drawing.Point(383, 182);
             this.txtExcise.Name = "txtExcise";
             this.txtExcise.Size = new System.Drawing.Size(117, 20);
             this.txtExcise.TabIndex = 9;
             // 
             // txtOther
             // 
-            this.txtOther.Location = new System.Drawing.Point(392, 258);
+            this.txtOther.Location = new System.Drawing.Point(383, 207);
             this.txtOther.Name = "txtOther";
             this.txtOther.Size = new System.Drawing.Size(117, 20);
             this.txtOther.TabIndex = 10;
             // 
             // cmdExit
             // 
-            this.cmdExit.Location = new System.Drawing.Point(459, 307);
+            this.cmdExit.Location = new System.Drawing.Point(525, 257);
             this.cmdExit.Name = "cmdExit";
             this.cmdExit.Size = new System.Drawing.Size(49, 23);
             this.cmdExit.TabIndex = 11;
@@ -138,21 +131,38 @@
             this.cmdExit.UseVisualStyleBackColor = true;
             this.cmdExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnClose
+            // picFrmClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(757, 8);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(32, 25);
-            this.btnClose.TabIndex = 37;
-            this.btnClose.Text = "X";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.picFrmClose.BackgroundImage = global::PtrCma.Properties.Resources.closeBtnBg;
+            this.picFrmClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picFrmClose.Image = global::PtrCma.Properties.Resources.close;
+            this.picFrmClose.Location = new System.Drawing.Point(697, 21);
+            this.picFrmClose.Name = "picFrmClose";
+            this.picFrmClose.Size = new System.Drawing.Size(25, 30);
+            this.picFrmClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picFrmClose.TabIndex = 39;
+            this.picFrmClose.TabStop = false;
+            this.picFrmClose.Click += new System.EventHandler(this.picFrmClose_Click);
+            // 
+            // pictitle
+            // 
+            this.pictitle.BackColor = System.Drawing.Color.Transparent;
+            this.pictitle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictitle.Image = ((System.Drawing.Image)(resources.GetObject("pictitle.Image")));
+            this.pictitle.Location = new System.Drawing.Point(98, 21);
+            this.pictitle.Name = "pictitle";
+            this.pictitle.Size = new System.Drawing.Size(511, 30);
+            this.pictitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictitle.TabIndex = 38;
+            this.pictitle.TabStop = false;
             // 
             // FrmRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(815, 355);
-            this.Controls.Add(this.btnClose);
+            this.ClientSize = new System.Drawing.Size(815, 302);
+            this.Controls.Add(this.picFrmClose);
+            this.Controls.Add(this.pictitle);
             this.Controls.Add(this.cmdExit);
             this.Controls.Add(this.txtOther);
             this.Controls.Add(this.txtExcise);
@@ -164,19 +174,19 @@
             this.Controls.Add(this.lblSales);
             this.Controls.Add(this.txtPan);
             this.Controls.Add(this.lblPan);
-            this.Controls.Add(this.lblTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmRegistration";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "FrmRegistration";
             this.Load += new System.EventHandler(this.FrmRegistration_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.picFrmClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictitle)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblPan;
         private System.Windows.Forms.TextBox txtPan;
         private System.Windows.Forms.Label lblSales;
@@ -188,6 +198,7 @@
         private System.Windows.Forms.TextBox txtExcise;
         private System.Windows.Forms.TextBox txtOther;
         private System.Windows.Forms.Button cmdExit;
-        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.PictureBox picFrmClose;
+        private System.Windows.Forms.PictureBox pictitle;
     }
 }

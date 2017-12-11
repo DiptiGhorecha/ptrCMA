@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblTitle = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTermsPurchase));
             this.lblPTotal = new System.Windows.Forms.Label();
             this.txtPTotalD = new System.Windows.Forms.TextBox();
             this.txtPTotalI = new System.Windows.Forms.TextBox();
@@ -44,22 +44,15 @@
             this.txtPurchaseD = new System.Windows.Forms.TextBox();
             this.txtPurchaseI = new System.Windows.Forms.TextBox();
             this.cmdExit = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
+            this.picFrmClose = new System.Windows.Forms.PictureBox();
+            this.pictitle = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picFrmClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictitle)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(46, 21);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(665, 23);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Terms of Purchase/Procurement";
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblPTotal
             // 
-            this.lblPTotal.Location = new System.Drawing.Point(146, 149);
+            this.lblPTotal.Location = new System.Drawing.Point(145, 149);
             this.lblPTotal.Name = "lblPTotal";
             this.lblPTotal.Size = new System.Drawing.Size(203, 20);
             this.lblPTotal.TabIndex = 1;
@@ -67,37 +60,39 @@
             // 
             // txtPTotalD
             // 
-            this.txtPTotalD.Location = new System.Drawing.Point(365, 149);
+            this.txtPTotalD.Location = new System.Drawing.Point(343, 149);
             this.txtPTotalD.Name = "txtPTotalD";
             this.txtPTotalD.Size = new System.Drawing.Size(100, 20);
             this.txtPTotalD.TabIndex = 2;
             // 
             // txtPTotalI
             // 
-            this.txtPTotalI.Location = new System.Drawing.Point(482, 149);
+            this.txtPTotalI.Location = new System.Drawing.Point(460, 149);
             this.txtPTotalI.Name = "txtPTotalI";
             this.txtPTotalI.Size = new System.Drawing.Size(100, 20);
             this.txtPTotalI.TabIndex = 3;
             // 
             // lblDomestic
             // 
-            this.lblDomestic.Location = new System.Drawing.Point(362, 111);
+            this.lblDomestic.Location = new System.Drawing.Point(343, 111);
             this.lblDomestic.Name = "lblDomestic";
-            this.lblDomestic.Size = new System.Drawing.Size(103, 23);
+            this.lblDomestic.Size = new System.Drawing.Size(100, 23);
             this.lblDomestic.TabIndex = 4;
             this.lblDomestic.Text = "Domestic";
+            this.lblDomestic.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblImport
             // 
-            this.lblImport.Location = new System.Drawing.Point(479, 111);
+            this.lblImport.Location = new System.Drawing.Point(460, 111);
             this.lblImport.Name = "lblImport";
-            this.lblImport.Size = new System.Drawing.Size(103, 23);
+            this.lblImport.Size = new System.Drawing.Size(100, 23);
             this.lblImport.TabIndex = 5;
             this.lblImport.Text = "Import";
+            this.lblImport.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblPeriod
             // 
-            this.lblPeriod.Location = new System.Drawing.Point(146, 177);
+            this.lblPeriod.Location = new System.Drawing.Point(145, 173);
             this.lblPeriod.Name = "lblPeriod";
             this.lblPeriod.Size = new System.Drawing.Size(203, 20);
             this.lblPeriod.TabIndex = 6;
@@ -105,21 +100,21 @@
             // 
             // txtPeriodD
             // 
-            this.txtPeriodD.Location = new System.Drawing.Point(365, 174);
+            this.txtPeriodD.Location = new System.Drawing.Point(343, 173);
             this.txtPeriodD.Name = "txtPeriodD";
             this.txtPeriodD.Size = new System.Drawing.Size(100, 20);
             this.txtPeriodD.TabIndex = 7;
             // 
             // txtPeriodI
             // 
-            this.txtPeriodI.Location = new System.Drawing.Point(482, 174);
+            this.txtPeriodI.Location = new System.Drawing.Point(460, 173);
             this.txtPeriodI.Name = "txtPeriodI";
             this.txtPeriodI.Size = new System.Drawing.Size(100, 20);
             this.txtPeriodI.TabIndex = 8;
             // 
             // lblAverage
             // 
-            this.lblAverage.Location = new System.Drawing.Point(146, 202);
+            this.lblAverage.Location = new System.Drawing.Point(145, 197);
             this.lblAverage.Name = "lblAverage";
             this.lblAverage.Size = new System.Drawing.Size(203, 20);
             this.lblAverage.TabIndex = 9;
@@ -127,7 +122,7 @@
             // 
             // lblPurchase
             // 
-            this.lblPurchase.Location = new System.Drawing.Point(146, 227);
+            this.lblPurchase.Location = new System.Drawing.Point(145, 221);
             this.lblPurchase.Name = "lblPurchase";
             this.lblPurchase.Size = new System.Drawing.Size(203, 20);
             this.lblPurchase.TabIndex = 10;
@@ -135,35 +130,35 @@
             // 
             // txtAverageD
             // 
-            this.txtAverageD.Location = new System.Drawing.Point(365, 199);
+            this.txtAverageD.Location = new System.Drawing.Point(343, 197);
             this.txtAverageD.Name = "txtAverageD";
             this.txtAverageD.Size = new System.Drawing.Size(100, 20);
             this.txtAverageD.TabIndex = 11;
             // 
             // txtAverageI
             // 
-            this.txtAverageI.Location = new System.Drawing.Point(482, 199);
+            this.txtAverageI.Location = new System.Drawing.Point(460, 197);
             this.txtAverageI.Name = "txtAverageI";
             this.txtAverageI.Size = new System.Drawing.Size(100, 20);
             this.txtAverageI.TabIndex = 12;
             // 
             // txtPurchaseD
             // 
-            this.txtPurchaseD.Location = new System.Drawing.Point(365, 224);
+            this.txtPurchaseD.Location = new System.Drawing.Point(343, 221);
             this.txtPurchaseD.Name = "txtPurchaseD";
             this.txtPurchaseD.Size = new System.Drawing.Size(100, 20);
             this.txtPurchaseD.TabIndex = 13;
             // 
             // txtPurchaseI
             // 
-            this.txtPurchaseI.Location = new System.Drawing.Point(482, 224);
+            this.txtPurchaseI.Location = new System.Drawing.Point(460, 221);
             this.txtPurchaseI.Name = "txtPurchaseI";
             this.txtPurchaseI.Size = new System.Drawing.Size(100, 20);
             this.txtPurchaseI.TabIndex = 14;
             // 
             // cmdExit
             // 
-            this.cmdExit.Location = new System.Drawing.Point(542, 268);
+            this.cmdExit.Location = new System.Drawing.Point(514, 269);
             this.cmdExit.Name = "cmdExit";
             this.cmdExit.Size = new System.Drawing.Size(40, 23);
             this.cmdExit.TabIndex = 21;
@@ -171,21 +166,37 @@
             this.cmdExit.UseVisualStyleBackColor = true;
             this.cmdExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnClose
+            // picFrmClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(710, 20);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(32, 25);
-            this.btnClose.TabIndex = 22;
-            this.btnClose.Text = "X";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.picFrmClose.BackgroundImage = global::PtrCma.Properties.Resources.closeBtnBg;
+            this.picFrmClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picFrmClose.Image = global::PtrCma.Properties.Resources.close;
+            this.picFrmClose.Location = new System.Drawing.Point(675, 21);
+            this.picFrmClose.Name = "picFrmClose";
+            this.picFrmClose.Size = new System.Drawing.Size(25, 30);
+            this.picFrmClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picFrmClose.TabIndex = 43;
+            this.picFrmClose.TabStop = false;
+            // 
+            // pictitle
+            // 
+            this.pictitle.BackColor = System.Drawing.Color.Transparent;
+            this.pictitle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictitle.Image = ((System.Drawing.Image)(resources.GetObject("pictitle.Image")));
+            this.pictitle.Location = new System.Drawing.Point(87, 21);
+            this.pictitle.Name = "pictitle";
+            this.pictitle.Size = new System.Drawing.Size(511, 30);
+            this.pictitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictitle.TabIndex = 42;
+            this.pictitle.TabStop = false;
             // 
             // FrmTermsPurchase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(790, 423);
-            this.Controls.Add(this.btnClose);
+            this.ClientSize = new System.Drawing.Size(711, 314);
+            this.Controls.Add(this.picFrmClose);
+            this.Controls.Add(this.pictitle);
             this.Controls.Add(this.cmdExit);
             this.Controls.Add(this.txtPurchaseI);
             this.Controls.Add(this.txtPurchaseD);
@@ -201,19 +212,19 @@
             this.Controls.Add(this.txtPTotalI);
             this.Controls.Add(this.txtPTotalD);
             this.Controls.Add(this.lblPTotal);
-            this.Controls.Add(this.lblTitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmTermsPurchase";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "FrmTermsPurchase";
             this.Load += new System.EventHandler(this.FrmTermsPurchase_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.picFrmClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictitle)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblPTotal;
         private System.Windows.Forms.TextBox txtPTotalD;
         private System.Windows.Forms.TextBox txtPTotalI;
@@ -229,6 +240,7 @@
         private System.Windows.Forms.TextBox txtPurchaseD;
         private System.Windows.Forms.TextBox txtPurchaseI;
         private System.Windows.Forms.Button cmdExit;
-        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.PictureBox picFrmClose;
+        private System.Windows.Forms.PictureBox pictitle;
     }
 }

@@ -71,7 +71,6 @@
             this.grdViewDirectors.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.grdViewDirectors.Size = new System.Drawing.Size(240, 182);
             this.grdViewDirectors.TabIndex = 0;
-            this.grdViewDirectors.TabStop = false;
             this.grdViewDirectors.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdViewDirectors_CellClick);
             // 
             // lblName

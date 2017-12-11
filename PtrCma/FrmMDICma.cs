@@ -15,15 +15,30 @@ namespace PtrCma
 {
     public partial class FrmMDICma : Form
     {
-        public Action NotifyMainFormToCloseChildFormParty;
-        public Action NotifyMainFormToCloseChildFormDirector;
-        public Action NotifyMainFormToCloseChildFormBanking;
-        private FrmMainCma frmMain;
+        public Action NotifyMainFormToCloseChildFormParty;          // Party Form
         private FrmCMAParty frmParty;
-        private FrmCredit frmCredit;
-        private FrmCMA frmCmaa;
+        public Action NotifyMainFormToCloseChildFormDirector;       // Detail of Director Form
         private FrmDetailDirector frmDirector;
+        public Action NotifyMainFormToCloseChildFormBanking;        // Banking Arrangements Form
         private FrmBankingArrangements frmBanking;
+        public Action NotifyMainFormToCloseChildFormCredit;         // Credit Form
+        public FrmCredit frmCredit;
+        public Action NotifyMainFormToCloseChildFormAssociate;      // Detail of Associate Form
+        public FrmDeatilAssociate frmAssociate;
+        public Action NotifyMainFormToCloseChildFormRegistration;   // Registration Form
+        public FrmRegistration frmRegistration;
+        public Action NotifyMainFormToCloseChildFormPosition;       // Position Income Tax Form
+        public FrmPositionIncomeTax frmPosition;
+        public Action NotifyMainFormToCloseChildFormPurchase;       // Terms of Purchase Form
+        public FrmTermsPurchase frmPurchase;
+        public Action NotifyMainFormToCloseChildFormSales;          // Terms of Sales Form
+        public FrmTermsSales frmSales;
+        public Action NotifyMainFormToCloseChildFormBuyer;          // Major Buyer Form
+        public FrmMajorBuyer frmBuyer;
+
+        private FrmMainCma frmMain;
+        private FrmCMA frmCmaa;
+        
         public FrmMDICma()
         {
             InitializeComponent();
@@ -44,7 +59,7 @@ namespace PtrCma
                 {
                     if (ScreenWidth < 1280 || ScreenHeight < 768)
                     {
-                        //Settings();
+                       
                     }
                 }
                 else
@@ -87,13 +102,16 @@ namespace PtrCma
             frmCmaa.MdiParent = this;
             frmCmaa.Location = new Point(0, 70);
             frmCmaa.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
-            frmCmaa.NotifyMainFormToOpenChildFormDirector += NotifyMainFormToOpenFormDirector;
-            frmCmaa.NotifyMainFormToOpenChildFormBanking += NotifyMainFormToOpenFormBanking;
+            frmCmaa.NotifyMainFormToOpenChildFormDirector += NotifyMainFormToOpenFormDirector;  //Use to open Detail of Director Form
+            frmCmaa.NotifyMainFormToOpenChildFormBanking += NotifyMainFormToOpenFormBanking;    //Use to open Banking Arrangements Form    
+            frmCmaa.NotifyMainFormToOpenChildFormCredit += NotifyMainFormToOpenFormCredit;      //Use to open Credit Form
+            frmCmaa.NotifyMainFormToOpenChildFormAssociate += NotifyMainFormToOpenFormAssociate;   //Use to open Detail of Associate Form
+            frmCmaa.NotifyMainFormToOpenChildFormRegistration += NotifyMainFormToOpenFormRegistration;   //Use to open Registration Form
+            frmCmaa.NotifyMainFormToOpenChildFormPosition += NotifyMainFormToOpenFormPosition;   //Use to open Position Income Tax Form
+            frmCmaa.NotifyMainFormToOpenChildFormPurchase += NotifyMainFormToOpenFormPurchase;   //Use to open Terms Purchase Form
+            frmCmaa.NotifyMainFormToOpenChildFormSales += NotifyMainFormToOpenFormSales;   //Use to open Terms Sales Form
+            frmCmaa.NotifyMainFormToOpenChildFormBuyer += NotifyMainFormToOpenFormBuyer;   //Use to open Major Buyer Form
 
-
-            frmCredit = new FrmCredit();
-            frmCredit.MdiParent = this;
-           // frmCredit.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
 
             frmMain = new FrmMainCma();
             frmMain.MdiParent = this;
@@ -110,18 +128,144 @@ namespace PtrCma
             frmBanking = new FrmBankingArrangements();
             frmBanking.MdiParent = this;
             frmBanking.Location = new Point(this.Location.X + (this.Width - frmBanking.Width) / 2, (frmBanking.Location.Y + (this.Height - frmBanking.Height) / 2) + 20);
-            //frmDirector.Location = new Point(0, 70);
             frmBanking.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
             frmBanking.NotifyMainFormToCloseChildFormBanking += NotifyMainFormToCloseFormBanking;
 
+            frmCredit = new FrmCredit();
+            frmCredit.MdiParent = this;
+            frmCredit.Location = new Point(this.Location.X + (this.Width - frmCredit.Width) / 2, (frmCredit.Location.Y + (this.Height - frmCredit.Height) / 2) + 20);
+            frmCredit.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
+            frmCredit.NotifyMainFormToCloseChildFormCredit += NotifyMainFormToCloseFormCredit;
 
-            // f.StartPosition = FormStartPosition.CenterScreen;
+            frmAssociate = new FrmDeatilAssociate();
+            frmAssociate.MdiParent = this;
+            frmAssociate.Location = new Point(this.Location.X + (this.Width - frmAssociate.Width) / 2, (frmAssociate.Location.Y + (this.Height - frmAssociate.Height) / 2) + 20);
+            frmAssociate.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
+            frmAssociate.NotifyMainFormToCloseChildFormAssociate += NotifyMainFormToCloseFormAssociate;
 
+            frmRegistration = new FrmRegistration();
+            frmRegistration.MdiParent = this;
+            frmRegistration.Location = new Point(this.Location.X + (this.Width - frmRegistration.Width) / 2, (frmRegistration.Location.Y + (this.Height - frmRegistration.Height) / 2) + 20);
+            frmRegistration.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
+            frmRegistration.NotifyMainFormToCloseChildFormRegistration += NotifyMainFormToCloseFormRegistration;
 
-            // f.Refresh();
-            
+            frmPosition = new FrmPositionIncomeTax();
+            frmPosition.MdiParent = this;
+            frmPosition.Location = new Point(this.Location.X + (this.Width - frmPosition.Width) / 2, (frmPosition.Location.Y + (this.Height - frmPosition.Height) / 2) + 20);
+            frmPosition.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
+            frmPosition.NotifyMainFormToCloseChildFormPosition += NotifyMainFormToCloseFormPosition;
+
+            frmPurchase = new FrmTermsPurchase();
+            frmPurchase.MdiParent = this;
+            frmPurchase.Location = new Point(this.Location.X + (this.Width - frmPurchase.Width) / 2, (frmPurchase.Location.Y + (this.Height - frmPurchase.Height) / 2) + 20);
+            frmPurchase.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
+            frmPurchase.NotifyMainFormToCloseChildFormPurchase += NotifyMainFormToCloseFormPurchase;
+
+            frmSales = new FrmTermsSales();
+            frmSales.MdiParent = this;
+            frmSales.Location = new Point(this.Location.X + (this.Width - frmSales.Width) / 2, (frmSales.Location.Y + (this.Height - frmSales.Height) / 2) + 20);
+            frmSales.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
+            frmSales.NotifyMainFormToCloseChildFormSales += NotifyMainFormToCloseFormSales;
+
+            frmBuyer = new FrmMajorBuyer();
+            frmBuyer.MdiParent = this;
+            frmBuyer.Location = new Point(this.Location.X + (this.Width - frmBuyer.Width) / 2, (frmBuyer.Location.Y + (this.Height - frmBuyer.Height) / 2) + 20);
+            frmBuyer.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
+            frmBuyer.NotifyMainFormToCloseChildFormBuyer += NotifyMainFormToCloseFormBuyer;
         }
 
+        // Form Buyer
+        private void NotifyMainFormToOpenFormBuyer()
+        {
+            frmMain.Enabled = false;
+            frmCmaa.Enabled = false;
+            frmBuyer.Show();
+        }
+        private void NotifyMainFormToCloseFormBuyer()
+        {
+            frmMain.Enabled = true;
+            frmCmaa.Enabled = true;
+        }
+
+        // Form Sales
+        private void NotifyMainFormToOpenFormSales()
+        {
+            frmMain.Enabled = false;
+            frmCmaa.Enabled = false;
+            frmSales.Show();
+        }
+        private void NotifyMainFormToCloseFormSales()
+        {
+            frmMain.Enabled = true;
+            frmCmaa.Enabled = true;
+        }
+
+        // Form Purchase
+        private void NotifyMainFormToOpenFormPurchase()
+        {
+            frmMain.Enabled = false;
+            frmCmaa.Enabled = false;
+            frmPurchase.Show();
+        }
+        private void NotifyMainFormToCloseFormPurchase()
+        {
+            frmMain.Enabled = true;
+            frmCmaa.Enabled = true;
+        }
+
+        // Form Registration
+        private void NotifyMainFormToOpenFormPosition()
+        {
+            frmMain.Enabled = false;
+            frmCmaa.Enabled = false;
+            frmPosition.Show();
+        }
+        private void NotifyMainFormToCloseFormPosition()
+        {
+            frmMain.Enabled = true;
+            frmCmaa.Enabled = true;
+        }
+
+        // Form Registration
+        private void NotifyMainFormToOpenFormRegistration()
+        {
+            frmMain.Enabled = false;
+            frmCmaa.Enabled = false;
+            frmRegistration.Show();
+        }
+        private void NotifyMainFormToCloseFormRegistration()
+        {
+            frmMain.Enabled = true;
+            frmCmaa.Enabled = true;
+        }
+
+        // Form Associate
+        private void NotifyMainFormToOpenFormAssociate()
+        {
+            frmMain.Enabled = false;
+            frmCmaa.Enabled = false;
+            frmAssociate.Show();
+        }
+        private void NotifyMainFormToCloseFormAssociate()
+        {
+            frmMain.Enabled = true;
+            frmCmaa.Enabled = true;
+        }
+
+        // Form Credit
+        private void NotifyMainFormToOpenFormCredit()
+        {
+            frmMain.Enabled = false;
+            frmCmaa.Enabled = false;
+            frmCredit.Show();
+        }
+        private void NotifyMainFormToCloseFormCredit()
+        {
+            frmMain.Enabled = true;
+            frmCmaa.Enabled = true;
+        }
+
+        // Form Banking
         private void NotifyMainFormToOpenFormBanking()
         {
             frmMain.Enabled = false;
@@ -129,7 +273,6 @@ namespace PtrCma
 
             frmBanking.Show();
         }
-
         private void NotifyMainFormToCloseFormBanking()
         {
             frmMain.Enabled = true;
@@ -138,17 +281,19 @@ namespace PtrCma
             //frmBanking.Show();
         }
 
+        // Form Director
         private void NotifyMainFormToOpenFormDirector()
         {
-            
-            //frmParty.Location = new Point(this.Location.X + (this.Width - frmParty.Width) / 2, (frmParty.Location.Y + (this.Height - frmParty.Height) / 2)+35);
             frmMain.Enabled = false;
             frmCmaa.Enabled = false;
             
             frmDirector.Show();
             
         }
-
+        private void NotifyMainFormToCloseFormDirector()
+        {
+            frmCmaa.Enabled = true;
+        }
 
         private void NotifyMainFormToOpenFormCma()
         {
@@ -173,11 +318,7 @@ namespace PtrCma
             
         }
 
-        private void NotifyMainFormToCloseFormDirector()
-        {
-            frmCmaa.Enabled = true;
-
-        }
+       
         public void Settings()
         {
             this.BackColor = Global.appBackColr;

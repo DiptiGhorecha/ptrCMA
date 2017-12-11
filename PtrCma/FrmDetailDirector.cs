@@ -27,14 +27,15 @@ namespace PtrCma
         private void FrmDetailDirector_Load(object sender, EventArgs e)
         {
             cmdDelete.Enabled = false;
+            cmdAdd.Enabled = false;
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true); //Stop the Flickering
             Settings();
             fillgrid();
-            FrmDetailDirector frmDirector = new FrmDetailDirector();
-            frmDirector.MdiParent = this;
-            frmDirector.StartPosition = FormStartPosition.CenterParent;
-            frmDirector.Show();
-            
+            //FrmDetailDirector frmDirector = new FrmDetailDirector();
+            //frmDirector.MdiParent = this;
+            //frmDirector.StartPosition = FormStartPosition.CenterParent;
+            //frmDirector.Show();
+
             if (grdViewDirectors.RowCount > 0)
             {
                 grdViewDirectors.CurrentCell = grdViewDirectors.Rows[0].Cells[1];  //Set 1st row as current row by default
@@ -189,10 +190,6 @@ namespace PtrCma
 
         private void grdViewDirectors_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //foreach (TextBox txt in Controls.OfType<TextBox>())
-            //{
-            //    txt.Enabled = false;
-            //}
             cmdAdd.Enabled = false;
             cmdDelete.Enabled = true;
 
