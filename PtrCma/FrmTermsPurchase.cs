@@ -37,23 +37,21 @@ namespace PtrCma
             {
                 btn.Size = Global.smallbtn;
             }
-
             foreach (Label lbl in Controls.OfType<Label>()) //Set Size of Label
             {
                 lbl.Font = Global.lblSize;
-                lbl.Size = Global.lblmedSize;
+                lbl.Size = Global.lblbig;
+                lblDomestic.Size = Global.lblSmall;
+                lblImport.Size = Global.lblSmall;
                 lbl.AutoSize = false;
-                lblDomestic.Size = new System.Drawing.Size(100, 23);
-                lblImport.Size = new System.Drawing.Size(100, 23);
             }
-            //pictitle.Size = Global.titlelbl;
 
-            //foreach (TextBox txt in Controls.OfType<TextBox>())  //Set Size of TextBox
-            //{
-            //    txt.Font = Global.txtSize;
-            //    txt.Size = Global.txtmedSize;
-            //    txt.AutoSize = false;
-            //}
+            foreach (TextBox txt in Controls.OfType<TextBox>())  //Set Size of TextBox
+            {
+                txt.Font = Global.txtSize;
+                txt.Size = Global.txtsmall;
+                txt.AutoSize = false;
+            }
         }
 
         private void setControlColor()
@@ -80,6 +78,16 @@ namespace PtrCma
         }
 
         private void btnExit_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show(GlobalMsg.exitMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
+            if (dialogResult == DialogResult.Yes)
+            {
+                NotifyMainFormToCloseChildFormPurchase();
+                this.Hide();
+            }
+        }
+
+        private void picFrmClose_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show(GlobalMsg.exitMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
             if (dialogResult == DialogResult.Yes)

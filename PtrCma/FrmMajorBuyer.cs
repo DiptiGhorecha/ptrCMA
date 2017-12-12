@@ -27,6 +27,10 @@ namespace PtrCma
         private void FrmMajorBuyer_Load(object sender, EventArgs e)
         {
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true); //Stop the Flickering
+            foreach (TextBox txt in Controls.OfType<TextBox>())
+            {
+                txt.Enabled = false;
+            }
             Settings();
             fillgrid();
             //FrmMajorBuyer frmBuyer = new FrmMajorBuyer();
@@ -111,19 +115,19 @@ namespace PtrCma
 
         private void setControlColor()
         {
-            foreach (Label lbl in Controls.OfType<Label>())     //Set Label Color
-            {
-                lbl.BackColor = Global.lblbackdetail;
-                lbl.ForeColor = Global.lblforedetail;
-            }
+                foreach (Label lbl in Controls.OfType<Label>())     //Set Label Color
+                {
+                    lbl.BackColor = Global.lblbackdetail;
+                    lbl.ForeColor = Global.lblforedetail;
+                }
 
-            foreach (Button btn in Controls.OfType<Button>())       // Set Button Color
-            {
-                btn.ForeColor = Global.btnfore;
-                btn.BackgroundImage = Global.cmdImg;
-                btn.FlatStyle = FlatStyle.Flat;
-                btn.BackgroundImageLayout = ImageLayout.Stretch;
-            }
+                foreach (Button btn in Controls.OfType<Button>())       // Set Button Color
+                {
+                    btn.ForeColor = Global.btnfore;
+                    btn.BackgroundImage = Global.cmdImg;
+                    btn.FlatStyle = FlatStyle.Flat;
+                    btn.BackgroundImageLayout = ImageLayout.Stretch;
+                }
         }
 
       
@@ -205,6 +209,14 @@ namespace PtrCma
             {
                 NotifyMainFormToCloseChildFormBuyer();
                 this.Hide();
+                fillgrid();
+                LoadDatatoTextBox();
+                cmdDelete.Enabled = false;
+                cmdAdd.Enabled = false;
+                foreach (TextBox txt in Controls.OfType<TextBox>())
+                {
+                    txt.Enabled = false;
+                }
             }
         }
 
@@ -215,6 +227,14 @@ namespace PtrCma
             {
                 NotifyMainFormToCloseChildFormBuyer();
                 this.Hide();
+                fillgrid();
+                LoadDatatoTextBox();
+                cmdDelete.Enabled = false;
+                cmdAdd.Enabled = false;
+                foreach (TextBox txt in Controls.OfType<TextBox>())
+                {
+                    txt.Enabled = false;
+                }
             }
         }
     }

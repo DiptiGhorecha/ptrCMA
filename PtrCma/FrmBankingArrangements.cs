@@ -26,11 +26,17 @@ namespace PtrCma
 
         private void FrmBankingArrangements_Load(object sender, EventArgs e)
         {
+            foreach (TextBox txt in Controls.OfType<TextBox>())
+            {
+                txt.Enabled = false;
+                txtBank.Enabled = true;
+            }
             cmdDelete.Enabled = false;
             cmdAdd.Enabled = false;
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true); //Stop the Flickering
             Settings();
             fillgrid();
+            
             if (grdBanking.RowCount > 0)
             {
                 grdBanking.CurrentCell = grdBanking.Rows[0].Cells[1];  //Set 1st row as current row by default
@@ -195,15 +201,7 @@ namespace PtrCma
 
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show(GlobalMsg.exitMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
-            if (dialogResult == DialogResult.Yes)
-            {
-                NotifyMainFormToCloseChildFormBanking();
-                this.Hide();
-            }
-        }
+       
 
         private void grdBanking_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -228,9 +226,47 @@ namespace PtrCma
             {
                 txt.Clear();
                 txt.Focus();
+                txt.Enabled = true;
             }
             cmdDelete.Enabled = false;
             cmdAdd.Enabled = true;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show(GlobalMsg.exitMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
+            if (dialogResult == DialogResult.Yes)
+            {
+                NotifyMainFormToCloseChildFormBanking();
+                this.Hide();
+                fillgrid();
+                LoadDatatoTextBox();
+                cmdDelete.Enabled = false;
+                cmdAdd.Enabled = false;
+                foreach (TextBox txt in Controls.OfType<TextBox>())
+                {
+                    txt.Enabled = false;
+                    txtBank.Enabled = true;
+                }
+            }
+        }
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show(GlobalMsg.exitMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
+            if (dialogResult == DialogResult.Yes)
+            {
+                NotifyMainFormToCloseChildFormBanking();
+                this.Hide();
+                fillgrid();
+                LoadDatatoTextBox();
+                cmdDelete.Enabled = false;
+                cmdAdd.Enabled = false;
+                foreach (TextBox txt in Controls.OfType<TextBox>())
+                {
+                    txt.Enabled = false;
+                    txtBank.Enabled = true;
+                }
+            }
         }
     }
 }

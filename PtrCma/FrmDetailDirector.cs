@@ -28,6 +28,11 @@ namespace PtrCma
         {
             cmdDelete.Enabled = false;
             cmdAdd.Enabled = false;
+            foreach (TextBox txt in Controls.OfType<TextBox>())
+            {
+                txt.Enabled = false;
+                txtName.Enabled = true;
+            }
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true); //Stop the Flickering
             Settings();
             fillgrid();
@@ -212,6 +217,7 @@ namespace PtrCma
             {
                 txt.Clear();
                 txt.Focus();
+                txt.Enabled=true;
             }
             cmdDelete.Enabled = false;
             cmdAdd.Enabled = true;
@@ -224,6 +230,15 @@ namespace PtrCma
             {
                 NotifyMainFormToCloseChildFormDirector();
                 this.Hide();
+                fillgrid();
+                LoadDatatoTextBox();
+                cmdDelete.Enabled = false;
+                cmdAdd.Enabled = false;
+                foreach (TextBox txt in Controls.OfType<TextBox>())
+                {
+                    txt.Enabled = false;
+                    txtName.Enabled = true;
+                }
             }
         }
 
@@ -234,6 +249,15 @@ namespace PtrCma
             {
                 NotifyMainFormToCloseChildFormDirector();
                 this.Hide();
+                fillgrid();
+                LoadDatatoTextBox();
+                cmdDelete.Enabled = false;
+                cmdAdd.Enabled = false;
+                foreach (TextBox txt in Controls.OfType<TextBox>())
+                {
+                    txt.Enabled = false;
+                    txtName.Enabled = true;
+                }
             }
         }
     }

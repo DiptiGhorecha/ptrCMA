@@ -24,6 +24,7 @@ namespace PtrCma
         public Action NotifyMainFormToOpenChildFormPurchase;
         public Action NotifyMainFormToOpenChildFormSales;
         public Action NotifyMainFormToOpenChildFormBuyer;
+        public Action NotifyMainFormToOpenChildFormParameter;
         public FrmCMA()
         {
             InitializeComponent();

@@ -117,6 +117,12 @@
     <Compile Include="FrmMDICma.Designer.cs">
       <DependentUpon>FrmMDICma.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmParameterPast.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmParameterPast.Designer.cs">
+      <DependentUpon>FrmParameterPast.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPositionIncomeTax.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMDICma.resx">
       <DependentUpon>FrmMDICma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmParameterPast.resx">
+      <DependentUpon>FrmParameterPast.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPositionIncomeTax.resx">
       <DependentUpon>FrmPositionIncomeTax.cs</DependentUpon>

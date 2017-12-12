@@ -28,6 +28,11 @@ namespace PtrCma
         {
             cmdDelete.Enabled = false;
             cmdAdd.Enabled = false;
+            foreach (TextBox txt in Controls.OfType<TextBox>())
+            {
+                txt.Enabled = false;
+                txtName.Enabled = true;
+            }
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true); //Stop the Flickering
             Settings();
             fillgrid();
@@ -75,7 +80,7 @@ namespace PtrCma
 
             grdAssociate.Columns[1].Visible = true;
             grdAssociate.Columns[1].HeaderText = "Associate Name";
-            grdAssociate.Columns[1].Width = 250;
+            grdAssociate.Columns[1].Width = 260;
         }
 
         private void Settings()
@@ -193,6 +198,15 @@ namespace PtrCma
             {
                 NotifyMainFormToCloseChildFormAssociate();
                 this.Hide();
+                fillgrid();
+                LoadDatatoTextBox();
+                cmdDelete.Enabled = false;
+                cmdAdd.Enabled = false;
+                foreach (TextBox txt in Controls.OfType<TextBox>())
+                {
+                    txt.Enabled = false;
+                    txtName.Enabled = true;
+                }
             }
         }
 
@@ -203,6 +217,15 @@ namespace PtrCma
             {
                 NotifyMainFormToCloseChildFormAssociate();
                 this.Hide();
+                fillgrid();
+                LoadDatatoTextBox();
+                cmdDelete.Enabled = false;
+                cmdAdd.Enabled = false;
+                foreach (TextBox txt in Controls.OfType<TextBox>())
+                {
+                    txt.Enabled = false;
+                    txtName.Enabled = true;
+                }
             }
         }
 
@@ -229,6 +252,7 @@ namespace PtrCma
             {
                 txt.Clear();
                 txt.Focus();
+                txt.Enabled = true;
             }
             cmdDelete.Enabled = false;
             cmdAdd.Enabled = true;

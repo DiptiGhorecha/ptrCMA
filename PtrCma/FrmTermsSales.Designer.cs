@@ -49,7 +49,7 @@
             // 
             // lblCredit
             // 
-            this.lblCredit.Location = new System.Drawing.Point(196, 148);
+            this.lblCredit.Location = new System.Drawing.Point(165, 148);
             this.lblCredit.Name = "lblCredit";
             this.lblCredit.Size = new System.Drawing.Size(143, 20);
             this.lblCredit.TabIndex = 0;
@@ -57,21 +57,21 @@
             // 
             // txtCreditD
             // 
-            this.txtCreditD.Location = new System.Drawing.Point(354, 148);
+            this.txtCreditD.Location = new System.Drawing.Point(323, 148);
             this.txtCreditD.Name = "txtCreditD";
             this.txtCreditD.Size = new System.Drawing.Size(100, 20);
             this.txtCreditD.TabIndex = 1;
             // 
             // txtCreditE
             // 
-            this.txtCreditE.Location = new System.Drawing.Point(469, 148);
+            this.txtCreditE.Location = new System.Drawing.Point(438, 148);
             this.txtCreditE.Name = "txtCreditE";
             this.txtCreditE.Size = new System.Drawing.Size(100, 20);
             this.txtCreditE.TabIndex = 2;
             // 
             // lblDomestic
             // 
-            this.lblDomestic.Location = new System.Drawing.Point(354, 109);
+            this.lblDomestic.Location = new System.Drawing.Point(323, 109);
             this.lblDomestic.Name = "lblDomestic";
             this.lblDomestic.Size = new System.Drawing.Size(100, 20);
             this.lblDomestic.TabIndex = 3;
@@ -80,7 +80,7 @@
             // 
             // lblExport
             // 
-            this.lblExport.Location = new System.Drawing.Point(469, 109);
+            this.lblExport.Location = new System.Drawing.Point(438, 109);
             this.lblExport.Name = "lblExport";
             this.lblExport.Size = new System.Drawing.Size(100, 20);
             this.lblExport.TabIndex = 4;
@@ -89,7 +89,7 @@
             // 
             // lblPeriod
             // 
-            this.lblPeriod.Location = new System.Drawing.Point(196, 185);
+            this.lblPeriod.Location = new System.Drawing.Point(165, 174);
             this.lblPeriod.Name = "lblPeriod";
             this.lblPeriod.Size = new System.Drawing.Size(143, 20);
             this.lblPeriod.TabIndex = 5;
@@ -97,7 +97,7 @@
             // 
             // lblAverage
             // 
-            this.lblAverage.Location = new System.Drawing.Point(196, 219);
+            this.lblAverage.Location = new System.Drawing.Point(165, 200);
             this.lblAverage.Name = "lblAverage";
             this.lblAverage.Size = new System.Drawing.Size(143, 20);
             this.lblAverage.TabIndex = 6;
@@ -105,35 +105,35 @@
             // 
             // txtPeriodD
             // 
-            this.txtPeriodD.Location = new System.Drawing.Point(354, 182);
+            this.txtPeriodD.Location = new System.Drawing.Point(323, 174);
             this.txtPeriodD.Name = "txtPeriodD";
             this.txtPeriodD.Size = new System.Drawing.Size(100, 20);
             this.txtPeriodD.TabIndex = 7;
             // 
             // txtPeriodE
             // 
-            this.txtPeriodE.Location = new System.Drawing.Point(469, 182);
+            this.txtPeriodE.Location = new System.Drawing.Point(438, 174);
             this.txtPeriodE.Name = "txtPeriodE";
             this.txtPeriodE.Size = new System.Drawing.Size(100, 20);
             this.txtPeriodE.TabIndex = 8;
             // 
             // txtAverageD
             // 
-            this.txtAverageD.Location = new System.Drawing.Point(354, 216);
+            this.txtAverageD.Location = new System.Drawing.Point(323, 200);
             this.txtAverageD.Name = "txtAverageD";
             this.txtAverageD.Size = new System.Drawing.Size(100, 20);
             this.txtAverageD.TabIndex = 9;
             // 
             // txtAverageE
             // 
-            this.txtAverageE.Location = new System.Drawing.Point(469, 216);
+            this.txtAverageE.Location = new System.Drawing.Point(438, 200);
             this.txtAverageE.Name = "txtAverageE";
             this.txtAverageE.Size = new System.Drawing.Size(100, 20);
             this.txtAverageE.TabIndex = 10;
             // 
             // cmdExit
             // 
-            this.cmdExit.Location = new System.Drawing.Point(529, 265);
+            this.cmdExit.Location = new System.Drawing.Point(493, 249);
             this.cmdExit.Name = "cmdExit";
             this.cmdExit.Size = new System.Drawing.Size(40, 23);
             this.cmdExit.TabIndex = 23;
@@ -146,19 +146,20 @@
             this.pictureBox1.BackgroundImage = global::PtrCma.Properties.Resources.closeBtnBg;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Image = global::PtrCma.Properties.Resources.close;
-            this.pictureBox1.Location = new System.Drawing.Point(766, 21);
+            this.pictureBox1.Location = new System.Drawing.Point(703, 23);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(25, 30);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 80;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // pictitle
             // 
             this.pictitle.BackColor = System.Drawing.Color.Transparent;
             this.pictitle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictitle.Image = ((System.Drawing.Image)(resources.GetObject("pictitle.Image")));
-            this.pictitle.Location = new System.Drawing.Point(79, 23);
+            this.pictitle.Location = new System.Drawing.Point(86, 23);
             this.pictitle.Name = "pictitle";
             this.pictitle.Size = new System.Drawing.Size(532, 30);
             this.pictitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -169,7 +170,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(838, 417);
+            this.ClientSize = new System.Drawing.Size(740, 300);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictitle);
             this.Controls.Add(this.cmdExit);
@@ -186,6 +187,7 @@
             this.Controls.Add(this.lblCredit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmTermsSales";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "FrmTermsSales";
             this.Load += new System.EventHandler(this.FrmTermsSales_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

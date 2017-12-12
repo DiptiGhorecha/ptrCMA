@@ -30,23 +30,56 @@ namespace PtrCma
             Settings();
             setControlColor();
             setControlSize();
-
-			if (string.IsNullOrEmpty(txtIncome.Text) || String.IsNullOrEmpty(txtSales.Text) || String.IsNullOrEmpty(txtService.Text) || String.IsNullOrEmpty(txtExcise.Text) || String.IsNullOrEmpty(txtOther.Text))
-			{
-				OleDbConnection con = new OleDbConnection();
-				con.ConnectionString = connectionString;
-				if (con.State == ConnectionState.Closed)
-				{
-					con.Open();
-				}
-				String sql = "insert into Cx_Cd106(CD_DOC)values('" + txtDoc.Text + "')";
-				OleDbCommand cmd = new OleDbCommand(sql, con);
-				cmd.ExecuteNonQuery();
-				con.Close();
-				MessageBox.Show(GlobalMsg.insertMsg, "Perfect Tax Reporter - CMA 1.0");
-			}
+            checkTable();
 			
 		}
+
+        private void checkTable()
+        {
+            if (txtIncome.Text == String.Empty && txtSales.Text == String.Empty && txtService.Text == String.Empty && txtExcise.Text == String.Empty && txtOther.Text == String.Empty)
+            {
+                OleDbConnection con = new OleDbConnection();
+                con.ConnectionString = connectionString;
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                DataSet ds = new DataSet();
+                String sql = "select * from Cx_Cd119";
+                OleDbCommand cmd = new OleDbCommand(sql, con);
+                OleDbDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    txtRef.Text = reader["CD_REFNO"].ToString();
+                    txtIncome.Text = reader["CD_INCOME"].ToString();
+                    txtSales.Text = reader["CD_SALES"].ToString();
+                    txtService.Text = reader["CD_SERVICE"].ToString();
+                    txtExcise.Text = reader["CD_EXCISE"].ToString();
+                    txtOther.Text = reader["CD_OTHER"].ToString();
+                }
+                String sql1 = "Update Cx_Cd119 set [CD_INCOME] = '" + txtIncome.Text + "',[CD_SALES]= '" + txtSales.Text + "', [CD_SERVICE]='" + txtService.Text + "',[CD-EXCISE]='" + txtExcise.Text + "', [CD_OTHER] = '" + txtOther.Text + "' where [CD_REFNO] ='" + txtRef.Text + "' ";
+                OleDbCommand cmd1 = new OleDbCommand(sql1, con);
+                cmd.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show(GlobalMsg.updateMsg, "Perfect Tax Reporter - CMA 1.0");
+                con.Close();
+                //MessageBox.Show(GlobalMsg.insertMsg, "Perfect Tax Reporter - CMA 1.0");
+            }
+            else
+            {
+                //OleDbConnection con = new OleDbConnection();
+                //con.ConnectionString = connectionString;
+                //if (con.State == ConnectionState.Closed)
+                //{
+                //    con.Open();
+                //}
+                //String sql = "Update Cx_Cd119 set [CD_INCOME] = '" + txtIncome.Text + "',[CD_SALES]= '" + txtSales.Text + "', [CD_SERVICE]='" + txtService.Text + "',[CD-EXCISE]='" + txtExcise.Text + "', [CD_OTHER] = '" + txtOther.Text + "' where [CD_REFNO] ='" + txtRef.Text + "' ";
+                //OleDbCommand cmd = new OleDbCommand(sql, con);
+                //cmd.ExecuteNonQuery();
+                //con.Close();
+                MessageBox.Show("HI", "Perfect Tax Reporter - CMA 1.0");
+            }
+        }
 
         private void setControlSize()
         {
@@ -98,7 +131,9 @@ namespace PtrCma
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show(GlobalMsg.exitMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
+			
+
+			DialogResult dialogResult = MessageBox.Show(GlobalMsg.exitMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
             if (dialogResult == DialogResult.Yes)
             {
                 NotifyMainFormToCloseChildFormPosition();
@@ -106,6 +141,14 @@ namespace PtrCma
             }
         }
 
-      
+        private void picFrmClose_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show(GlobalMsg.exitMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
+            if (dialogResult == DialogResult.Yes)
+            {
+                NotifyMainFormToCloseChildFormPosition();
+                this.Hide();
+            }
+        }
     }
 }

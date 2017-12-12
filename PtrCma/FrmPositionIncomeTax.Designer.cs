@@ -42,6 +42,7 @@
             this.cmdExit = new System.Windows.Forms.Button();
             this.picFrmClose = new System.Windows.Forms.PictureBox();
             this.pictitle = new System.Windows.Forms.PictureBox();
+            this.txtRef = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picFrmClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictitle)).BeginInit();
             this.SuspendLayout();
@@ -142,6 +143,7 @@
             this.picFrmClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picFrmClose.TabIndex = 41;
             this.picFrmClose.TabStop = false;
+            this.picFrmClose.Click += new System.EventHandler(this.picFrmClose_Click);
             // 
             // pictitle
             // 
@@ -155,11 +157,19 @@
             this.pictitle.TabIndex = 40;
             this.pictitle.TabStop = false;
             // 
+            // txtRef
+            // 
+            this.txtRef.Location = new System.Drawing.Point(0, 0);
+            this.txtRef.Name = "txtRef";
+            this.txtRef.Size = new System.Drawing.Size(100, 20);
+            this.txtRef.TabIndex = 42;
+            // 
             // FrmPositionIncomeTax
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(741, 316);
+            this.Controls.Add(this.txtRef);
             this.Controls.Add(this.picFrmClose);
             this.Controls.Add(this.pictitle);
             this.Controls.Add(this.cmdExit);
@@ -199,5 +209,6 @@
         private System.Windows.Forms.Button cmdExit;
         private System.Windows.Forms.PictureBox picFrmClose;
         private System.Windows.Forms.PictureBox pictitle;
+        private System.Windows.Forms.TextBox txtRef;
     }
 }

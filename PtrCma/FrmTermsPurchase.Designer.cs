@@ -52,7 +52,7 @@
             // 
             // lblPTotal
             // 
-            this.lblPTotal.Location = new System.Drawing.Point(145, 149);
+            this.lblPTotal.Location = new System.Drawing.Point(143, 149);
             this.lblPTotal.Name = "lblPTotal";
             this.lblPTotal.Size = new System.Drawing.Size(203, 20);
             this.lblPTotal.TabIndex = 1;
@@ -60,21 +60,21 @@
             // 
             // txtPTotalD
             // 
-            this.txtPTotalD.Location = new System.Drawing.Point(343, 149);
+            this.txtPTotalD.Location = new System.Drawing.Point(350, 149);
             this.txtPTotalD.Name = "txtPTotalD";
             this.txtPTotalD.Size = new System.Drawing.Size(100, 20);
             this.txtPTotalD.TabIndex = 2;
             // 
             // txtPTotalI
             // 
-            this.txtPTotalI.Location = new System.Drawing.Point(460, 149);
+            this.txtPTotalI.Location = new System.Drawing.Point(462, 149);
             this.txtPTotalI.Name = "txtPTotalI";
             this.txtPTotalI.Size = new System.Drawing.Size(100, 20);
             this.txtPTotalI.TabIndex = 3;
             // 
             // lblDomestic
             // 
-            this.lblDomestic.Location = new System.Drawing.Point(343, 111);
+            this.lblDomestic.Location = new System.Drawing.Point(350, 111);
             this.lblDomestic.Name = "lblDomestic";
             this.lblDomestic.Size = new System.Drawing.Size(100, 23);
             this.lblDomestic.TabIndex = 4;
@@ -83,7 +83,7 @@
             // 
             // lblImport
             // 
-            this.lblImport.Location = new System.Drawing.Point(460, 111);
+            this.lblImport.Location = new System.Drawing.Point(462, 111);
             this.lblImport.Name = "lblImport";
             this.lblImport.Size = new System.Drawing.Size(100, 23);
             this.lblImport.TabIndex = 5;
@@ -92,7 +92,7 @@
             // 
             // lblPeriod
             // 
-            this.lblPeriod.Location = new System.Drawing.Point(145, 173);
+            this.lblPeriod.Location = new System.Drawing.Point(143, 173);
             this.lblPeriod.Name = "lblPeriod";
             this.lblPeriod.Size = new System.Drawing.Size(203, 20);
             this.lblPeriod.TabIndex = 6;
@@ -100,21 +100,21 @@
             // 
             // txtPeriodD
             // 
-            this.txtPeriodD.Location = new System.Drawing.Point(343, 173);
+            this.txtPeriodD.Location = new System.Drawing.Point(350, 173);
             this.txtPeriodD.Name = "txtPeriodD";
             this.txtPeriodD.Size = new System.Drawing.Size(100, 20);
             this.txtPeriodD.TabIndex = 7;
             // 
             // txtPeriodI
             // 
-            this.txtPeriodI.Location = new System.Drawing.Point(460, 173);
+            this.txtPeriodI.Location = new System.Drawing.Point(462, 173);
             this.txtPeriodI.Name = "txtPeriodI";
             this.txtPeriodI.Size = new System.Drawing.Size(100, 20);
             this.txtPeriodI.TabIndex = 8;
             // 
             // lblAverage
             // 
-            this.lblAverage.Location = new System.Drawing.Point(145, 197);
+            this.lblAverage.Location = new System.Drawing.Point(143, 197);
             this.lblAverage.Name = "lblAverage";
             this.lblAverage.Size = new System.Drawing.Size(203, 20);
             this.lblAverage.TabIndex = 9;
@@ -122,7 +122,7 @@
             // 
             // lblPurchase
             // 
-            this.lblPurchase.Location = new System.Drawing.Point(145, 221);
+            this.lblPurchase.Location = new System.Drawing.Point(143, 221);
             this.lblPurchase.Name = "lblPurchase";
             this.lblPurchase.Size = new System.Drawing.Size(203, 20);
             this.lblPurchase.TabIndex = 10;
@@ -130,28 +130,28 @@
             // 
             // txtAverageD
             // 
-            this.txtAverageD.Location = new System.Drawing.Point(343, 197);
+            this.txtAverageD.Location = new System.Drawing.Point(350, 197);
             this.txtAverageD.Name = "txtAverageD";
             this.txtAverageD.Size = new System.Drawing.Size(100, 20);
             this.txtAverageD.TabIndex = 11;
             // 
             // txtAverageI
             // 
-            this.txtAverageI.Location = new System.Drawing.Point(460, 197);
+            this.txtAverageI.Location = new System.Drawing.Point(462, 197);
             this.txtAverageI.Name = "txtAverageI";
             this.txtAverageI.Size = new System.Drawing.Size(100, 20);
             this.txtAverageI.TabIndex = 12;
             // 
             // txtPurchaseD
             // 
-            this.txtPurchaseD.Location = new System.Drawing.Point(343, 221);
+            this.txtPurchaseD.Location = new System.Drawing.Point(350, 221);
             this.txtPurchaseD.Name = "txtPurchaseD";
             this.txtPurchaseD.Size = new System.Drawing.Size(100, 20);
             this.txtPurchaseD.TabIndex = 13;
             // 
             // txtPurchaseI
             // 
-            this.txtPurchaseI.Location = new System.Drawing.Point(460, 221);
+            this.txtPurchaseI.Location = new System.Drawing.Point(462, 221);
             this.txtPurchaseI.Name = "txtPurchaseI";
             this.txtPurchaseI.Size = new System.Drawing.Size(100, 20);
             this.txtPurchaseI.TabIndex = 14;
@@ -177,6 +177,7 @@
             this.picFrmClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picFrmClose.TabIndex = 43;
             this.picFrmClose.TabStop = false;
+            this.picFrmClose.Click += new System.EventHandler(this.picFrmClose_Click);
             // 
             // pictitle
             // 

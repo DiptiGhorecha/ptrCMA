@@ -45,20 +45,28 @@ namespace PtrCma
                 btn.Size = Global.smallbtn;
             }
 
-            //foreach (Label lbl in Controls.OfType<Label>()) //Set Size of Label
-            //{
-            //    lbl.Font = Global.lblSize;
-            //    lbl.Size = Global.lblmedSize;
-            //    lbl.AutoSize = false;
-            //}
-            ////pictitle.Size = Global.titlelbl;
+            foreach (Label lbl in Controls.OfType<Label>()) //Set Size of Label
+            {
+                lbl.Font = Global.lblSize;
+                lbl.Size = Global.lblsmallCredit;
+                lbl.AutoSize = false;
+                lblRequired.Size = Global.lblSmall;
+                lblExisting.Size = Global.lblSmall;
+                lblFund.Size = Global.lblSmall;
+                lblFund1.Size = Global.lblSmall;
+                lblNFund.Size = Global.lblSmall;
+                lblNFund1.Size = Global.lblSmall;
+                lblT.Size = Global.lblSmall;
+                lblT1.Size = Global.lblSmall;
+            }
+            //pictitle.Size = Global.titlelbl;
 
-            //foreach (TextBox txt in Controls.OfType<TextBox>())  //Set Size of TextBox
-            //{
-            //    txt.Font = Global.txtSize;
-            //    txt.Size = Global.txtmedSize;
-            //    txt.AutoSize = false;
-            //}
+            foreach (TextBox txt in Controls.OfType<TextBox>())  //Set Size of TextBox
+            {
+                txt.Font = Global.txtSize;
+                txt.Size = Global.txtsmall;
+                txt.AutoSize = false;
+            }
         }
 
         private void setControlColor()

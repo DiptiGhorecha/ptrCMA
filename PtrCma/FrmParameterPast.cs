@@ -9,32 +9,26 @@ using System.Windows.Forms;
 
 namespace PtrCma
 {
-    public partial class FrmTermsSales : Form
-    {
+	public partial class FrmParameterPast : Form
+	{
         public Action NotifyMainFormToCloseChildFormParty;
-        public Action NotifyMainFormToCloseChildFormSales;
-        public FrmTermsSales()
-        {
-            InitializeComponent();
-        }
+        public Action NotifyMainFormToCloseChildFormParameter;
+        public FrmParameterPast()
+		{
+			InitializeComponent();
+		}
 
-        private void FrmTermsSales_Load(object sender, EventArgs e)
+        private void FrmParameterPast_Load(object sender, EventArgs e)
         {
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true); //Stop the Flickering
             Settings();
-            
-            FrmTermsSales frmSales = new FrmTermsSales();
-            frmSales.MdiParent = this;
-            frmSales.StartPosition = FormStartPosition.CenterScreen;
-            frmSales.Show();
         }
 
         private void Settings()
         {
             this.BackgroundImage = Global.partyFrmBackImg;
-
             setControlColor();
             setControlSize();
-
         }
 
         private void setControlSize()
@@ -48,8 +42,8 @@ namespace PtrCma
             {
                 lbl.Font = Global.lblSize;
                 lbl.Size = Global.lbl;
-                lblDomestic.Size = Global.lblSmall;
-                lblExport.Size = Global.lblSmall;
+                lblPast.Size = Global.lblSmall;
+                lblProjected.Size = Global.lblSmall;
                 lbl.AutoSize = false;
             }
 
@@ -75,26 +69,6 @@ namespace PtrCma
                 btn.BackgroundImage = Global.cmdImg;
                 btn.FlatStyle = FlatStyle.Flat;
                 btn.BackgroundImageLayout = ImageLayout.Stretch;
-            }
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show(GlobalMsg.exitMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
-            if (dialogResult == DialogResult.Yes)
-            {
-                NotifyMainFormToCloseChildFormSales();
-                this.Hide();
-            }
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show(GlobalMsg.exitMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
-            if (dialogResult == DialogResult.Yes)
-            {
-                NotifyMainFormToCloseChildFormSales();
-                this.Hide();
             }
         }
     }

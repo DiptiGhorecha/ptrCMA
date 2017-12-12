@@ -411,7 +411,7 @@
             // lblExisting
             // 
             this.lblExisting.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExisting.Location = new System.Drawing.Point(655, 102);
+            this.lblExisting.Location = new System.Drawing.Point(658, 102);
             this.lblExisting.Name = "lblExisting";
             this.lblExisting.Size = new System.Drawing.Size(103, 23);
             this.lblExisting.TabIndex = 55;
@@ -572,7 +572,7 @@
             this.pictitle.BackColor = System.Drawing.Color.Transparent;
             this.pictitle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictitle.Image = ((System.Drawing.Image)(resources.GetObject("pictitle.Image")));
-            this.pictitle.Location = new System.Drawing.Point(155, 22);
+            this.pictitle.Location = new System.Drawing.Point(163, 22);
             this.pictitle.Name = "pictitle";
             this.pictitle.Size = new System.Drawing.Size(532, 30);
             this.pictitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

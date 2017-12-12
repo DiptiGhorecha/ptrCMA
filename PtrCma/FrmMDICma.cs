@@ -35,6 +35,8 @@ namespace PtrCma
         public FrmTermsSales frmSales;
         public Action NotifyMainFormToCloseChildFormBuyer;          // Major Buyer Form
         public FrmMajorBuyer frmBuyer;
+        public Action NotifyMainFormToCloseChildFormParameter;          // Parameter Past Form
+        public FrmParameterPast frmParameter;
 
         private FrmMainCma frmMain;
         private FrmCMA frmCmaa;
@@ -111,6 +113,7 @@ namespace PtrCma
             frmCmaa.NotifyMainFormToOpenChildFormPurchase += NotifyMainFormToOpenFormPurchase;   //Use to open Terms Purchase Form
             frmCmaa.NotifyMainFormToOpenChildFormSales += NotifyMainFormToOpenFormSales;   //Use to open Terms Sales Form
             frmCmaa.NotifyMainFormToOpenChildFormBuyer += NotifyMainFormToOpenFormBuyer;   //Use to open Major Buyer Form
+            frmCmaa.NotifyMainFormToOpenChildFormParameter += NotifyMainFormToOpenFormParameter;   //Use to open Parameter Past Form
 
 
             frmMain = new FrmMainCma();
@@ -172,6 +175,25 @@ namespace PtrCma
             frmBuyer.Location = new Point(this.Location.X + (this.Width - frmBuyer.Width) / 2, (frmBuyer.Location.Y + (this.Height - frmBuyer.Height) / 2) + 20);
             frmBuyer.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
             frmBuyer.NotifyMainFormToCloseChildFormBuyer += NotifyMainFormToCloseFormBuyer;
+
+            frmParameter = new FrmParameterPast();
+            frmParameter.MdiParent = this;
+            frmParameter.Location = new Point(this.Location.X + (this.Width - frmParameter.Width) / 2, (frmParameter.Location.Y + (this.Height - frmParameter.Height) / 2) + 20);
+            frmParameter.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
+            frmParameter.NotifyMainFormToCloseChildFormParameter += NotifyMainFormToCloseFormParameter;
+        }
+
+        // Form Parameter
+        private void NotifyMainFormToOpenFormParameter()
+        {
+            frmMain.Enabled = false;
+            frmCmaa.Enabled = false;
+            frmParameter.Show();
+        }
+        private void NotifyMainFormToCloseFormParameter()
+        {
+            frmMain.Enabled = true;
+            frmCmaa.Enabled = true;
         }
 
         // Form Buyer

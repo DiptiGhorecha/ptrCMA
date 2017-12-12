@@ -48,7 +48,7 @@
             // 
             // lblPan
             // 
-            this.lblPan.Location = new System.Drawing.Point(207, 106);
+            this.lblPan.Location = new System.Drawing.Point(171, 106);
             this.lblPan.Name = "lblPan";
             this.lblPan.Size = new System.Drawing.Size(140, 23);
             this.lblPan.TabIndex = 1;
@@ -56,14 +56,14 @@
             // 
             // txtPan
             // 
-            this.txtPan.Location = new System.Drawing.Point(383, 106);
+            this.txtPan.Location = new System.Drawing.Point(347, 106);
             this.txtPan.Name = "txtPan";
             this.txtPan.Size = new System.Drawing.Size(117, 20);
             this.txtPan.TabIndex = 2;
             // 
             // lblSales
             // 
-            this.lblSales.Location = new System.Drawing.Point(207, 131);
+            this.lblSales.Location = new System.Drawing.Point(171, 131);
             this.lblSales.Name = "lblSales";
             this.lblSales.Size = new System.Drawing.Size(140, 23);
             this.lblSales.TabIndex = 3;
@@ -71,7 +71,7 @@
             // 
             // lblService
             // 
-            this.lblService.Location = new System.Drawing.Point(207, 157);
+            this.lblService.Location = new System.Drawing.Point(171, 157);
             this.lblService.Name = "lblService";
             this.lblService.Size = new System.Drawing.Size(140, 23);
             this.lblService.TabIndex = 4;
@@ -79,7 +79,7 @@
             // 
             // lblExcise
             // 
-            this.lblExcise.Location = new System.Drawing.Point(207, 182);
+            this.lblExcise.Location = new System.Drawing.Point(171, 182);
             this.lblExcise.Name = "lblExcise";
             this.lblExcise.Size = new System.Drawing.Size(140, 23);
             this.lblExcise.TabIndex = 5;
@@ -87,7 +87,7 @@
             // 
             // lblOther
             // 
-            this.lblOther.Location = new System.Drawing.Point(207, 207);
+            this.lblOther.Location = new System.Drawing.Point(171, 207);
             this.lblOther.Name = "lblOther";
             this.lblOther.Size = new System.Drawing.Size(140, 23);
             this.lblOther.TabIndex = 6;
@@ -95,35 +95,35 @@
             // 
             // txtSales
             // 
-            this.txtSales.Location = new System.Drawing.Point(383, 131);
+            this.txtSales.Location = new System.Drawing.Point(347, 131);
             this.txtSales.Name = "txtSales";
             this.txtSales.Size = new System.Drawing.Size(117, 20);
             this.txtSales.TabIndex = 7;
             // 
             // txtService
             // 
-            this.txtService.Location = new System.Drawing.Point(383, 157);
+            this.txtService.Location = new System.Drawing.Point(347, 157);
             this.txtService.Name = "txtService";
             this.txtService.Size = new System.Drawing.Size(117, 20);
             this.txtService.TabIndex = 8;
             // 
             // txtExcise
             // 
-            this.txtExcise.Location = new System.Drawing.Point(383, 182);
+            this.txtExcise.Location = new System.Drawing.Point(347, 182);
             this.txtExcise.Name = "txtExcise";
             this.txtExcise.Size = new System.Drawing.Size(117, 20);
             this.txtExcise.TabIndex = 9;
             // 
             // txtOther
             // 
-            this.txtOther.Location = new System.Drawing.Point(383, 207);
+            this.txtOther.Location = new System.Drawing.Point(347, 207);
             this.txtOther.Name = "txtOther";
             this.txtOther.Size = new System.Drawing.Size(117, 20);
             this.txtOther.TabIndex = 10;
             // 
             // cmdExit
             // 
-            this.cmdExit.Location = new System.Drawing.Point(525, 257);
+            this.cmdExit.Location = new System.Drawing.Point(520, 257);
             this.cmdExit.Name = "cmdExit";
             this.cmdExit.Size = new System.Drawing.Size(49, 23);
             this.cmdExit.TabIndex = 11;
@@ -149,7 +149,7 @@
             this.pictitle.BackColor = System.Drawing.Color.Transparent;
             this.pictitle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictitle.Image = ((System.Drawing.Image)(resources.GetObject("pictitle.Image")));
-            this.pictitle.Location = new System.Drawing.Point(98, 21);
+            this.pictitle.Location = new System.Drawing.Point(104, 21);
             this.pictitle.Name = "pictitle";
             this.pictitle.Size = new System.Drawing.Size(511, 30);
             this.pictitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -160,7 +160,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(815, 302);
+            this.ClientSize = new System.Drawing.Size(742, 302);
             this.Controls.Add(this.picFrmClose);
             this.Controls.Add(this.pictitle);
             this.Controls.Add(this.cmdExit);
