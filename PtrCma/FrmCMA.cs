@@ -25,6 +25,13 @@ namespace PtrCma
         public Action NotifyMainFormToOpenChildFormSales;
         public Action NotifyMainFormToOpenChildFormBuyer;
         public Action NotifyMainFormToOpenChildFormParameter;
+        public Action NotifyMainFormToOpenChildFormAssets;
+        public Action NotifyMainFormToOpenChildFormProposed;
+        String connectionString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " + Application.StartupPath + "\\Resources\\PtrCma.accdb;";  //Connection String
+        OleDbConnection con;
+        OleDbCommand cmd;
+        OleDbDataAdapter dataAdapter;
+        OleDbTransaction transaction;
         public FrmCMA()
         {
             InitializeComponent();
@@ -258,7 +265,34 @@ namespace PtrCma
 
         private void cmdSave_Click(object sender, EventArgs e)
         {
+            String refno = "";
 
+            OleDbConnection con = new OleDbConnection();
+            con.ConnectionString = connectionString;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            transaction = con.BeginTransaction(IsolationLevel.ReadCommitted);
+            for (int i = 0; i <= gridViewCMA.Rows.Count - 1; i++)
+            {
+                  refno = Convert.ToString(gridViewCMA.Rows[i].Cells[0].Value);
+
+
+                String sql = "update Cp_CdFm1 set CM_DATA='" +  Convert.ToString(gridViewCMA.Rows[i].Cells[11].Value)+"' WHERE CM_CLREFNO=" + Global.prtyCode + " AND CM_REFNO=" + refno ;
+
+                    OleDbCommand cmd = new OleDbCommand(sql, con);
+                    cmd.Transaction = transaction;
+                    cmd.ExecuteNonQuery();
+                foreach(TextBox txt in Controls.OfType<TextBox>())
+                {
+                    txt.Clear();
+                }
+                     
+            }
+            transaction.Commit();
+            con.Close();
+            MessageBox.Show(GlobalMsg.insertMsg, "Perfect Tax Reporter - CMA 1.0");
         }
 
         private void cmdCancel_Click(object sender, EventArgs e)
@@ -273,7 +307,12 @@ namespace PtrCma
             {
                 NotifyMainFormToCloseChildFormParty();
                 this.Hide();
-
+                //checkTables();
+                fillCMSDataGrid();
+                foreach(TextBox txt in Controls.OfType<TextBox>())
+                {
+                    txt.Clear();
+                }
             }
         }
 
@@ -340,6 +379,27 @@ namespace PtrCma
                 if (NotifyMainFormToOpenChildFormSales != null)
                 {
                     NotifyMainFormToOpenChildFormSales();
+                }
+            }
+            if (e.RowIndex == 35)
+            {
+                if (NotifyMainFormToOpenChildFormParameter != null)
+                {
+                    NotifyMainFormToOpenChildFormParameter();
+                }
+            }
+            if (e.RowIndex == 36)
+            {
+                if (NotifyMainFormToOpenChildFormAssets != null)
+                {
+                    NotifyMainFormToOpenChildFormAssets();
+                }
+            }
+            if (e.RowIndex == 37)
+            {
+                if (NotifyMainFormToOpenChildFormProposed != null)
+                {
+                    NotifyMainFormToOpenChildFormProposed();
                 }
             }
 

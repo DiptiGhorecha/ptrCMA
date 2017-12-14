@@ -87,6 +87,12 @@
     <Compile Include="FrmCredit.Designer.cs">
       <DependentUpon>FrmCredit.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDeatilAssets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDeatilAssets.Designer.cs">
+      <DependentUpon>FrmDeatilAssets.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDeatilAssociate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,12 @@
     </Compile>
     <Compile Include="FrmDetailDirector.Designer.cs">
       <DependentUpon>FrmDetailDirector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmImmovableSecurities.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmImmovableSecurities.Designer.cs">
+      <DependentUpon>FrmImmovableSecurities.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmMainCma.cs">
       <SubType>Form</SubType>
@@ -128,6 +140,18 @@
     </Compile>
     <Compile Include="FrmPositionIncomeTax.Designer.cs">
       <DependentUpon>FrmPositionIncomeTax.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProposedExpenditure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProposedExpenditure.Designer.cs">
+      <DependentUpon>FrmProposedExpenditure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPtrBack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPtrBack.Designer.cs">
+      <DependentUpon>FrmPtrBack.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmRegistration.cs">
       <SubType>Form</SubType>
@@ -169,11 +193,17 @@
     <EmbeddedResource Include="FrmCredit.resx">
       <DependentUpon>FrmCredit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmDeatilAssets.resx">
+      <DependentUpon>FrmDeatilAssets.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmDeatilAssociate.resx">
       <DependentUpon>FrmDeatilAssociate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDetailDirector.resx">
       <DependentUpon>FrmDetailDirector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmImmovableSecurities.resx">
+      <DependentUpon>FrmImmovableSecurities.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMainCma.resx">
       <DependentUpon>FrmMainCma.cs</DependentUpon>
@@ -189,6 +219,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPositionIncomeTax.resx">
       <DependentUpon>FrmPositionIncomeTax.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProposedExpenditure.resx">
+      <DependentUpon>FrmProposedExpenditure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPtrBack.resx">
+      <DependentUpon>FrmPtrBack.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmRegistration.resx">
       <DependentUpon>FrmRegistration.cs</DependentUpon>
@@ -239,6 +275,7 @@
     <EmbeddedResource Include="Resources\frm_bg.png" />
     <EmbeddedResource Include="Resources\close-1.png" />
     <EmbeddedResource Include="Resources\detail.png" />
+    <EmbeddedResource Include="Resources\Backup-Database.png" />
     <Content Include="Resources\close_2.png" />
     <EmbeddedResource Include="Resources\demo_11.png" />
     <EmbeddedResource Include="Resources\Credit_Facility_Required.png" />
@@ -246,6 +283,9 @@
     <EmbeddedResource Include="Resources\Detail_of_Registration.png" />
     <EmbeddedResource Include="Resources\Position_Regarding_Statutory.png" />
     <EmbeddedResource Include="Resources\Major_Buyers.png" />
+    <EmbeddedResource Include="Resources\Performancep_Parameters.png" />
+    <EmbeddedResource Include="Resources\For_Term_Loan.png" />
+    <EmbeddedResource Include="Resources\Need_for_Proposed.png" />
     <Content Include="Resources\PtrCma.accdb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

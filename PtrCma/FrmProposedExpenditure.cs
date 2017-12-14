@@ -9,16 +9,16 @@ using System.Windows.Forms;
 
 namespace PtrCma
 {
-	public partial class FrmParameterPast : Form
-	{
+    public partial class FrmProposedExpenditure : Form
+    {
         public Action NotifyMainFormToCloseChildFormParty;
-        public Action NotifyMainFormToCloseChildFormParameter;
-        public FrmParameterPast()
-		{
-			InitializeComponent();
-		}
+        public Action NotifyMainFormToCloseChildFormProposed;
+        public FrmProposedExpenditure()
+        {
+            InitializeComponent();
+        }
 
-        private void FrmParameterPast_Load(object sender, EventArgs e)
+        private void FrmProposedExpenditure_Load(object sender, EventArgs e)
         {
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true); //Stop the Flickering
             Settings();
@@ -27,6 +27,7 @@ namespace PtrCma
         private void Settings()
         {
             this.BackgroundImage = Global.partyFrmBackImg;
+
             setControlColor();
             setControlSize();
         }
@@ -42,10 +43,11 @@ namespace PtrCma
             {
                 lbl.Font = Global.lblSize;
                 lbl.Size = Global.lbl;
-                lblPast.Size = Global.lblSmall;
-                lblProjected.Size = Global.lblSmall;
+                lblAmt.Size = Global.lblSmall;
+                lblAmt1.Size = Global.lblSmall;
                 lbl.AutoSize = false;
             }
+            //pictitle.Size = Global.titlelbl;
 
             foreach (TextBox txt in Controls.OfType<TextBox>())  //Set Size of TextBox
             {
@@ -69,26 +71,6 @@ namespace PtrCma
                 btn.BackgroundImage = Global.cmdImg;
                 btn.FlatStyle = FlatStyle.Flat;
                 btn.BackgroundImageLayout = ImageLayout.Stretch;
-            }
-        }
-
-        private void cmdExit_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show(GlobalMsg.exitMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
-            if (dialogResult == DialogResult.Yes)
-            {
-                NotifyMainFormToCloseChildFormParameter();
-                this.Hide();
-            }
-        }
-
-        private void picFrmClose_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show(GlobalMsg.exitMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
-            if (dialogResult == DialogResult.Yes)
-            {
-                NotifyMainFormToCloseChildFormParameter();
-                this.Hide();
             }
         }
     }

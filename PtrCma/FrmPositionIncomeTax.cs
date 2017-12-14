@@ -57,27 +57,22 @@ namespace PtrCma
                     txtExcise.Text = reader["CD_EXCISE"].ToString();
                     txtOther.Text = reader["CD_OTHER"].ToString();
                 }
-                String sql1 = "Update Cx_Cd119 set [CD_INCOME] = '" + txtIncome.Text + "',[CD_SALES]= '" + txtSales.Text + "', [CD_SERVICE]='" + txtService.Text + "',[CD-EXCISE]='" + txtExcise.Text + "', [CD_OTHER] = '" + txtOther.Text + "' where [CD_REFNO] ='" + txtRef.Text + "' ";
-                OleDbCommand cmd1 = new OleDbCommand(sql1, con);
-                cmd.ExecuteNonQuery();
-                con.Close();
-                MessageBox.Show(GlobalMsg.updateMsg, "Perfect Tax Reporter - CMA 1.0");
                 con.Close();
                 //MessageBox.Show(GlobalMsg.insertMsg, "Perfect Tax Reporter - CMA 1.0");
             }
             else
             {
-                //OleDbConnection con = new OleDbConnection();
-                //con.ConnectionString = connectionString;
-                //if (con.State == ConnectionState.Closed)
-                //{
-                //    con.Open();
-                //}
-                //String sql = "Update Cx_Cd119 set [CD_INCOME] = '" + txtIncome.Text + "',[CD_SALES]= '" + txtSales.Text + "', [CD_SERVICE]='" + txtService.Text + "',[CD-EXCISE]='" + txtExcise.Text + "', [CD_OTHER] = '" + txtOther.Text + "' where [CD_REFNO] ='" + txtRef.Text + "' ";
-                //OleDbCommand cmd = new OleDbCommand(sql, con);
-                //cmd.ExecuteNonQuery();
-                //con.Close();
-                MessageBox.Show("HI", "Perfect Tax Reporter - CMA 1.0");
+                OleDbConnection con = new OleDbConnection();
+                con.ConnectionString = connectionString;
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                String sql = "Update Cx_Cd119 set [CD_INCOME] = '" + txtIncome.Text + "',[CD_SALES]= '" + txtSales.Text + "', [CD_SERVICE]='" + txtService.Text + "',[CD-EXCISE]='" + txtExcise.Text + "', [CD_OTHER] = '" + txtOther.Text + "' where [CD_REFNO] ='" + txtRef.Text + "' ";
+                OleDbCommand cmd = new OleDbCommand(sql, con);
+                cmd.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show(GlobalMsg.updateMsg, "Perfect Tax Reporter - CMA 1.0");
             }
         }
 

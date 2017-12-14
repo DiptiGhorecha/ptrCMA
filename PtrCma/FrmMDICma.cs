@@ -17,6 +17,8 @@ namespace PtrCma
     {
         public Action NotifyMainFormToCloseChildFormParty;          // Party Form
         private FrmCMAParty frmParty;
+        public Action NotifyMainFormToCloseChildFormBackup;          // Backup Form
+        private FrmPtrBack frmBackup;
         public Action NotifyMainFormToCloseChildFormDirector;       // Detail of Director Form
         private FrmDetailDirector frmDirector;
         public Action NotifyMainFormToCloseChildFormBanking;        // Banking Arrangements Form
@@ -37,6 +39,10 @@ namespace PtrCma
         public FrmMajorBuyer frmBuyer;
         public Action NotifyMainFormToCloseChildFormParameter;          // Parameter Past Form
         public FrmParameterPast frmParameter;
+        public Action NotifyMainFormToCloseChildFormAssets;          // Assets Form
+        public FrmDeatilAssets frmAssets;
+        public Action NotifyMainFormToCloseChildFormProposed;          // Proposed Form
+        public FrmProposedExpenditure frmProposed;
 
         private FrmMainCma frmMain;
         private FrmCMA frmCmaa;
@@ -94,12 +100,19 @@ namespace PtrCma
             }
             Settings();
 
+            //Form Party
             frmParty = new FrmCMAParty();
             frmParty.MdiParent = this;
             frmParty.Location = new Point(this.Location.X + (this.Width - frmParty.Width) / 2, (frmParty.Location.Y + (this.Height - frmParty.Height) / 2) + 20);
             frmParty.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
             frmParty.NotifyMainFormToOpenChildFormCma += NotifyMainFormToOpenFormCma;
 
+            //Form Backup
+            frmBackup = new FrmPtrBack();
+            frmBackup.MdiParent = this;
+            frmBackup.Location = new Point(this.Location.X + (this.Width - frmBackup.Width) / 2, (frmBackup.Location.Y + (this.Height - frmBackup.Height) / 2) + 20);
+            frmBackup.NotifyMainFormToCloseChildFormBackup += NotifyMainFormToCloseFormBackup;
+           
             frmCmaa = new FrmCMA();
             frmCmaa.MdiParent = this;
             frmCmaa.Location = new Point(0, 70);
@@ -114,11 +127,14 @@ namespace PtrCma
             frmCmaa.NotifyMainFormToOpenChildFormSales += NotifyMainFormToOpenFormSales;   //Use to open Terms Sales Form
             frmCmaa.NotifyMainFormToOpenChildFormBuyer += NotifyMainFormToOpenFormBuyer;   //Use to open Major Buyer Form
             frmCmaa.NotifyMainFormToOpenChildFormParameter += NotifyMainFormToOpenFormParameter;   //Use to open Parameter Past Form
+            frmCmaa.NotifyMainFormToOpenChildFormAssets += NotifyMainFormToOpenFormAssets;   //Use to open Detail Assets Form
+            frmCmaa.NotifyMainFormToOpenChildFormProposed += NotifyMainFormToOpenFormProposed;   //Use to open Proposed Expenditure Form
 
 
             frmMain = new FrmMainCma();
             frmMain.MdiParent = this;
             frmMain.NotifyMainFormToOpenChildFormParty += NotifyMainFormToOpenFormParty;
+            frmMain.NotifyMainFormToOpenChildFormBackup += NotifyMainFormToOpenFormBackup;
             frmMain.Show();
 
             frmDirector = new FrmDetailDirector();
@@ -181,6 +197,44 @@ namespace PtrCma
             frmParameter.Location = new Point(this.Location.X + (this.Width - frmParameter.Width) / 2, (frmParameter.Location.Y + (this.Height - frmParameter.Height) / 2) + 20);
             frmParameter.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
             frmParameter.NotifyMainFormToCloseChildFormParameter += NotifyMainFormToCloseFormParameter;
+
+            frmAssets = new FrmDeatilAssets();
+            frmAssets.MdiParent = this;
+            frmAssets.Location = new Point(this.Location.X + (this.Width - frmAssets.Width) / 2, (frmAssets.Location.Y + (this.Height - frmAssets.Height) / 2) + 20);
+            frmAssets.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
+            frmAssets.NotifyMainFormToCloseChildFormAssets += NotifyMainFormToCloseFormAssets;
+
+            frmProposed = new FrmProposedExpenditure();
+            frmProposed.MdiParent = this;
+            frmProposed.Location = new Point(this.Location.X + (this.Width - frmProposed.Width) / 2, (frmProposed.Location.Y + (this.Height - frmProposed.Height) / 2) + 20);
+            frmProposed.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
+            frmProposed.NotifyMainFormToCloseChildFormProposed += NotifyMainFormToCloseFormProposed;
+        }
+
+        // Form Proposed Expenditure
+        private void NotifyMainFormToOpenFormProposed()
+        {
+            frmMain.Enabled = false;
+            frmCmaa.Enabled = false;
+            frmProposed.Show();
+        }
+        private void NotifyMainFormToCloseFormProposed()
+        {
+            frmMain.Enabled = true;
+            frmCmaa.Enabled = true;
+        }
+
+        // Form Detail Assets
+        private void NotifyMainFormToOpenFormAssets()
+        {
+            frmMain.Enabled = false;
+            frmCmaa.Enabled = false;
+            frmAssets.Show();
+        }
+        private void NotifyMainFormToCloseFormAssets()
+        {
+            frmMain.Enabled = true;
+            frmCmaa.Enabled = true;
         }
 
         // Form Parameter
@@ -317,6 +371,9 @@ namespace PtrCma
             frmCmaa.Enabled = true;
         }
 
+
+
+        //Form CMA
         private void NotifyMainFormToOpenFormCma()
         {
 
@@ -326,21 +383,28 @@ namespace PtrCma
             frmMain.Enabled = false;
         }
 
+        // Form Party
         private void NotifyMainFormToOpenFormParty()
         {
-    
-            //frmParty.Location = new Point(this.Location.X + (this.Width - frmParty.Width) / 2, (frmParty.Location.Y + (this.Height - frmParty.Height) / 2)+35);
-            
            frmParty.Show();
            frmMain.Enabled = false;
         }
         private void NotifyMainFormToCloseFormParty()
         {
             frmMain.Enabled = true;
-            
         }
 
-       
+
+        // Form Backup
+        private void NotifyMainFormToOpenFormBackup()
+        {
+            frmBackup.Show();
+            frmMain.Enabled = false;
+        }
+        private void NotifyMainFormToCloseFormBackup()
+        {
+            frmMain.Enabled = true;
+        }
         public void Settings()
         {
             this.BackColor = Global.appBackColr;

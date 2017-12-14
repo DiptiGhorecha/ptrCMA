@@ -59,6 +59,7 @@ namespace PtrCma
         public static Size btnmedSize = new System.Drawing.Size(60, 30);            // For Delete Cancel Butoon
         public static Size btnLargeSize = new System.Drawing.Size(170, 30);     // For Select Party Button
         public static Size smallBtn = new System.Drawing.Size(50, 22);          //For Reset Button
+        public static Size btnbackup = new System.Drawing.Size(100, 30);   //For Backup Button ....Ptr Backup form
         public static Color grdPartyBackColor = System.Drawing.Color.CadetBlue;//FromArgb(31, 109, 96);
         public static Color grdPartyForeColor = System.Drawing.Color.White;
         public static Font txtSize=new System.Drawing.Font("Arial",10F);        // TextBox Name Size
@@ -94,10 +95,10 @@ namespace PtrCma
         //Global variable
         public static String prtyCode;
 
-        // Sales,Purchase,Credit,Parameter Form
+        // Sales,Purchase,Credit,Parameter,Proposed Form
         public static Size lblbig = new System.Drawing.Size(200, 20);       //Terms of Purchase Form
-        public static Size lbl = new System.Drawing.Size(140,20);           
-        public static Size lblSmall = new System.Drawing.Size(100, 17);
+        public static Size lbl = new System.Drawing.Size(145,20);           
+        public static Size lblSmall = new System.Drawing.Size(100, 20);
         public static Size txtsmall = new System.Drawing.Size(100, 20);
         public static Size lblsmallCredit = new System.Drawing.Size(85, 19);    // Credit Facility Required Form
            

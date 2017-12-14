@@ -14,6 +14,7 @@ namespace PtrCma
     public partial class FrmMainCma : Form
     {
         public Action NotifyMainFormToOpenChildFormParty;
+        public Action NotifyMainFormToOpenChildFormBackup;
         public FrmMainCma()
         {
            
@@ -138,9 +139,9 @@ namespace PtrCma
                 }
                 if (btn.Name == ("cmdBackup"))
                 {
-                    if (NotifyMainFormToOpenChildFormParty != null)
+                    if (NotifyMainFormToOpenChildFormBackup != null)
                     {
-                        NotifyMainFormToOpenChildFormParty();
+                        NotifyMainFormToOpenChildFormBackup();
                     }
 
                     break;
