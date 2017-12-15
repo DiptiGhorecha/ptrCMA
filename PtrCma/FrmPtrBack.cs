@@ -7,21 +7,31 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.OleDb;
+using System.Configuration;
+
 
 namespace PtrCma
 {
+    
     public partial class FrmPtrBack : Form
     {
+        OleDbConnection con;
+        OleDbCommand cmd;
+        String pth= "E:\\Ptr1\\PtrBack";
+        
+        String connectionString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " + Application.StartupPath + "\\Resources\\PtrCma.accdb;";  //Connection String
         public Action NotifyMainFormToCloseChildFormBackup;
         public FrmPtrBack()
         {
             InitializeComponent();
         }
 
-        private void FrmPtrBack_Load(object sender, EventArgs e)
+        protected void FrmPtrBack_Load(object sender, EventArgs e)
         {
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true); //Stop the Flickering
             
+        
             //foreach(DriveType.CDRom)
             //{
 
@@ -121,51 +131,50 @@ namespace PtrCma
 
         private void cmdBackup_Click(object sender, EventArgs e)
         {
-            //string CurrentDatabasePath = Environment.CurrentDirectory + "\\PtrCma.accdb";
-
-            //FolderBrowserDialog fbd = new FolderBrowserDialog();
-
-            //if (fbd.ShowDialog() == DialogResult.OK)
-
-            //{
-
-            //    string PathtobackUp = fbd.SelectedPath.ToString();
-
-            //    File.Copy(CurrentDatabasePath, PathtobackUp + "\\PtrCma.accdb", true);
-
-            //    MessageBox.Show("Back Up SuccessFull! ");
-
-            //}
-
-
+            
 
             if (comboDrive.SelectedText == "")
             {
                 //string baseDirectory = "E:\\Ptr1\\PtrBack";
                 //string baseDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                string mdbSourceFilePath = "E:\\Ptr1\\PtrCma\\bin\\Debug\\Resources\\PtrCma.accdb";
+                
+                string mdbSourceFilePath =  Application.StartupPath + "\\Resources\\PtrCma.accdb"; 
                 string mdbTargetFileName = "PtrCma.mdb";
-                    // + DateTime.Now.ToString("dd") + "
-                //  string fullDirectory = Path.Combine(comboDrive.Text, DateTime.Now.ToString("dddd"));
                 string fullDirectory = Path.Combine(comboDrive.Text, "PtrBack" );
-
-                if (!Directory.Exists(comboDrive.Text))
-                    Directory.CreateDirectory(comboDrive.Text);
                 if (!Directory.Exists(fullDirectory))
-                    Directory.CreateDirectory(fullDirectory);
+                {
+                    if (!Directory.Exists(comboDrive.Text))
+                        Directory.CreateDirectory(comboDrive.Text);
+                    if (!Directory.Exists(fullDirectory))
+                        Directory.CreateDirectory(fullDirectory);
 
-                string mdbTargetFilePath = Path.Combine(fullDirectory, mdbTargetFileName);
-
-                File.Copy(mdbSourceFilePath, mdbTargetFilePath);
-                MessageBox.Show("Backup Successfully Created");
+                    string mdbTargetFilePath = Path.Combine(fullDirectory, mdbTargetFileName);
+                   
+                        File.Copy(mdbSourceFilePath, mdbTargetFilePath);
+                        MessageBox.Show("Backup Successfully Created");
+                }
+                   
+               else
+                {
+                    MessageBox.Show("File alraedy Exist");
+                }
             }
-
+            fillgrid();
         }
+    
         private void fillgrid()
         {
-            
-        }
+            //string strpath = @"E:\PtrBack\";
+            //string[] folders = Directory.GetFiles(strpath, "*", SearchOption.TopDirectoryOnly);
+            ////string[] folders = Directory.GetFiles("E:\\Ptr1\\PtrBack");
+            //grdBackup.DataSource = folders;
 
+            var currentDirInfo = new DirectoryInfo(this.comboDrive.Text);
+            var files = currentDirInfo.GetFiles();
+            grdBackup.DataSource = files;
+
+        }
+       
         private void radioHD_CheckedChanged(object sender, EventArgs e)
         {
             comboDrive.Items.Clear();
@@ -199,6 +208,7 @@ namespace PtrCma
                     if (drive.IsReady != true)
                     {
                         comboDrive.Items.Add(drive.Name);
+                        
                     }
                     else
                     {

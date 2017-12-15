@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FileSystemItemCS.cs" />
     <Compile Include="FrmBankingArrangements.cs">
       <SubType>Form</SubType>
     </Compile>
