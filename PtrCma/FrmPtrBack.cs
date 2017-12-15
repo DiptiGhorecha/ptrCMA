@@ -169,8 +169,11 @@ namespace PtrCma
             ////string[] folders = Directory.GetFiles("E:\\Ptr1\\PtrBack");
             //grdBackup.DataSource = folders;
 
-            var currentDirInfo = new DirectoryInfo(this.comboDrive.Text);
-            var files = currentDirInfo.GetFiles();
+            var currentDirInfo = new DirectoryInfo(this.comboDrive.Text + "\\PtrBack");
+            //Path.GetFileName(filename);
+          //  String dirName = dir.Name;
+            var files = currentDirInfo.GetFiles("*", SearchOption.AllDirectories);
+            //var files = currentDirInfo.GetFiles("*",SearchOption.AllDirectories);
             grdBackup.DataSource = files;
 
         }
