@@ -47,7 +47,7 @@ namespace PtrCma
         public static Font  lblPartyfont = new System.Drawing.Font("Verdana", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         public static Color txtColorPartyMst = System.Drawing.Color.White;     //Textbox color
         public static Size smallsizelbl = new System.Drawing.Size(43, 16);          //Find Label Size
-        public static Size medsizelbl = new System.Drawing.Size(85, 16);            //All Label Size    
+        public static Size medsizelbl = new System.Drawing.Size(85, 18);            //All Label Size    
         public static Size largesizelbl = new System.Drawing.Size(490, 30);         //Party Label Size
         public static Size txtCommonSize = new System.Drawing.Size(320, 20);
         public static Size txtFindSize = new System.Drawing.Size(195, 20);

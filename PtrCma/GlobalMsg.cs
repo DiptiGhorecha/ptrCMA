@@ -18,6 +18,8 @@ namespace PtrCma
         public static string selectMsg = "Please Create or Select Data First";
         public static string duplicateMsg = "Duplicate code is not allowed.";
         public static string deleteDataMsg="Data Already Exist You Can't Delete Record";
+        public static string backMsg = "Backup Successfully Created";
+        public static string titleMsg = "Perfect Tax Reporter - CMA 1.0";
 
         //Dialog Message Box
         public static string updateMsgDialog = "Are you sure you want Cancel ?";

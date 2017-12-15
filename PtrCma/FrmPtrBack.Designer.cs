@@ -46,9 +46,9 @@
             // 
             // cmdExit
             // 
-            this.cmdExit.Location = new System.Drawing.Point(521, 291);
+            this.cmdExit.Location = new System.Drawing.Point(449, 243);
             this.cmdExit.Name = "cmdExit";
-            this.cmdExit.Size = new System.Drawing.Size(75, 23);
+            this.cmdExit.Size = new System.Drawing.Size(78, 23);
             this.cmdExit.TabIndex = 13;
             this.cmdExit.Text = "Exit";
             this.cmdExit.UseVisualStyleBackColor = true;
@@ -56,9 +56,9 @@
             // 
             // cmdBackup
             // 
-            this.cmdBackup.Location = new System.Drawing.Point(399, 291);
+            this.cmdBackup.Location = new System.Drawing.Point(327, 243);
             this.cmdBackup.Name = "cmdBackup";
-            this.cmdBackup.Size = new System.Drawing.Size(95, 23);
+            this.cmdBackup.Size = new System.Drawing.Size(98, 23);
             this.cmdBackup.TabIndex = 12;
             this.cmdBackup.Text = "Start Backup";
             this.cmdBackup.UseVisualStyleBackColor = true;
@@ -66,18 +66,18 @@
             // 
             // lblDrive
             // 
-            this.lblDrive.Location = new System.Drawing.Point(384, 197);
+            this.lblDrive.Location = new System.Drawing.Point(324, 164);
             this.lblDrive.Name = "lblDrive";
-            this.lblDrive.Size = new System.Drawing.Size(109, 21);
+            this.lblDrive.Size = new System.Drawing.Size(112, 21);
             this.lblDrive.TabIndex = 11;
             this.lblDrive.Text = "Select Drive :";
             // 
             // comboDrive
             // 
             this.comboDrive.FormattingEnabled = true;
-            this.comboDrive.Location = new System.Drawing.Point(490, 197);
+            this.comboDrive.Location = new System.Drawing.Point(430, 164);
             this.comboDrive.Name = "comboDrive";
-            this.comboDrive.Size = new System.Drawing.Size(130, 21);
+            this.comboDrive.Size = new System.Drawing.Size(133, 21);
             this.comboDrive.TabIndex = 10;
             // 
             // radioCD
@@ -85,7 +85,7 @@
             this.radioCD.AutoSize = true;
             this.radioCD.BackColor = System.Drawing.Color.Transparent;
             this.radioCD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioCD.Location = new System.Drawing.Point(553, 131);
+            this.radioCD.Location = new System.Drawing.Point(493, 118);
             this.radioCD.Name = "radioCD";
             this.radioCD.Size = new System.Drawing.Size(67, 17);
             this.radioCD.TabIndex = 9;
@@ -99,7 +99,7 @@
             this.radioHD.AutoSize = true;
             this.radioHD.BackColor = System.Drawing.Color.Transparent;
             this.radioHD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioHD.Location = new System.Drawing.Point(490, 131);
+            this.radioHD.Location = new System.Drawing.Point(430, 118);
             this.radioHD.Name = "radioHD";
             this.radioHD.Size = new System.Drawing.Size(52, 17);
             this.radioHD.TabIndex = 8;
@@ -110,17 +110,23 @@
             // 
             // grdBackup
             // 
+            this.grdBackup.AllowUserToAddRows = false;
+            this.grdBackup.AllowUserToDeleteRows = false;
+            this.grdBackup.AllowUserToResizeColumns = false;
+            this.grdBackup.AllowUserToResizeRows = false;
             this.grdBackup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdBackup.Location = new System.Drawing.Point(28, 103);
+            this.grdBackup.Location = new System.Drawing.Point(52, 94);
             this.grdBackup.Name = "grdBackup";
-            this.grdBackup.Size = new System.Drawing.Size(318, 173);
+            this.grdBackup.RowHeadersVisible = false;
+            this.grdBackup.ShowEditingIcon = false;
+            this.grdBackup.Size = new System.Drawing.Size(205, 173);
             this.grdBackup.TabIndex = 7;
             // 
             // lblSelect
             // 
-            this.lblSelect.Location = new System.Drawing.Point(384, 133);
+            this.lblSelect.Location = new System.Drawing.Point(324, 120);
             this.lblSelect.Name = "lblSelect";
-            this.lblSelect.Size = new System.Drawing.Size(100, 23);
+            this.lblSelect.Size = new System.Drawing.Size(103, 23);
             this.lblSelect.TabIndex = 14;
             this.lblSelect.Text = "Select ";
             // 
@@ -129,7 +135,7 @@
             this.pictureBox1.BackgroundImage = global::PtrCma.Properties.Resources.closeBtnBg;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Image = global::PtrCma.Properties.Resources.close;
-            this.pictureBox1.Location = new System.Drawing.Point(665, 21);
+            this.pictureBox1.Location = new System.Drawing.Point(619, 21);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(25, 30);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -142,7 +148,7 @@
             this.pictitle.BackColor = System.Drawing.Color.Transparent;
             this.pictitle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictitle.Image = ((System.Drawing.Image)(resources.GetObject("pictitle.Image")));
-            this.pictitle.Location = new System.Drawing.Point(55, 21);
+            this.pictitle.Location = new System.Drawing.Point(52, 21);
             this.pictitle.Name = "pictitle";
             this.pictitle.Size = new System.Drawing.Size(532, 30);
             this.pictitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -153,7 +159,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(713, 357);
+            this.ClientSize = new System.Drawing.Size(652, 305);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictitle);
             this.Controls.Add(this.lblSelect);

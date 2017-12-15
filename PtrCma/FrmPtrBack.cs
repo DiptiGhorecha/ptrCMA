@@ -131,51 +131,76 @@ namespace PtrCma
 
         private void cmdBackup_Click(object sender, EventArgs e)
         {
-            
-
+            DateTime dt = DateTime.Now;
+            try
+            { 
             if (comboDrive.SelectedText == "")
             {
-                //string baseDirectory = "E:\\Ptr1\\PtrBack";
-                //string baseDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                
-                string mdbSourceFilePath =  Application.StartupPath + "\\Resources\\PtrCma.accdb"; 
-                string mdbTargetFileName = "PtrCma.mdb";
-                string fullDirectory = Path.Combine(comboDrive.Text, "PtrBack" );
-                if (!Directory.Exists(fullDirectory))
-                {
-                    if (!Directory.Exists(comboDrive.Text))
-                        Directory.CreateDirectory(comboDrive.Text);
-                    if (!Directory.Exists(fullDirectory))
-                        Directory.CreateDirectory(fullDirectory);
+                   
+                        string mdbSourceFilePath = Application.StartupPath + "\\Resources\\PtrCma.accdb";
+                    //string mdbTargetFileName = "PtrCma_" + String.Format("yyyyMMdd_HHmmss", dt) +".mdb";
+                    string mdbTargetFileName = "PtrCma_" + DateTime.Now.ToString("yyyymmddhhmmss") + ".mdb";
+                    // String abc=String.Format("{0:d/M/yyyy HH:mm:ss}", DateTime.Now);
+                    string fullDirectory = Path.Combine(comboDrive.Text, "PtrBack");
+                   
+                        if (!Directory.Exists(fullDirectory))
+                    {
+                        if (!Directory.Exists(comboDrive.Text))
+                            Directory.CreateDirectory(comboDrive.Text);
+                        if (!Directory.Exists(fullDirectory))
+                            Directory.CreateDirectory(fullDirectory);
+                    }
+                    try
+                    {
+                        if (mdbTargetFileName != null)
+                        {
+                            string mdbTargetFilePath = Path.Combine(fullDirectory, mdbTargetFileName);
+                             File.Copy(mdbSourceFilePath, mdbTargetFilePath);
+                            MessageBox.Show("Copied");
+                   
+                         }
+                    }
+                    catch (Exception er)
+                    {
+                        MessageBox.Show(er.Message, GlobalMsg.titleMsg);
+                    }
 
-                    string mdbTargetFilePath = Path.Combine(fullDirectory, mdbTargetFileName);
-                   
-                        File.Copy(mdbSourceFilePath, mdbTargetFilePath);
-                        MessageBox.Show("Backup Successfully Created");
+
+
                 }
-                   
-               else
-                {
-                    MessageBox.Show("File alraedy Exist");
-                }
+                fillgrid();
+            }       
+             catch (Exception er)
+            {
+                MessageBox.Show(er.Message, GlobalMsg.titleMsg);
             }
-            fillgrid();
+         
         }
     
         private void fillgrid()
         {
-            //string strpath = @"E:\PtrBack\";
-            //string[] folders = Directory.GetFiles(strpath, "*", SearchOption.TopDirectoryOnly);
-            ////string[] folders = Directory.GetFiles("E:\\Ptr1\\PtrBack");
-            //grdBackup.DataSource = folders;
-
             var currentDirInfo = new DirectoryInfo(this.comboDrive.Text + "\\PtrBack");
-            //Path.GetFileName(filename);
-          //  String dirName = dir.Name;
             var files = currentDirInfo.GetFiles("*", SearchOption.AllDirectories);
-            //var files = currentDirInfo.GetFiles("*",SearchOption.AllDirectories);
             grdBackup.DataSource = files;
+            
+            grdBackup.Columns[0].Visible = true;
+            grdBackup.Columns[0].HeaderText = "Name";
+            grdBackup.Columns[0].Width = 200;
 
+            grdBackup.Columns[1].Visible = false;
+            grdBackup.Columns[2].Visible = false;
+            grdBackup.Columns[3].Visible = false;
+            grdBackup.Columns[4].Visible = false;
+            grdBackup.Columns[5].Visible = false;
+            grdBackup.Columns[6].Visible = false;
+            grdBackup.Columns[7].Visible = false;
+            grdBackup.Columns[8].Visible = false;
+            grdBackup.Columns[9].Visible = false;
+            grdBackup.Columns[10].Visible = false;
+            grdBackup.Columns[11].Visible = false;
+            grdBackup.Columns[12].Visible = false;
+            grdBackup.Columns[13].Visible = false;
+            grdBackup.Columns[14].Visible = false;
         }
        
         private void radioHD_CheckedChanged(object sender, EventArgs e)
