@@ -177,6 +177,7 @@
             this.Name = "FrmPtrRestore";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "FrmPtrRestore";
+            this.Load += new System.EventHandler(this.FrmPtrRestore_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictitle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdBackup)).EndInit();

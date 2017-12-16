@@ -16,9 +16,13 @@ namespace PtrCma
         public FrmPtrRestore()
         {
             InitializeComponent();
-            Settings();
+            
         }
+        private void FrmPtrRestore_Load(object sender, EventArgs e)
+        {
+            Settings();
 
+        }
         private void Settings()
         {
             this.BackgroundImage = Global.partyFrmBackImg;      // Show BackGround Image
@@ -255,5 +259,7 @@ namespace PtrCma
 
             }
         }
+
+   
     }
 }
