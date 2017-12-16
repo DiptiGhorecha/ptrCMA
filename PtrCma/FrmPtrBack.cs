@@ -214,21 +214,28 @@ namespace PtrCma
         private void radioHD_CheckedChanged(object sender, EventArgs e)
         {
             comboDrive.Items.Clear();
-            
-            if (radioHD.Checked == true)
+            try
             {
-                foreach (var drive in DriveInfo.GetDrives())
+                if (radioHD.Checked == true)
                 {
-                    if (drive.IsReady == true)
+                    foreach (var drive in DriveInfo.GetDrives())
                     {
-                        comboDrive.Items.Add(drive.Name);
-                    }
-                    else
-                    {
-                        
-                    }
-                }
+                        if (drive.IsReady == true)
+                        {
+                            comboDrive.Items.Add(drive.Name);
+                        }
+                        else
+                        {
 
+                        }
+                    }
+
+                }
+            }
+           
+            catch (Exception er)
+            {
+                MessageBox.Show(er.Message, GlobalMsg.titleMsg);
             }
             //fillgrid();
         }
@@ -237,23 +244,30 @@ namespace PtrCma
         private void radioCD_CheckedChanged(object sender, EventArgs e)
         {
             comboDrive.Items.Clear();
-            
-            if (radioCD.Checked == true)
+            try
             {
-                foreach (var drive in DriveInfo.GetDrives())
+                if (radioCD.Checked == true)
                 {
-                    if (drive.IsReady != true)
+                    foreach (var drive in DriveInfo.GetDrives())
                     {
-                        comboDrive.Items.Add(drive.Name);
-                        
-                    }
-                    else
-                    {
-                       
+                        if (drive.IsReady != true)
+                        {
+                            comboDrive.Items.Add(drive.Name);
+
+                        }
+                        else
+                        {
+
+                        }
                     }
                 }
             }
-           fillgrid();
+           
+             catch (Exception er)
+            {
+                MessageBox.Show(er.Message, GlobalMsg.titleMsg);
+            }
+            fillgrid();
         }
 
         private void cmdExit_Click(object sender, EventArgs e)
