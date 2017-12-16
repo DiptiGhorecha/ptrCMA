@@ -46,7 +46,7 @@
             // 
             // cmdExit
             // 
-            this.cmdExit.Location = new System.Drawing.Point(449, 243);
+            this.cmdExit.Location = new System.Drawing.Point(449, 233);
             this.cmdExit.Name = "cmdExit";
             this.cmdExit.Size = new System.Drawing.Size(78, 23);
             this.cmdExit.TabIndex = 13;
@@ -56,7 +56,7 @@
             // 
             // cmdBackup
             // 
-            this.cmdBackup.Location = new System.Drawing.Point(327, 243);
+            this.cmdBackup.Location = new System.Drawing.Point(327, 233);
             this.cmdBackup.Name = "cmdBackup";
             this.cmdBackup.Size = new System.Drawing.Size(98, 23);
             this.cmdBackup.TabIndex = 12;
@@ -79,6 +79,8 @@
             this.comboDrive.Name = "comboDrive";
             this.comboDrive.Size = new System.Drawing.Size(133, 21);
             this.comboDrive.TabIndex = 10;
+            this.comboDrive.Click += new System.EventHandler(this.comboDrive_Click);
+            this.comboDrive.MouseHover += new System.EventHandler(this.comboDrive_MouseHover);
             // 
             // radioCD
             // 
@@ -119,7 +121,7 @@
             this.grdBackup.Name = "grdBackup";
             this.grdBackup.RowHeadersVisible = false;
             this.grdBackup.ShowEditingIcon = false;
-            this.grdBackup.Size = new System.Drawing.Size(205, 173);
+            this.grdBackup.Size = new System.Drawing.Size(205, 162);
             this.grdBackup.TabIndex = 7;
             // 
             // lblSelect

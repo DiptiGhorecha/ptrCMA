@@ -16,9 +16,9 @@ namespace PtrCma
     
     public partial class FrmPtrBack : Form
     {
-        OleDbConnection con;
-        OleDbCommand cmd;
-        String pth= "E:\\Ptr1\\PtrBack";
+        //OleDbConnection con;
+        //OleDbCommand cmd;
+      //  String pth= "E:\\Ptr1\\PtrBack";
         
         String connectionString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " + Application.StartupPath + "\\Resources\\PtrCma.accdb;";  //Connection String
         public Action NotifyMainFormToCloseChildFormBackup;
@@ -38,7 +38,11 @@ namespace PtrCma
             //}
             //comboDrive.DisplayMember = "Name";      
             Settings();
-            fillgrid();
+            // fillgrid();
+            comboDrive.Items.Clear();
+            grdBackup.DataSource = null;
+            grdBackup.Rows.Clear();
+            grdBackup.Refresh();
         }
 
      
@@ -74,6 +78,7 @@ namespace PtrCma
                     //this.comboDrive.Items.Add("Select One "); //Error is Coming at this Point
                     return;
                 }
+                fillgrid();
             }
             else
             {
@@ -89,6 +94,7 @@ namespace PtrCma
                         comboDrive.Items.Add(drive.Name);
                     }
                 }
+                fillgrid();
             }
         }
 
@@ -137,13 +143,14 @@ namespace PtrCma
             if (comboDrive.SelectedText == "")
             {
                    
-                        string mdbSourceFilePath = Application.StartupPath + "\\Resources\\PtrCma.accdb";
+                    string mdbSourceFilePath = Application.StartupPath + "\\Resources\\PtrCma.accdb";
                     //string mdbTargetFileName = "PtrCma_" + String.Format("yyyyMMdd_HHmmss", dt) +".mdb";
-                    string mdbTargetFileName = "PtrCma_" + DateTime.Now.ToString("yyyymmddhhmmss") + ".mdb";
+                    //string mdbTargetFileName = "PtrCma_" + DateTime.Now.ToString("yyyymmddhhmmss") + ".mdb";
+                    string mdbTargetFileName = "PtrCma_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".mdb";
                     // String abc=String.Format("{0:d/M/yyyy HH:mm:ss}", DateTime.Now);
                     string fullDirectory = Path.Combine(comboDrive.Text, "PtrBack");
-                   
-                        if (!Directory.Exists(fullDirectory))
+
+                    if (!Directory.Exists(fullDirectory))
                     {
                         if (!Directory.Exists(comboDrive.Text))
                             Directory.CreateDirectory(comboDrive.Text);
@@ -155,18 +162,15 @@ namespace PtrCma
                         if (mdbTargetFileName != null)
                         {
                             string mdbTargetFilePath = Path.Combine(fullDirectory, mdbTargetFileName);
-                             File.Copy(mdbSourceFilePath, mdbTargetFilePath);
-                            MessageBox.Show("Copied");
-                   
-                         }
+                            File.Copy(mdbSourceFilePath, mdbTargetFilePath);
+                            MessageBox.Show(GlobalMsg.backMsg, GlobalMsg.titleMsg);
+
+                        }
                     }
                     catch (Exception er)
                     {
                         MessageBox.Show(er.Message, GlobalMsg.titleMsg);
                     }
-
-
-
                 }
                 fillgrid();
             }       
@@ -179,6 +183,9 @@ namespace PtrCma
     
         private void fillgrid()
         {
+            //string fullDirectory = Path.Combine(comboDrive.Text, "PtrBack");
+            //if (radioCD != null)
+            //{ 
             var currentDirInfo = new DirectoryInfo(this.comboDrive.Text + "\\PtrBack");
             var files = currentDirInfo.GetFiles("*", SearchOption.AllDirectories);
             grdBackup.DataSource = files;
@@ -201,6 +208,7 @@ namespace PtrCma
             grdBackup.Columns[12].Visible = false;
             grdBackup.Columns[13].Visible = false;
             grdBackup.Columns[14].Visible = false;
+            //}
         }
        
         private void radioHD_CheckedChanged(object sender, EventArgs e)
@@ -222,6 +230,7 @@ namespace PtrCma
                 }
 
             }
+            //fillgrid();
         }
 
 
@@ -244,6 +253,7 @@ namespace PtrCma
                     }
                 }
             }
+           fillgrid();
         }
 
         private void cmdExit_Click(object sender, EventArgs e)
@@ -254,6 +264,10 @@ namespace PtrCma
                 NotifyMainFormToCloseChildFormBackup();
                 this.Hide();
             }
+            comboDrive.Items.Clear();
+            grdBackup.DataSource = null;
+            grdBackup.Rows.Clear();
+            grdBackup.Refresh();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -263,6 +277,82 @@ namespace PtrCma
             {
                 NotifyMainFormToCloseChildFormBackup();
                 this.Hide();
+                
+            }
+            comboDrive.Items.Clear();
+            grdBackup.ClearSelection();
+        }
+
+        private void comboDrive_Click(object sender, EventArgs e)
+        {
+            if (radioCD.Checked == true)
+            {
+                comboDrive.Items.Clear();
+                foreach (var drive in DriveInfo.GetDrives())
+                {
+                    if (drive.IsReady != true)
+                    {
+                        comboDrive.Items.Add(drive.Name);
+
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
+            else
+            {
+                comboDrive.Items.Clear();
+                foreach (var drive in DriveInfo.GetDrives())
+                {
+                    if (drive.IsReady == true)
+                    {
+                        comboDrive.Items.Add(drive.Name);
+                    }
+                    else
+                    {
+
+                    }
+                }
+
+            }
+        }
+
+        private void comboDrive_MouseHover(object sender, EventArgs e)
+        {
+            comboDrive.Items.Clear();
+            if (radioCD.Checked == true)
+            {
+                comboDrive.Items.Clear();
+                foreach (var drive in DriveInfo.GetDrives())
+                {
+                    if (drive.IsReady != true)
+                    {
+                        comboDrive.Items.Add(drive.Name);
+
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
+            else
+            {
+                comboDrive.Items.Clear();
+                foreach (var drive in DriveInfo.GetDrives())
+                {
+                    if (drive.IsReady == true)
+                    {
+                        comboDrive.Items.Add(drive.Name);
+                    }
+                    else
+                    {
+
+                    }
+                }
+
             }
         }
     }
