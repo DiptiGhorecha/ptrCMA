@@ -253,7 +253,17 @@ namespace PtrCma
                     {
                        
                     }
+                    if (drive.DriveType == DriveType.CDRom)
+                    {
+                        comboDrive.Items.Add(drive.Name);
+                    }
+                    else
+                    {
+
+                    }
+
                 }
+                
             }
            //fillgrid();
         }
