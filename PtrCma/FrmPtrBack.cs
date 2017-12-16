@@ -221,9 +221,7 @@ namespace PtrCma
                 {
                     if (drive.IsReady == true)
                     {
-                        
                         comboDrive.Items.Add(drive.Name);
-                        
                     }
                     else
                     {
@@ -249,11 +247,7 @@ namespace PtrCma
                     {
                         comboDrive.Items.Add(drive.Name);
                     }
-                    else
-                    {
-                       
-                    }
-                    if (drive.DriveType == DriveType.CDRom)
+                    else if (drive.DriveType == DriveType.CDRom)
                     {
                         comboDrive.Items.Add(drive.Name);
                     }
@@ -281,6 +275,8 @@ namespace PtrCma
                 NotifyMainFormToCloseChildFormBackup();
                 this.Hide();
             }
+            comboDrive.Items.Remove(comboDrive.Text);
+            comboDrive.Items.Clear();
             grdBackup.DataSource = null;
             grdBackup.Rows.Clear();
             grdBackup.Refresh();
@@ -296,6 +292,8 @@ namespace PtrCma
                 this.Hide();
                 
             }
+            comboDrive.Items.Remove(comboDrive.Text);
+            comboDrive.Items.Clear();
             grdBackup.DataSource = null;
             grdBackup.Rows.Clear();
             grdBackup.Refresh();
@@ -314,6 +312,10 @@ namespace PtrCma
                     {
                         comboDrive.Items.Add(drive.Name);
 
+                    }
+                    else if(drive.DriveType == DriveType.CDRom)
+                    {
+                        comboDrive.Items.Add(drive.Name);
                     }
                     else
                     {
