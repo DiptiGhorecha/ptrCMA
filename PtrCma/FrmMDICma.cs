@@ -19,6 +19,8 @@ namespace PtrCma
         private FrmCMAParty frmParty;
         public Action NotifyMainFormToCloseChildFormBackup;          // Backup Form
         private FrmPtrBack frmBackup;
+        public Action NotifyMainFormToCloseChildFormRestore;          // Restore Form
+        private FrmPtrRestore frmRestore;
         public Action NotifyMainFormToCloseChildFormDirector;       // Detail of Director Form
         private FrmDetailDirector frmDirector;
         public Action NotifyMainFormToCloseChildFormBanking;        // Banking Arrangements Form
@@ -112,7 +114,13 @@ namespace PtrCma
             frmBackup.MdiParent = this;
             frmBackup.Location = new Point(this.Location.X + (this.Width - frmBackup.Width) / 2, (frmBackup.Location.Y + (this.Height - frmBackup.Height) / 2) + 20);
             frmBackup.NotifyMainFormToCloseChildFormBackup += NotifyMainFormToCloseFormBackup;
-           
+
+            //Form Restore
+            frmRestore = new FrmPtrRestore();
+            frmRestore.MdiParent = this;
+            frmRestore.Location = new Point(this.Location.X + (this.Width - frmRestore.Width) / 2, (frmRestore.Location.Y + (this.Height - frmRestore.Height) / 2) + 20);
+            frmRestore.NotifyMainFormToCloseChildFormRestore += NotifyMainFormToCloseFormRestore;
+
             frmCmaa = new FrmCMA();
             frmCmaa.MdiParent = this;
             frmCmaa.Location = new Point(0, 70);
@@ -135,6 +143,7 @@ namespace PtrCma
             frmMain.MdiParent = this;
             frmMain.NotifyMainFormToOpenChildFormParty += NotifyMainFormToOpenFormParty;
             frmMain.NotifyMainFormToOpenChildFormBackup += NotifyMainFormToOpenFormBackup;
+            frmMain.NotifyMainFormToOpenChildFormRestore += NotifyMainFormToOpenFormRestore;
             frmMain.Show();
 
             frmDirector = new FrmDetailDirector();
@@ -394,6 +403,16 @@ namespace PtrCma
             frmMain.Enabled = true;
         }
 
+        // Form Backup
+        private void NotifyMainFormToOpenFormRestore()
+        {
+            frmRestore.Show();
+            frmMain.Enabled = false;
+        }
+        private void NotifyMainFormToCloseFormRestore()
+        {
+            frmMain.Enabled = true;
+        }
 
         // Form Backup
         private void NotifyMainFormToOpenFormBackup()

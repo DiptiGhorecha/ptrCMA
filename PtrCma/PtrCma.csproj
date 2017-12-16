@@ -153,6 +153,12 @@
     <Compile Include="FrmPtrBack.Designer.cs">
       <DependentUpon>FrmPtrBack.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPtrRestore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPtrRestore.Designer.cs">
+      <DependentUpon>FrmPtrRestore.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmRegistration.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +232,9 @@
     <EmbeddedResource Include="FrmPtrBack.resx">
       <DependentUpon>FrmPtrBack.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmPtrRestore.resx">
+      <DependentUpon>FrmPtrRestore.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmRegistration.resx">
       <DependentUpon>FrmRegistration.cs</DependentUpon>
     </EmbeddedResource>
@@ -259,6 +268,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\Restore-Database.png" />
     <EmbeddedResource Include="Resources\Terms_of_Sales.png" />
     <EmbeddedResource Include="Resources\Terms_of_Purchase.png" />
     <EmbeddedResource Include="Resources\select_party.png" />

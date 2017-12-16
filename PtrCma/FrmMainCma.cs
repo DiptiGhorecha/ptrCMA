@@ -15,6 +15,7 @@ namespace PtrCma
     {
         public Action NotifyMainFormToOpenChildFormParty;
         public Action NotifyMainFormToOpenChildFormBackup;
+        public Action NotifyMainFormToOpenChildFormRestore;
         public FrmMainCma()
         {
            
@@ -142,6 +143,16 @@ namespace PtrCma
                     if (NotifyMainFormToOpenChildFormBackup != null)
                     {
                         NotifyMainFormToOpenChildFormBackup();
+                    }
+
+                    break;
+                }
+
+                if (btn.Name == ("cmdRestore"))
+                {
+                    if (NotifyMainFormToOpenChildFormRestore != null)
+                    {
+                        NotifyMainFormToOpenChildFormRestore();
                     }
 
                     break;
