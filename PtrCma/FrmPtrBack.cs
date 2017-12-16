@@ -29,17 +29,15 @@ namespace PtrCma
 
         protected void FrmPtrBack_Load(object sender, EventArgs e)
         {
+            comboDrive.DataSource = null;
+            comboDrive.ResetText();
+            //comboDrive.Items.Clear();
+            //comboDrive.Refresh();
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true); //Stop the Flickering
-            
-        
-            //foreach(DriveType.CDRom)
-            //{
-
-            //}
-            //comboDrive.DisplayMember = "Name";      
+                
             Settings();
             // fillgrid();
-            comboDrive.Items.Clear();
+            //comboDrive.Items.Clear();
             grdBackup.DataSource = null;
             grdBackup.Rows.Clear();
             grdBackup.Refresh();
@@ -62,40 +60,41 @@ namespace PtrCma
             grdBackup.ColumnHeadersDefaultCellStyle.ForeColor = Global.grdPartyForeColor;
             grdBackup.ColumnHeadersDefaultCellStyle.BackColor = Global.grdPartyBackColor;
             radioHD.Checked = true;
-            if (radioHD.Checked == true)
-            {
-                comboDrive.ResetText();
-                foreach (var drive in DriveInfo.GetDrives())
-                {
-                    if (drive.IsReady == true)
-                    {
-                        comboDrive.Items.Add(drive.Name);
-                    }
-                    else
-                    {
+            //if (radioHD.Checked == true)
+            //{
+            //    comboDrive.ResetText();
+            //    foreach (var drive in DriveInfo.GetDrives())
+            //    {
+            //        if (drive.IsReady == true)
+            //        {
+            //           // fillgrid();
+            //            comboDrive.Items.Add(drive.Name);
+            //        }
+            //        else
+            //        {
 
-                    }
-                    //this.comboDrive.Items.Add("Select One "); //Error is Coming at this Point
-                    return;
-                }
-                fillgrid();
-            }
-            else
-            {
-                comboDrive.ResetText();
-                foreach (var drive in DriveInfo.GetDrives())
-                {
-                    if (drive.IsReady == true)
-                    {
+            //        }
+            //        //this.comboDrive.Items.Add("Select One "); //Error is Coming at this Point
+            //        return;
+            //    }
+            //   // fillgrid();
+            //}
+            //else
+            //{
+            //    comboDrive.ResetText();
+            //    foreach (var drive in DriveInfo.GetDrives())
+            //    {
+            //        if (drive.IsReady == true)
+            //        {
 
-                    }
-                    else
-                    {
-                        comboDrive.Items.Add(drive.Name);
-                    }
-                }
-                fillgrid();
-            }
+            //        }
+            //        else
+            //        {
+            //            comboDrive.Items.Add(drive.Name);
+            //        }
+            //    }
+            // //   fillgrid();
+            //}
         }
 
         private void setControlsize()
@@ -213,29 +212,25 @@ namespace PtrCma
        
         private void radioHD_CheckedChanged(object sender, EventArgs e)
         {
+            comboDrive.Items.Remove(comboDrive.Text);
             comboDrive.Items.Clear();
-            try
+            
+            if (radioHD.Checked == true)
             {
-                if (radioHD.Checked == true)
+                foreach (var drive in DriveInfo.GetDrives())
                 {
-                    foreach (var drive in DriveInfo.GetDrives())
+                    if (drive.IsReady == true)
                     {
-                        if (drive.IsReady == true)
-                        {
-                            comboDrive.Items.Add(drive.Name);
-                        }
-                        else
-                        {
-
-                        }
+                        
+                        comboDrive.Items.Add(drive.Name);
+                        
                     }
-
+                    else
+                    {
+                        
+                    }
                 }
-            }
-           
-            catch (Exception er)
-            {
-                MessageBox.Show(er.Message, GlobalMsg.titleMsg);
+                fillgrid();
             }
             //fillgrid();
         }
@@ -243,42 +238,39 @@ namespace PtrCma
 
         private void radioCD_CheckedChanged(object sender, EventArgs e)
         {
+            comboDrive.Items.Remove(comboDrive.Text);
             comboDrive.Items.Clear();
-            try
+            
+            if (radioCD.Checked == true)
             {
-                if (radioCD.Checked == true)
+                foreach (var drive in DriveInfo.GetDrives())
                 {
-                    foreach (var drive in DriveInfo.GetDrives())
+                    if (drive.DriveType == DriveType.Removable)
                     {
-                        if (drive.IsReady != true)
-                        {
-                            comboDrive.Items.Add(drive.Name);
-
-                        }
-                        else
-                        {
-
-                        }
+                        comboDrive.Items.Add(drive.Name);
+                    }
+                    else
+                    {
+                       
                     }
                 }
             }
-           
-             catch (Exception er)
-            {
-                MessageBox.Show(er.Message, GlobalMsg.titleMsg);
-            }
-            fillgrid();
+           //fillgrid();
         }
 
         private void cmdExit_Click(object sender, EventArgs e)
         {
+            
+            //comboDrive.Items.Clear();
             DialogResult dialogResult = MessageBox.Show(GlobalMsg.exitMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
             if (dialogResult == DialogResult.Yes)
             {
+                comboDrive.Items.Remove(comboDrive.Text);
+                //comboDrive.DataSource = null;
+                //comboDrive.ResetText();
                 NotifyMainFormToCloseChildFormBackup();
                 this.Hide();
             }
-            comboDrive.Items.Clear();
             grdBackup.DataSource = null;
             grdBackup.Rows.Clear();
             grdBackup.Refresh();
@@ -289,12 +281,14 @@ namespace PtrCma
             DialogResult dialogResult = MessageBox.Show(GlobalMsg.exitMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
             if (dialogResult == DialogResult.Yes)
             {
+                comboDrive.Items.Remove(comboDrive.Text);
                 NotifyMainFormToCloseChildFormBackup();
                 this.Hide();
                 
             }
-            comboDrive.Items.Clear();
-            grdBackup.ClearSelection();
+            grdBackup.DataSource = null;
+            grdBackup.Rows.Clear();
+            grdBackup.Refresh();
         }
 
         private void comboDrive_Click(object sender, EventArgs e)
@@ -304,7 +298,9 @@ namespace PtrCma
                 comboDrive.Items.Clear();
                 foreach (var drive in DriveInfo.GetDrives())
                 {
-                    if (drive.IsReady != true)
+                    
+                        //if (drive.IsReady != true
+                    if (drive.DriveType == DriveType.Removable)
                     {
                         comboDrive.Items.Add(drive.Name);
 
@@ -322,52 +318,20 @@ namespace PtrCma
                 {
                     if (drive.IsReady == true)
                     {
+                        
                         comboDrive.Items.Add(drive.Name);
+                        fillgrid();
                     }
                     else
                     {
 
                     }
                 }
+               // 
 
             }
         }
 
-        private void comboDrive_MouseHover(object sender, EventArgs e)
-        {
-            comboDrive.Items.Clear();
-            if (radioCD.Checked == true)
-            {
-                comboDrive.Items.Clear();
-                foreach (var drive in DriveInfo.GetDrives())
-                {
-                    if (drive.IsReady != true)
-                    {
-                        comboDrive.Items.Add(drive.Name);
-
-                    }
-                    else
-                    {
-
-                    }
-                }
-            }
-            else
-            {
-                comboDrive.Items.Clear();
-                foreach (var drive in DriveInfo.GetDrives())
-                {
-                    if (drive.IsReady == true)
-                    {
-                        comboDrive.Items.Add(drive.Name);
-                    }
-                    else
-                    {
-
-                    }
-                }
-
-            }
-        }
+     
     }
 }

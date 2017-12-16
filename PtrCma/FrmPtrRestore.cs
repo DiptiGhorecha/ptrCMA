@@ -109,15 +109,42 @@ namespace PtrCma
 
         public void fillgrid()
         {
-            
+            var currentDirInfo = new DirectoryInfo(this.comboDrive.Text + "\\PtrBack");
+            var files = currentDirInfo.GetFiles("*", SearchOption.AllDirectories);
+            grdBackup.DataSource = files;
+
+            grdBackup.Columns[0].Visible = true;
+            grdBackup.Columns[0].HeaderText = "Name";
+            grdBackup.Columns[0].Width = 200;
+
+            grdBackup.Columns[1].Visible = false;
+            grdBackup.Columns[2].Visible = false;
+            grdBackup.Columns[3].Visible = false;
+            grdBackup.Columns[4].Visible = false;
+            grdBackup.Columns[5].Visible = false;
+            grdBackup.Columns[6].Visible = false;
+            grdBackup.Columns[7].Visible = false;
+            grdBackup.Columns[8].Visible = false;
+            grdBackup.Columns[9].Visible = false;
+            grdBackup.Columns[10].Visible = false;
+            grdBackup.Columns[11].Visible = false;
+            grdBackup.Columns[12].Visible = false;
+            grdBackup.Columns[13].Visible = false;
+            grdBackup.Columns[14].Visible = false;
         }
 
         private void cmdBackup_Click(object sender, EventArgs e)
         {
             //var Path = "";
             string dbFileName = "PtrCma.mdb";
-           // string pathBackup = @"C:\SomeFolder\Backup\gongqin_20120906.mdb"; //you may use file dialog to select this backuppath
-            string pathBackup = @"E:\\PtrBack\PtrCma_20171216132444.mdb"; 
+            string pathBackup = @"E:\\PtrBack\PtrCma_20171216152117.mdb";
+            // string pathBackup = @"C:\SomeFolder\Backup\gongqin_20120906.mdb"; //you may use file dialog to select this backuppath
+            if (File.Exists(@"E:\Ptr1\PtrCma\bin\Debug\Resources\PtrCma.mdb"))
+            {
+                
+                File.WriteAllText(@"E:\Ptr1\PtrCma\bin\Debug\Resources\PtrCma.mdb", String.Empty);
+            }
+            
             string CurrentDatabasePath = Path.Combine(Environment.CurrentDirectory, dbFileName);
             File.Copy(pathBackup, CurrentDatabasePath, true);
             MessageBox.Show("successful Restore! ");

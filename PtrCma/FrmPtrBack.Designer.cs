@@ -80,7 +80,6 @@
             this.comboDrive.Size = new System.Drawing.Size(133, 21);
             this.comboDrive.TabIndex = 10;
             this.comboDrive.Click += new System.EventHandler(this.comboDrive_Click);
-            this.comboDrive.MouseHover += new System.EventHandler(this.comboDrive_MouseHover);
             // 
             // radioCD
             // 
