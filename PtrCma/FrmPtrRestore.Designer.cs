@@ -38,10 +38,10 @@
             this.comboDrive = new System.Windows.Forms.ComboBox();
             this.radioCD = new System.Windows.Forms.RadioButton();
             this.radioHD = new System.Windows.Forms.RadioButton();
-            this.grdBackup = new System.Windows.Forms.DataGridView();
+            this.grdRestore = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictitle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdBackup)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdRestore)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -95,7 +95,7 @@
             this.cmdBackup.TabIndex = 86;
             this.cmdBackup.Text = "Start Restore";
             this.cmdBackup.UseVisualStyleBackColor = true;
-            this.cmdBackup.Click += new System.EventHandler(this.cmdBackup_Click);
+            this.cmdBackup.Click += new System.EventHandler(this.cmdRestore_Click);
             // 
             // lblDrive
             // 
@@ -142,19 +142,20 @@
             this.radioHD.UseVisualStyleBackColor = false;
             this.radioHD.CheckedChanged += new System.EventHandler(this.radioHD_CheckedChanged);
             // 
-            // grdBackup
+            // grdRestore
             // 
-            this.grdBackup.AllowUserToAddRows = false;
-            this.grdBackup.AllowUserToDeleteRows = false;
-            this.grdBackup.AllowUserToResizeColumns = false;
-            this.grdBackup.AllowUserToResizeRows = false;
-            this.grdBackup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdBackup.Location = new System.Drawing.Point(53, 98);
-            this.grdBackup.Name = "grdBackup";
-            this.grdBackup.RowHeadersVisible = false;
-            this.grdBackup.ShowEditingIcon = false;
-            this.grdBackup.Size = new System.Drawing.Size(205, 162);
-            this.grdBackup.TabIndex = 81;
+            this.grdRestore.AllowUserToAddRows = false;
+            this.grdRestore.AllowUserToDeleteRows = false;
+            this.grdRestore.AllowUserToResizeColumns = false;
+            this.grdRestore.AllowUserToResizeRows = false;
+            this.grdRestore.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdRestore.Location = new System.Drawing.Point(53, 98);
+            this.grdRestore.Name = "grdRestore";
+            this.grdRestore.RowHeadersVisible = false;
+            this.grdRestore.ShowEditingIcon = false;
+            this.grdRestore.Size = new System.Drawing.Size(205, 162);
+            this.grdRestore.TabIndex = 81;
+            this.grdRestore.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdRestore_CellClick);
             // 
             // FrmPtrRestore
             // 
@@ -170,7 +171,7 @@
             this.Controls.Add(this.comboDrive);
             this.Controls.Add(this.radioCD);
             this.Controls.Add(this.radioHD);
-            this.Controls.Add(this.grdBackup);
+            this.Controls.Add(this.grdRestore);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -180,7 +181,7 @@
             this.Load += new System.EventHandler(this.FrmPtrRestore_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictitle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdBackup)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdRestore)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,6 +198,6 @@
         private System.Windows.Forms.ComboBox comboDrive;
         private System.Windows.Forms.RadioButton radioCD;
         private System.Windows.Forms.RadioButton radioHD;
-        private System.Windows.Forms.DataGridView grdBackup;
+        private System.Windows.Forms.DataGridView grdRestore;
     }
 }
