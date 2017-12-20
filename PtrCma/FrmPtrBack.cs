@@ -308,8 +308,6 @@ namespace PtrCma
 
         private void cmdExit_Click(object sender, EventArgs e)
         {
-            
-            //comboDrive.Items.Clear();
             DialogResult dialogResult = MessageBox.Show(GlobalMsg.exitMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
             if (dialogResult == DialogResult.Yes)
             {
@@ -419,13 +417,13 @@ namespace PtrCma
                     }
                     else if (drive.DriveType == DriveType.Removable)
                     {
-                        if (DriveType.Removable != null)
+                        try
                         {
                             comboDrive.Items.Add(drive.Name);
                         }
-                        else
+                        catch (Exception er)
                         {
-                            MessageBox.Show("There is no Media Drive");
+                            MessageBox.Show(er.Message, GlobalMsg.titleMsg);
                         }
                     }
                 }
@@ -439,18 +437,17 @@ namespace PtrCma
                 {
                     if (drive.IsReady == true)
                     {
-                        //if (comboDrive.SelectedValue != "")
-                        //{
-                            comboDrive.Items.Add(drive.Name);
+                        comboDrive.Items.Add(drive.Name);
+                        if (comboDrive.SelectedItem != "")
+                        {
                             fillgrid();
-                        //}
+                        }
                     }
                     else if (drive.DriveType != DriveType.CDRom)
                     {
                     }
                     else
                     {
-
                     }
                     
                 }
