@@ -21,7 +21,7 @@ namespace PtrCma
         private void FrmPtrRestore_Load(object sender, EventArgs e)
         {
             Settings();
-
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true); //Stop the Flickering
         }
         private void Settings()
         {
@@ -29,14 +29,14 @@ namespace PtrCma
             setControlcolor(); //Label and Textbox BackColor/Forecolor
             setControlsize(); //Label and TextBox Resize
 
-            grdBackup.RowsDefaultCellStyle.BackColor = Color.White;     // Row Color of Gridview
+            grdRestore.RowsDefaultCellStyle.BackColor = Color.White;     // Row Color of Gridview
 
             // Column Header Color of Gridview
-            grdBackup.ColumnHeadersHeight = 30;
-            grdBackup.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            grdBackup.EnableHeadersVisualStyles = false;
-            grdBackup.ColumnHeadersDefaultCellStyle.ForeColor = Global.grdPartyForeColor;
-            grdBackup.ColumnHeadersDefaultCellStyle.BackColor = Global.grdPartyBackColor;
+            grdRestore.ColumnHeadersHeight = 30;
+            grdRestore.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            grdRestore.EnableHeadersVisualStyles = false;
+            grdRestore.ColumnHeadersDefaultCellStyle.ForeColor = Global.grdPartyForeColor;
+            grdRestore.ColumnHeadersDefaultCellStyle.BackColor = Global.grdPartyBackColor;
             radioHD.Checked = true;
             if (radioHD.Checked == true)
             {
@@ -107,37 +107,38 @@ namespace PtrCma
             }
 
             //  Set the Gridview Color
-            grdBackup.DefaultCellStyle.SelectionBackColor = Color.Gainsboro;
-            grdBackup.DefaultCellStyle.SelectionForeColor = Color.Black;
+            grdRestore.DefaultCellStyle.SelectionBackColor = Color.Gainsboro;
+            grdRestore.DefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
         public void fillgrid()
         {
             var currentDirInfo = new DirectoryInfo(this.comboDrive.Text + "\\PtrBack");
             var files = currentDirInfo.GetFiles("*", SearchOption.AllDirectories);
-            grdBackup.DataSource = files;
+            grdRestore.DataSource = files;
 
-            grdBackup.Columns[0].Visible = true;
-            grdBackup.Columns[0].HeaderText = "Name";
-            grdBackup.Columns[0].Width = 200;
+            grdRestore.Columns[0].Visible = true;
+            grdRestore.Columns[0].HeaderText = "Name";
+            grdRestore.Columns[0].Width = 200;
 
-            grdBackup.Columns[1].Visible = false;
-            grdBackup.Columns[2].Visible = false;
-            grdBackup.Columns[3].Visible = false;
-            grdBackup.Columns[4].Visible = false;
-            grdBackup.Columns[5].Visible = false;
-            grdBackup.Columns[6].Visible = false;
-            grdBackup.Columns[7].Visible = false;
-            grdBackup.Columns[8].Visible = false;
-            grdBackup.Columns[9].Visible = false;
-            grdBackup.Columns[10].Visible = false;
-            grdBackup.Columns[11].Visible = false;
-            grdBackup.Columns[12].Visible = false;
-            grdBackup.Columns[13].Visible = false;
-            grdBackup.Columns[14].Visible = false;
+            grdRestore.Columns[1].Visible = false;
+            grdRestore.Columns[2].Visible = false;
+            grdRestore.Columns[3].Visible = false;
+            grdRestore.Columns[4].Visible = false;
+            grdRestore.Columns[5].Visible = false;
+            grdRestore.Columns[6].Visible = false;
+            grdRestore.Columns[7].Visible = false;
+            grdRestore.Columns[8].Visible = false;
+            grdRestore.Columns[9].Visible = false;
+            grdRestore.Columns[10].Visible = false;
+            grdRestore.Columns[11].Visible = false;
+            grdRestore.Columns[12].Visible = false;
+            grdRestore.Columns[13].Visible = false;
+            grdRestore.Columns[14].Visible = false;
         }
 
-      
+     
+
         private void radioHD_CheckedChanged(object sender, EventArgs e)
         {
             comboDrive.Items.Clear();
@@ -165,17 +166,27 @@ namespace PtrCma
 
             if (radioCD.Checked == true)
             {
+                 comboDrive.Items.Clear();
                 foreach (var drive in DriveInfo.GetDrives())
                 {
-                    if (drive.IsReady != true)
-                    {
-                        comboDrive.Items.Add(drive.Name);
-
-                    }
-                    else
-                    {
-
-                    }
+                        if (drive.DriveType == DriveType.CDRom)
+                        {
+                            comboDrive.Items.Add(drive.Name);
+                           // MessageBox.Show(drive.Name + " " + drive.IsReady.ToString());
+                        }
+                        else if(drive.DriveType == DriveType.Removable)
+                        {
+                            if (DriveType.Removable != null)
+                            {
+                             comboDrive.Items.Add(drive.Name);
+                            }
+                            else
+                            {
+                                MessageBox.Show("There is no Media Drive");
+                            }
+                        }
+                    //}
+                  
                 }
             }
             fillgrid();
@@ -190,9 +201,9 @@ namespace PtrCma
                 this.Hide();
             }
             comboDrive.Items.Clear();
-            grdBackup.DataSource = null;
-            grdBackup.Rows.Clear();
-            grdBackup.Refresh();
+            grdRestore.DataSource = null;
+            grdRestore.Rows.Clear();
+            grdRestore.Refresh();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -205,7 +216,7 @@ namespace PtrCma
 
             }
             comboDrive.Items.Clear();
-            grdBackup.ClearSelection();
+            grdRestore.ClearSelection();
         }
 
         private void comboDrive_Click(object sender, EventArgs e)
@@ -215,15 +226,24 @@ namespace PtrCma
                 comboDrive.Items.Clear();
                 foreach (var drive in DriveInfo.GetDrives())
                 {
-                    if (drive.IsReady != true)
+                    if (drive.DriveType == DriveType.CDRom)
                     {
                         comboDrive.Items.Add(drive.Name);
-
+                        // MessageBox.Show(drive.Name + " " + drive.IsReady.ToString());
                     }
-                    else
+                    else if (drive.DriveType == DriveType.Removable)
                     {
-
+                        if (DriveType.Removable != null)
+                        {
+                            comboDrive.Items.Add(drive.Name);
+                        }
+                        else
+                        {
+                            MessageBox.Show("There is no Media Drive");
+                        }
                     }
+                    //}
+
                 }
             }
             else
@@ -234,31 +254,72 @@ namespace PtrCma
                     if (drive.IsReady == true)
                     {
                         comboDrive.Items.Add(drive.Name);
+                        if (comboDrive.SelectedValue != "")
+                        {
+                            fillgrid();
+                            break;
+                        }
+
+                    }
+                    else if (drive.DriveType == DriveType.CDRom)
+                    {
+
+                    }
+                    else if (drive.DriveType == DriveType.Removable)
+                    {
+
                     }
                     else
                     {
 
                     }
                 }
-
             }
         }
 
         private void cmdRestore_Click(object sender, EventArgs e)
         {
-
+            cellClick();
             string dbFileName = "PtrCma.mdb";
-            string pathBackup = @"G:\\PtrBack\\PtrCma_20171217144507.mdb";
-            // string pathBackup = @"C:\SomeFolder\Backup\gongqin_20120906.mdb"; //you may use file dialog to select this backuppath
-            //if (File.Exists(@"C:\Users\Asus\Source\Repos\ptrCMA\PtrCma\bin\Debug\Resources\PtrCma.mdb"))
-            //{
-
-            //    File.WriteAllText(@"C:\Users\Asus\Source\Repos\ptrCMA\PtrCma\bin\Debug\Resources\PtrCma.mdb", String.Empty);
-            //}
-
-            string CurrentDatabasePath = Path.Combine(Environment.CurrentDirectory, dbFileName);
+            string pathBackup = (comboDrive.Text + "PtrBack" + "\\" + grdRestore.CurrentCell.Value); // backup path
+          // string pathBackup = @"E:\\PtrBack\\PtrCma_20171216152117.mdb"; //you may use file dialog to select this backuppath
+           // string CurrentDatabasePath = Path.Combine(Environment.CurrentDirectory,"\\Resources", dbFileName);
+            string CurrentDatabasePath = Path.Combine(Application.StartupPath,  dbFileName);
             File.Copy(pathBackup, CurrentDatabasePath, true);
-            MessageBox.Show("Successful Restore!");
+            MessageBox.Show("Successful Restore! ");
+        }
+
+        private void grdRestore_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.grdRestore.Rows[e.RowIndex];
+                cellClick();
+            }
+        }
+
+        private void cellClick()
+        {
+                grdRestore.Columns[0].Visible = true;
+                grdRestore.Columns[0].HeaderText = "Name";
+                grdRestore.Columns[0].Width = 200;
+
+                grdRestore.Columns[1].Visible = false;
+                grdRestore.Columns[2].Visible = false;
+                grdRestore.Columns[3].Visible = false;
+                grdRestore.Columns[4].Visible = false;
+                grdRestore.Columns[5].Visible = false;
+                grdRestore.Columns[6].Visible = false;
+                grdRestore.Columns[7].Visible = false;
+                grdRestore.Columns[8].Visible = false;
+                grdRestore.Columns[9].Visible = false;
+                grdRestore.Columns[10].Visible = false;
+                grdRestore.Columns[11].Visible = false;
+                grdRestore.Columns[12].Visible = false;
+                grdRestore.Columns[13].Visible = false;
+                grdRestore.Columns[14].Visible = false;
+                // txtRefParty.Text = row.Cells["CL_REFNO"].Value.ToString();
+           
         }
     }
 }

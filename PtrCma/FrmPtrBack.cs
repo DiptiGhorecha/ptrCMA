@@ -16,10 +16,6 @@ namespace PtrCma
     
     public partial class FrmPtrBack : Form
     {
-        //OleDbConnection con;
-        //OleDbCommand cmd;
-      //  String pth= "E:\\Ptr1\\PtrBack";
-        
         String connectionString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " + Application.StartupPath + "\\Resources\\PtrCma.accdb;";  //Connection String
         public Action NotifyMainFormToCloseChildFormBackup;
         public FrmPtrBack()
@@ -42,8 +38,6 @@ namespace PtrCma
             grdBackup.Rows.Clear();
             grdBackup.Refresh();
         }
-
-     
 
         private void Settings()
         {
@@ -185,107 +179,144 @@ namespace PtrCma
             //string fullDirectory = Path.Combine(comboDrive.Text, "PtrBack");
             //if (radioCD != null)
             //{ 
-            var currentDirInfo = new DirectoryInfo(this.comboDrive.Text + "\\PtrBack");
-            var files = currentDirInfo.GetFiles("*", SearchOption.AllDirectories);
-            grdBackup.DataSource = files;
-            
-            grdBackup.Columns[0].Visible = true;
-            grdBackup.Columns[0].HeaderText = "Name";
-            grdBackup.Columns[0].Width = 200;
 
-            grdBackup.Columns[1].Visible = false;
-            grdBackup.Columns[2].Visible = false;
-            grdBackup.Columns[3].Visible = false;
-            grdBackup.Columns[4].Visible = false;
-            grdBackup.Columns[5].Visible = false;
-            grdBackup.Columns[6].Visible = false;
-            grdBackup.Columns[7].Visible = false;
-            grdBackup.Columns[8].Visible = false;
-            grdBackup.Columns[9].Visible = false;
-            grdBackup.Columns[10].Visible = false;
-            grdBackup.Columns[11].Visible = false;
-            grdBackup.Columns[12].Visible = false;
-            grdBackup.Columns[13].Visible = false;
-            grdBackup.Columns[14].Visible = false;
+            //    grdBackup.CurrentRow.Cells[0].Value.ToString();
+
+            //if(radioHD.Checked == true)
+           // string path = @"E:\PtrBack";
+           string path = @"comboDrive.SelectedValue\PtrBack";
+            if (Directory.Exists(path))
+            {
+                var currentDirInfo = new DirectoryInfo(this.comboDrive.Text + "\\PtrBack");
+                var files = currentDirInfo.GetFiles("*", SearchOption.AllDirectories);
+                grdBackup.DataSource = files;
+
+                grdBackup.Columns[0].Visible = true;
+                grdBackup.Columns[0].HeaderText = "Name";
+                grdBackup.Columns[0].Width = 200;
+
+                grdBackup.Columns[1].Visible = false;
+                grdBackup.Columns[2].Visible = false;
+                grdBackup.Columns[3].Visible = false;
+                grdBackup.Columns[4].Visible = false;
+                grdBackup.Columns[5].Visible = false;
+                grdBackup.Columns[6].Visible = false;
+                grdBackup.Columns[7].Visible = false;
+                grdBackup.Columns[8].Visible = false;
+                grdBackup.Columns[9].Visible = false;
+                grdBackup.Columns[10].Visible = false;
+                grdBackup.Columns[11].Visible = false;
+                grdBackup.Columns[12].Visible = false;
+                grdBackup.Columns[13].Visible = false;
+                grdBackup.Columns[14].Visible = false;
+            }
+            else
+
+            {
+                MessageBox.Show("No Record Found");
+            }
+              //  return;
+           // }
+           //else
+           // {
+           //     if (grdBackup.Rows.Count > 0)
+           //     {
+           //         var currentDirInfo = new DirectoryInfo(this.comboDrive.Text + "\\PtrBack");
+           //         var files = currentDirInfo.GetFiles("*", SearchOption.AllDirectories);
+           //         grdBackup.DataSource = files;
+
+           //         grdBackup.Columns[0].Visible = true;
+           //         grdBackup.Columns[0].HeaderText = "Name";
+           //         grdBackup.Columns[0].Width = 200;
+
+           //         grdBackup.Columns[1].Visible = false;
+           //         grdBackup.Columns[2].Visible = false;
+           //         grdBackup.Columns[3].Visible = false;
+           //         grdBackup.Columns[4].Visible = false;
+           //         grdBackup.Columns[5].Visible = false;
+           //         grdBackup.Columns[6].Visible = false;
+           //         grdBackup.Columns[7].Visible = false;
+           //         grdBackup.Columns[8].Visible = false;
+           //         grdBackup.Columns[9].Visible = false;
+           //         grdBackup.Columns[10].Visible = false;
+           //         grdBackup.Columns[11].Visible = false;
+           //         grdBackup.Columns[12].Visible = false;
+           //         grdBackup.Columns[13].Visible = false;
+           //         grdBackup.Columns[14].Visible = false;
+           //         return;
+           //     }
+           //     else
+           //     {
+           //         MessageBox.Show("No Data Found");
+           //         //comboDrive.Items.Clear();
+           //     }
+
+         //   }
+                
+            
+
             //}
         }
        
         private void radioHD_CheckedChanged(object sender, EventArgs e)
         {
+            comboDrive.Items.Remove(comboDrive.Text);
+            comboDrive.Items.Clear();
+            
             if (radioHD.Checked == true)
             {
-                comboDrive.Items.Remove(comboDrive.Text);
-                comboDrive.Items.Clear();
                 foreach (var drive in DriveInfo.GetDrives())
                 {
                     if (drive.IsReady == true)
                     {
                         comboDrive.Items.Add(drive.Name);
-                        //fillgrid();
+                    }
+                    else if(drive.DriveType != DriveType.CDRom)
+                    {
+                        
+                    }
+                    else if(drive.DriveType != DriveType.Removable)
+                    {
                     }
                     else
                     {
-
                     }
-                    //else if (drive.DriveType == DriveType.Removable)
-                    //{
-                    //    comboDrive.Items.Add(drive.Name);
-                    //}
-                    //else if (drive.DriveType == DriveType.CDRom)
-                    //{
-                    //    comboDrive.Items.Add(drive.Name);
-                    //}
                 }
-               // fillgrid();
             }
-            //fillgrid();
         }
 
 
         private void radioCD_CheckedChanged(object sender, EventArgs e)
         {
-            
+            comboDrive.Items.Remove(comboDrive.Text);
+            comboDrive.Items.Clear();
             
             if (radioCD.Checked == true)
             {
-                comboDrive.Items.Remove(comboDrive.Text);
-                comboDrive.Items.Clear();
                 foreach (var drive in DriveInfo.GetDrives())
                 {
-                    //if (drive.IsReady != true)
+                    //if (drive.DriveType == DriveType.Removable)
                     //{
                     //    comboDrive.Items.Add(drive.Name);
-                    //    fillgrid();
-                    //}
-                    ////else
-                    ////{
-                    ////   // MessageBox.Show("There is no Media Drive");
-                    ////}
-                    //else if (drive.DriveType == DriveType.Removable)
-                    //{
-                    //    comboDrive.Items.Add(drive.Name);
-                    //    fillgrid();
                     //}
                     if (drive.DriveType == DriveType.CDRom)
                     {
                         comboDrive.Items.Add(drive.Name);
-                        //fillgrid();
+                    }
+                    else if (drive.DriveType == DriveType.Removable)
+                    {
+                        comboDrive.Items.Add(drive.Name);
                     }
                     else
                     {
 
                     }
-
                 }
-                
             }
-           //fillgrid();
         }
 
         private void cmdExit_Click(object sender, EventArgs e)
         {
-            
-            //comboDrive.Items.Clear();
             DialogResult dialogResult = MessageBox.Show(GlobalMsg.exitMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
             if (dialogResult == DialogResult.Yes)
             {
@@ -323,69 +354,113 @@ namespace PtrCma
         {
             if (radioCD.Checked == true)
             {
-                comboDrive.Items.Remove(comboDrive.Text);
                 comboDrive.Items.Clear();
                 foreach (var drive in DriveInfo.GetDrives())
                 {
-                    //if (drive.IsReady != true)
-                    //{
-
-                    //    comboDrive.Items.Add(drive.Name);
-                    //    fillgrid();
-                    //}
-                    //else
-                    //{
-                    //  //  MessageBox.Show("There is no Media Drive");
-                    //}
-                    //if (drive.IsReady != true)
-                    //{
-                    //    comboDrive.Items.Add(drive.Name);
-                    //    fillgrid();
-                    //}
-                    ////else
-                    ////{
-                    ////   // MessageBox.Show("There is no Media Drive");
-                    ////}
-                    //else if (drive.DriveType == DriveType.Removable)
-                    //{
-                    //    comboDrive.Items.Add(drive.Name);
-                    //    fillgrid();
-                    //}
                     if (drive.DriveType == DriveType.CDRom)
                     {
                         comboDrive.Items.Add(drive.Name);
-                        //fillgrid();
+                        // MessageBox.Show(drive.Name + " " + drive.IsReady.ToString());
                     }
-                    else
+                    else if (drive.DriveType == DriveType.Removable)
                     {
-
+                        if (DriveType.Removable != null)
+                        {
+                            comboDrive.Items.Add(drive.Name);
+                        }
+                        else
+                        {
+                            MessageBox.Show("There is no Media Drive");
+                        }
                     }
-                   
                 }
             }
             else
             {
-                comboDrive.Items.Remove(comboDrive.Text);
+                //fillgrid();
+                //grdBackup.Rows.Clear();
                 comboDrive.Items.Clear();
                 foreach (var drive in DriveInfo.GetDrives())
                 {
-                    
                     if (drive.IsReady == true)
                     {
-
                         comboDrive.Items.Add(drive.Name);
-                        fillgrid();
+                        if (comboDrive.SelectedValue != "")
+                        {
+                            //fillgrid();
+                        }
+                    }
+                    else if (drive.DriveType != DriveType.CDRom)
+                    {
+                        if (drive.IsReady == false)
+                        {
+                            //ToDo: Copy files from current drive
+                        }
+                    }
+                    else if (drive.DriveType != DriveType.Removable)
+                    {
+
                     }
                     else
                     {
 
                     }
                 }
-               // 
-
+                fillgrid();
             }
+
         }
 
-     
+        private void comboDrive_MouseClick(object sender, MouseEventArgs e)
+        {
+            //fillgrid();
+            //if (radioCD.Checked == true)
+            //{
+            //    comboDrive.Items.Remove(comboDrive.Text);
+            //    comboDrive.Items.Clear();
+            //    foreach (var drive in DriveInfo.GetDrives())
+            //    {
+            //        if (drive.DriveType == DriveType.CDRom)
+            //        {
+            //            comboDrive.Items.Add(drive.Name);
+            //        }
+            //        else if (drive.DriveType == DriveType.Removable)
+            //        {
+            //            try
+            //            {
+            //                comboDrive.Items.Add(drive.Name);
+            //            }
+            //            catch (Exception er)
+            //            {
+            //                MessageBox.Show(er.Message, GlobalMsg.titleMsg);
+            //            }
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    //fillgrid();
+            //    //grdBackup.Rows.Clear();
+            //    comboDrive.Items.Clear();
+            //    foreach (var drive in DriveInfo.GetDrives())
+            //    {
+            //        if (drive.IsReady == true)
+            //        {
+            //            comboDrive.Items.Add(drive.Name);
+            //            if (comboDrive.SelectedItem != "")
+            //            {
+            //                fillgrid();
+            //            }
+            //        }
+            //        else if (drive.DriveType != DriveType.CDRom)
+            //        {
+            //        }
+            //        else
+            //        {
+            //        }
+                    
+            //    }
+            //}
+        }
     }
 }

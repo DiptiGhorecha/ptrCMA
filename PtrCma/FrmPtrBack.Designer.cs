@@ -80,6 +80,7 @@
             this.comboDrive.Size = new System.Drawing.Size(133, 21);
             this.comboDrive.TabIndex = 10;
             this.comboDrive.Click += new System.EventHandler(this.comboDrive_Click);
+            this.comboDrive.MouseClick += new System.Windows.Forms.MouseEventHandler(this.comboDrive_MouseClick);
             // 
             // radioCD
             // 
@@ -119,6 +120,7 @@
             this.grdBackup.Location = new System.Drawing.Point(52, 94);
             this.grdBackup.Name = "grdBackup";
             this.grdBackup.RowHeadersVisible = false;
+            this.grdBackup.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.grdBackup.ShowEditingIcon = false;
             this.grdBackup.Size = new System.Drawing.Size(205, 162);
             this.grdBackup.TabIndex = 7;

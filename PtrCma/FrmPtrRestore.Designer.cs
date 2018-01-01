@@ -33,15 +33,15 @@
             this.pictitle = new System.Windows.Forms.PictureBox();
             this.lblSelect = new System.Windows.Forms.Label();
             this.cmdExit = new System.Windows.Forms.Button();
-            this.cmdRestore = new System.Windows.Forms.Button();
+            this.cmdBackup = new System.Windows.Forms.Button();
             this.lblDrive = new System.Windows.Forms.Label();
             this.comboDrive = new System.Windows.Forms.ComboBox();
             this.radioCD = new System.Windows.Forms.RadioButton();
             this.radioHD = new System.Windows.Forms.RadioButton();
-            this.grdBackup = new System.Windows.Forms.DataGridView();
+            this.grdRestore = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictitle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdBackup)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdRestore)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -87,15 +87,15 @@
             this.cmdExit.UseVisualStyleBackColor = true;
             this.cmdExit.Click += new System.EventHandler(this.cmdExit_Click);
             // 
-            // cmdRestore
+            // cmdBackup
             // 
-            this.cmdRestore.Location = new System.Drawing.Point(328, 237);
-            this.cmdRestore.Name = "cmdRestore";
-            this.cmdRestore.Size = new System.Drawing.Size(98, 23);
-            this.cmdRestore.TabIndex = 86;
-            this.cmdRestore.Text = "Start Restore";
-            this.cmdRestore.UseVisualStyleBackColor = true;
-            this.cmdRestore.Click += new System.EventHandler(this.cmdRestore_Click);
+            this.cmdBackup.Location = new System.Drawing.Point(328, 237);
+            this.cmdBackup.Name = "cmdBackup";
+            this.cmdBackup.Size = new System.Drawing.Size(98, 23);
+            this.cmdBackup.TabIndex = 86;
+            this.cmdBackup.Text = "Start Restore";
+            this.cmdBackup.UseVisualStyleBackColor = true;
+            this.cmdBackup.Click += new System.EventHandler(this.cmdRestore_Click);
             // 
             // lblDrive
             // 
@@ -142,19 +142,20 @@
             this.radioHD.UseVisualStyleBackColor = false;
             this.radioHD.CheckedChanged += new System.EventHandler(this.radioHD_CheckedChanged);
             // 
-            // grdBackup
+            // grdRestore
             // 
-            this.grdBackup.AllowUserToAddRows = false;
-            this.grdBackup.AllowUserToDeleteRows = false;
-            this.grdBackup.AllowUserToResizeColumns = false;
-            this.grdBackup.AllowUserToResizeRows = false;
-            this.grdBackup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdBackup.Location = new System.Drawing.Point(53, 98);
-            this.grdBackup.Name = "grdBackup";
-            this.grdBackup.RowHeadersVisible = false;
-            this.grdBackup.ShowEditingIcon = false;
-            this.grdBackup.Size = new System.Drawing.Size(205, 162);
-            this.grdBackup.TabIndex = 81;
+            this.grdRestore.AllowUserToAddRows = false;
+            this.grdRestore.AllowUserToDeleteRows = false;
+            this.grdRestore.AllowUserToResizeColumns = false;
+            this.grdRestore.AllowUserToResizeRows = false;
+            this.grdRestore.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdRestore.Location = new System.Drawing.Point(53, 98);
+            this.grdRestore.Name = "grdRestore";
+            this.grdRestore.RowHeadersVisible = false;
+            this.grdRestore.ShowEditingIcon = false;
+            this.grdRestore.Size = new System.Drawing.Size(205, 162);
+            this.grdRestore.TabIndex = 81;
+            this.grdRestore.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdRestore_CellClick);
             // 
             // FrmPtrRestore
             // 
@@ -165,12 +166,12 @@
             this.Controls.Add(this.pictitle);
             this.Controls.Add(this.lblSelect);
             this.Controls.Add(this.cmdExit);
-            this.Controls.Add(this.cmdRestore);
+            this.Controls.Add(this.cmdBackup);
             this.Controls.Add(this.lblDrive);
             this.Controls.Add(this.comboDrive);
             this.Controls.Add(this.radioCD);
             this.Controls.Add(this.radioHD);
-            this.Controls.Add(this.grdBackup);
+            this.Controls.Add(this.grdRestore);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -180,7 +181,7 @@
             this.Load += new System.EventHandler(this.FrmPtrRestore_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictitle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdBackup)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdRestore)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,11 +193,11 @@
         private System.Windows.Forms.PictureBox pictitle;
         private System.Windows.Forms.Label lblSelect;
         private System.Windows.Forms.Button cmdExit;
-        private System.Windows.Forms.Button cmdRestore;
+        private System.Windows.Forms.Button cmdBackup;
         private System.Windows.Forms.Label lblDrive;
         private System.Windows.Forms.ComboBox comboDrive;
         private System.Windows.Forms.RadioButton radioCD;
         private System.Windows.Forms.RadioButton radioHD;
-        private System.Windows.Forms.DataGridView grdBackup;
+        private System.Windows.Forms.DataGridView grdRestore;
     }
 }
