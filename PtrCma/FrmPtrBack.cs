@@ -260,50 +260,43 @@ namespace PtrCma
        
         private void radioHD_CheckedChanged(object sender, EventArgs e)
         {
-            comboDrive.Items.Remove(comboDrive.Text);
-            comboDrive.Items.Clear();
-            
             if (radioHD.Checked == true)
             {
+                comboDrive.Items.Remove(comboDrive.Text);
+                comboDrive.Items.Clear();
                 foreach (var drive in DriveInfo.GetDrives())
                 {
                     if (drive.IsReady == true)
                     {
                         comboDrive.Items.Add(drive.Name);
+                        //fillgrid();
                     }
                     else if(drive.DriveType != DriveType.CDRom)
                     {
-                        
-                    }
-                    else if(drive.DriveType != DriveType.Removable)
-                    {
-                    }
-                    else
-                    {
+
                     }
                 }
+                fillgrid();
             }
+            //fillgrid();
         }
 
 
         private void radioCD_CheckedChanged(object sender, EventArgs e)
         {
-            comboDrive.Items.Remove(comboDrive.Text);
-            comboDrive.Items.Clear();
+            
             
             if (radioCD.Checked == true)
             {
+                comboDrive.Items.Remove(comboDrive.Text);
+                comboDrive.Items.Clear();
                 foreach (var drive in DriveInfo.GetDrives())
                 {
-                    //if (drive.DriveType == DriveType.Removable)
-                    //{
-                    //    comboDrive.Items.Add(drive.Name);
-                    //}
-                    if (drive.DriveType == DriveType.CDRom)
+                    if (drive.DriveType == DriveType.Removable)
                     {
                         comboDrive.Items.Add(drive.Name);
                     }
-                    else if (drive.DriveType == DriveType.Removable)
+                    else if (drive.DriveType == DriveType.CDRom)
                     {
                         comboDrive.Items.Add(drive.Name);
                     }
@@ -354,52 +347,39 @@ namespace PtrCma
         {
             if (radioCD.Checked == true)
             {
+                comboDrive.Items.Remove(comboDrive.Text);
                 comboDrive.Items.Clear();
                 foreach (var drive in DriveInfo.GetDrives())
                 {
-                    if (drive.DriveType == DriveType.CDRom)
+                    
+                        //if (drive.IsReady != true
+                    if (drive.DriveType == DriveType.Removable)
                     {
                         comboDrive.Items.Add(drive.Name);
-                        // MessageBox.Show(drive.Name + " " + drive.IsReady.ToString());
+
                     }
-                    else if (drive.DriveType == DriveType.Removable)
+                    else if(drive.DriveType == DriveType.CDRom)
                     {
-                        if (DriveType.Removable != null)
-                        {
-                            comboDrive.Items.Add(drive.Name);
-                        }
-                        else
-                        {
-                            MessageBox.Show("There is no Media Drive");
-                        }
+                        comboDrive.Items.Add(drive.Name);
                     }
+                    else
+                    {
+
+                    }
+                   
                 }
             }
             else
             {
-                //fillgrid();
-                //grdBackup.Rows.Clear();
                 comboDrive.Items.Clear();
                 foreach (var drive in DriveInfo.GetDrives())
                 {
+                    
                     if (drive.IsReady == true)
                     {
+                        
                         comboDrive.Items.Add(drive.Name);
-                        if (comboDrive.SelectedValue != "")
-                        {
-                            //fillgrid();
-                        }
-                    }
-                    else if (drive.DriveType != DriveType.CDRom)
-                    {
-                        if (drive.IsReady == false)
-                        {
-                            //ToDo: Copy files from current drive
-                        }
-                    }
-                    else if (drive.DriveType != DriveType.Removable)
-                    {
-
+                        fillgrid();
                     }
                     else
                     {
