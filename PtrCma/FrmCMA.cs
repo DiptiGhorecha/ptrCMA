@@ -331,7 +331,8 @@ namespace PtrCma
             // Set the text, alignment and width for each column header.
             header1.Text = "Select Topic";
             header1.TextAlign = HorizontalAlignment.Center;
-            header1.Width = lstViewTopic.Width - 21;
+            
+            header1.Width = lstViewTopic.Width - 19;
             lstViewTopic.Columns.Add(header1);
             //Add items in the listview
 
@@ -576,7 +577,7 @@ namespace PtrCma
 
         private void lstViewTopic_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
         {
-            e.Graphics.FillRectangle(Brushes.Orange, e.Bounds);
+            e.Graphics.FillRectangle(Brushes.CadetBlue, e.Bounds);
             e.DrawText();
         }
 
