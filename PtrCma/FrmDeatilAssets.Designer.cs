@@ -268,6 +268,7 @@
             this.Name = "FrmDeatilAssets";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "FrmDeatilAssets";
+            this.Activated += new System.EventHandler(this.FrmDeatilAssets_Load);
             this.Load += new System.EventHandler(this.FrmDeatilAssets_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdAssests)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picFrmClose)).EndInit();

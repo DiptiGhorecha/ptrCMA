@@ -119,7 +119,7 @@
             this.txtName.Location = new System.Drawing.Point(477, 136);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(241, 20);
-            this.txtName.TabIndex = 8;
+            this.txtName.TabIndex = 7;
             this.txtName.Click += new System.EventHandler(this.txtName_Click);
             // 
             // txtAge
@@ -127,28 +127,28 @@
             this.txtAge.Location = new System.Drawing.Point(477, 159);
             this.txtAge.Name = "txtAge";
             this.txtAge.Size = new System.Drawing.Size(241, 20);
-            this.txtAge.TabIndex = 9;
+            this.txtAge.TabIndex = 8;
             // 
             // txtPan
             // 
             this.txtPan.Location = new System.Drawing.Point(477, 182);
             this.txtPan.Name = "txtPan";
             this.txtPan.Size = new System.Drawing.Size(241, 20);
-            this.txtPan.TabIndex = 10;
+            this.txtPan.TabIndex = 9;
             // 
             // txtAdd
             // 
             this.txtAdd.Location = new System.Drawing.Point(477, 205);
             this.txtAdd.Name = "txtAdd";
             this.txtAdd.Size = new System.Drawing.Size(241, 20);
-            this.txtAdd.TabIndex = 11;
+            this.txtAdd.TabIndex = 10;
             // 
             // cmdCancel
             // 
             this.cmdCancel.Location = new System.Drawing.Point(612, 312);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(50, 30);
-            this.cmdCancel.TabIndex = 14;
+            this.cmdCancel.TabIndex = 5;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.UseVisualStyleBackColor = true;
             this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
@@ -158,7 +158,7 @@
             this.cmdDel.Location = new System.Drawing.Point(546, 312);
             this.cmdDel.Name = "cmdDel";
             this.cmdDel.Size = new System.Drawing.Size(60, 30);
-            this.cmdDel.TabIndex = 15;
+            this.cmdDel.TabIndex = 4;
             this.cmdDel.Text = "Delete";
             this.cmdDel.UseVisualStyleBackColor = true;
             this.cmdDel.Click += new System.EventHandler(this.cmdDelete_Click);
@@ -168,7 +168,7 @@
             this.cmdExit.Location = new System.Drawing.Point(668, 312);
             this.cmdExit.Name = "cmdExit";
             this.cmdExit.Size = new System.Drawing.Size(50, 30);
-            this.cmdExit.TabIndex = 16;
+            this.cmdExit.TabIndex = 6;
             this.cmdExit.Text = "Exit";
             this.cmdExit.UseVisualStyleBackColor = true;
             this.cmdExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -227,21 +227,21 @@
             this.txtPhone.Location = new System.Drawing.Point(477, 228);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(241, 20);
-            this.txtPhone.TabIndex = 12;
+            this.txtPhone.TabIndex = 11;
             // 
             // txtNet
             // 
             this.txtNet.Location = new System.Drawing.Point(477, 251);
             this.txtNet.Name = "txtNet";
             this.txtNet.Size = new System.Drawing.Size(241, 20);
-            this.txtNet.TabIndex = 13;
+            this.txtNet.TabIndex = 12;
             // 
             // cmdAdd
             // 
             this.cmdAdd.Location = new System.Drawing.Point(368, 312);
             this.cmdAdd.Name = "cmdAdd";
             this.cmdAdd.Size = new System.Drawing.Size(50, 30);
-            this.cmdAdd.TabIndex = 20;
+            this.cmdAdd.TabIndex = 1;
             this.cmdAdd.Text = "Add";
             this.cmdAdd.UseVisualStyleBackColor = true;
             this.cmdAdd.Click += new System.EventHandler(this.cmdAdd_Click);
@@ -251,7 +251,7 @@
             this.cmdEdit.Location = new System.Drawing.Point(424, 312);
             this.cmdEdit.Name = "cmdEdit";
             this.cmdEdit.Size = new System.Drawing.Size(50, 30);
-            this.cmdEdit.TabIndex = 21;
+            this.cmdEdit.TabIndex = 2;
             this.cmdEdit.Text = "Edit";
             this.cmdEdit.UseVisualStyleBackColor = true;
             this.cmdEdit.Click += new System.EventHandler(this.cmdEdit_Click);
@@ -261,7 +261,7 @@
             this.cmdUpdate.Location = new System.Drawing.Point(480, 312);
             this.cmdUpdate.Name = "cmdUpdate";
             this.cmdUpdate.Size = new System.Drawing.Size(60, 30);
-            this.cmdUpdate.TabIndex = 22;
+            this.cmdUpdate.TabIndex = 3;
             this.cmdUpdate.Text = "Save";
             this.cmdUpdate.UseVisualStyleBackColor = true;
             this.cmdUpdate.Click += new System.EventHandler(this.cmdUpdate_Click);
@@ -311,6 +311,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "FrmDetailDirector";
+            this.Activated += new System.EventHandler(this.FrmDetailDirector_Load);
             this.Load += new System.EventHandler(this.FrmDetailDirector_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdViewDirectors)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictitle)).EndInit();

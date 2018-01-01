@@ -37,6 +37,7 @@ namespace PtrCma
             }
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true); //Stop the Flickering
             Settings();
+            filltempTable();
             fillgrid();
             //FrmDetailDirector frmDirector = new FrmDetailDirector();
             //frmDirector.MdiParent = this;
@@ -51,22 +52,33 @@ namespace PtrCma
 
         }
 
-
+private void filltempTable()
+        {
+            try
+            {
+                OleDbConnection conn = new OleDbConnection(connectionString);
+                string sqlTrunc = "DELETE FROM Cp_Cd101";
+                OleDbDataAdapter myadapter = new OleDbDataAdapter();
+                DataSet ds1 = new DataSet();
+                String sql = "INSERT INTO Cp_Cd101 SELECT * FROM Cx_Cd101 WHERE CL_REFNO=" + Global.prtyCode;
+                myadapter.SelectCommand = new OleDbCommand(sqlTrunc, conn);
+                myadapter.Fill(ds1, "Cp_Cd101");
+                myadapter.SelectCommand = new OleDbCommand(sql, conn);
+                myadapter.Fill(ds1, "Cp_Cd101");
+                ds1.Dispose();
+                conn.Close();
+            }
+            catch (Exception e)
+            {
+                //  Console.WriteLine(e.Message);//
+                MessageBox.Show(e.Message);
+            }
+        }
 
         private void fillgrid()
         {
             try { 
-            OleDbConnection conn = new OleDbConnection(connectionString);
-            string sqlTrunc = "DELETE FROM Cp_Cd101";
-            OleDbDataAdapter myadapter = new OleDbDataAdapter();
-            DataSet ds1 = new DataSet();
-            String sql = "INSERT INTO Cp_Cd101 SELECT * FROM Cx_Cd101 WHERE CL_REFNO=" + Global.prtyCode;
-            myadapter.SelectCommand = new OleDbCommand(sqlTrunc, conn);
-            myadapter.Fill(ds1, "Cp_Cd101");
-            myadapter.SelectCommand = new OleDbCommand(sql, conn);
-            myadapter.Fill(ds1, "Cp_Cd101");
-            ds1.Dispose();
-            conn.Close();
+           
 
 
             con = new OleDbConnection(connectionString);
@@ -201,7 +213,7 @@ namespace PtrCma
                 {
                     con.Open();
                 }
-                String sql = "delete from Cx_Cd101 where CTX_REF=" + txtRef.Text;
+                String sql = "delete from Cp_Cd101 where CTX_REF=" + txtRef.Text;
                 cmd = new OleDbCommand(sql, con);
                 cmd.ExecuteNonQuery();
                 con.Close();

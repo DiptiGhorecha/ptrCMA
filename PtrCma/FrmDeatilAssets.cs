@@ -36,12 +36,13 @@ namespace PtrCma
             }
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true); //Stop the Flickering
             Settings();
+            filltempTable();
             fillgrid();
 
 
             if (grdAssests.RowCount > 0)
             {
-                grdAssests.CurrentCell = grdAssests.Rows[0].Cells[1];  //Set 1st row as current row by default
+                grdAssests.CurrentCell = grdAssests.Rows[0].Cells[0];  //Set 1st row as current row by default
                 LoadDatatoTextBox();  // show data in Textbox from Gridview
             }
         }
@@ -59,13 +60,50 @@ namespace PtrCma
             }
         }
 
+        private void filltempTable()
+        {
+            try
+            {
+                OleDbConnection conn = new OleDbConnection(connectionString);
+                string sqlTrunc = "DELETE FROM Cp_Cd110";
+                OleDbDataAdapter myadapter = new OleDbDataAdapter();
+                DataSet ds1 = new DataSet();
+                String sql = "INSERT INTO Cp_Cd110 SELECT * FROM Cx_Cd110 WHERE CL_REFNO=" + Global.prtyCode;
+                myadapter.SelectCommand = new OleDbCommand(sqlTrunc, conn);
+                myadapter.Fill(ds1, "Cp_Cd110");
+                myadapter.SelectCommand = new OleDbCommand(sql, conn);
+                myadapter.Fill(ds1, "Cp_Cd110");
+                ds1.Dispose();
+                conn.Close();
+            }
+            catch (Exception e)
+            {
+                //  Console.WriteLine(e.Message);//
+                MessageBox.Show(e.Message);
+            }
+        }
+
         private void fillgrid()
         {
+
+            //OleDbConnection conn = new OleDbConnection(connectionString);
+            //string sqlTrunc = "DELETE FROM Cp_Cd110";
+            //OleDbDataAdapter myadapter = new OleDbDataAdapter();
+            //DataSet ds1 = new DataSet();
+            //String sql = "INSERT INTO Cp_Cd110 SELECT * FROM Cp_Cd110 WHERE CL_REFNO=" + Global.prtyCode;
+            //myadapter.SelectCommand = new OleDbCommand(sqlTrunc, conn);
+            //myadapter.Fill(ds1, "Cp_Cd110");
+            //myadapter.SelectCommand = new OleDbCommand(sql, conn);
+            //myadapter.Fill(ds1, "Cp_Cd110");
+            //ds1.Dispose();
+            //conn.Close();
+
+
             con = new OleDbConnection(connectionString);
             DataSet ds = new DataSet();
-            dataAdapter = new OleDbDataAdapter("select * from Cx_Cd110 WHERE CL_REFNO=" + Global.prtyCode, con);
-            dataAdapter.Fill(ds, "Cx_Cd110");
-            grdAssests.DataMember = "Cx_Cd110";
+            dataAdapter = new OleDbDataAdapter("select * from Cp_Cd110 WHERE CL_REFNO=" + Global.prtyCode, con);
+            dataAdapter.Fill(ds, "Cp_Cd110");
+            grdAssests.DataMember = "Cp_Cd110";
             grdAssests.DataSource = ds;
             con.Close();
 
@@ -177,7 +215,7 @@ namespace PtrCma
                     {
                         con.Open();
                     }
-                    String sql = "delete from Cx_Cd110 where CTX_REF=" + txtRef.Text;
+                    String sql = "delete from Cp_Cd110 where CTX_REF=" + txtRef.Text;
                     cmd = new OleDbCommand(sql, con);
                     cmd.ExecuteNonQuery();
                     con.Close();
@@ -255,12 +293,12 @@ namespace PtrCma
             String sql = "";
             if (isAddEdit == "A")
             {
-                sql = "insert into Cx_Cd110(CTXT01,CTXT02,CTXT03,CTXT04,CL_REFNO) values ('" + txtDes.Text + "','" + txtSupplier.Text + "','" + txtCost.Text + "','" + txtCom.Text + "'," + Global.prtyCode + ")";
+                sql = "insert into Cp_Cd110(CTXT01,CTXT02,CTXT03,CTXT04,CL_REFNO) values ('" + txtDes.Text + "','" + txtSupplier.Text + "','" + txtCost.Text + "','" + txtCom.Text + "'," + Global.prtyCode + ")";
 
             }
             else
             {
-                sql = "update Cx_Cd110 set CTXT01='" + txtDes.Text + "',CTXT02='" + txtSupplier.Text + "',CTXT03='" + txtCost.Text + "',CTXT04='" + txtCom.Text + "' WHERE CTX_REF=" + txtRef.Text + " AND CL_REFNO=" + Global.prtyCode;
+                sql = "update Cp_Cd110 set CTXT01='" + txtDes.Text + "',CTXT02='" + txtSupplier.Text + "',CTXT03='" + txtCost.Text + "',CTXT04='" + txtCom.Text + "' WHERE CTX_REF=" + txtRef.Text + " AND CL_REFNO=" + Global.prtyCode;
             }
             OleDbCommand cmd = new OleDbCommand(sql, con);
             cmd.ExecuteNonQuery();
