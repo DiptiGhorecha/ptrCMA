@@ -362,7 +362,7 @@ namespace PtrCma
                     transaction.Commit();
                     con.Close();
                     fillgird();
-                    
+                    LoadDatatoTextBox();
                     MessageBox.Show(GlobalMsg.insertMsg, "Perfect Tax Reporter - CMA 1.0");
                     lblData.Visible = false;
                 }
@@ -647,6 +647,7 @@ namespace PtrCma
             {
                 grdViewParty.CurrentCell = grdViewParty.Rows[0].Cells[1];  //Set 1st row as current row by default
                 Global.prtyCode = txtRefParty.Text;  //grdViewParty.Rows[0].Cells[0].Value.ToString;  // txtCodeno.Text;
+                Global.prtyName = txtName.Text;
                 if (NotifyMainFormToOpenChildFormCma != null)
                 {
                     NotifyMainFormToOpenChildFormCma();

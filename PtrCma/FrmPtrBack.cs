@@ -212,23 +212,31 @@ namespace PtrCma
        
         private void radioHD_CheckedChanged(object sender, EventArgs e)
         {
-            comboDrive.Items.Remove(comboDrive.Text);
-            comboDrive.Items.Clear();
-            
             if (radioHD.Checked == true)
             {
+                comboDrive.Items.Remove(comboDrive.Text);
+                comboDrive.Items.Clear();
                 foreach (var drive in DriveInfo.GetDrives())
                 {
                     if (drive.IsReady == true)
                     {
                         comboDrive.Items.Add(drive.Name);
+                        //fillgrid();
                     }
                     else
                     {
-                        
+
                     }
+                    //else if (drive.DriveType == DriveType.Removable)
+                    //{
+                    //    comboDrive.Items.Add(drive.Name);
+                    //}
+                    //else if (drive.DriveType == DriveType.CDRom)
+                    //{
+                    //    comboDrive.Items.Add(drive.Name);
+                    //}
                 }
-                fillgrid();
+               // fillgrid();
             }
             //fillgrid();
         }
@@ -236,20 +244,32 @@ namespace PtrCma
 
         private void radioCD_CheckedChanged(object sender, EventArgs e)
         {
-            comboDrive.Items.Remove(comboDrive.Text);
-            comboDrive.Items.Clear();
+            
             
             if (radioCD.Checked == true)
             {
+                comboDrive.Items.Remove(comboDrive.Text);
+                comboDrive.Items.Clear();
                 foreach (var drive in DriveInfo.GetDrives())
                 {
-                    if (drive.DriveType == DriveType.Removable)
+                    //if (drive.IsReady != true)
+                    //{
+                    //    comboDrive.Items.Add(drive.Name);
+                    //    fillgrid();
+                    //}
+                    ////else
+                    ////{
+                    ////   // MessageBox.Show("There is no Media Drive");
+                    ////}
+                    //else if (drive.DriveType == DriveType.Removable)
+                    //{
+                    //    comboDrive.Items.Add(drive.Name);
+                    //    fillgrid();
+                    //}
+                    if (drive.DriveType == DriveType.CDRom)
                     {
                         comboDrive.Items.Add(drive.Name);
-                    }
-                    else if (drive.DriveType == DriveType.CDRom)
-                    {
-                        comboDrive.Items.Add(drive.Name);
+                        //fillgrid();
                     }
                     else
                     {
@@ -303,34 +323,56 @@ namespace PtrCma
         {
             if (radioCD.Checked == true)
             {
+                comboDrive.Items.Remove(comboDrive.Text);
                 comboDrive.Items.Clear();
                 foreach (var drive in DriveInfo.GetDrives())
                 {
-                    
-                        //if (drive.IsReady != true
-                    if (drive.DriveType == DriveType.Removable)
-                    {
-                        comboDrive.Items.Add(drive.Name);
+                    //if (drive.IsReady != true)
+                    //{
 
-                    }
-                    else if(drive.DriveType == DriveType.CDRom)
+                    //    comboDrive.Items.Add(drive.Name);
+                    //    fillgrid();
+                    //}
+                    //else
+                    //{
+                    //  //  MessageBox.Show("There is no Media Drive");
+                    //}
+                    //if (drive.IsReady != true)
+                    //{
+                    //    comboDrive.Items.Add(drive.Name);
+                    //    fillgrid();
+                    //}
+                    ////else
+                    ////{
+                    ////   // MessageBox.Show("There is no Media Drive");
+                    ////}
+                    //else if (drive.DriveType == DriveType.Removable)
+                    //{
+                    //    comboDrive.Items.Add(drive.Name);
+                    //    fillgrid();
+                    //}
+                    if (drive.DriveType == DriveType.CDRom)
                     {
                         comboDrive.Items.Add(drive.Name);
+                        //fillgrid();
                     }
                     else
                     {
 
                     }
+                   
                 }
             }
             else
             {
+                comboDrive.Items.Remove(comboDrive.Text);
                 comboDrive.Items.Clear();
                 foreach (var drive in DriveInfo.GetDrives())
                 {
+                    
                     if (drive.IsReady == true)
                     {
-                        
+
                         comboDrive.Items.Add(drive.Name);
                         fillgrid();
                     }

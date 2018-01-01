@@ -40,8 +40,8 @@
             this.txtAge = new System.Windows.Forms.TextBox();
             this.txtPan = new System.Windows.Forms.TextBox();
             this.txtAdd = new System.Windows.Forms.TextBox();
-            this.cmdAdd = new System.Windows.Forms.Button();
-            this.cmdDelete = new System.Windows.Forms.Button();
+            this.cmdCancel = new System.Windows.Forms.Button();
+            this.cmdDel = new System.Windows.Forms.Button();
             this.cmdExit = new System.Windows.Forms.Button();
             this.pictitle = new System.Windows.Forms.PictureBox();
             this.picFrmClose = new System.Windows.Forms.PictureBox();
@@ -50,6 +50,10 @@
             this.lblNet = new System.Windows.Forms.Label();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.txtNet = new System.Windows.Forms.TextBox();
+            this.cmdAdd = new System.Windows.Forms.Button();
+            this.cmdEdit = new System.Windows.Forms.Button();
+            this.cmdUpdate = new System.Windows.Forms.Button();
+            this.lblData = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewDirectors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictitle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picFrmClose)).BeginInit();
@@ -139,31 +143,31 @@
             this.txtAdd.Size = new System.Drawing.Size(241, 20);
             this.txtAdd.TabIndex = 11;
             // 
-            // cmdAdd
+            // cmdCancel
             // 
-            this.cmdAdd.Location = new System.Drawing.Point(510, 312);
-            this.cmdAdd.Name = "cmdAdd";
-            this.cmdAdd.Size = new System.Drawing.Size(39, 23);
-            this.cmdAdd.TabIndex = 14;
-            this.cmdAdd.Text = "Add";
-            this.cmdAdd.UseVisualStyleBackColor = true;
-            this.cmdAdd.Click += new System.EventHandler(this.cmdAdd_Click);
+            this.cmdCancel.Location = new System.Drawing.Point(612, 312);
+            this.cmdCancel.Name = "cmdCancel";
+            this.cmdCancel.Size = new System.Drawing.Size(50, 30);
+            this.cmdCancel.TabIndex = 14;
+            this.cmdCancel.Text = "Cancel";
+            this.cmdCancel.UseVisualStyleBackColor = true;
+            this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
             // 
-            // cmdDelete
+            // cmdDel
             // 
-            this.cmdDelete.Location = new System.Drawing.Point(581, 312);
-            this.cmdDelete.Name = "cmdDelete";
-            this.cmdDelete.Size = new System.Drawing.Size(47, 23);
-            this.cmdDelete.TabIndex = 15;
-            this.cmdDelete.Text = "Delete";
-            this.cmdDelete.UseVisualStyleBackColor = true;
-            this.cmdDelete.Click += new System.EventHandler(this.cmdDelete_Click);
+            this.cmdDel.Location = new System.Drawing.Point(546, 312);
+            this.cmdDel.Name = "cmdDel";
+            this.cmdDel.Size = new System.Drawing.Size(60, 30);
+            this.cmdDel.TabIndex = 15;
+            this.cmdDel.Text = "Delete";
+            this.cmdDel.UseVisualStyleBackColor = true;
+            this.cmdDel.Click += new System.EventHandler(this.cmdDelete_Click);
             // 
             // cmdExit
             // 
-            this.cmdExit.Location = new System.Drawing.Point(660, 312);
+            this.cmdExit.Location = new System.Drawing.Point(668, 312);
             this.cmdExit.Name = "cmdExit";
-            this.cmdExit.Size = new System.Drawing.Size(40, 23);
+            this.cmdExit.Size = new System.Drawing.Size(50, 30);
             this.cmdExit.TabIndex = 16;
             this.cmdExit.Text = "Exit";
             this.cmdExit.UseVisualStyleBackColor = true;
@@ -174,7 +178,7 @@
             this.pictitle.BackColor = System.Drawing.Color.Transparent;
             this.pictitle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictitle.Image = ((System.Drawing.Image)(resources.GetObject("pictitle.Image")));
-            this.pictitle.Location = new System.Drawing.Point(99, 20);
+            this.pictitle.Location = new System.Drawing.Point(118, 20);
             this.pictitle.Name = "pictitle";
             this.pictitle.Size = new System.Drawing.Size(511, 30);
             this.pictitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -188,7 +192,7 @@
             this.picFrmClose.Image = global::PtrCma.Properties.Resources.close;
             this.picFrmClose.Location = new System.Drawing.Point(684, 20);
             this.picFrmClose.Name = "picFrmClose";
-            this.picFrmClose.Size = new System.Drawing.Size(25, 30);
+            this.picFrmClose.Size = new System.Drawing.Size(34, 34);
             this.picFrmClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picFrmClose.TabIndex = 18;
             this.picFrmClose.TabStop = false;
@@ -232,17 +236,61 @@
             this.txtNet.Size = new System.Drawing.Size(241, 20);
             this.txtNet.TabIndex = 13;
             // 
+            // cmdAdd
+            // 
+            this.cmdAdd.Location = new System.Drawing.Point(368, 312);
+            this.cmdAdd.Name = "cmdAdd";
+            this.cmdAdd.Size = new System.Drawing.Size(50, 30);
+            this.cmdAdd.TabIndex = 20;
+            this.cmdAdd.Text = "Add";
+            this.cmdAdd.UseVisualStyleBackColor = true;
+            this.cmdAdd.Click += new System.EventHandler(this.cmdAdd_Click);
+            // 
+            // cmdEdit
+            // 
+            this.cmdEdit.Location = new System.Drawing.Point(424, 312);
+            this.cmdEdit.Name = "cmdEdit";
+            this.cmdEdit.Size = new System.Drawing.Size(50, 30);
+            this.cmdEdit.TabIndex = 21;
+            this.cmdEdit.Text = "Edit";
+            this.cmdEdit.UseVisualStyleBackColor = true;
+            this.cmdEdit.Click += new System.EventHandler(this.cmdEdit_Click);
+            // 
+            // cmdUpdate
+            // 
+            this.cmdUpdate.Location = new System.Drawing.Point(480, 312);
+            this.cmdUpdate.Name = "cmdUpdate";
+            this.cmdUpdate.Size = new System.Drawing.Size(60, 30);
+            this.cmdUpdate.TabIndex = 22;
+            this.cmdUpdate.Text = "Save";
+            this.cmdUpdate.UseVisualStyleBackColor = true;
+            this.cmdUpdate.Click += new System.EventHandler(this.cmdUpdate_Click);
+            // 
+            // lblData
+            // 
+            this.lblData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblData.Location = new System.Drawing.Point(441, 87);
+            this.lblData.Name = "lblData";
+            this.lblData.Size = new System.Drawing.Size(108, 12);
+            this.lblData.TabIndex = 47;
+            this.lblData.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblData.Visible = false;
+            // 
             // FrmDetailDirector
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(737, 367);
+            this.ClientSize = new System.Drawing.Size(737, 358);
+            this.Controls.Add(this.lblData);
+            this.Controls.Add(this.cmdUpdate);
+            this.Controls.Add(this.cmdEdit);
+            this.Controls.Add(this.cmdAdd);
             this.Controls.Add(this.txtRef);
             this.Controls.Add(this.picFrmClose);
             this.Controls.Add(this.pictitle);
             this.Controls.Add(this.cmdExit);
-            this.Controls.Add(this.cmdDelete);
-            this.Controls.Add(this.cmdAdd);
+            this.Controls.Add(this.cmdDel);
+            this.Controls.Add(this.cmdCancel);
             this.Controls.Add(this.txtNet);
             this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.txtAdd);
@@ -284,8 +332,8 @@
         private System.Windows.Forms.TextBox txtAge;
         private System.Windows.Forms.TextBox txtPan;
         private System.Windows.Forms.TextBox txtAdd;
-        private System.Windows.Forms.Button cmdAdd;
-        private System.Windows.Forms.Button cmdDelete;
+        private System.Windows.Forms.Button cmdCancel;
+        private System.Windows.Forms.Button cmdDel;
         private System.Windows.Forms.Button cmdExit;
         private System.Windows.Forms.PictureBox pictitle;
         private System.Windows.Forms.PictureBox picFrmClose;
@@ -294,5 +342,9 @@
         private System.Windows.Forms.Label lblNet;
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.TextBox txtNet;
+        private System.Windows.Forms.Button cmdAdd;
+        private System.Windows.Forms.Button cmdEdit;
+        private System.Windows.Forms.Button cmdUpdate;
+        private System.Windows.Forms.Label lblData;
     }
 }

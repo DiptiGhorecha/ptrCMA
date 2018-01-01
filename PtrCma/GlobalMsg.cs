@@ -30,5 +30,7 @@ namespace PtrCma
         //Validation
         public static string codeMsg = "Code Number Field cannot be Blank";
         public static string nameMsg = "Name Field cannot be Blank";
+        public static string desMsg = "Description Field cannot be Blank";
+        public static string saveMsg = "First save your changes";
     }
 }

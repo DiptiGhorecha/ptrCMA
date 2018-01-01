@@ -33,7 +33,7 @@
             this.pictitle = new System.Windows.Forms.PictureBox();
             this.lblSelect = new System.Windows.Forms.Label();
             this.cmdExit = new System.Windows.Forms.Button();
-            this.cmdBackup = new System.Windows.Forms.Button();
+            this.cmdRestore = new System.Windows.Forms.Button();
             this.lblDrive = new System.Windows.Forms.Label();
             this.comboDrive = new System.Windows.Forms.ComboBox();
             this.radioCD = new System.Windows.Forms.RadioButton();
@@ -87,15 +87,15 @@
             this.cmdExit.UseVisualStyleBackColor = true;
             this.cmdExit.Click += new System.EventHandler(this.cmdExit_Click);
             // 
-            // cmdBackup
+            // cmdRestore
             // 
-            this.cmdBackup.Location = new System.Drawing.Point(328, 237);
-            this.cmdBackup.Name = "cmdBackup";
-            this.cmdBackup.Size = new System.Drawing.Size(98, 23);
-            this.cmdBackup.TabIndex = 86;
-            this.cmdBackup.Text = "Start Restore";
-            this.cmdBackup.UseVisualStyleBackColor = true;
-            this.cmdBackup.Click += new System.EventHandler(this.cmdBackup_Click);
+            this.cmdRestore.Location = new System.Drawing.Point(328, 237);
+            this.cmdRestore.Name = "cmdRestore";
+            this.cmdRestore.Size = new System.Drawing.Size(98, 23);
+            this.cmdRestore.TabIndex = 86;
+            this.cmdRestore.Text = "Start Restore";
+            this.cmdRestore.UseVisualStyleBackColor = true;
+            this.cmdRestore.Click += new System.EventHandler(this.cmdRestore_Click);
             // 
             // lblDrive
             // 
@@ -165,7 +165,7 @@
             this.Controls.Add(this.pictitle);
             this.Controls.Add(this.lblSelect);
             this.Controls.Add(this.cmdExit);
-            this.Controls.Add(this.cmdBackup);
+            this.Controls.Add(this.cmdRestore);
             this.Controls.Add(this.lblDrive);
             this.Controls.Add(this.comboDrive);
             this.Controls.Add(this.radioCD);
@@ -192,7 +192,7 @@
         private System.Windows.Forms.PictureBox pictitle;
         private System.Windows.Forms.Label lblSelect;
         private System.Windows.Forms.Button cmdExit;
-        private System.Windows.Forms.Button cmdBackup;
+        private System.Windows.Forms.Button cmdRestore;
         private System.Windows.Forms.Label lblDrive;
         private System.Windows.Forms.ComboBox comboDrive;
         private System.Windows.Forms.RadioButton radioCD;

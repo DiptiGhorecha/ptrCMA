@@ -137,23 +137,7 @@ namespace PtrCma
             grdBackup.Columns[14].Visible = false;
         }
 
-        private void cmdBackup_Click(object sender, EventArgs e)
-        {
-            //var Path = "";
-            string dbFileName = "PtrCma.mdb";
-            string pathBackup = @"E:\\PtrBack\PtrCma_20171216152117.mdb";
-            // string pathBackup = @"C:\SomeFolder\Backup\gongqin_20120906.mdb"; //you may use file dialog to select this backuppath
-            if (File.Exists(@"E:\Ptr1\PtrCma\bin\Debug\Resources\PtrCma.mdb"))
-            {
-                
-                File.WriteAllText(@"E:\Ptr1\PtrCma\bin\Debug\Resources\PtrCma.mdb", String.Empty);
-            }
-            
-            string CurrentDatabasePath = Path.Combine(Environment.CurrentDirectory, dbFileName);
-            File.Copy(pathBackup, CurrentDatabasePath, true);
-            MessageBox.Show("successful Restore! ");
-            }
-
+      
         private void radioHD_CheckedChanged(object sender, EventArgs e)
         {
             comboDrive.Items.Clear();
@@ -260,6 +244,21 @@ namespace PtrCma
             }
         }
 
-   
+        private void cmdRestore_Click(object sender, EventArgs e)
+        {
+
+            string dbFileName = "PtrCma.mdb";
+            string pathBackup = @"G:\\PtrBack\\PtrCma_20171217144507.mdb";
+            // string pathBackup = @"C:\SomeFolder\Backup\gongqin_20120906.mdb"; //you may use file dialog to select this backuppath
+            //if (File.Exists(@"C:\Users\Asus\Source\Repos\ptrCMA\PtrCma\bin\Debug\Resources\PtrCma.mdb"))
+            //{
+
+            //    File.WriteAllText(@"C:\Users\Asus\Source\Repos\ptrCMA\PtrCma\bin\Debug\Resources\PtrCma.mdb", String.Empty);
+            //}
+
+            string CurrentDatabasePath = Path.Combine(Environment.CurrentDirectory, dbFileName);
+            File.Copy(pathBackup, CurrentDatabasePath, true);
+            MessageBox.Show("Successful Restore!");
+        }
     }
 }

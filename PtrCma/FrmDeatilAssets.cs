@@ -18,6 +18,7 @@ namespace PtrCma
         OleDbConnection con;
         OleDbCommand cmd;
         OleDbDataAdapter dataAdapter;
+        string isAddEdit = ""; //Variable to Store Current Action(Add,Edit)
         public FrmDeatilAssets()
         {
             InitializeComponent();
@@ -25,17 +26,19 @@ namespace PtrCma
 
         private void FrmDeatilAssets_Load(object sender, EventArgs e)
         {
-            cmdDelete.Enabled = false;
-            cmdAdd.Enabled = false;
-            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true); //Stop the Flickering
-            Settings();
+            cmdUpdate.Enabled = false;
+            cmdCancel.Enabled = false;
+            // cmdCancel.Enabled = false;
             foreach (TextBox txt in Controls.OfType<TextBox>())
             {
                 txt.Enabled = false;
-                txtDes.Enabled = true;
+                // txtName.Enabled = true;
             }
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true); //Stop the Flickering
+            Settings();
             fillgrid();
-            
+
+
             if (grdAssests.RowCount > 0)
             {
                 grdAssests.CurrentCell = grdAssests.Rows[0].Cells[1];  //Set 1st row as current row by default
@@ -48,10 +51,11 @@ namespace PtrCma
             if (grdAssests.RowCount > 0)    // No Crashing problem when there is no data in gridview
             {
                 DataGridViewRow row = this.grdAssests.Rows[0];
-                txtDes.Text = row.Cells["CD_DES"].Value.ToString();
-                txtSupplier.Text = row.Cells["CD_SUP"].Value.ToString();
-                txtCost.Text = row.Cells["CD_COST"].Value.ToString();
-                txtCom.Text = row.Cells["CD_COM"].Value.ToString();
+                txtRef.Text = row.Cells["CTX_REF"].Value.ToString();
+                txtDes.Text = row.Cells["CTXT01"].Value.ToString();
+                txtSupplier.Text = row.Cells["CTXT02"].Value.ToString();
+                txtCost.Text = row.Cells["CTXT03"].Value.ToString();
+                txtCom.Text = row.Cells["CTXT04"].Value.ToString();
             }
         }
 
@@ -59,7 +63,7 @@ namespace PtrCma
         {
             con = new OleDbConnection(connectionString);
             DataSet ds = new DataSet();
-            dataAdapter = new OleDbDataAdapter("select * from Cx_Cd110", con);
+            dataAdapter = new OleDbDataAdapter("select * from Cx_Cd110 WHERE CL_REFNO=" + Global.prtyCode, con);
             dataAdapter.Fill(ds, "Cx_Cd110");
             grdAssests.DataMember = "Cx_Cd110";
             grdAssests.DataSource = ds;
@@ -72,9 +76,9 @@ namespace PtrCma
                 grdAssests.Columns[i].Visible = false;
             }
 
-            grdAssests.Columns[1].Visible = true;
-            grdAssests.Columns[1].HeaderText = "Description";
-            grdAssests.Columns[1].Width = 270;
+            grdAssests.Columns[0].Visible = true;
+            grdAssests.Columns[0].HeaderText = "Description";
+            grdAssests.Columns[0].Width = 270;
         }
 
         private void Settings()
@@ -99,7 +103,8 @@ namespace PtrCma
             foreach (Button btn in Controls.OfType<Button>())   //Set Size of Button
             {
                 btn.Size = Global.smallbtn;
-                cmdDelete.Size = Global.btnmedSize;
+                cmdDel.Size = Global.btnmedSize;
+                cmdUpdate.Size = Global.btnmedSize;
             }
 
             foreach (Label lbl in Controls.OfType<Label>()) //Set Size of Label
@@ -138,67 +143,63 @@ namespace PtrCma
             grdAssests.DefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
-        
-
         private void cmdAdd_Click(object sender, EventArgs e)
         {
+
             foreach (TextBox txt in Controls.OfType<TextBox>())
             {
                 txt.Enabled = true;
-            }
-            OleDbConnection con = new OleDbConnection();
-            con.ConnectionString = connectionString;
-            if (con.State == ConnectionState.Closed)
-            {
-                con.Open();
-            }
-            String sql = "insert into Cx_Cd110(CD_DES,CD_SUP,CD_COST,CD_COM) values('" + txtDes.Text + "','" + txtSupplier.Text + "','" + txtCost.Text + "','" + txtCom.Text + "')";
-            OleDbCommand cmd = new OleDbCommand(sql, con);
-            cmd.ExecuteNonQuery();
-            con.Close();
-            fillgrid();
-            MessageBox.Show(GlobalMsg.insertMsg, "Perfect Tax Reporter - CMA 1.0");
-            foreach (TextBox txt in Controls.OfType<TextBox>())
-            {
                 txt.Clear();
             }
+            txtDes.Focus();
+            grdAssests.Enabled = false;
+            cmdAdd.Enabled = false;
+            cmdEdit.Enabled = false;
+            cmdDel.Enabled = false;
+            cmdExit.Enabled = false;
+            cmdUpdate.Enabled = true;
+            cmdCancel.Enabled = true;
+            isAddEdit = "A";
+            lblData.Visible = true;
+            lblData.Text = "ADD";
         }
+
 
         private void cmdDelete_Click(object sender, EventArgs e)
         {
-            con = new OleDbConnection(connectionString);
-            if (con.State == ConnectionState.Closed)
+            if (grdAssests.RowCount > 0)
             {
-                con.Open();
+                DialogResult dialogResult1 = MessageBox.Show(GlobalMsg.deleteMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
+                if (dialogResult1 == DialogResult.Yes)
+                {
+                    con = new OleDbConnection(connectionString);
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+                    String sql = "delete from Cx_Cd110 where CTX_REF=" + txtRef.Text;
+                    cmd = new OleDbCommand(sql, con);
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+
+                    MessageBox.Show(GlobalMsg.deleteMsg, "Perfect Tax Reporter - CMA 1.0");
+                    fillgrid();
+                    LoadDatatoTextBox();
+                }
             }
-            String sql = "delete from Cx_Cd110 where CD_DES='" + txtDes.Text + "'";
-            cmd = new OleDbCommand(sql, con);
-            cmd.ExecuteNonQuery();
-            con.Close();
-            fillgrid();
-            MessageBox.Show(GlobalMsg.deleteMsg, "Perfect Tax Reporter - CMA 1.0");
-            foreach (TextBox txt in Controls.OfType<TextBox>())
-            {
-                txt.Clear();
-                txt.Enabled = true;
-                // txtName.Focus();
-            }
-            LoadDatatoTextBox();
         }
 
         private void grdAssests_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            cmdAdd.Enabled = false;
-            cmdDelete.Enabled = true;
 
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.grdAssests.Rows[e.RowIndex];
-                //txtRef.Text = row.Cells["CD_REFNO"].Value.ToString();
-                txtDes.Text = row.Cells["CD_DES"].Value.ToString();
-                txtSupplier.Text = row.Cells["CD_SUP"].Value.ToString();
-                txtCost.Text = row.Cells["CD_COST"].Value.ToString();
-                txtCom.Text = row.Cells["CD_COM"].Value.ToString();
+                txtRef.Text = row.Cells["CTX_REF"].Value.ToString();
+                txtDes.Text = row.Cells["CTXT01"].Value.ToString();
+                txtSupplier.Text = row.Cells["CTXT02"].Value.ToString();
+                txtCost.Text = row.Cells["CTXT03"].Value.ToString();
+                txtCom.Text = row.Cells["CTXT04"].Value.ToString();
             }
         }
 
@@ -210,7 +211,7 @@ namespace PtrCma
                 txt.Focus();
                 txt.Enabled = true;
             }
-            cmdDelete.Enabled = false;
+            cmdDel.Enabled = false;
             cmdAdd.Enabled = true;
         }
 
@@ -221,15 +222,7 @@ namespace PtrCma
             {
                 NotifyMainFormToCloseChildFormAssets();
                 this.Hide();
-                fillgrid();
-                LoadDatatoTextBox();
-                cmdDelete.Enabled = false;
-                cmdAdd.Enabled = false;
-                foreach (TextBox txt in Controls.OfType<TextBox>())
-                {
-                    txt.Enabled = false;
-                    txtDes.Enabled = true;
-                }
+
             }
         }
 
@@ -240,17 +233,110 @@ namespace PtrCma
             {
                 NotifyMainFormToCloseChildFormAssets();
                 this.Hide();
-                fillgrid();
-                LoadDatatoTextBox();
-                cmdDelete.Enabled = false;
-                cmdAdd.Enabled = false;
-                foreach (TextBox txt in Controls.OfType<TextBox>())
-                {
-                    txt.Enabled = false;
-                    txtDes.Enabled = true;
-                }
+
             }
         }
 
+        private void cmdUpdate_Click(object sender, EventArgs e)
+        {
+            if (txtDes.Text.Trim().Equals(""))
+            {
+                MessageBox.Show(GlobalMsg.desMsg, "Perfect Tax Reporter - CMA 1.0");
+                txtDes.Focus();
+                return; // return because we don't want to run normal code of buton click
+
+            }
+            OleDbConnection con = new OleDbConnection();
+            con.ConnectionString = connectionString;
+            if (con.State == ConnectionState.Closed)
+            {
+                con.Open();
+            }
+            String sql = "";
+            if (isAddEdit == "A")
+            {
+                sql = "insert into Cx_Cd110(CTXT01,CTXT02,CTXT03,CTXT04,CL_REFNO) values ('" + txtDes.Text + "','" + txtSupplier.Text + "','" + txtCost.Text + "','" + txtCom.Text + "'," + Global.prtyCode + ")";
+
+            }
+            else
+            {
+                sql = "update Cx_Cd110 set CTXT01='" + txtDes.Text + "',CTXT02='" + txtSupplier.Text + "',CTXT03='" + txtCost.Text + "',CTXT04='" + txtCom.Text + "' WHERE CTX_REF=" + txtRef.Text + " AND CL_REFNO=" + Global.prtyCode;
+            }
+            OleDbCommand cmd = new OleDbCommand(sql, con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            foreach (TextBox txt in Controls.OfType<TextBox>())
+            {
+                txt.Enabled = false;
+
+            }
+            grdAssests.Enabled = true;
+            cmdAdd.Enabled = true;
+            cmdEdit.Enabled = true;
+            cmdDel.Enabled = true;
+            cmdExit.Enabled = true;
+            cmdUpdate.Enabled = false;
+            cmdCancel.Enabled = false;
+            lblData.Text = "";
+            lblData.Visible = false;
+            fillgrid();
+            LoadDatatoTextBox();
+            MessageBox.Show(GlobalMsg.insertMsg, "Perfect Tax Reporter - CMA 1.0");
+            //  foreach (TextBox txt in Controls.OfType<TextBox>())
+            //   {
+            ////       txt.Clear();
+            //   }
+
+        }
+
+        private void cmdCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show(GlobalMsg.cancelMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
+            if (dialogResult == DialogResult.Yes)
+            {
+                foreach (TextBox txt in Controls.OfType<TextBox>())
+                {
+                    txt.Enabled = false;
+
+                }
+                grdAssests.Enabled = true;
+                cmdAdd.Enabled = true;
+                cmdEdit.Enabled = true;
+                cmdDel.Enabled = true;
+                cmdExit.Enabled = true;
+                cmdUpdate.Enabled = false;
+                cmdCancel.Enabled = false;
+                lblData.Text = "";
+                lblData.Visible = false;
+                fillgrid();
+                LoadDatatoTextBox();
+            }
+            else
+            {
+
+            }
+        }
+
+        private void cmdEdit_Click(object sender, EventArgs e)
+        {
+            if (grdAssests.RowCount > 0)
+            {
+                foreach (TextBox txt in Controls.OfType<TextBox>())
+                {
+                    txt.Enabled = true;
+                }
+                txtDes.Focus();
+                grdAssests.Enabled = false;
+                cmdAdd.Enabled = false;
+                cmdEdit.Enabled = false;
+                cmdDel.Enabled = false;
+                cmdExit.Enabled = false;
+                cmdUpdate.Enabled = true;
+                cmdCancel.Enabled = true;
+                isAddEdit = "E";
+                lblData.Visible = true;
+                lblData.Text = "EDIT";
+            }
+        }
     }
 }

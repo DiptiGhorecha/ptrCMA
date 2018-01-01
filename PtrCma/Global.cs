@@ -94,6 +94,7 @@ namespace PtrCma
       
         //Global variable
         public static String prtyCode;
+        public static String prtyName;
 
         // Sales,Purchase,Credit,Parameter,Proposed Form
         public static Size lblbig = new System.Drawing.Size(200, 20);       //Terms of Purchase Form

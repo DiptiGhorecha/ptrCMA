@@ -31,7 +31,7 @@ namespace PtrCma
             foreach (TextBox txt in Controls.OfType<TextBox>())
             {
                 txt.Enabled = false;
-                txtName.Enabled = true;
+               
             }
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true); //Stop the Flickering
             Settings();
@@ -167,6 +167,7 @@ namespace PtrCma
             {
                 txt.Clear();
             }
+
         }
 
         private void cmdDelete_Click(object sender, EventArgs e)
@@ -205,7 +206,7 @@ namespace PtrCma
                 foreach (TextBox txt in Controls.OfType<TextBox>())
                 {
                     txt.Enabled = false;
-                    txtName.Enabled = true;
+                  
                 }
             }
         }
@@ -224,7 +225,7 @@ namespace PtrCma
                 foreach (TextBox txt in Controls.OfType<TextBox>())
                 {
                     txt.Enabled = false;
-                    txtName.Enabled = true;
+                    
                 }
             }
         }

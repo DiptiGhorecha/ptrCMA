@@ -28,19 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series12 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCMA));
             this.lstViewTopic = new System.Windows.Forms.ListView();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.gridViewCMA = new System.Windows.Forms.DataGridView();
             this.panelCmdBtns = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txtCurYear = new System.Windows.Forms.TextBox();
+            this.comboBoxRsIn = new System.Windows.Forms.ComboBox();
+            this.txtPrtyName = new System.Windows.Forms.TextBox();
+            this.comboBoxCopyYear = new System.Windows.Forms.ComboBox();
+            this.comboBxYear = new System.Windows.Forms.ComboBox();
             this.cmdPrint = new System.Windows.Forms.Button();
             this.cmdExport = new System.Windows.Forms.Button();
             this.cmdFormula = new System.Windows.Forms.Button();
@@ -68,25 +68,31 @@
             // 
             // lstViewTopic
             // 
+            this.lstViewTopic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lstViewTopic.HideSelection = false;
             this.lstViewTopic.Location = new System.Drawing.Point(0, 47);
+            this.lstViewTopic.MultiSelect = false;
             this.lstViewTopic.Name = "lstViewTopic";
+            this.lstViewTopic.OwnerDraw = true;
             this.lstViewTopic.Size = new System.Drawing.Size(265, 87);
             this.lstViewTopic.TabIndex = 0;
             this.lstViewTopic.UseCompatibleStateImageBehavior = false;
+            this.lstViewTopic.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.lstViewTopic_DrawColumnHeader);
+            this.lstViewTopic.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.lstViewTopic_DrawItem);
             // 
             // chart2
             // 
             this.chart2.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart2.Legends.Add(legend1);
+            chartArea12.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea12);
+            legend12.Name = "Legend1";
+            this.chart2.Legends.Add(legend12);
             this.chart2.Location = new System.Drawing.Point(718, 47);
             this.chart2.Name = "chart2";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart2.Series.Add(series1);
+            series12.ChartArea = "ChartArea1";
+            series12.Legend = "Legend1";
+            series12.Name = "Series1";
+            this.chart2.Series.Add(series12);
             this.chart2.Size = new System.Drawing.Size(328, 118);
             this.chart2.TabIndex = 2;
             this.chart2.Text = "chart2";
@@ -112,11 +118,11 @@
             // panelCmdBtns
             // 
             this.panelCmdBtns.BackColor = System.Drawing.Color.Transparent;
-            this.panelCmdBtns.Controls.Add(this.textBox2);
-            this.panelCmdBtns.Controls.Add(this.comboBox3);
-            this.panelCmdBtns.Controls.Add(this.textBox1);
-            this.panelCmdBtns.Controls.Add(this.comboBox2);
-            this.panelCmdBtns.Controls.Add(this.comboBox1);
+            this.panelCmdBtns.Controls.Add(this.txtCurYear);
+            this.panelCmdBtns.Controls.Add(this.comboBoxRsIn);
+            this.panelCmdBtns.Controls.Add(this.txtPrtyName);
+            this.panelCmdBtns.Controls.Add(this.comboBoxCopyYear);
+            this.panelCmdBtns.Controls.Add(this.comboBxYear);
             this.panelCmdBtns.Controls.Add(this.cmdPrint);
             this.panelCmdBtns.Controls.Add(this.cmdExport);
             this.panelCmdBtns.Controls.Add(this.cmdFormula);
@@ -138,43 +144,68 @@
             this.panelCmdBtns.Size = new System.Drawing.Size(449, 149);
             this.panelCmdBtns.TabIndex = 26;
             // 
-            // textBox2
+            // txtCurYear
             // 
-            this.textBox2.Location = new System.Drawing.Point(79, 38);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(48, 20);
-            this.textBox2.TabIndex = 44;
+            this.txtCurYear.Location = new System.Drawing.Point(79, 38);
+            this.txtCurYear.Name = "txtCurYear";
+            this.txtCurYear.Size = new System.Drawing.Size(48, 20);
+            this.txtCurYear.TabIndex = 44;
             // 
-            // comboBox3
+            // comboBoxRsIn
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(384, 39);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(55, 21);
-            this.comboBox3.TabIndex = 43;
+            this.comboBoxRsIn.FormattingEnabled = true;
+            this.comboBoxRsIn.Items.AddRange(new object[] {
+            "Rs",
+            "Thousands",
+            "Lakhs",
+            "Crores"});
+            this.comboBoxRsIn.Location = new System.Drawing.Point(374, 39);
+            this.comboBoxRsIn.Name = "comboBoxRsIn";
+            this.comboBoxRsIn.Size = new System.Drawing.Size(65, 21);
+            this.comboBoxRsIn.TabIndex = 43;
             // 
-            // textBox1
+            // txtPrtyName
             // 
-            this.textBox1.Location = new System.Drawing.Point(95, 9);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(348, 20);
-            this.textBox1.TabIndex = 42;
+            this.txtPrtyName.Location = new System.Drawing.Point(95, 9);
+            this.txtPrtyName.Name = "txtPrtyName";
+            this.txtPrtyName.Size = new System.Drawing.Size(348, 20);
+            this.txtPrtyName.TabIndex = 42;
             // 
-            // comboBox2
+            // comboBoxCopyYear
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(197, 37);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(58, 21);
-            this.comboBox2.TabIndex = 41;
+            this.comboBoxCopyYear.FormattingEnabled = true;
+            this.comboBoxCopyYear.Items.AddRange(new object[] {
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.comboBoxCopyYear.Location = new System.Drawing.Point(191, 38);
+            this.comboBoxCopyYear.Name = "comboBoxCopyYear";
+            this.comboBoxCopyYear.Size = new System.Drawing.Size(48, 21);
+            this.comboBoxCopyYear.TabIndex = 41;
             // 
-            // comboBox1
+            // comboBxYear
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(133, 37);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(58, 21);
-            this.comboBox1.TabIndex = 40;
+            this.comboBxYear.FormattingEnabled = true;
+            this.comboBxYear.Items.AddRange(new object[] {
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.comboBxYear.Location = new System.Drawing.Point(133, 37);
+            this.comboBxYear.Name = "comboBxYear";
+            this.comboBxYear.Size = new System.Drawing.Size(48, 21);
+            this.comboBxYear.TabIndex = 40;
             // 
             // cmdPrint
             // 
@@ -296,7 +327,7 @@
             // 
             // cmdRsIn
             // 
-            this.cmdRsIn.Location = new System.Drawing.Point(334, 37);
+            this.cmdRsIn.Location = new System.Drawing.Point(323, 37);
             this.cmdRsIn.Name = "cmdRsIn";
             this.cmdRsIn.Size = new System.Drawing.Size(45, 23);
             this.cmdRsIn.TabIndex = 27;
@@ -305,7 +336,7 @@
             // 
             // cmdCopyYr
             // 
-            this.cmdCopyYr.Location = new System.Drawing.Point(261, 37);
+            this.cmdCopyYr.Location = new System.Drawing.Point(249, 37);
             this.cmdCopyYr.Name = "cmdCopyYr";
             this.cmdCopyYr.Size = new System.Drawing.Size(67, 23);
             this.cmdCopyYr.TabIndex = 26;
@@ -329,6 +360,7 @@
             this.cmdChngPrty.TabIndex = 24;
             this.cmdChngPrty.Text = "Change Party";
             this.cmdChngPrty.UseVisualStyleBackColor = true;
+            this.cmdChngPrty.Click += new System.EventHandler(this.cmdChngPrty_Click);
             // 
             // lblPic
             // 
@@ -374,6 +406,7 @@
             this.Name = "FrmCMA";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "FrmCMA";
+            this.Activated += new System.EventHandler(this.FrmCMA_Load);
             this.Load += new System.EventHandler(this.FrmCMA_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCMA)).EndInit();
@@ -391,11 +424,11 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.DataGridView gridViewCMA;
         private System.Windows.Forms.Panel panelCmdBtns;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txtCurYear;
+        private System.Windows.Forms.ComboBox comboBoxRsIn;
+        private System.Windows.Forms.TextBox txtPrtyName;
+        private System.Windows.Forms.ComboBox comboBoxCopyYear;
+        private System.Windows.Forms.ComboBox comboBxYear;
         private System.Windows.Forms.Button cmdPrint;
         private System.Windows.Forms.Button cmdExport;
         private System.Windows.Forms.Button cmdFormula;
