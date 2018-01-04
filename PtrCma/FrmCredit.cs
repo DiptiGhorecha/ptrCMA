@@ -195,48 +195,48 @@ namespace PtrCma
             myadapter.SelectCommand = new OleDbCommand(sqlSelect, con);
             myadapter.Fill(ds1, "Cp_Cd109");
             String ctx11, ctx12 ,ctx13,ctx14,ctx15,ctx16,ctx21,ctx22,ctx23,ctx24,ctx25,ctx26,ctx31,ctx32,ctx33,ctx34,ctx35,ctx36,ctx41,ctx42,ctx43,ctx44,ctx45,ctx46,ctx51,ctx52,ctx53,ctx54,ctx55,ctx56,ctx61,ctx62,ctx63,ctx64,ctx65,ctx66= "";
-            ctx11 = ((txtFCash.Text != null && txtFCash.Text.Trim() != String.Empty) ? txtFCash.Text.ToString() : null);
-            ctx12 = ((txtNCash.Text != null && txtNCash.Text.Trim() != String.Empty) ? txtNCash.Text.ToString() : null);
-            ctx13 = ((txtTCash.Text != null && txtTCash.Text.Trim() != String.Empty) ? txtTCash.Text.ToString() : null);
-            ctx14 = ((txtFCash1.Text != null && txtFCash1.Text.Trim() != String.Empty) ? txtFCash1.Text.ToString() : null);
-            ctx15 = ((txtNCash1.Text != null && txtNCash1.Text.Trim() != String.Empty) ? txtNCash1.Text.ToString() : null);
-            ctx16 = ((txtTCash1.Text != null && txtTCash1.Text.Trim() != String.Empty) ? txtTCash1.Text.ToString() : null);
+            ctx11 = ((txtFCash.Text != null && txtFCash.Text.Trim() != String.Empty) ? txtFCash.Text : "Null");
+            ctx12 = ((txtNCash.Text != null && txtNCash.Text.Trim() != String.Empty) ? txtNCash.Text.ToString() : "Null");
+            ctx13 = ((txtTCash.Text != null && txtTCash.Text.Trim() != String.Empty) ? txtTCash.Text.ToString() : "Null");
+            ctx14 = ((txtFCash1.Text != null && txtFCash1.Text.Trim() != String.Empty) ? txtFCash1.Text.ToString() : "Null");
+            ctx15 = ((txtNCash1.Text != null && txtNCash1.Text.Trim() != String.Empty) ? txtNCash1.Text.ToString() : "Null");
+            ctx16 = ((txtTCash1.Text != null && txtTCash1.Text.Trim() != String.Empty) ? txtTCash1.Text.ToString() : "Null");
 
-            ctx21 = ((txtFDraft.Text != null && txtFDraft.Text.Trim() != String.Empty) ? txtFDraft.Text.ToString() : null);
-            ctx22 = ((txtNDraft.Text != null && txtNDraft.Text.Trim() != String.Empty) ? txtNDraft.Text.ToString() : null);
-            ctx23 = ((txtTDraft.Text != null && txtTDraft.Text.Trim() != String.Empty) ? txtTDraft.Text.ToString() : null);
-            ctx24 = ((txtFDraft1.Text != null && txtFDraft1.Text.Trim() != String.Empty) ? txtFDraft1.Text.ToString() : null);
-            ctx25 = ((txtNDraft1.Text != null && txtNDraft1.Text.Trim() != String.Empty) ? txtNDraft1.Text.ToString() : null);
-            ctx26 = ((txtTDraft1.Text != null && txtTDraft1.Text.Trim() != String.Empty) ? txtTDraft1.Text.ToString() : null);
+            ctx21 = ((txtFDraft.Text != null && txtFDraft.Text.Trim() != String.Empty) ? txtFDraft.Text.ToString() : "Null");
+            ctx22 = ((txtNDraft.Text != null && txtNDraft.Text.Trim() != String.Empty) ? txtNDraft.Text.ToString() : "Null");
+            ctx23 = ((txtTDraft.Text != null && txtTDraft.Text.Trim() != String.Empty) ? txtTDraft.Text.ToString() : "Null");
+            ctx24 = ((txtFDraft1.Text != null && txtFDraft1.Text.Trim() != String.Empty) ? txtFDraft1.Text.ToString() : "Null");
+            ctx25 = ((txtNDraft1.Text != null && txtNDraft1.Text.Trim() != String.Empty) ? txtNDraft1.Text.ToString() : "Null");
+            ctx26 = ((txtTDraft1.Text != null && txtTDraft1.Text.Trim() != String.Empty) ? txtTDraft1.Text.ToString() : "Null");
 
-            ctx31 = ((txtFPC.Text != null && txtFPC.Text.Trim() != String.Empty) ? txtFPC.Text.ToString() : null);
-            ctx32 = ((txtNPC.Text != null && txtNPC.Text.Trim() != String.Empty) ? txtNPC.Text.ToString() : null);
-            ctx33 = ((txtTPC.Text != null && txtTPC.Text.Trim() != String.Empty) ? txtTPC.Text.ToString() : null);
-            ctx34 = ((txtFPC1.Text != null && txtFPC1.Text.Trim() != String.Empty) ? txtFPC1.Text.ToString() : null);
-            ctx35 = ((txtNPC1.Text != null && txtNPC1.Text.Trim() != String.Empty) ? txtNPC1.Text.ToString() : null);
-            ctx36 = ((txtTPC1.Text != null && txtTPC1.Text.Trim() != String.Empty) ? txtTPC1.Text.ToString() : null);
+            ctx31 = ((txtFPC.Text != null && txtFPC.Text.Trim() != String.Empty) ? txtFPC.Text.ToString() : "Null");
+            ctx32 = ((txtNPC.Text != null && txtNPC.Text.Trim() != String.Empty) ? txtNPC.Text.ToString() : "Null");
+            ctx33 = ((txtTPC.Text != null && txtTPC.Text.Trim() != String.Empty) ? txtTPC.Text.ToString() : "Null");
+            ctx34 = ((txtFPC1.Text != null && txtFPC1.Text.Trim() != String.Empty) ? txtFPC1.Text.ToString() : "Null");
+            ctx35 = ((txtNPC1.Text != null && txtNPC1.Text.Trim() != String.Empty) ? txtNPC1.Text.ToString() : "Null");
+            ctx36 = ((txtTPC1.Text != null && txtTPC1.Text.Trim() != String.Empty) ? txtTPC1.Text.ToString() : "Null");
 
 
-            ctx41 = ((txtFLC.Text != null && txtFLC.Text.Trim() != String.Empty) ? txtFLC.Text.ToString() : null);
-            ctx42 = ((txtNLC.Text != null && txtNLC.Text.Trim() != String.Empty) ? txtNLC.Text.ToString() : null);
-            ctx43 = ((txtTLC.Text != null && txtTLC.Text.Trim() != String.Empty) ? txtTLC.Text.ToString() : null);
-            ctx44 = ((txtFLC1.Text != null && txtFLC1.Text.Trim() != String.Empty) ? txtFLC1.Text.ToString() : null);
-            ctx45 = ((txtNLC1.Text != null && txtNLC1.Text.Trim() != String.Empty) ? txtNLC1.Text.ToString() : null);
-            ctx46 = ((txtTLC1.Text != null && txtTLC1.Text.Trim() != String.Empty) ? txtTLC1.Text.ToString() : null);
+            ctx41 = ((txtFLC.Text != null && txtFLC.Text.Trim() != String.Empty) ? txtFLC.Text.ToString() : "Null");
+            ctx42 = ((txtNLC.Text != null && txtNLC.Text.Trim() != String.Empty) ? txtNLC.Text.ToString() : "Null");
+            ctx43 = ((txtTLC.Text != null && txtTLC.Text.Trim() != String.Empty) ? txtTLC.Text.ToString() : "Null");
+            ctx44 = ((txtFLC1.Text != null && txtFLC1.Text.Trim() != String.Empty) ? txtFLC1.Text.ToString() : "Null");
+            ctx45 = ((txtNLC1.Text != null && txtNLC1.Text.Trim() != String.Empty) ? txtNLC1.Text.ToString() : "Null");
+            ctx46 = ((txtTLC1.Text != null && txtTLC1.Text.Trim() != String.Empty) ? txtTLC1.Text.ToString() : "Null");
 
-            ctx51 = ((txtFTeam.Text != null && txtFTeam.Text.Trim() != String.Empty) ? txtFTeam.Text.ToString() : null);
-            ctx52 = ((txtNTeam.Text != null && txtNTeam.Text.Trim() != String.Empty) ? txtNTeam.Text.ToString() : null);
-            ctx53 = ((txtTTeam.Text != null && txtTTeam.Text.Trim() != String.Empty) ? txtTTeam.Text.ToString() : null);
-            ctx54 = ((txtFTeam1.Text != null && txtFTeam1.Text.Trim() != String.Empty) ? txtFTeam1.Text.ToString() : null);
-            ctx55 = ((txtNTeam1.Text != null && txtNTeam1.Text.Trim() != String.Empty) ? txtNTeam1.Text.ToString() : null);
-            ctx56 = ((txtTTeam1.Text != null && txtTTeam1.Text.Trim() != String.Empty) ? txtTTeam1.Text.ToString() : null);
+            ctx51 = ((txtFTeam.Text != null && txtFTeam.Text.Trim() != String.Empty) ? txtFTeam.Text.ToString() : "Null");
+            ctx52 = ((txtNTeam.Text != null && txtNTeam.Text.Trim() != String.Empty) ? txtNTeam.Text.ToString() : "Null");
+            ctx53 = ((txtTTeam.Text != null && txtTTeam.Text.Trim() != String.Empty) ? txtTTeam.Text.ToString() : "Null");
+            ctx54 = ((txtFTeam1.Text != null && txtFTeam1.Text.Trim() != String.Empty) ? txtFTeam1.Text.ToString() : "Null");
+            ctx55 = ((txtNTeam1.Text != null && txtNTeam1.Text.Trim() != String.Empty) ? txtNTeam1.Text.ToString() : "Null");
+            ctx56 = ((txtTTeam1.Text != null && txtTTeam1.Text.Trim() != String.Empty) ? txtTTeam1.Text.ToString() : "Null");
 
-            ctx61 = ((txtFTotal.Text != null && txtFTotal.Text.Trim() != String.Empty) ? txtFTotal.Text.ToString() : null);
-            ctx62 = ((txtNTotal.Text != null && txtNTotal.Text.Trim() != String.Empty) ? txtNTotal.Text.ToString() : null);
-            ctx63 = ((txtTTotal.Text != null && txtTTotal.Text.Trim() != String.Empty) ? txtTTotal.Text.ToString() : null);
-            ctx64 = ((txtFTotal1.Text != null && txtFTotal1.Text.Trim() != String.Empty) ? txtFTotal1.Text.ToString() : null);
-            ctx65 = ((txtNTotal1.Text != null && txtNTotal1.Text.Trim() != String.Empty) ? txtNTotal1.Text.ToString() : null);
-            ctx66 = ((txtTTotal1.Text != null && txtTTotal1.Text.Trim() != String.Empty) ? txtTTotal1.Text.ToString() : null);
+            ctx61 = ((txtFTotal.Text != null && txtFTotal.Text.Trim() != String.Empty) ? txtFTotal.Text.ToString() : "Null");
+            ctx62 = ((txtNTotal.Text != null && txtNTotal.Text.Trim() != String.Empty) ? txtNTotal.Text.ToString() : "Null");
+            ctx63 = ((txtTTotal.Text != null && txtTTotal.Text.Trim() != String.Empty) ? txtTTotal.Text.ToString() : "Null");
+            ctx64 = ((txtFTotal1.Text != null && txtFTotal1.Text.Trim() != String.Empty) ? txtFTotal1.Text.ToString() : "Null");
+            ctx65 = ((txtNTotal1.Text != null && txtNTotal1.Text.Trim() != String.Empty) ? txtNTotal1.Text.ToString() : "Null");
+            ctx66 = ((txtTTotal1.Text != null && txtTTotal1.Text.Trim() != String.Empty) ? txtTTotal1.Text.ToString() : "Null");
 
 
             if (ds1.Tables[0].Rows.Count > 0)

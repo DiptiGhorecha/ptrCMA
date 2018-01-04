@@ -511,7 +511,52 @@ namespace PtrCma
                     for (int i = 0; i < ds1.Tables[0].Rows.Count; i++)
                     {
                         DataSet ds2 = new DataSet();
-                        sql2 = "INSERT INTO Cx_Cd109 (CTXT11,CTXT12,CTXT13,CTXT14,CTXT15,CTXT16,CTXT21,CTXT22,CTXT23,CTXT24,CTXT25,CTXT26,CTXT31,CTXT32,CTXT33,CTXT34,CTXT35,CTXT36,CTXT41,CTXT42,CTXT43,CTXT44,CTXT45,CTXT46,CTXT51,CTXT52,CTXT53,CTXT54,CTXT55,CTXT56,CTXT61,CTXT62,CTXT63,CTXT64,CTXT65,CTXT66,CL_REFNO) values (" + ds1.Tables[0].Rows[i]["CTXT11"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT12"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT13"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT14"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT15"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT16"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT21"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT22"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT23"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT24"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT25"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT26"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT31"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT32"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT33"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT34"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT35"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT36"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT41"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT42"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT43"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT44"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT45"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT46"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT51"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT52"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT53"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT54"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT55"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT56"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT61"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT62"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT63"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT64"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT65"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT66"].ToString() + "," + ds1.Tables[0].Rows[i]["CL_REFNO"].ToString() + ")";
+
+						String ctx11, ctx12, ctx13, ctx14, ctx15, ctx16, ctx21, ctx22, ctx23, ctx24, ctx25, ctx26, ctx31, ctx32, ctx33, ctx34, ctx35, ctx36, ctx41, ctx42, ctx43, ctx44, ctx45, ctx46, ctx51, ctx52, ctx53, ctx54, ctx55, ctx56, ctx61, ctx62, ctx63, ctx64, ctx65, ctx66 = "";
+						ctx11 = ((ds1.Tables[0].Rows[i]["CTXT11"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT11"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT11"].ToString() : "Null");
+						ctx12 = ((ds1.Tables[0].Rows[i]["CTXT12"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT12"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT12"].ToString() : "Null");
+						ctx13 = ((ds1.Tables[0].Rows[i]["CTXT13"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT13"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT13"].ToString() : "Null");
+						ctx14 = ((ds1.Tables[0].Rows[i]["CTXT14"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT14"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT14"].ToString() : "Null");
+						ctx15 = ((ds1.Tables[0].Rows[i]["CTXT15"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT15"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT15"].ToString() : "Null");
+						ctx16 = ((ds1.Tables[0].Rows[i]["CTXT16"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT16"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT16"].ToString() : "Null");
+
+						ctx21 = ((ds1.Tables[0].Rows[i]["CTXT21"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT21"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT21"].ToString() : "Null");
+						ctx22 = ((ds1.Tables[0].Rows[i]["CTXT22"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT22"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT22"].ToString() : "Null");
+						ctx23 = ((ds1.Tables[0].Rows[i]["CTXT23"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT23"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT23"].ToString() : "Null");
+						ctx24 = ((ds1.Tables[0].Rows[i]["CTXT24"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT24"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT24"].ToString() : "Null");
+						ctx25 = ((ds1.Tables[0].Rows[i]["CTXT25"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT25"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT25"].ToString() : "Null");
+						ctx26 = ((ds1.Tables[0].Rows[i]["CTXT26"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT26"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT26"].ToString() : "Null");
+
+						ctx31 = ((ds1.Tables[0].Rows[i]["CTXT31"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT31"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT31"].ToString() : "Null");
+						ctx32 = ((ds1.Tables[0].Rows[i]["CTXT32"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT32"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT32"].ToString() : "Null");
+						ctx33 = ((ds1.Tables[0].Rows[i]["CTXT33"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT33"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT33"].ToString() : "Null");
+						ctx34 = ((ds1.Tables[0].Rows[i]["CTXT34"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT34"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT34"].ToString() : "Null");
+						ctx35 = ((ds1.Tables[0].Rows[i]["CTXT35"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT35"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT35"].ToString() : "Null");
+						ctx36 = ((ds1.Tables[0].Rows[i]["CTXT36"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT36"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT36"].ToString() : "Null");
+
+						ctx41 = ((ds1.Tables[0].Rows[i]["CTXT41"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT41"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT41"].ToString() : "Null");
+						ctx42 = ((ds1.Tables[0].Rows[i]["CTXT42"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT42"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT42"].ToString() : "Null");
+						ctx43 = ((ds1.Tables[0].Rows[i]["CTXT43"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT43"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT43"].ToString() : "Null");
+						ctx44 = ((ds1.Tables[0].Rows[i]["CTXT44"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT44"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT44"].ToString() : "Null");
+						ctx45 = ((ds1.Tables[0].Rows[i]["CTXT45"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT45"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT45"].ToString() : "Null");
+						ctx46 = ((ds1.Tables[0].Rows[i]["CTXT46"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT46"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT46"].ToString() : "Null");
+
+						ctx51 = ((ds1.Tables[0].Rows[i]["CTXT51"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT51"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT51"].ToString() : "Null");
+						ctx52 = ((ds1.Tables[0].Rows[i]["CTXT52"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT52"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT52"].ToString() : "Null");
+						ctx53 = ((ds1.Tables[0].Rows[i]["CTXT53"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT53"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT53"].ToString() : "Null");
+						ctx54 = ((ds1.Tables[0].Rows[i]["CTXT54"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT54"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT54"].ToString() : "Null");
+						ctx55 = ((ds1.Tables[0].Rows[i]["CTXT55"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT55"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT55"].ToString() : "Null");
+						ctx56 = ((ds1.Tables[0].Rows[i]["CTXT56"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT56"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT56"].ToString() : "Null");
+
+						ctx61 = ((ds1.Tables[0].Rows[i]["CTXT61"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT61"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT61"].ToString() : "Null");
+						ctx62 = ((ds1.Tables[0].Rows[i]["CTXT62"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT62"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT62"].ToString() : "Null");
+						ctx63 = ((ds1.Tables[0].Rows[i]["CTXT63"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT63"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT63"].ToString() : "Null");
+						ctx64 = ((ds1.Tables[0].Rows[i]["CTXT64"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT64"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT64"].ToString() : "Null");
+						ctx65 = ((ds1.Tables[0].Rows[i]["CTXT65"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT65"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT65"].ToString() : "Null");
+						ctx66 = ((ds1.Tables[0].Rows[i]["CTXT66"].ToString() != null && ds1.Tables[0].Rows[i]["CTXT66"].ToString() != String.Empty) ? ds1.Tables[0].Rows[i]["CTXT66"].ToString() : "Null");
+
+						
+						sql2 = "INSERT INTO Cx_Cd109 (CTXT11,CTXT12,CTXT13,CTXT14,CTXT15,CTXT16,CTXT21,CTXT22,CTXT23,CTXT24,CTXT25,CTXT26,CTXT31,CTXT32,CTXT33,CTXT34,CTXT35,CTXT36,CTXT41,CTXT42,CTXT43,CTXT44,CTXT45,CTXT46,CTXT51,CTXT52,CTXT53,CTXT54,CTXT55,CTXT56,CTXT61,CTXT62,CTXT63,CTXT64,CTXT65,CTXT66,CL_REFNO) values (" + ctx11 + ","+ctx12+","+ctx13+","+ctx14+","+ctx15+","+ctx16+","+ctx21+","+ctx22+","+ctx23+","+ctx24+","+ctx25+","+ctx26+","+ctx31+","+ctx32+","+ctx33+","+ctx34+","+ctx35+","+ctx36+","+ctx41+","+ctx42+","+ctx43+","+ctx44+","+ctx45+","+ctx46+","+ctx51+","+ctx52+","+ctx53+","+ctx54+","+ctx55+","+ctx56+ "," + ctx61 + "," + ctx62 + "," + ctx63 + "," + ctx64 + "," + ctx65 + "," + ctx66 + "," + ds1.Tables[0].Rows[i]["CL_REFNO"].ToString() + ")";
                         myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
                         myadapter1.Fill(ds2, "Cx_Cd109");
                         ds2.Dispose();
@@ -617,7 +662,9 @@ namespace PtrCma
             isEdited = "y";
             cmdSave.Enabled = true;
             cmdCancel.Enabled = true;
-            switch (e.RowIndex)
+			DataGridViewCell cell = gridViewCMA.Rows[e.RowIndex].Cells[e.ColumnIndex];
+			cell.Value = "";
+			switch (e.RowIndex)
             {
                 case 13:
                     if (NotifyMainFormToOpenChildFormDirector != null)
