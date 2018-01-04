@@ -109,31 +109,34 @@
             // txtDes
             // 
             this.txtDes.Location = new System.Drawing.Point(485, 140);
+            this.txtDes.MaxLength = 80;
             this.txtDes.Name = "txtDes";
             this.txtDes.Size = new System.Drawing.Size(263, 20);
-            this.txtDes.TabIndex = 5;
-            this.txtDes.Click += new System.EventHandler(this.txtDes_Click);
+            this.txtDes.TabIndex = 7;
             // 
             // txtSupplier
             // 
             this.txtSupplier.Location = new System.Drawing.Point(485, 166);
+            this.txtSupplier.MaxLength = 80;
             this.txtSupplier.Name = "txtSupplier";
             this.txtSupplier.Size = new System.Drawing.Size(263, 20);
-            this.txtSupplier.TabIndex = 6;
+            this.txtSupplier.TabIndex = 8;
             // 
             // txtCost
             // 
             this.txtCost.Location = new System.Drawing.Point(485, 192);
+            this.txtCost.MaxLength = 20;
             this.txtCost.Name = "txtCost";
             this.txtCost.Size = new System.Drawing.Size(263, 20);
-            this.txtCost.TabIndex = 7;
+            this.txtCost.TabIndex = 9;
             // 
             // txtCom
             // 
             this.txtCom.Location = new System.Drawing.Point(485, 218);
+            this.txtCom.MaxLength = 20;
             this.txtCom.Name = "txtCom";
             this.txtCom.Size = new System.Drawing.Size(263, 20);
-            this.txtCom.TabIndex = 8;
+            this.txtCom.TabIndex = 10;
             // 
             // picFrmClose
             // 
@@ -165,7 +168,7 @@
             this.cmdUpdate.Location = new System.Drawing.Point(486, 283);
             this.cmdUpdate.Name = "cmdUpdate";
             this.cmdUpdate.Size = new System.Drawing.Size(60, 30);
-            this.cmdUpdate.TabIndex = 28;
+            this.cmdUpdate.TabIndex = 3;
             this.cmdUpdate.Text = "Save";
             this.cmdUpdate.UseVisualStyleBackColor = true;
             this.cmdUpdate.Click += new System.EventHandler(this.cmdUpdate_Click);
@@ -175,7 +178,7 @@
             this.cmdEdit.Location = new System.Drawing.Point(423, 283);
             this.cmdEdit.Name = "cmdEdit";
             this.cmdEdit.Size = new System.Drawing.Size(50, 30);
-            this.cmdEdit.TabIndex = 27;
+            this.cmdEdit.TabIndex = 2;
             this.cmdEdit.Text = "Edit";
             this.cmdEdit.UseVisualStyleBackColor = true;
             this.cmdEdit.Click += new System.EventHandler(this.cmdEdit_Click);
@@ -185,7 +188,7 @@
             this.cmdAdd.Location = new System.Drawing.Point(360, 283);
             this.cmdAdd.Name = "cmdAdd";
             this.cmdAdd.Size = new System.Drawing.Size(50, 30);
-            this.cmdAdd.TabIndex = 26;
+            this.cmdAdd.TabIndex = 1;
             this.cmdAdd.Text = "Add";
             this.cmdAdd.UseVisualStyleBackColor = true;
             this.cmdAdd.Click += new System.EventHandler(this.cmdAdd_Click);
@@ -195,7 +198,7 @@
             this.cmdExit.Location = new System.Drawing.Point(695, 283);
             this.cmdExit.Name = "cmdExit";
             this.cmdExit.Size = new System.Drawing.Size(50, 30);
-            this.cmdExit.TabIndex = 25;
+            this.cmdExit.TabIndex = 6;
             this.cmdExit.Text = "Exit";
             this.cmdExit.UseVisualStyleBackColor = true;
             this.cmdExit.Click += new System.EventHandler(this.cmdExit_Click);
@@ -205,7 +208,7 @@
             this.cmdDel.Location = new System.Drawing.Point(559, 283);
             this.cmdDel.Name = "cmdDel";
             this.cmdDel.Size = new System.Drawing.Size(60, 30);
-            this.cmdDel.TabIndex = 24;
+            this.cmdDel.TabIndex = 4;
             this.cmdDel.Text = "Delete";
             this.cmdDel.UseVisualStyleBackColor = true;
             this.cmdDel.Click += new System.EventHandler(this.cmdDelete_Click);
@@ -215,7 +218,7 @@
             this.cmdCancel.Location = new System.Drawing.Point(632, 283);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(50, 30);
-            this.cmdCancel.TabIndex = 23;
+            this.cmdCancel.TabIndex = 5;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.UseVisualStyleBackColor = true;
             this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);

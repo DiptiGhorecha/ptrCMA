@@ -242,17 +242,6 @@ private void filltempTable()
             }
         }
 
-        private void txtName_Click(object sender, EventArgs e)
-        {
-            foreach (TextBox txt in Controls.OfType<TextBox>())
-            {
-                txt.Clear();
-                txt.Focus();
-                txt.Enabled = true;
-            }
-            cmdDel.Enabled = false;
-            cmdCancel.Enabled = true;
-        }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -271,15 +260,6 @@ private void filltempTable()
             {
                 NotifyMainFormToCloseChildFormDirector();
                 this.Hide();
-              //  fillgrid();
-              //  LoadDatatoTextBox();
-              //  cmdDel.Enabled = false;
-              //  cmdCancel.Enabled = false;
-             //   foreach (TextBox txt in Controls.OfType<TextBox>())
-            //    {
-            //        txt.Enabled = false;
-
-            //    }
             }
         }
 
@@ -379,6 +359,11 @@ private void filltempTable()
             isAddEdit = "E";
             lblData.Visible = true;
             lblData.Text = "EDIT";
+        }
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

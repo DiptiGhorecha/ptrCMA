@@ -68,12 +68,36 @@ namespace PtrCma
 
         }
 
+        void gridViewCMA_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+
+        {
+
+            if (e.Control is TextBox) //If it is a DataGridViewTextBoxCell
+
+            {
+
+                (e.Control as TextBox).MaxLength =250; //Set the MaxLength to 4
+
+            }
+
+        }
+
         private void FrmCMA_Load(object sender, EventArgs e)
         {
-            
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer, true); //Stop the Flickering
+            if (isEdited == "n") { 
+            
             this.KeyPreview = true; //To handle enter key
             Settings();
+            //  ((DataGridViewTextBoxColumn) gridViewCMA.Columns[11]).MaxInputLength = 250;
+            gridViewCMA.EditingControlShowing += new DataGridViewEditingControlShowingEventHandler(gridViewCMA_EditingControlShowing);
+            txtPrtyName.Enabled = false;
+            txtCurYear.Enabled = false;
+            comboBxYear.Enabled = false;
+            comboBoxCopyYear.Enabled = false;
+            comboBoxRsIn.Enabled = false;
+            cmdSave.Enabled = false;
+            cmdCancel.Enabled = false;
             checkTables();
             fillTopicListBox();
             lstViewTopic.Items[0].Selected = true;
@@ -88,8 +112,9 @@ namespace PtrCma
             comboBoxRsIn.SelectedIndex = comboBoxRsIn.FindStringExact("Rs");
             comboBxYear.SelectedIndex=comboBxYear.FindStringExact("4");
         }
+        }
 
-    
+
 
         private void setControlSize()
         {
@@ -353,6 +378,10 @@ namespace PtrCma
         private void cmdEdit_Click(object sender, EventArgs e)
         {
             isEdited = "y";
+            cmdSave.Enabled =true;
+            cmdCancel.Enabled = true;
+            gridViewCMA.CurrentCell = gridViewCMA.Rows[0].Cells[11];
+
         }
 
         private void cmdSave_Click(object sender, EventArgs e)
@@ -438,6 +467,112 @@ namespace PtrCma
                 ds1.Dispose();
 
 
+                //DETAIL BANKING
+                sqlTrunc = "DELETE FROM Cx_Cd102 WHERE CL_REFNO=" + Global.prtyCode;
+                myadapter = new OleDbDataAdapter();
+                ds11 = new DataSet();
+                myadapter.SelectCommand = new OleDbCommand(sqlTrunc, conn);
+                myadapter.Fill(ds11, "Cx_Cd102");
+                ds11.Dispose();
+
+                myadapter1 = new OleDbDataAdapter();
+                ds1 = new DataSet();
+                sql2 = "SELECT * FROM Cp_Cd102 WHERE [CL_REFNO]=" + Global.prtyCode + ";";
+                myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+                myadapter1.Fill(ds1, "Cp_Cd102");
+                if (ds1.Tables[0].Rows.Count > 0)
+                {
+                    for (int i = 0; i < ds1.Tables[0].Rows.Count; i++)
+                    {
+                        DataSet ds2 = new DataSet();
+                        sql2 = "INSERT INTO Cx_Cd102 (CTXT01,CTXT02,CTXT03,CTXT04,CL_REFNO) values ('" + ds1.Tables[0].Rows[i]["CTXT01"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT02"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT03"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT04"].ToString() + "'," + ds1.Tables[0].Rows[i]["CL_REFNO"].ToString() + ")";
+                        myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+                        myadapter1.Fill(ds2, "Cx_Cd102");
+                        ds2.Dispose();
+                    }
+                }
+                ds1.Dispose();
+
+                //DETAIL credit
+                sqlTrunc = "DELETE FROM Cx_Cd109 WHERE CL_REFNO=" + Global.prtyCode;
+                myadapter = new OleDbDataAdapter();
+                ds11 = new DataSet();
+                myadapter.SelectCommand = new OleDbCommand(sqlTrunc, conn);
+                myadapter.Fill(ds11, "Cx_Cd109");
+                ds11.Dispose();
+
+                myadapter1 = new OleDbDataAdapter();
+                ds1 = new DataSet();
+                sql2 = "SELECT * FROM Cp_Cd109 WHERE [CL_REFNO]=" + Global.prtyCode + ";";
+                myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+                myadapter1.Fill(ds1, "Cp_Cd109");
+                if (ds1.Tables[0].Rows.Count > 0)
+                {
+                    for (int i = 0; i < ds1.Tables[0].Rows.Count; i++)
+                    {
+                        DataSet ds2 = new DataSet();
+                        sql2 = "INSERT INTO Cx_Cd109 (CTXT11,CTXT12,CTXT13,CTXT14,CTXT15,CTXT16,CTXT21,CTXT22,CTXT23,CTXT24,CTXT25,CTXT26,CTXT31,CTXT32,CTXT33,CTXT34,CTXT35,CTXT36,CTXT41,CTXT42,CTXT43,CTXT44,CTXT45,CTXT46,CTXT51,CTXT52,CTXT53,CTXT54,CTXT55,CTXT56,CTXT61,CTXT62,CTXT63,CTXT64,CTXT65,CTXT66,CL_REFNO) values (" + ds1.Tables[0].Rows[i]["CTXT11"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT12"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT13"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT14"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT15"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT16"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT21"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT22"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT23"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT24"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT25"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT26"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT31"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT32"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT33"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT34"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT35"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT36"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT41"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT42"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT43"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT44"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT45"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT46"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT51"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT52"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT53"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT54"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT55"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT56"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT61"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT62"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT63"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT64"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT65"].ToString() + "," + ds1.Tables[0].Rows[i]["CTXT66"].ToString() + "," + ds1.Tables[0].Rows[i]["CL_REFNO"].ToString() + ")";
+                        myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+                        myadapter1.Fill(ds2, "Cx_Cd109");
+                        ds2.Dispose();
+                    }
+                }
+                ds1.Dispose();
+
+
+                //DETAIL Associates
+                sqlTrunc = "DELETE FROM Cx_Cd103 WHERE CL_REFNO=" + Global.prtyCode;
+                myadapter = new OleDbDataAdapter();
+                ds11 = new DataSet();
+                myadapter.SelectCommand = new OleDbCommand(sqlTrunc, conn);
+                myadapter.Fill(ds11, "Cx_Cd103");
+                ds11.Dispose();
+
+                myadapter1 = new OleDbDataAdapter();
+                ds1 = new DataSet();
+                sql2 = "SELECT * FROM Cp_Cd103 WHERE [CL_REFNO]=" + Global.prtyCode + ";";
+                myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+                myadapter1.Fill(ds1, "Cp_Cd103");
+                if (ds1.Tables[0].Rows.Count > 0)
+                {
+                    for (int i = 0; i < ds1.Tables[0].Rows.Count; i++)
+                    {
+                        DataSet ds2 = new DataSet();
+                        sql2 = "INSERT INTO Cx_Cd103 (CTXT01,CTXT02,CTXT03,CTXT04,CTXT05,CL_REFNO) values ('" + ds1.Tables[0].Rows[i]["CTXT01"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT02"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT03"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT04"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT05"].ToString() + "'," + ds1.Tables[0].Rows[i]["CL_REFNO"].ToString() + ")";
+                        myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+                        myadapter1.Fill(ds2, "Cx_Cd103");
+                        ds2.Dispose();
+                    }
+                }
+                ds1.Dispose();
+
+                //DETAIL Registration
+                sqlTrunc = "DELETE FROM Cx_Cd104 WHERE CL_REFNO=" + Global.prtyCode;
+                myadapter = new OleDbDataAdapter();
+                ds11 = new DataSet();
+                myadapter.SelectCommand = new OleDbCommand(sqlTrunc, conn);
+                myadapter.Fill(ds11, "Cx_Cd104");
+                ds11.Dispose();
+
+                myadapter1 = new OleDbDataAdapter();
+                ds1 = new DataSet();
+                sql2 = "SELECT * FROM Cp_Cd104 WHERE [CL_REFNO]=" + Global.prtyCode + ";";
+                myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+                myadapter1.Fill(ds1, "Cp_Cd104");
+                if (ds1.Tables[0].Rows.Count > 0)
+                {
+                    for (int i = 0; i < ds1.Tables[0].Rows.Count; i++)
+                    {
+                        DataSet ds2 = new DataSet();
+                        sql2 = "INSERT INTO Cx_Cd104 (CTXT01,CTXT02,CTXT03,CTXT04,CTXT05,CL_REFNO) values ('" + ds1.Tables[0].Rows[i]["CTXT01"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT02"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT03"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT04"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT05"].ToString() + "'," + ds1.Tables[0].Rows[i]["CL_REFNO"].ToString() + ")";
+                        myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+                        myadapter1.Fill(ds2, "Cx_Cd104");
+                        ds2.Dispose();
+                    }
+                }
+                ds1.Dispose();
+
+
                 conn.Close();
                 isEdited = "n";
                 MessageBox.Show(GlobalMsg.insertMsg, "Perfect Tax Reporter - CMA 1.0");
@@ -452,6 +587,8 @@ namespace PtrCma
         {
             isEdited = "n";
             fillCMSDataGrid();
+            cmdSave.Enabled = false;
+            cmdCancel.Enabled = false;
         }
 
         private void picFrmClose_Click(object sender, EventArgs e)
@@ -478,95 +615,178 @@ namespace PtrCma
         private void gridViewCMA_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             isEdited = "y";
-            if (e.RowIndex == 13)
+            cmdSave.Enabled = true;
+            cmdCancel.Enabled = true;
+            switch (e.RowIndex)
             {
-                if (NotifyMainFormToOpenChildFormDirector != null)
-                {
-                    NotifyMainFormToOpenChildFormDirector();
-                }
+                case 13:
+                    if (NotifyMainFormToOpenChildFormDirector != null)
+                    {
+                        NotifyMainFormToOpenChildFormDirector();
+                    }
+                    break;
+                case 14:
+                    if (NotifyMainFormToOpenChildFormBanking != null)
+                    {
+                        NotifyMainFormToOpenChildFormBanking();
+                    }
+                    break;
+                case 15:
+                    if (NotifyMainFormToOpenChildFormCredit != null)
+                    {
+                        NotifyMainFormToOpenChildFormCredit();
+                    }
+                    break;
+                case 16:
+                    if (NotifyMainFormToOpenChildFormAssociate != null)
+                    {
+                        NotifyMainFormToOpenChildFormAssociate();
+                    }
+                    break;
+                case 17:
+                    if (NotifyMainFormToOpenChildFormRegistration != null)
+                    {
+                        NotifyMainFormToOpenChildFormRegistration();
+                    }
+                    break;
+                case 18:
+                    if (NotifyMainFormToOpenChildFormPosition != null)
+                    {
+                        NotifyMainFormToOpenChildFormPosition();
+                    }
+                    break;
+                case 23:
+                    if (NotifyMainFormToOpenChildFormPurchase != null)
+                    {
+                        NotifyMainFormToOpenChildFormPurchase();
+                    }
+                    break;
+                case 30:
+                    if (NotifyMainFormToOpenChildFormBuyer != null)
+                    {
+                        NotifyMainFormToOpenChildFormBuyer();
+                    }
+                    break;
+                case 31:
+                    if (NotifyMainFormToOpenChildFormSales != null)
+                    {
+                        NotifyMainFormToOpenChildFormSales();
+                    }
+                    break;
+                case 35:
+                    if (NotifyMainFormToOpenChildFormParameter != null)
+                    {
+                        NotifyMainFormToOpenChildFormParameter();
+                    }
+                    break;
+                case 36:
+                    if (NotifyMainFormToOpenChildFormAssets != null)
+                    {
+                        NotifyMainFormToOpenChildFormAssets();
+                    }
+                    break;
+                case 37:
+                    if (NotifyMainFormToOpenChildFormProposed != null)
+                    {
+                        NotifyMainFormToOpenChildFormProposed();
+                    }
+                    break;
+                default:
+                    //optional 
+                    //statements 
+                    break;
             }
-            if(e.RowIndex == 14)
-            {
-                if(NotifyMainFormToOpenChildFormBanking !=null)
-                {
-                    NotifyMainFormToOpenChildFormBanking();
-                }
-            }
-            if (e.RowIndex == 15)
-            {
-                if (NotifyMainFormToOpenChildFormCredit != null)
-                {
-                    NotifyMainFormToOpenChildFormCredit();
-                }
-            }
-            if (e.RowIndex == 16)
-            {
-                if (NotifyMainFormToOpenChildFormAssociate != null)
-                {
-                    NotifyMainFormToOpenChildFormAssociate();
-                }
-            }
-            if (e.RowIndex == 17)
-            {
-                if (NotifyMainFormToOpenChildFormRegistration != null)
-                {
-                    NotifyMainFormToOpenChildFormRegistration();
-                }
-            }
-            if (e.RowIndex == 18)
-            {
-                if (NotifyMainFormToOpenChildFormPosition != null)
-                {
-                    NotifyMainFormToOpenChildFormPosition();
-                }
-            }
-            if (e.RowIndex == 23)
-            {
-                if (NotifyMainFormToOpenChildFormPurchase != null)
-                {
-                    NotifyMainFormToOpenChildFormPurchase();
-                }
-            }
-            if (e.RowIndex == 30)
-            {
-                if (NotifyMainFormToOpenChildFormBuyer != null)
-                {
-                    NotifyMainFormToOpenChildFormBuyer();
-                }
-            }
-            if (e.RowIndex == 31)
-            {
-                if (NotifyMainFormToOpenChildFormSales != null)
-                {
-                    NotifyMainFormToOpenChildFormSales();
-                }
-            }
-            if (e.RowIndex == 35)
-            {
-                if (NotifyMainFormToOpenChildFormParameter != null)
-                {
-                    NotifyMainFormToOpenChildFormParameter();
-                }
-            }
-            if (e.RowIndex == 36)
-            {
-                if (NotifyMainFormToOpenChildFormAssets != null)
-                {
-                    NotifyMainFormToOpenChildFormAssets();
-                }
-            }
-            if (e.RowIndex == 37)
-            {
-                if (NotifyMainFormToOpenChildFormProposed != null)
-                {
-                    NotifyMainFormToOpenChildFormProposed();
-                }
-            }
+            //if (e.RowIndex == 13)
+            //{
+            //    if (NotifyMainFormToOpenChildFormDirector != null)
+            //    {
+            //        NotifyMainFormToOpenChildFormDirector();
+            //    }
+            //}
+            //if(e.RowIndex == 14)
+            //{
+            //    if(NotifyMainFormToOpenChildFormBanking !=null)
+            //    {
+            //        NotifyMainFormToOpenChildFormBanking();
+            //    }
+            //}
+            //if (e.RowIndex == 15)
+            //{
+            //    if (NotifyMainFormToOpenChildFormCredit != null)
+            //    {
+            //        NotifyMainFormToOpenChildFormCredit();
+            //    }
+            //}
+            //if (e.RowIndex == 16)
+            //{
+            //    if (NotifyMainFormToOpenChildFormAssociate != null)
+            //    {
+            //        NotifyMainFormToOpenChildFormAssociate();
+            //    }
+            //}
+            //if (e.RowIndex == 17)
+            //{
+            //    if (NotifyMainFormToOpenChildFormRegistration != null)
+            //    {
+            //        NotifyMainFormToOpenChildFormRegistration();
+            //    }
+            //}
+            //if (e.RowIndex == 18)
+            //{
+            //    if (NotifyMainFormToOpenChildFormPosition != null)
+            //    {
+            //        NotifyMainFormToOpenChildFormPosition();
+            //    }
+            //}
+            //if (e.RowIndex == 23)
+            //{
+            //    if (NotifyMainFormToOpenChildFormPurchase != null)
+            //    {
+            //        NotifyMainFormToOpenChildFormPurchase();
+            //    }
+            //}
+            //if (e.RowIndex == 30)
+            //{
+            //    if (NotifyMainFormToOpenChildFormBuyer != null)
+            //    {
+            //        NotifyMainFormToOpenChildFormBuyer();
+            //    }
+            //}
+            //if (e.RowIndex == 31)
+            //{
+            //    if (NotifyMainFormToOpenChildFormSales != null)
+            //    {
+            //        NotifyMainFormToOpenChildFormSales();
+            //    }
+            //}
+            //if (e.RowIndex == 35)
+            //{
+            //    if (NotifyMainFormToOpenChildFormParameter != null)
+            //    {
+            //        NotifyMainFormToOpenChildFormParameter();
+            //    }
+            //}
+            //if (e.RowIndex == 36)
+            //{
+            //    if (NotifyMainFormToOpenChildFormAssets != null)
+            //    {
+            //        NotifyMainFormToOpenChildFormAssets();
+            //    }
+            //}
+            //if (e.RowIndex == 37)
+            //{
+            //    if (NotifyMainFormToOpenChildFormProposed != null)
+            //    {
+            //        NotifyMainFormToOpenChildFormProposed();
+            //    }
+            //}
 
         }
 
         private void gridViewCMA_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            cmdSave.Enabled = true;
+            cmdCancel.Enabled = true;
             var list = new List<int> { 13, 14, 15, 16, 17, 18, 23, 30, 31, 35, 36, 37, 40, 41, 42, 44, 45 };
             if (list.Contains(e.RowIndex) && e.ColumnIndex == 11)
             {

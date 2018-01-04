@@ -57,9 +57,10 @@
             // txtPan
             // 
             this.txtPan.Location = new System.Drawing.Point(347, 106);
+            this.txtPan.MaxLength = 20;
             this.txtPan.Name = "txtPan";
             this.txtPan.Size = new System.Drawing.Size(117, 20);
-            this.txtPan.TabIndex = 2;
+            this.txtPan.TabIndex = 1;
             // 
             // lblSales
             // 
@@ -96,37 +97,41 @@
             // txtSales
             // 
             this.txtSales.Location = new System.Drawing.Point(347, 131);
+            this.txtSales.MaxLength = 20;
             this.txtSales.Name = "txtSales";
             this.txtSales.Size = new System.Drawing.Size(117, 20);
-            this.txtSales.TabIndex = 7;
+            this.txtSales.TabIndex = 2;
             // 
             // txtService
             // 
             this.txtService.Location = new System.Drawing.Point(347, 157);
+            this.txtService.MaxLength = 20;
             this.txtService.Name = "txtService";
             this.txtService.Size = new System.Drawing.Size(117, 20);
-            this.txtService.TabIndex = 8;
+            this.txtService.TabIndex = 3;
             // 
             // txtExcise
             // 
             this.txtExcise.Location = new System.Drawing.Point(347, 182);
+            this.txtExcise.MaxLength = 20;
             this.txtExcise.Name = "txtExcise";
             this.txtExcise.Size = new System.Drawing.Size(117, 20);
-            this.txtExcise.TabIndex = 9;
+            this.txtExcise.TabIndex = 4;
             // 
             // txtOther
             // 
             this.txtOther.Location = new System.Drawing.Point(347, 207);
+            this.txtOther.MaxLength = 20;
             this.txtOther.Name = "txtOther";
             this.txtOther.Size = new System.Drawing.Size(117, 20);
-            this.txtOther.TabIndex = 10;
+            this.txtOther.TabIndex = 5;
             // 
             // cmdExit
             // 
             this.cmdExit.Location = new System.Drawing.Point(520, 257);
             this.cmdExit.Name = "cmdExit";
             this.cmdExit.Size = new System.Drawing.Size(49, 23);
-            this.cmdExit.TabIndex = 11;
+            this.cmdExit.TabIndex = 6;
             this.cmdExit.Text = "Exit";
             this.cmdExit.UseVisualStyleBackColor = true;
             this.cmdExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -138,7 +143,7 @@
             this.picFrmClose.Image = global::PtrCma.Properties.Resources.close;
             this.picFrmClose.Location = new System.Drawing.Point(697, 21);
             this.picFrmClose.Name = "picFrmClose";
-            this.picFrmClose.Size = new System.Drawing.Size(25, 30);
+            this.picFrmClose.Size = new System.Drawing.Size(32, 32);
             this.picFrmClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picFrmClose.TabIndex = 39;
             this.picFrmClose.TabStop = false;

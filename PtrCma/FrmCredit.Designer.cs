@@ -136,7 +136,7 @@
             this.lblTeam.Name = "lblTeam";
             this.lblTeam.Size = new System.Drawing.Size(73, 20);
             this.lblTeam.TabIndex = 4;
-            this.lblTeam.Text = "Team Loan";
+            this.lblTeam.Text = "Term Loan";
             this.lblTeam.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblLC
@@ -193,6 +193,7 @@
             this.txtFTotal.Name = "txtFTotal";
             this.txtFTotal.Size = new System.Drawing.Size(100, 20);
             this.txtFTotal.TabIndex = 11;
+            this.txtFTotal.TextChanged += new System.EventHandler(this.txtFTotal_TextChanged);
             // 
             // txtNTotal
             // 
@@ -365,7 +366,7 @@
             this.lblTeam1.Name = "lblTeam1";
             this.lblTeam1.Size = new System.Drawing.Size(73, 20);
             this.lblTeam1.TabIndex = 31;
-            this.lblTeam1.Text = "Team Loan";
+            this.lblTeam1.Text = "Term Loan";
             this.lblTeam1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblPC1
@@ -561,7 +562,7 @@
             this.pictureBox1.Image = global::PtrCma.Properties.Resources.close;
             this.pictureBox1.Location = new System.Drawing.Point(842, 20);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(25, 30);
+            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 78;
             this.pictureBox1.TabStop = false;
@@ -647,6 +648,7 @@
             this.Name = "FrmCredit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "FrmCredit";
+            this.Activated += new System.EventHandler(this.FrmCredit_Load);
             this.Load += new System.EventHandler(this.FrmCredit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictitle)).EndInit();

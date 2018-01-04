@@ -40,11 +40,16 @@
             this.txtLimit = new System.Windows.Forms.TextBox();
             this.txtOutstanding = new System.Windows.Forms.TextBox();
             this.txtSince = new System.Windows.Forms.TextBox();
-            this.cmdExit = new System.Windows.Forms.Button();
-            this.cmdDelete = new System.Windows.Forms.Button();
-            this.cmdAdd = new System.Windows.Forms.Button();
             this.pictitle = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.cmdUpdate = new System.Windows.Forms.Button();
+            this.cmdEdit = new System.Windows.Forms.Button();
+            this.cmdAdd = new System.Windows.Forms.Button();
+            this.cmdExit = new System.Windows.Forms.Button();
+            this.cmdDel = new System.Windows.Forms.Button();
+            this.cmdCancel = new System.Windows.Forms.Button();
+            this.lblData = new System.Windows.Forms.Label();
+            this.txtRef = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdBanking)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictitle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -60,11 +65,11 @@
             this.grdBanking.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.grdBanking.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.grdBanking.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdBanking.Location = new System.Drawing.Point(33, 118);
+            this.grdBanking.Location = new System.Drawing.Point(25, 118);
             this.grdBanking.Name = "grdBanking";
             this.grdBanking.RowHeadersVisible = false;
             this.grdBanking.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.grdBanking.Size = new System.Drawing.Size(258, 200);
+            this.grdBanking.Size = new System.Drawing.Size(266, 200);
             this.grdBanking.TabIndex = 1;
             this.grdBanking.TabStop = false;
             this.grdBanking.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdBanking_CellClick);
@@ -112,68 +117,42 @@
             // txtBank
             // 
             this.txtBank.Location = new System.Drawing.Point(503, 157);
+            this.txtBank.MaxLength = 80;
             this.txtBank.Name = "txtBank";
-            this.txtBank.Size = new System.Drawing.Size(220, 20);
+            this.txtBank.Size = new System.Drawing.Size(240, 20);
             this.txtBank.TabIndex = 7;
-            this.txtBank.Click += new System.EventHandler(this.txtBank_Click);
             // 
             // txtFacility
             // 
             this.txtFacility.Location = new System.Drawing.Point(503, 182);
+            this.txtFacility.MaxLength = 80;
             this.txtFacility.Name = "txtFacility";
-            this.txtFacility.Size = new System.Drawing.Size(220, 20);
+            this.txtFacility.Size = new System.Drawing.Size(240, 20);
             this.txtFacility.TabIndex = 8;
             // 
             // txtLimit
             // 
             this.txtLimit.Location = new System.Drawing.Point(503, 207);
+            this.txtLimit.MaxLength = 40;
             this.txtLimit.Name = "txtLimit";
-            this.txtLimit.Size = new System.Drawing.Size(220, 20);
+            this.txtLimit.Size = new System.Drawing.Size(240, 20);
             this.txtLimit.TabIndex = 9;
             // 
             // txtOutstanding
             // 
             this.txtOutstanding.Location = new System.Drawing.Point(503, 232);
+            this.txtOutstanding.MaxLength = 40;
             this.txtOutstanding.Name = "txtOutstanding";
-            this.txtOutstanding.Size = new System.Drawing.Size(220, 20);
+            this.txtOutstanding.Size = new System.Drawing.Size(240, 20);
             this.txtOutstanding.TabIndex = 10;
             // 
             // txtSince
             // 
             this.txtSince.Location = new System.Drawing.Point(503, 257);
+            this.txtSince.MaxLength = 40;
             this.txtSince.Name = "txtSince";
-            this.txtSince.Size = new System.Drawing.Size(220, 20);
+            this.txtSince.Size = new System.Drawing.Size(240, 20);
             this.txtSince.TabIndex = 11;
-            // 
-            // cmdExit
-            // 
-            this.cmdExit.Location = new System.Drawing.Point(686, 329);
-            this.cmdExit.Name = "cmdExit";
-            this.cmdExit.Size = new System.Drawing.Size(40, 23);
-            this.cmdExit.TabIndex = 19;
-            this.cmdExit.Text = "Exit";
-            this.cmdExit.UseVisualStyleBackColor = true;
-            this.cmdExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // cmdDelete
-            // 
-            this.cmdDelete.Location = new System.Drawing.Point(604, 329);
-            this.cmdDelete.Name = "cmdDelete";
-            this.cmdDelete.Size = new System.Drawing.Size(47, 23);
-            this.cmdDelete.TabIndex = 18;
-            this.cmdDelete.Text = "Delete";
-            this.cmdDelete.UseVisualStyleBackColor = true;
-            this.cmdDelete.Click += new System.EventHandler(this.cmdDelete_Click);
-            // 
-            // cmdAdd
-            // 
-            this.cmdAdd.Location = new System.Drawing.Point(533, 329);
-            this.cmdAdd.Name = "cmdAdd";
-            this.cmdAdd.Size = new System.Drawing.Size(39, 23);
-            this.cmdAdd.TabIndex = 17;
-            this.cmdAdd.Text = "Add";
-            this.cmdAdd.UseVisualStyleBackColor = true;
-            this.cmdAdd.Click += new System.EventHandler(this.cmdAdd_Click);
             // 
             // pictitle
             // 
@@ -194,22 +173,105 @@
             this.pictureBox1.Image = global::PtrCma.Properties.Resources.close;
             this.pictureBox1.Location = new System.Drawing.Point(713, 23);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(25, 30);
+            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 22;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // cmdUpdate
+            // 
+            this.cmdUpdate.Location = new System.Drawing.Point(505, 324);
+            this.cmdUpdate.Name = "cmdUpdate";
+            this.cmdUpdate.Size = new System.Drawing.Size(60, 30);
+            this.cmdUpdate.TabIndex = 25;
+            this.cmdUpdate.Text = "Save";
+            this.cmdUpdate.UseVisualStyleBackColor = true;
+            this.cmdUpdate.Click += new System.EventHandler(this.cmdUpdate_Click);
+            // 
+            // cmdEdit
+            // 
+            this.cmdEdit.Location = new System.Drawing.Point(449, 324);
+            this.cmdEdit.Name = "cmdEdit";
+            this.cmdEdit.Size = new System.Drawing.Size(50, 30);
+            this.cmdEdit.TabIndex = 24;
+            this.cmdEdit.Text = "Edit";
+            this.cmdEdit.UseVisualStyleBackColor = true;
+            this.cmdEdit.Click += new System.EventHandler(this.cmdEdit_Click);
+            // 
+            // cmdAdd
+            // 
+            this.cmdAdd.Location = new System.Drawing.Point(393, 324);
+            this.cmdAdd.Name = "cmdAdd";
+            this.cmdAdd.Size = new System.Drawing.Size(50, 30);
+            this.cmdAdd.TabIndex = 23;
+            this.cmdAdd.Text = "Add";
+            this.cmdAdd.UseVisualStyleBackColor = true;
+            this.cmdAdd.Click += new System.EventHandler(this.cmdAdd_Click);
+            // 
+            // cmdExit
+            // 
+            this.cmdExit.Location = new System.Drawing.Point(693, 324);
+            this.cmdExit.Name = "cmdExit";
+            this.cmdExit.Size = new System.Drawing.Size(50, 30);
+            this.cmdExit.TabIndex = 28;
+            this.cmdExit.Text = "Exit";
+            this.cmdExit.UseVisualStyleBackColor = true;
+            this.cmdExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // cmdDel
+            // 
+            this.cmdDel.Location = new System.Drawing.Point(571, 324);
+            this.cmdDel.Name = "cmdDel";
+            this.cmdDel.Size = new System.Drawing.Size(60, 30);
+            this.cmdDel.TabIndex = 26;
+            this.cmdDel.Text = "Delete";
+            this.cmdDel.UseVisualStyleBackColor = true;
+            this.cmdDel.Click += new System.EventHandler(this.cmdDelete_Click);
+            // 
+            // cmdCancel
+            // 
+            this.cmdCancel.Location = new System.Drawing.Point(637, 324);
+            this.cmdCancel.Name = "cmdCancel";
+            this.cmdCancel.Size = new System.Drawing.Size(50, 30);
+            this.cmdCancel.TabIndex = 27;
+            this.cmdCancel.Text = "Cancel";
+            this.cmdCancel.UseVisualStyleBackColor = true;
+            this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
+            // 
+            // lblData
+            // 
+            this.lblData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblData.Location = new System.Drawing.Point(472, 93);
+            this.lblData.Name = "lblData";
+            this.lblData.Size = new System.Drawing.Size(108, 12);
+            this.lblData.TabIndex = 48;
+            this.lblData.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblData.Visible = false;
+            // 
+            // txtRef
+            // 
+            this.txtRef.Location = new System.Drawing.Point(25, 71);
+            this.txtRef.Name = "txtRef";
+            this.txtRef.Size = new System.Drawing.Size(100, 20);
+            this.txtRef.TabIndex = 49;
+            this.txtRef.Visible = false;
+            // 
             // FrmBankingArrangements
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(770, 380);
+            this.ClientSize = new System.Drawing.Size(770, 373);
+            this.Controls.Add(this.txtRef);
+            this.Controls.Add(this.lblData);
+            this.Controls.Add(this.cmdUpdate);
+            this.Controls.Add(this.cmdEdit);
+            this.Controls.Add(this.cmdAdd);
+            this.Controls.Add(this.cmdExit);
+            this.Controls.Add(this.cmdDel);
+            this.Controls.Add(this.cmdCancel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictitle);
-            this.Controls.Add(this.cmdExit);
-            this.Controls.Add(this.cmdDelete);
-            this.Controls.Add(this.cmdAdd);
             this.Controls.Add(this.txtSince);
             this.Controls.Add(this.txtOutstanding);
             this.Controls.Add(this.txtLimit);
@@ -249,10 +311,15 @@
         private System.Windows.Forms.TextBox txtLimit;
         private System.Windows.Forms.TextBox txtOutstanding;
         private System.Windows.Forms.TextBox txtSince;
-        private System.Windows.Forms.Button cmdExit;
-        private System.Windows.Forms.Button cmdDelete;
-        private System.Windows.Forms.Button cmdAdd;
         private System.Windows.Forms.PictureBox pictitle;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button cmdUpdate;
+        private System.Windows.Forms.Button cmdEdit;
+        private System.Windows.Forms.Button cmdAdd;
+        private System.Windows.Forms.Button cmdExit;
+        private System.Windows.Forms.Button cmdDel;
+        private System.Windows.Forms.Button cmdCancel;
+        private System.Windows.Forms.Label lblData;
+        private System.Windows.Forms.TextBox txtRef;
     }
 }

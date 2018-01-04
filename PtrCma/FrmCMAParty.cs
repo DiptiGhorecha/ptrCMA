@@ -747,7 +747,7 @@ namespace PtrCma
             dataAdapter.Fill(ds, "Cd_MsCln");
             grdViewParty.DataMember = "Cd_MsCln";
             grdViewParty.DataSource = ds;
-            grdViewParty.Focus();
+           // grdViewParty.Focus();
             con.Close();
         }
 
@@ -758,7 +758,8 @@ namespace PtrCma
             if (ctrl is TextBox)
             {
                 if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
-                {
+                //    if (e.KeyCode == Keys.Enter)
+                    {
                     this.SelectNextControl(ctrl, true, true, true, true);
                 }
                 else if (e.KeyCode == Keys.Up)
@@ -818,8 +819,11 @@ namespace PtrCma
         }
 
         private void grdViewParty_KeyDown(object sender, KeyEventArgs e)
-        {   if (grdViewParty.CurrentRow.Index < grdViewParty.RowCount - 1)
-            {
+        {
+
+           if (grdViewParty.CurrentRow.Index < grdViewParty.RowCount - 1)
+           //     if (grdViewParty.RowCount > 0)
+                {
                 if (e.KeyCode.Equals(Keys.Enter))
                 {
                     if (grdViewParty.RowCount > 0)    // No Crashing problem when there is no data in gridview
@@ -850,6 +854,11 @@ namespace PtrCma
         }
 
         private void grdViewParty_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void txtFind_TextChanged(object sender, EventArgs e)
         {
 
         }

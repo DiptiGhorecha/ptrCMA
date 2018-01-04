@@ -117,14 +117,16 @@
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(477, 136);
+            this.txtName.MaxLength = 80;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(241, 20);
             this.txtName.TabIndex = 7;
-            this.txtName.Click += new System.EventHandler(this.txtName_Click);
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // txtAge
             // 
             this.txtAge.Location = new System.Drawing.Point(477, 159);
+            this.txtAge.MaxLength = 40;
             this.txtAge.Name = "txtAge";
             this.txtAge.Size = new System.Drawing.Size(241, 20);
             this.txtAge.TabIndex = 8;
@@ -132,6 +134,7 @@
             // txtPan
             // 
             this.txtPan.Location = new System.Drawing.Point(477, 182);
+            this.txtPan.MaxLength = 40;
             this.txtPan.Name = "txtPan";
             this.txtPan.Size = new System.Drawing.Size(241, 20);
             this.txtPan.TabIndex = 9;
@@ -139,6 +142,7 @@
             // txtAdd
             // 
             this.txtAdd.Location = new System.Drawing.Point(477, 205);
+            this.txtAdd.MaxLength = 150;
             this.txtAdd.Name = "txtAdd";
             this.txtAdd.Size = new System.Drawing.Size(241, 20);
             this.txtAdd.TabIndex = 10;
@@ -225,6 +229,7 @@
             // txtPhone
             // 
             this.txtPhone.Location = new System.Drawing.Point(477, 228);
+            this.txtPhone.MaxLength = 40;
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(241, 20);
             this.txtPhone.TabIndex = 11;
@@ -232,6 +237,7 @@
             // txtNet
             // 
             this.txtNet.Location = new System.Drawing.Point(477, 251);
+            this.txtNet.MaxLength = 40;
             this.txtNet.Name = "txtNet";
             this.txtNet.Size = new System.Drawing.Size(241, 20);
             this.txtNet.TabIndex = 12;
