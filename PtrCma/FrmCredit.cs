@@ -103,6 +103,7 @@ namespace PtrCma
         {
             try
             {
+
                 OleDbConnection conn = new OleDbConnection(connectionString);
                 string sqlTrunc = "DELETE FROM Cp_Cd109";
                 OleDbDataAdapter myadapter = new OleDbDataAdapter();
