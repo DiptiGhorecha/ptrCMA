@@ -617,8 +617,86 @@ namespace PtrCma
                 }
                 ds1.Dispose();
 
+				//DETAIL Position Incometax
+				sqlTrunc = "DELETE FROM Cx_Cd119 WHERE CL_REFNO=" + Global.prtyCode;
+				myadapter = new OleDbDataAdapter();
+				ds11 = new DataSet();
+				myadapter.SelectCommand = new OleDbCommand(sqlTrunc, conn);
+				myadapter.Fill(ds11, "Cx_Cd119");
+				ds11.Dispose();
 
-                conn.Close();
+				myadapter1 = new OleDbDataAdapter();
+				ds1 = new DataSet();
+				sql2 = "SELECT * FROM Cp_Cd119 WHERE [CL_REFNO]=" + Global.prtyCode + ";";
+				myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+				myadapter1.Fill(ds1, "Cp_Cd119");
+				if (ds1.Tables[0].Rows.Count > 0)
+				{
+					for (int i = 0; i < ds1.Tables[0].Rows.Count; i++)
+					{
+						DataSet ds2 = new DataSet();
+						sql2 = "INSERT INTO Cx_Cd119 (CTXT01,CTXT02,CTXT03,CTXT04,CTXT05,CL_REFNO) values ('" + ds1.Tables[0].Rows[i]["CTXT01"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT02"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT03"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT04"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT05"].ToString() + "'," + ds1.Tables[0].Rows[i]["CL_REFNO"].ToString() + ")";
+						myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+						myadapter1.Fill(ds2, "Cx_Cd119");
+						ds2.Dispose();
+					}
+				}
+				ds1.Dispose();
+
+				//DETAIL Position Incometax
+				sqlTrunc = "DELETE FROM Cx_Cd107 WHERE CL_REFNO=" + Global.prtyCode;
+				myadapter = new OleDbDataAdapter();
+				ds11 = new DataSet();
+				myadapter.SelectCommand = new OleDbCommand(sqlTrunc, conn);
+				myadapter.Fill(ds11, "Cx_Cd107");
+				ds11.Dispose();
+
+				myadapter1 = new OleDbDataAdapter();
+				ds1 = new DataSet();
+				sql2 = "SELECT * FROM Cp_Cd107 WHERE [CL_REFNO]=" + Global.prtyCode + ";";
+				myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+				myadapter1.Fill(ds1, "Cp_Cd107");
+				if (ds1.Tables[0].Rows.Count > 0)
+				{
+					for (int i = 0; i < ds1.Tables[0].Rows.Count; i++)
+					{
+						DataSet ds2 = new DataSet();
+						sql2 = "INSERT INTO Cx_Cd107 (CTXT01,CTXT02,CTXT03,CTXT04,CTXT05,CTXT06,CL_REFNO) values ('" + ds1.Tables[0].Rows[i]["CTXT01"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT02"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT03"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT04"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT05"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT06"].ToString() + "'," + ds1.Tables[0].Rows[i]["CL_REFNO"].ToString() + ")";
+						myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+						myadapter1.Fill(ds2, "Cx_Cd107");
+						ds2.Dispose();
+					}
+				}
+				ds1.Dispose();
+
+				//DETAIL PURCHASE
+				sqlTrunc = "DELETE FROM Cx_Cd105 WHERE CL_REFNO=" + Global.prtyCode;
+				myadapter = new OleDbDataAdapter();
+				ds11 = new DataSet();
+				myadapter.SelectCommand = new OleDbCommand(sqlTrunc, conn);
+				myadapter.Fill(ds11, "Cx_Cd105");
+				ds11.Dispose();
+
+				myadapter1 = new OleDbDataAdapter();
+				ds1 = new DataSet();
+				sql2 = "SELECT * FROM Cp_Cd105 WHERE [CL_REFNO]=" + Global.prtyCode + ";";
+				myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+				myadapter1.Fill(ds1, "Cp_Cd105");
+				if (ds1.Tables[0].Rows.Count > 0)
+				{
+					for (int i = 0; i < ds1.Tables[0].Rows.Count; i++)
+					{
+						DataSet ds2 = new DataSet();
+						sql2 = "INSERT INTO Cx_Cd105 (CTXT01,CTXT02,CTXT03,CTXT04,CTXT05,CTXT06,CTXT07,CTXT08,CL_REFNO) values ('" + ds1.Tables[0].Rows[i]["CTXT01"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT02"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT03"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT04"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT05"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT06"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT07"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT08"].ToString() + "'," + ds1.Tables[0].Rows[i]["CL_REFNO"].ToString() + ")";
+						myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+						myadapter1.Fill(ds2, "Cx_Cd105");
+						ds2.Dispose();
+					}
+				}
+				ds1.Dispose();
+
+
+				conn.Close();
                 isEdited = "n";
                 MessageBox.Show(GlobalMsg.insertMsg, "Perfect Tax Reporter - CMA 1.0");
             }

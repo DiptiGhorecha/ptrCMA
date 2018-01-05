@@ -154,11 +154,11 @@ namespace PtrCma
             myadapter.Fill(ds1, "Cp_Cd104");
             if (ds1.Tables[0].Rows.Count > 0)
             {
-                sql = "update Cp_Cd104 set CTXT01=" + txtPan.Text + ",CTXT02=" + txtSales.Text + ",CTXT03=" + txtService.Text + ",CTXT04=" + txtExcise.Text + ",CTXT05=" + txtOther.Text + ", where CL_REFNO=" + Global.prtyCode;
+                sql = "update Cp_Cd104 set CTXT01='" + txtPan.Text + "',CTXT02='" + txtSales.Text + "',CTXT03='" + txtService.Text + "',CTXT04='" + txtExcise.Text + "',CTXT05='" + txtOther.Text + "', where CL_REFNO=" + Global.prtyCode;
             }
             else
             {
-                sql = "insert into Cp_Cd104(CTXT01,CTXT02,CTXT03,CTXT04,CTXT05,CL_REFNO) values (" + txtPan.Text + "," + txtSales.Text + "," + txtService.Text + "," + txtExcise.Text + "," + txtOther.Text + "," + Global.prtyCode + ")";
+                sql = "insert into Cp_Cd104(CTXT01,CTXT02,CTXT03,CTXT04,CTXT05,CL_REFNO) values ('" + txtPan.Text + "','" + txtSales.Text + "','" + txtService.Text + "','" + txtExcise.Text + "','" + txtOther.Text + "'," + Global.prtyCode + ")";
 
             }
             myadapter.SelectCommand = new OleDbCommand(sql, con);
