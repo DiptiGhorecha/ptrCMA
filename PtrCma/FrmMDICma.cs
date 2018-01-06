@@ -45,7 +45,18 @@ namespace PtrCma
         public FrmDeatilAssets frmAssets;
         public Action NotifyMainFormToCloseChildFormProposed;          // Proposed Form
         public FrmProposedExpenditure frmProposed;
-
+        public Action NotifyMainFormToCloseChildFormImmovable;          // Immovable property
+        public FrmImmovableSecurities frmImmovable;
+        public Action NotifyMainFormToCloseChildFormMovable;          // Movable property
+        public FrmMovable frmMovable;
+        public Action NotifyMainFormToCloseChildFormGuarantor;          // Guarantor
+        public FrmGuarantor frmGuarantor;
+        public Action NotifyMainFormToCloseChildFormDeclaration;          // Declaration
+        public FrmDeclaration frmDeclaration;
+        public Action NotifyMainFormToCloseChildFormDocuments;          // Documents
+        public FrmDocuments frmDocuments;
+        public Action NotifyMainFormToCloseChildFormYear;          // current year
+        public FrmYears frmYear;
         private FrmMainCma frmMain;
         private FrmCMA frmCmaa;
         
@@ -128,7 +139,12 @@ namespace PtrCma
             frmCmaa.NotifyMainFormToOpenChildFormParameter += NotifyMainFormToOpenFormParameter;   //Use to open Parameter Past Form
             frmCmaa.NotifyMainFormToOpenChildFormAssets += NotifyMainFormToOpenFormAssets;   //Use to open Detail Assets Form
             frmCmaa.NotifyMainFormToOpenChildFormProposed += NotifyMainFormToOpenFormProposed;   //Use to open Proposed Expenditure Form
-
+            frmCmaa.NotifyMainFormToOpenChildFormImmovable += NotifyMainFormToOpenFormImmovable;   //Use to open Immovable Securities
+            frmCmaa.NotifyMainFormToOpenChildFormMovable += NotifyMainFormToOpenFormMovable;   //Use to open Movable Securities
+            frmCmaa.NotifyMainFormToOpenChildFormGuarantor += NotifyMainFormToOpenFormGuarantor;   //Use to open Movable Securities
+            frmCmaa.NotifyMainFormToOpenChildFormDeclaration += NotifyMainFormToOpenFormDeclaration;   //Use to open Movable Securities
+            frmCmaa.NotifyMainFormToOpenChildFormDocuments += NotifyMainFormToOpenFormDocuments;   //Use to open Movable Securities
+            frmCmaa.NotifyMainFormToOpenChildFormYear += NotifyMainFormToOpenFormYear;   //Use to open current year
 
             frmMain = new FrmMainCma();
             frmMain.MdiParent = this;
@@ -209,6 +225,121 @@ namespace PtrCma
             frmProposed.Location = new Point(this.Location.X + (this.Width - frmProposed.Width) / 2, (frmProposed.Location.Y + (this.Height - frmProposed.Height) / 2) + 20);
             frmProposed.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
             frmProposed.NotifyMainFormToCloseChildFormProposed += NotifyMainFormToCloseFormProposed;
+
+            frmImmovable = new FrmImmovableSecurities();
+            frmImmovable.MdiParent = this;
+            frmImmovable.Location = new Point(this.Location.X + (this.Width - frmImmovable.Width) / 2, (frmImmovable.Location.Y + (this.Height - frmProposed.Height) / 2) + 20);
+            frmImmovable.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
+            frmImmovable.NotifyMainFormToCloseChildFormImmovable += NotifyMainFormToCloseFormImmovable;
+
+            frmMovable = new FrmMovable();
+            frmMovable.MdiParent = this;
+            frmMovable.Location = new Point(this.Location.X + (this.Width - frmMovable.Width) / 2, (frmMovable.Location.Y + (this.Height - frmMovable.Height) / 2) + 20);
+            frmMovable.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
+            frmMovable.NotifyMainFormToCloseChildFormMovable += NotifyMainFormToCloseFormMovable;
+
+            frmGuarantor = new FrmGuarantor();
+            frmGuarantor.MdiParent = this;
+            frmGuarantor.Location = new Point(this.Location.X + (this.Width - frmGuarantor.Width) / 2, (frmGuarantor.Location.Y + (this.Height - frmGuarantor.Height) / 2) + 20);
+            frmGuarantor.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
+            frmGuarantor.NotifyMainFormToCloseChildFormGuarantor += NotifyMainFormToCloseFormGuarantor;
+
+            frmDeclaration = new FrmDeclaration();
+            frmDeclaration.MdiParent = this;
+            frmDeclaration.Location = new Point(this.Location.X + (this.Width - frmDeclaration.Width) / 2, (frmDeclaration.Location.Y + (this.Height - frmDeclaration.Height) / 2) + 20);
+            frmDeclaration.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
+            frmDeclaration.NotifyMainFormToCloseChildFormDeclaration += NotifyMainFormToCloseFormDeclaration;
+
+            frmDocuments = new FrmDocuments();
+            frmDocuments.MdiParent = this;
+            frmDocuments.Location = new Point(this.Location.X + (this.Width - frmDocuments.Width) / 2, (frmDocuments.Location.Y + (this.Height - frmDocuments.Height) / 2) + 20);
+            frmDocuments.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
+            frmDocuments.NotifyMainFormToCloseChildFormDocuments += NotifyMainFormToCloseFormDocuments;
+
+            frmYear = new FrmYears();
+            frmYear.MdiParent = this;
+            frmYear.Location = new Point(this.Location.X + (this.Width - frmYear.Width) / 2, (frmYear.Location.Y + (this.Height - frmYear.Height) / 2) + 20);
+            frmYear.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
+            frmYear.NotifyMainFormToCloseChildFormYear += NotifyMainFormToCloseFormYear;
+
+        }
+
+        // Form Current Year
+        private void NotifyMainFormToOpenFormYear()
+        {
+            frmMain.Enabled = false;
+            frmCmaa.Enabled = false;
+            frmYear.Show();
+        }
+        private void NotifyMainFormToCloseFormYear()
+        {
+            frmMain.Enabled = true;
+            frmCmaa.Enabled = true;
+        }
+        // Form Declaration
+        private void NotifyMainFormToOpenFormDeclaration()
+        {
+            frmMain.Enabled = false;
+            frmCmaa.Enabled = false;
+            frmDeclaration.Show();
+        }
+        private void NotifyMainFormToCloseFormDeclaration()
+        {
+            frmMain.Enabled = true;
+            frmCmaa.Enabled = true;
+        }
+
+        // Form Documents
+        private void NotifyMainFormToOpenFormDocuments()
+        {
+            frmMain.Enabled = false;
+            frmCmaa.Enabled = false;
+            frmDocuments.Show();
+        }
+        private void NotifyMainFormToCloseFormDocuments()
+        {
+            frmMain.Enabled = true;
+            frmCmaa.Enabled = true;
+        }
+
+
+        // Form Guarantor
+        private void NotifyMainFormToOpenFormGuarantor()
+        {
+            frmMain.Enabled = false;
+            frmCmaa.Enabled = false;
+            frmGuarantor.Show();
+        }
+        private void NotifyMainFormToCloseFormGuarantor()
+        {
+            frmMain.Enabled = true;
+            frmCmaa.Enabled = true;
+        }
+
+        // Form Movable Property
+        private void NotifyMainFormToOpenFormMovable()
+        {
+            frmMain.Enabled = false;
+            frmCmaa.Enabled = false;
+            frmMovable.Show();
+        }
+        private void NotifyMainFormToCloseFormMovable()
+        {
+            frmMain.Enabled = true;
+            frmCmaa.Enabled = true;
+        }
+
+        // Form Immovable Property
+        private void NotifyMainFormToOpenFormImmovable()
+        {
+            frmMain.Enabled = false;
+            frmCmaa.Enabled = false;
+            frmImmovable.Show();
+        }
+        private void NotifyMainFormToCloseFormImmovable()
+        {
+            frmMain.Enabled = true;
+            frmCmaa.Enabled = true;
         }
 
         // Form Proposed Expenditure

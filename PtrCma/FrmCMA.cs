@@ -30,6 +30,12 @@ namespace PtrCma
         public Action NotifyMainFormToOpenChildFormParameter;
         public Action NotifyMainFormToOpenChildFormAssets;
         public Action NotifyMainFormToOpenChildFormProposed;
+        public Action NotifyMainFormToOpenChildFormImmovable;
+        public Action NotifyMainFormToOpenChildFormMovable;
+        public Action NotifyMainFormToOpenChildFormGuarantor;
+        public Action NotifyMainFormToOpenChildFormDeclaration;
+        public Action NotifyMainFormToOpenChildFormDocuments;
+        public Action NotifyMainFormToOpenChildFormYear;
         String connectionString = "Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " + Application.StartupPath + "\\Resources\\PtrCma.accdb;";  //Connection String
         OleDbConnection con;
         OleDbCommand cmd;
@@ -695,8 +701,191 @@ namespace PtrCma
 				}
 				ds1.Dispose();
 
+				//DETAIL Parameter
+				sqlTrunc = "DELETE FROM Cx_Cd108 WHERE CL_REFNO=" + Global.prtyCode;
+				myadapter = new OleDbDataAdapter();
+				ds11 = new DataSet();
+				myadapter.SelectCommand = new OleDbCommand(sqlTrunc, conn);
+				myadapter.Fill(ds11, "Cx_Cd108");
+				ds11.Dispose();
 
-				conn.Close();
+				myadapter1 = new OleDbDataAdapter();
+				ds1 = new DataSet();
+				sql2 = "SELECT * FROM Cp_Cd108 WHERE [CL_REFNO]=" + Global.prtyCode + ";";
+				myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+				myadapter1.Fill(ds1, "Cp_Cd108");
+				if (ds1.Tables[0].Rows.Count > 0)
+				{
+					for (int i = 0; i < ds1.Tables[0].Rows.Count; i++)
+					{
+						DataSet ds2 = new DataSet();
+						sql2 = "INSERT INTO Cx_Cd108 (CTXT01,CTXT02,CTXT03,CTXT04,CTXT05,CTXT06,CTXT07,CTXT08,CTXT09,CTXT10,CL_REFNO) values ('" + ds1.Tables[0].Rows[i]["CTXT01"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT02"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT03"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT04"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT05"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT06"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT07"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT08"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT09"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT10"].ToString() + "'," + ds1.Tables[0].Rows[i]["CL_REFNO"].ToString() + ")";
+						myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+						myadapter1.Fill(ds2, "Cx_Cd108");
+						ds2.Dispose();
+					}
+				}
+				ds1.Dispose();
+
+				//DETAIL Expenditure
+				sqlTrunc = "DELETE FROM Cx_Cd111 WHERE CL_REFNO=" + Global.prtyCode;
+				myadapter = new OleDbDataAdapter();
+				ds11 = new DataSet();
+				myadapter.SelectCommand = new OleDbCommand(sqlTrunc, conn);
+				myadapter.Fill(ds11, "Cx_Cd111");
+				ds11.Dispose();
+
+				myadapter1 = new OleDbDataAdapter();
+				ds1 = new DataSet();
+				sql2 = "SELECT * FROM Cp_Cd111 WHERE [CL_REFNO]=" + Global.prtyCode + ";";
+				myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+				myadapter1.Fill(ds1, "Cp_Cd111");
+				if (ds1.Tables[0].Rows.Count > 0)
+				{
+					for (int i = 0; i < ds1.Tables[0].Rows.Count; i++)
+					{
+						DataSet ds2 = new DataSet();
+						sql2 = "INSERT INTO Cx_Cd111 (CTXT01,CTXT02,CTXT03,CTXT04,CTXT05,CTXT06,CL_REFNO) values ('" + ds1.Tables[0].Rows[i]["CTXT01"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT02"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT03"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT04"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT05"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT06"].ToString() + "'," + ds1.Tables[0].Rows[i]["CL_REFNO"].ToString() + ")";
+						myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+						myadapter1.Fill(ds2, "Cx_Cd111");
+						ds2.Dispose();
+					}
+				}
+				ds1.Dispose();
+
+				//DETAIL Buyers
+				sqlTrunc = "DELETE FROM Cx_Cd106 WHERE CL_REFNO=" + Global.prtyCode;
+				myadapter = new OleDbDataAdapter();
+				ds11 = new DataSet();
+				myadapter.SelectCommand = new OleDbCommand(sqlTrunc, conn);
+				myadapter.Fill(ds11, "Cx_Cd106");
+				ds11.Dispose();
+
+				myadapter1 = new OleDbDataAdapter();
+				ds1 = new DataSet();
+				sql2 = "SELECT * FROM Cp_Cd106 WHERE [CL_REFNO]=" + Global.prtyCode + ";";
+				myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+				myadapter1.Fill(ds1, "Cp_Cd106");
+				if (ds1.Tables[0].Rows.Count > 0)
+				{
+					for (int i = 0; i < ds1.Tables[0].Rows.Count; i++)
+					{
+						DataSet ds2 = new DataSet();
+						sql2 = "INSERT INTO Cx_Cd106 (CTXT01,CL_REFNO) values ('" + ds1.Tables[0].Rows[i]["CTXT01"].ToString()+ "'," + ds1.Tables[0].Rows[i]["CL_REFNO"].ToString() + ")";
+						myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+						myadapter1.Fill(ds2, "Cx_Cd106");
+						ds2.Dispose();
+					}
+				}
+				ds1.Dispose();
+
+
+                //DETAIL Immovable Securities
+                sqlTrunc = "DELETE FROM Cx_Cd112 WHERE CL_REFNO=" + Global.prtyCode;
+                myadapter = new OleDbDataAdapter();
+                ds11 = new DataSet();
+                myadapter.SelectCommand = new OleDbCommand(sqlTrunc, conn);
+                myadapter.Fill(ds11, "Cx_Cd112");
+                ds11.Dispose();
+
+                myadapter1 = new OleDbDataAdapter();
+                ds1 = new DataSet();
+                sql2 = "SELECT * FROM Cp_Cd112 WHERE [CL_REFNO]=" + Global.prtyCode + ";";
+                myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+                myadapter1.Fill(ds1, "Cp_Cd112");
+                if (ds1.Tables[0].Rows.Count > 0)
+                {
+                    for (int i = 0; i < ds1.Tables[0].Rows.Count; i++)
+                    {
+                        DataSet ds2 = new DataSet();
+                        sql2 = "INSERT INTO Cx_Cd112 (CTXT01,CTXT02,CTXT03,CTXT04,CL_REFNO) values ('" + ds1.Tables[0].Rows[i]["CTXT01"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT02"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT03"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT04"].ToString() + "'," + ds1.Tables[0].Rows[i]["CL_REFNO"].ToString() + ")";
+                        myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+                        myadapter1.Fill(ds2, "Cx_Cd112");
+                        ds2.Dispose();
+                    }
+                }
+                ds1.Dispose();
+
+                //DETAIL Movable Securities
+                sqlTrunc = "DELETE FROM Cx_Cd113 WHERE CL_REFNO=" + Global.prtyCode;
+                myadapter = new OleDbDataAdapter();
+                ds11 = new DataSet();
+                myadapter.SelectCommand = new OleDbCommand(sqlTrunc, conn);
+                myadapter.Fill(ds11, "Cx_Cd113");
+                ds11.Dispose();
+
+                myadapter1 = new OleDbDataAdapter();
+                ds1 = new DataSet();
+                sql2 = "SELECT * FROM Cp_Cd113 WHERE [CL_REFNO]=" + Global.prtyCode + ";";
+                myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+                myadapter1.Fill(ds1, "Cp_Cd113");
+                if (ds1.Tables[0].Rows.Count > 0)
+                {
+                    for (int i = 0; i < ds1.Tables[0].Rows.Count; i++)
+                    {
+                        DataSet ds2 = new DataSet();
+                        sql2 = "INSERT INTO Cx_Cd113 (CTXT01,CTXT02,CTXT03,CTXT04,ctxt05,CL_REFNO) values ('" + ds1.Tables[0].Rows[i]["CTXT01"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT02"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT03"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT04"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT05"].ToString() + "'," + ds1.Tables[0].Rows[i]["CL_REFNO"].ToString() + ")";
+                        myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+                        myadapter1.Fill(ds2, "Cx_Cd113");
+                        ds2.Dispose();
+                    }
+                }
+                ds1.Dispose();
+
+
+                //DETAIL Guarantor
+                sqlTrunc = "DELETE FROM Cx_Cd114 WHERE CL_REFNO=" + Global.prtyCode;
+                myadapter = new OleDbDataAdapter();
+                ds11 = new DataSet();
+                myadapter.SelectCommand = new OleDbCommand(sqlTrunc, conn);
+                myadapter.Fill(ds11, "Cx_Cd114");
+                ds11.Dispose();
+
+                myadapter1 = new OleDbDataAdapter();
+                ds1 = new DataSet();
+                sql2 = "SELECT * FROM Cp_Cd114 WHERE [CL_REFNO]=" + Global.prtyCode + ";";
+                myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+                myadapter1.Fill(ds1, "Cp_Cd114");
+                if (ds1.Tables[0].Rows.Count > 0)
+                {
+                    for (int i = 0; i < ds1.Tables[0].Rows.Count; i++)
+                    {
+                        DataSet ds2 = new DataSet();
+                        sql2 = "INSERT INTO Cx_Cd114 (CTXT01,CTXT02,CTXT03,CTXT04,CTXT05,CL_REFNO) values ('" + ds1.Tables[0].Rows[i]["CTXT01"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT02"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT03"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT04"].ToString() + "','" + ds1.Tables[0].Rows[i]["CTXT05"].ToString() + "'," + ds1.Tables[0].Rows[i]["CL_REFNO"].ToString() + ")";
+                        myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+                        myadapter1.Fill(ds2, "Cx_Cd114");
+                        ds2.Dispose();
+                    }
+                }
+                ds1.Dispose();
+
+                //DETAIL list of documents
+                sqlTrunc = "DELETE FROM Cx_Cd115 WHERE CL_REFNO=" + Global.prtyCode;
+                myadapter = new OleDbDataAdapter();
+                ds11 = new DataSet();
+                myadapter.SelectCommand = new OleDbCommand(sqlTrunc, conn);
+                myadapter.Fill(ds11, "Cx_Cd115");
+                ds11.Dispose();
+
+                myadapter1 = new OleDbDataAdapter();
+                ds1 = new DataSet();
+                sql2 = "SELECT * FROM Cp_Cd115 WHERE [CL_REFNO]=" + Global.prtyCode + ";";
+                myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+                myadapter1.Fill(ds1, "Cp_Cd115");
+                if (ds1.Tables[0].Rows.Count > 0)
+                {
+                    for (int i = 0; i < ds1.Tables[0].Rows.Count; i++)
+                    {
+                        DataSet ds2 = new DataSet();
+                        sql2 = "INSERT INTO Cx_Cd115 (CTXT01,CL_REFNO) values ('" + ds1.Tables[0].Rows[i]["CTXT01"].ToString() + "'," + ds1.Tables[0].Rows[i]["CL_REFNO"].ToString() + ")";
+                        myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+                        myadapter1.Fill(ds2, "Cx_Cd115");
+                        ds2.Dispose();
+                    }
+                }
+                ds1.Dispose();
+
+                conn.Close();
                 isEdited = "n";
                 MessageBox.Show(GlobalMsg.insertMsg, "Perfect Tax Reporter - CMA 1.0");
             }
@@ -814,6 +1003,36 @@ namespace PtrCma
                     if (NotifyMainFormToOpenChildFormProposed != null)
                     {
                         NotifyMainFormToOpenChildFormProposed();
+                    }
+                    break;
+                case 40:
+                    if (NotifyMainFormToOpenChildFormImmovable != null)
+                    {
+                        NotifyMainFormToOpenChildFormImmovable();
+                    }
+                    break;
+                case 41:
+                    if (NotifyMainFormToOpenChildFormMovable != null)
+                    {
+                        NotifyMainFormToOpenChildFormMovable();
+                    }
+                    break;
+                case 42:
+                    if (NotifyMainFormToOpenChildFormGuarantor != null)
+                    {
+                        NotifyMainFormToOpenChildFormGuarantor();
+                    }
+                    break;
+                case 44:
+                    if (NotifyMainFormToOpenChildFormMovable != null)
+                    {
+                        NotifyMainFormToOpenChildFormDeclaration();
+                    }
+                    break;
+                case 45:
+                    if (NotifyMainFormToOpenChildFormGuarantor != null)
+                    {
+                        NotifyMainFormToOpenChildFormDocuments();
                     }
                     break;
                 default:
@@ -935,6 +1154,28 @@ namespace PtrCma
         {
             NotifyMainFormToCloseChildFormParty();
             this.Hide();
+        }
+
+        private void cmdCurYr_Click(object sender, EventArgs e)
+        {
+            if (NotifyMainFormToOpenChildFormYear != null)
+            {
+                NotifyMainFormToOpenChildFormYear();
+            }
+        }
+
+        private void lstViewTopic_Click(object sender, EventArgs e)
+        {
+            if (lstViewTopic.SelectedItems[0].Text.Equals("Party Information"))
+            {
+                grdViewCMAOther.Visible = false;
+                gridViewCMA.Visible = true;
+            }
+            else
+            {
+                grdViewCMAOther.Visible = true;
+                gridViewCMA.Visible = false;
+            }
         }
     }
 }

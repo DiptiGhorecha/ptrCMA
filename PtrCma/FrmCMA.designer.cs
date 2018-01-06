@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCMA));
             this.lstViewTopic = new System.Windows.Forms.ListView();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -59,11 +59,13 @@
             this.cmdChngPrty = new System.Windows.Forms.Button();
             this.lblPic = new System.Windows.Forms.PictureBox();
             this.picFrmClose = new System.Windows.Forms.PictureBox();
+            this.grdViewCMAOther = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCMA)).BeginInit();
             this.panelCmdBtns.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lblPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picFrmClose)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdViewCMAOther)).BeginInit();
             this.SuspendLayout();
             // 
             // lstViewTopic
@@ -79,20 +81,21 @@
             this.lstViewTopic.UseCompatibleStateImageBehavior = false;
             this.lstViewTopic.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.lstViewTopic_DrawColumnHeader);
             this.lstViewTopic.DrawItem += new System.Windows.Forms.DrawListViewItemEventHandler(this.lstViewTopic_DrawItem);
+            this.lstViewTopic.Click += new System.EventHandler(this.lstViewTopic_Click);
             // 
             // chart2
             // 
             this.chart2.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart2.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart2.Legends.Add(legend2);
             this.chart2.Location = new System.Drawing.Point(718, 47);
             this.chart2.Name = "chart2";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart2.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart2.Series.Add(series2);
             this.chart2.Size = new System.Drawing.Size(328, 118);
             this.chart2.TabIndex = 2;
             this.chart2.Text = "chart2";
@@ -350,6 +353,7 @@
             this.cmdCurYr.TabIndex = 25;
             this.cmdCurYr.Text = "Cur Year";
             this.cmdCurYr.UseVisualStyleBackColor = true;
+            this.cmdCurYr.Click += new System.EventHandler(this.cmdCurYr_Click);
             // 
             // cmdChngPrty
             // 
@@ -386,6 +390,20 @@
             this.picFrmClose.TabStop = false;
             this.picFrmClose.Click += new System.EventHandler(this.picFrmClose_Click);
             // 
+            // grdViewCMAOther
+            // 
+            this.grdViewCMAOther.AllowUserToAddRows = false;
+            this.grdViewCMAOther.AllowUserToDeleteRows = false;
+            this.grdViewCMAOther.AllowUserToResizeRows = false;
+            this.grdViewCMAOther.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdViewCMAOther.Location = new System.Drawing.Point(46, 302);
+            this.grdViewCMAOther.Name = "grdViewCMAOther";
+            this.grdViewCMAOther.RowHeadersVisible = false;
+            this.grdViewCMAOther.ShowEditingIcon = false;
+            this.grdViewCMAOther.Size = new System.Drawing.Size(865, 103);
+            this.grdViewCMAOther.TabIndex = 47;
+            this.grdViewCMAOther.Visible = false;
+            // 
             // FrmCMA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -393,6 +411,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1049, 417);
             this.ControlBox = false;
+            this.Controls.Add(this.grdViewCMAOther);
             this.Controls.Add(this.picFrmClose);
             this.Controls.Add(this.lblPic);
             this.Controls.Add(this.panelCmdBtns);
@@ -413,6 +432,7 @@
             this.panelCmdBtns.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lblPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picFrmClose)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdViewCMAOther)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -446,5 +466,6 @@
         private System.Windows.Forms.Button cmdChngPrty;
         private System.Windows.Forms.PictureBox lblPic;
         private System.Windows.Forms.PictureBox picFrmClose;
+        private System.Windows.Forms.DataGridView grdViewCMAOther;
     }
 }

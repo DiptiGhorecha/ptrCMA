@@ -99,17 +99,29 @@
     <Compile Include="FrmDeatilAssociate.Designer.cs">
       <DependentUpon>FrmDeatilAssociate.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDeclaration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDeclaration.Designer.cs">
+      <DependentUpon>FrmDeclaration.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDetailDirector.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmDetailDirector.Designer.cs">
       <DependentUpon>FrmDetailDirector.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmImmovableSecurities.cs">
+    <Compile Include="FrmDocuments.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmImmovableSecurities.Designer.cs">
-      <DependentUpon>FrmImmovableSecurities.cs</DependentUpon>
+    <Compile Include="FrmDocuments.Designer.cs">
+      <DependentUpon>FrmDocuments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGuarantor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGuarantor.Designer.cs">
+      <DependentUpon>FrmGuarantor.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmMainCma.cs">
       <SubType>Form</SubType>
@@ -128,6 +140,18 @@
     </Compile>
     <Compile Include="FrmMDICma.Designer.cs">
       <DependentUpon>FrmMDICma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMovable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMovable.Designer.cs">
+      <DependentUpon>FrmMovable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMovableSecurities.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMovableSecurities.Designer.cs">
+      <DependentUpon>FrmMovableSecurities.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmParameterPast.cs">
       <SubType>Form</SubType>
@@ -177,6 +201,12 @@
     <Compile Include="FrmTermsSales.Designer.cs">
       <DependentUpon>FrmTermsSales.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmYears.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmYears.Designer.cs">
+      <DependentUpon>FrmYears.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="GlobalMsg.cs" />
     <Compile Include="MyMessageBox.cs">
@@ -205,11 +235,17 @@
     <EmbeddedResource Include="FrmDeatilAssociate.resx">
       <DependentUpon>FrmDeatilAssociate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmDeclaration.resx">
+      <DependentUpon>FrmDeclaration.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmDetailDirector.resx">
       <DependentUpon>FrmDetailDirector.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmImmovableSecurities.resx">
-      <DependentUpon>FrmImmovableSecurities.cs</DependentUpon>
+    <EmbeddedResource Include="FrmDocuments.resx">
+      <DependentUpon>FrmDocuments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGuarantor.resx">
+      <DependentUpon>FrmGuarantor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMainCma.resx">
       <DependentUpon>FrmMainCma.cs</DependentUpon>
@@ -219,6 +255,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMDICma.resx">
       <DependentUpon>FrmMDICma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMovable.resx">
+      <DependentUpon>FrmMovable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMovableSecurities.resx">
+      <DependentUpon>FrmMovableSecurities.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmParameterPast.resx">
       <DependentUpon>FrmParameterPast.cs</DependentUpon>
@@ -243,6 +285,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTermsSales.resx">
       <DependentUpon>FrmTermsSales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmYears.resx">
+      <DependentUpon>FrmYears.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyMessageBox.resx">
       <DependentUpon>MyMessageBox.cs</DependentUpon>
