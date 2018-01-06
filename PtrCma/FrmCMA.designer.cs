@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCMA));
             this.lstViewTopic = new System.Windows.Forms.ListView();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -86,16 +86,16 @@
             // chart2
             // 
             this.chart2.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart2.Legends.Add(legend2);
+            chartArea8.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea8);
+            legend8.Name = "Legend1";
+            this.chart2.Legends.Add(legend8);
             this.chart2.Location = new System.Drawing.Point(718, 47);
             this.chart2.Name = "chart2";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart2.Series.Add(series2);
+            series8.ChartArea = "ChartArea1";
+            series8.Legend = "Legend1";
+            series8.Name = "Series1";
+            this.chart2.Series.Add(series8);
             this.chart2.Size = new System.Drawing.Size(328, 118);
             this.chart2.TabIndex = 2;
             this.chart2.Text = "chart2";
@@ -235,6 +235,7 @@
             this.cmdFormula.TabIndex = 37;
             this.cmdFormula.Text = "Formula";
             this.cmdFormula.UseVisualStyleBackColor = true;
+            this.cmdFormula.Click += new System.EventHandler(this.cmdFormula_Click);
             // 
             // cmdRefresh
             // 
@@ -296,6 +297,7 @@
             this.cmdResetDeta.Text = "Reset Data";
             this.cmdResetDeta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.cmdResetDeta.UseVisualStyleBackColor = true;
+            this.cmdResetDeta.Click += new System.EventHandler(this.cmdResetDeta_Click);
             // 
             // cmdChngDesc
             // 
@@ -306,6 +308,7 @@
             this.cmdChngDesc.Text = "Change Description";
             this.cmdChngDesc.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.cmdChngDesc.UseVisualStyleBackColor = true;
+            this.cmdChngDesc.Click += new System.EventHandler(this.cmdChngDesc_Click);
             // 
             // cmdDelRow
             // 
@@ -316,6 +319,7 @@
             this.cmdDelRow.Text = "Delete Row";
             this.cmdDelRow.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.cmdDelRow.UseVisualStyleBackColor = true;
+            this.cmdDelRow.Click += new System.EventHandler(this.cmdDelRow_Click);
             // 
             // cmdInsRow
             // 
@@ -326,6 +330,7 @@
             this.cmdInsRow.Text = "Insert Row";
             this.cmdInsRow.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.cmdInsRow.UseVisualStyleBackColor = true;
+            this.cmdInsRow.Click += new System.EventHandler(this.cmdInsRow_Click);
             // 
             // cmdRsIn
             // 
@@ -344,6 +349,7 @@
             this.cmdCopyYr.TabIndex = 26;
             this.cmdCopyYr.Text = "Copy Year";
             this.cmdCopyYr.UseVisualStyleBackColor = true;
+            this.cmdCopyYr.Click += new System.EventHandler(this.cmdCopyYr_Click);
             // 
             // cmdCurYr
             // 

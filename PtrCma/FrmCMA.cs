@@ -97,6 +97,7 @@ namespace PtrCma
             Settings();
             //  ((DataGridViewTextBoxColumn) gridViewCMA.Columns[11]).MaxInputLength = 250;
             gridViewCMA.EditingControlShowing += new DataGridViewEditingControlShowingEventHandler(gridViewCMA_EditingControlShowing);
+                grdViewCMAOther.Visible = false;
             txtPrtyName.Enabled = false;
             txtCurYear.Enabled = false;
             comboBxYear.Enabled = false;
@@ -104,19 +105,27 @@ namespace PtrCma
             comboBoxRsIn.Enabled = false;
             cmdSave.Enabled = false;
             cmdCancel.Enabled = false;
-            checkTables();
+                //cmdInsRow.Enabled = false;
+                //cmdDelRow.Enabled = false;
+                //cmdChngDesc.Enabled = false;
+                //cmdFormula.Enabled = false;
+                //cmdResetDeta.Enabled = false;
+               // cmdCopyYr.Enabled = false;
+                txtPrtyName.Text = Global.prtyName;
+                comboBoxRsIn.SelectedIndex = comboBoxRsIn.FindStringExact("Rs");
+                comboBxYear.SelectedIndex = comboBxYear.FindStringExact("6");
+                checkTables();
             fillTopicListBox();
             lstViewTopic.Items[0].Selected = true;
             fillTempTable();
             fillCMSDataGrid();
-            setControlSize();
+                fillCMSOtherDataGrid();
+                setControlSize();
             foreach (Button btn in Controls.OfType<Button>())
             {
                 btn.BackgroundImage = Global.cmdBackImg;
             }
-            txtPrtyName.Text = Global.prtyName;
-            comboBoxRsIn.SelectedIndex = comboBoxRsIn.FindStringExact("Rs");
-            comboBxYear.SelectedIndex=comboBxYear.FindStringExact("4");
+
         }
         }
 
@@ -166,7 +175,24 @@ namespace PtrCma
             gridViewCMA.EnableHeadersVisualStyles = false;
 
             gridViewCMA.RowsDefaultCellStyle.BackColor = Color.White;    // Row Color of Gridview
-           
+
+            ////////////////////////////////
+            grdViewCMAOther.Width = this.Width - 3;
+
+            grdViewCMAOther.Top = lstViewTopic.Bottom + 25;
+            grdViewCMAOther.Height = this.Height - Global.chrtLstViewHeight - 50;
+            grdViewCMAOther.Left = this.Left + 1;
+
+            // Column Header Color of Gridview
+            grdViewCMAOther.ColumnHeadersDefaultCellStyle.BackColor = Global.grdPartyBackColor;
+            grdViewCMAOther.ColumnHeadersDefaultCellStyle.ForeColor = Global.grdPartyForeColor;
+            grdViewCMAOther.ColumnHeadersHeight = 30;
+            grdViewCMAOther.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            grdViewCMAOther.EnableHeadersVisualStyles = false;
+
+            grdViewCMAOther.RowsDefaultCellStyle.BackColor = Color.White;    // Row Color of Gridview
+            ///////////////////////////////
+
             setPanelControlColor();
         }
 
@@ -224,7 +250,12 @@ namespace PtrCma
                   //'  myadapter1.SelectCommand = new OleDbCommand(sql, conn);
                  // '  myadapter1.Fill(ds1, "Cp_CdFm11");
                     ds1.Dispose();
-                    Calendar myCal = CultureInfo.InvariantCulture.Calendar;
+
+
+
+
+
+                        Calendar myCal = CultureInfo.InvariantCulture.Calendar;
                     txtCurYear.Text = DateTime.Now.Year + "-" + Convert.ToString(myCal.AddYears(DateTime.Now, 1).Year).Substring(2, 2);
                     OleDbConnection con = new OleDbConnection();
                     con.ConnectionString = connectionString;
@@ -265,7 +296,42 @@ namespace PtrCma
                     xconn.Close();
 
                 }
-            }
+
+                ///////fm3
+
+                DataSet ds4 = new DataSet();
+                String STROther = "Select * from Cx_CdFm3 where FM_CLREFNO=" + Global.prtyCode + "";
+                myadapter.SelectCommand = new OleDbCommand("Select * from Cx_CdFm3 where FM_CLREFNO=" + Global.prtyCode + "", conn);
+                myadapter.Fill(ds4, "Cx_CdFm3");
+                if (ds4.Tables[0].Rows.Count == 0)
+                {
+                    DataSet ds3 = new DataSet();
+                    OleDbDataAdapter myadapter1 = new OleDbDataAdapter();
+                    String sqlother = "Update Cp_CdFm33 set [FM_CLREFNO]=" + Global.prtyCode + ";";
+                    myadapter1.SelectCommand = new OleDbCommand(sqlother, conn);
+                    myadapter1.Fill(ds3, "Cp_CdFm33");
+                    sqlother = "SELECT * FROM Cp_CdFm33 WHERE [FM_CLREFNO]=" + Global.prtyCode + ";";
+                    myadapter1.SelectCommand = new OleDbCommand(sqlother, conn);
+                    myadapter1.Fill(ds3, "Cp_CdFm33");
+                    for (int i = 0; i < ds3.Tables[0].Rows.Count; i++)
+                    {
+                        DataSet ds22 = new DataSet();
+                        String sql = "INSERT INTO Cx_CdFm3 (FM_SEQNO,FM_TYPE,FM_FC,FM_BN,FM_MTNO,FM_SNO1,FM_SNO2,FM_CV,FM_FORM,FM_DESC,FM_CLREFNO,FM_FOLIST,FM_FO01,FM_FO02,FM_FO03,FM_FO04,FM_FO05,FM_FO06,FM_FO07,FM_FO08,FM_FO09,FM_FO10,FM_FO11,FM_FO12) values ('" + ds3.Tables[0].Rows[i]["FM_SEQNO"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_TYPE"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FC"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_BN"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_MTNO"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_SNO1"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_SNO2"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_CV"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FORM"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_DESC"].ToString() + "'," + ds3.Tables[0].Rows[i]["FM_CLREFNO"].ToString() + ",'" + ds3.Tables[0].Rows[i]["FM_FOLIST"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO01"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO02"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO03"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO04"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO05"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO06"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO07"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO08"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO09"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO10"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO11"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO12"].ToString() + "')";
+                        myadapter1.SelectCommand = new OleDbCommand(sql, conn);
+                        myadapter1.Fill(ds22, "Cx_CdFm3");
+                        ds22.Dispose();
+                    }
+
+
+
+                    //'  sql = "INSERT INTO Cp_CdFm1 SELECT CM_SEQNO,CM_TYPE,CM_FC,CM_BN,CM_DBNO,CM_MTNO,CM_HEAD,CM_DESC,CM_LNKFRM,CM_CLREFNO FROM Cp_CdFm11";
+                    //'  myadapter1.SelectCommand = new OleDbCommand(sql, conn);
+                    // '  myadapter1.Fill(ds1, "Cp_CdFm11");
+                    ds4.Dispose();
+                    ds3.Dispose();
+                }////////fm3
+
+                }
             catch (Exception e)
             {
               //  Console.WriteLine(e.Message);//
@@ -312,7 +378,17 @@ namespace PtrCma
                 myadapter.Fill(ds1, "Cp_CdFm1");
                 myadapter.SelectCommand = new OleDbCommand(sql, conn);
             myadapter.Fill(ds1, "Cp_CdFm1");
-            ds1.Dispose();
+
+                string sqlTruncOther = "DELETE FROM Cp_CdFm3";
+
+                
+                String sqlOther = "INSERT INTO Cp_CdFm3 SELECT * FROM Cx_CdFm3 where FM_CLREFNO=" + Global.prtyCode;
+                myadapter.SelectCommand = new OleDbCommand(sqlTruncOther, conn);
+                myadapter.Fill(ds1, "Cp_CdFm3");
+                myadapter.SelectCommand = new OleDbCommand(sqlOther, conn);
+                myadapter.Fill(ds1, "Cp_CdFm3");
+
+                ds1.Dispose();
             conn.Close();
         }
             catch (Exception e)
@@ -323,6 +399,7 @@ namespace PtrCma
 }
         private void fillCMSDataGrid()
         {
+
             OleDbConnection conn = new OleDbConnection(connectionString);
             OleDbDataAdapter myadapter = new OleDbDataAdapter();
             DataSet ds = new DataSet();
@@ -350,6 +427,117 @@ namespace PtrCma
 
             gridViewCMA.Refresh();
         }
+
+        private void fillCMSOtherDataGrid()
+        {
+            try
+            {
+                OleDbConnection conn = new OleDbConnection(connectionString);
+                OleDbDataAdapter myadapter = new OleDbDataAdapter();
+                DataSet ds = new DataSet();
+                myadapter.SelectCommand = new OleDbCommand("Select * from Cp_CdFm3 where FM_CLREFNO=" + Global.prtyCode + " order by FM_SEQNO", conn);
+                myadapter.Fill(ds, "Cp_CdFm3");
+                grdViewCMAOther.DataMember = "Cp_CdFm3";
+                grdViewCMAOther.DataSource = ds;
+                conn.Close();
+                for (int i = 0; i <= grdViewCMAOther.Columns.Count - 1; i++)
+                {
+                    grdViewCMAOther.Columns[i].ReadOnly = true;
+                    grdViewCMAOther.Columns[i].Visible = false;
+                }
+                grdViewCMAOther.Columns[1].Visible = true;
+                grdViewCMAOther.Columns[1].HeaderText = " ";
+                grdViewCMAOther.Columns[1].Width = 100;
+
+                grdViewCMAOther.Columns[6].Visible = true;
+                grdViewCMAOther.Columns[6].HeaderText = " ";
+                grdViewCMAOther.Columns[6].Width = 50;
+
+                grdViewCMAOther.Columns[7].Visible = true;
+                grdViewCMAOther.Columns[7].HeaderText = " ";
+                grdViewCMAOther.Columns[7].Width = 50;
+
+                grdViewCMAOther.Columns[12].Visible = true;
+                grdViewCMAOther.Columns[12].ReadOnly = false;
+                grdViewCMAOther.Columns[12].HeaderText = "Description";
+                grdViewCMAOther.Columns[12].Width = ((grdViewCMAOther.Width - 200) - (120 * Convert.ToInt16(comboBxYear.Text)));
+
+                String sql2 = "SELECT * FROM Cx_Cd120 WHERE [CL_REFNO]=" + Global.prtyCode + ";";
+                DataSet ds1 = new DataSet();
+                myadapter.SelectCommand = new OleDbCommand(sql2, conn);
+                myadapter.Fill(ds1, "Cx_Cd120");
+                int counter = 30;
+                if (ds1.Tables[0].Rows.Count > 0)
+                {
+                    for (int i = 0; i < ds1.Tables[0].Rows.Count; i++)
+                    {
+
+                        for (int ii = 1; ii <= Convert.ToInt16(comboBxYear.Text); ii++)
+                        {
+                            grdViewCMAOther.Columns[counter].Visible = true;
+                            grdViewCMAOther.Columns[counter].ReadOnly = false;
+                            grdViewCMAOther.Columns[counter].HeaderText = "Description";
+                            grdViewCMAOther.Columns[counter].Width = 120;
+                            switch (ii)
+                            {
+                                case 1:
+                                    grdViewCMAOther.Columns[counter].HeaderText = ds1.Tables[0].Rows[i]["CTXT01"].ToString();
+                                    break;
+                                case 2:
+                                    grdViewCMAOther.Columns[counter].HeaderText = ds1.Tables[0].Rows[i]["CTXT02"].ToString();
+                                    break;
+                                case 3:
+                                    grdViewCMAOther.Columns[counter].HeaderText = ds1.Tables[0].Rows[i]["CTXT03"].ToString();
+                                    break;
+                                case 4:
+                                    grdViewCMAOther.Columns[counter].HeaderText = ds1.Tables[0].Rows[i]["CTXT04"].ToString();
+                                    break;
+                                case 5:
+                                    grdViewCMAOther.Columns[counter].HeaderText = ds1.Tables[0].Rows[i]["CTXT05"].ToString();
+                                    break;
+                                case 6:
+                                    grdViewCMAOther.Columns[counter].HeaderText = ds1.Tables[0].Rows[i]["CTXT06"].ToString();
+                                    break;
+                                case 7:
+                                    grdViewCMAOther.Columns[counter].HeaderText = ds1.Tables[0].Rows[i]["CTXT07"].ToString();
+                                    break;
+                                case 8:
+                                    grdViewCMAOther.Columns[counter].HeaderText = ds1.Tables[0].Rows[i]["CTXT08"].ToString();
+                                    break;
+                                case 9:
+                                    grdViewCMAOther.Columns[counter].HeaderText = ds1.Tables[0].Rows[i]["CTXT09"].ToString();
+                                    break;
+                                case 10:
+                                    grdViewCMAOther.Columns[counter].HeaderText = ds1.Tables[0].Rows[i]["CTXT10"].ToString();
+                                    break;
+                                case 11:
+                                    grdViewCMAOther.Columns[counter].HeaderText = ds1.Tables[0].Rows[i]["CTXT11"].ToString();
+                                    break;
+                                case 12:
+                                    grdViewCMAOther.Columns[counter].HeaderText = ds1.Tables[0].Rows[i]["CTXT12"].ToString();
+                                    break;
+                                default:
+                                    //optional 
+                                    //statements 
+                                    break;
+                            }
+                            counter = counter + 1;
+                        }
+                    }
+                }
+
+                ds.Dispose();
+                ds1.Dispose();
+                conn.Close();
+                grdViewCMAOther.Refresh();
+            }
+            catch (Exception e)
+            {
+                //  Console.WriteLine(e.Message);//
+                MessageBox.Show(e.Message);
+            }
+        }
+
 
         private void fillTopicListBox()
         {
@@ -386,7 +574,26 @@ namespace PtrCma
             isEdited = "y";
             cmdSave.Enabled =true;
             cmdCancel.Enabled = true;
-            gridViewCMA.CurrentCell = gridViewCMA.Rows[0].Cells[11];
+
+            if (lstViewTopic.SelectedItems[0].Text.Equals("Party Information"))
+            {
+                gridViewCMA.CurrentCell = gridViewCMA.Rows[0].Cells[11];
+            }
+            else
+            {
+                grdViewCMAOther.CurrentCell = grdViewCMAOther.Rows[0].Cells[30];
+              
+               // txtCurYear.Enabled = true;
+                comboBxYear.Enabled = true;
+                comboBoxCopyYear.Enabled = true;
+                comboBoxRsIn.Enabled = true;
+                cmdInsRow.Enabled = true;
+                cmdDelRow.Enabled = true;
+                cmdChngDesc.Enabled = true;
+                cmdFormula.Enabled = true;
+                cmdResetDeta.Enabled = true;
+                cmdCopyYr.Enabled = true;
+            }
 
         }
 
@@ -915,12 +1122,6 @@ namespace PtrCma
             {
                 NotifyMainFormToCloseChildFormParty();
                 this.Hide();
-                ////checkTables();
-                //fillCMSDataGrid();
-                //foreach(TextBox txt in Controls.OfType<TextBox>())
-                //{
-                //    txt.Clear();
-                //}
             }
         }
 
@@ -1040,91 +1241,6 @@ namespace PtrCma
                     //statements 
                     break;
             }
-            //if (e.RowIndex == 13)
-            //{
-            //    if (NotifyMainFormToOpenChildFormDirector != null)
-            //    {
-            //        NotifyMainFormToOpenChildFormDirector();
-            //    }
-            //}
-            //if(e.RowIndex == 14)
-            //{
-            //    if(NotifyMainFormToOpenChildFormBanking !=null)
-            //    {
-            //        NotifyMainFormToOpenChildFormBanking();
-            //    }
-            //}
-            //if (e.RowIndex == 15)
-            //{
-            //    if (NotifyMainFormToOpenChildFormCredit != null)
-            //    {
-            //        NotifyMainFormToOpenChildFormCredit();
-            //    }
-            //}
-            //if (e.RowIndex == 16)
-            //{
-            //    if (NotifyMainFormToOpenChildFormAssociate != null)
-            //    {
-            //        NotifyMainFormToOpenChildFormAssociate();
-            //    }
-            //}
-            //if (e.RowIndex == 17)
-            //{
-            //    if (NotifyMainFormToOpenChildFormRegistration != null)
-            //    {
-            //        NotifyMainFormToOpenChildFormRegistration();
-            //    }
-            //}
-            //if (e.RowIndex == 18)
-            //{
-            //    if (NotifyMainFormToOpenChildFormPosition != null)
-            //    {
-            //        NotifyMainFormToOpenChildFormPosition();
-            //    }
-            //}
-            //if (e.RowIndex == 23)
-            //{
-            //    if (NotifyMainFormToOpenChildFormPurchase != null)
-            //    {
-            //        NotifyMainFormToOpenChildFormPurchase();
-            //    }
-            //}
-            //if (e.RowIndex == 30)
-            //{
-            //    if (NotifyMainFormToOpenChildFormBuyer != null)
-            //    {
-            //        NotifyMainFormToOpenChildFormBuyer();
-            //    }
-            //}
-            //if (e.RowIndex == 31)
-            //{
-            //    if (NotifyMainFormToOpenChildFormSales != null)
-            //    {
-            //        NotifyMainFormToOpenChildFormSales();
-            //    }
-            //}
-            //if (e.RowIndex == 35)
-            //{
-            //    if (NotifyMainFormToOpenChildFormParameter != null)
-            //    {
-            //        NotifyMainFormToOpenChildFormParameter();
-            //    }
-            //}
-            //if (e.RowIndex == 36)
-            //{
-            //    if (NotifyMainFormToOpenChildFormAssets != null)
-            //    {
-            //        NotifyMainFormToOpenChildFormAssets();
-            //    }
-            //}
-            //if (e.RowIndex == 37)
-            //{
-            //    if (NotifyMainFormToOpenChildFormProposed != null)
-            //    {
-            //        NotifyMainFormToOpenChildFormProposed();
-            //    }
-            //}
-
         }
 
         private void gridViewCMA_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1176,6 +1292,81 @@ namespace PtrCma
                 grdViewCMAOther.Visible = true;
                 gridViewCMA.Visible = false;
             }
+        }
+
+        private void cmdCopyYr_Click(object sender, EventArgs e)
+        {
+            if (lstViewTopic.SelectedItems[0].Text.Equals("Party Information"))
+            {
+                MessageBox.Show(GlobalMsg.editMsg, "Perfect Tax Reporter - CMA 1.0");
+            }
+            else
+            {
+
+            }
+        }
+
+        private void cmdInsRow_Click(object sender, EventArgs e)
+        {
+            if (lstViewTopic.SelectedItems[0].Text.Equals("Party Information"))
+            {
+                MessageBox.Show(GlobalMsg.editMsg, "Perfect Tax Reporter - CMA 1.0");
+            }
+            else
+            {
+
+            }
+
+        }
+
+        private void cmdDelRow_Click(object sender, EventArgs e)
+        {
+            if (lstViewTopic.SelectedItems[0].Text.Equals("Party Information"))
+            {
+                MessageBox.Show(GlobalMsg.editMsg, "Perfect Tax Reporter - CMA 1.0");
+            }
+            else
+            {
+
+            }
+
+        }
+
+        private void cmdChngDesc_Click(object sender, EventArgs e)
+        {
+            if (lstViewTopic.SelectedItems[0].Text.Equals("Party Information"))
+            {
+                MessageBox.Show(GlobalMsg.editMsg, "Perfect Tax Reporter - CMA 1.0");
+            }
+            else
+            {
+
+            }
+        }
+
+        private void cmdResetDeta_Click(object sender, EventArgs e)
+        {
+            if (lstViewTopic.SelectedItems[0].Text.Equals("Party Information"))
+            {
+                MessageBox.Show(GlobalMsg.editMsg, "Perfect Tax Reporter - CMA 1.0");
+            }
+            else
+            {
+
+            }
+        }
+
+        private void cmdFormula_Click(object sender, EventArgs e)
+        {
+            if (lstViewTopic.SelectedItems[0].Text.Equals("Party Information"))
+            {
+                MessageBox.Show(GlobalMsg.editMsg, "Perfect Tax Reporter - CMA 1.0");
+            }
+            else
+            {
+
+            }
+
         }
     }
 }

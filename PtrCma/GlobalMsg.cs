@@ -20,6 +20,7 @@ namespace PtrCma
         public static string deleteDataMsg="Data Already Exist You Can't Delete Record";
         public static string backMsg = "Backup Copied Successfully";
         public static string titleMsg = "Perfect Tax Reporter - CMA 1.0";
+        public static string editMsg = "Enter edit mode and Select Topic other than Party Information";
 
         //Dialog Message Box
         public static string updateMsgDialog = "Are you sure you want to update ?";
