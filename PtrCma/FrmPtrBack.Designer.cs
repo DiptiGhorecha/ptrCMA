@@ -46,27 +46,27 @@
             // 
             // cmdExit
             // 
-            this.cmdExit.Location = new System.Drawing.Point(449, 233);
+            this.cmdExit.Location = new System.Drawing.Point(449, 196);
             this.cmdExit.Name = "cmdExit";
             this.cmdExit.Size = new System.Drawing.Size(78, 23);
-            this.cmdExit.TabIndex = 13;
-            this.cmdExit.Text = "Exit";
+            this.cmdExit.TabIndex = 2;
+            this.cmdExit.Text = "E&xit";
             this.cmdExit.UseVisualStyleBackColor = true;
             this.cmdExit.Click += new System.EventHandler(this.cmdExit_Click);
             // 
             // cmdBackup
             // 
-            this.cmdBackup.Location = new System.Drawing.Point(327, 233);
+            this.cmdBackup.Location = new System.Drawing.Point(327, 196);
             this.cmdBackup.Name = "cmdBackup";
             this.cmdBackup.Size = new System.Drawing.Size(98, 23);
-            this.cmdBackup.TabIndex = 12;
-            this.cmdBackup.Text = "Start Backup";
+            this.cmdBackup.TabIndex = 1;
+            this.cmdBackup.Text = "Start &Backup";
             this.cmdBackup.UseVisualStyleBackColor = true;
             this.cmdBackup.Click += new System.EventHandler(this.cmdBackup_Click);
             // 
             // lblDrive
             // 
-            this.lblDrive.Location = new System.Drawing.Point(324, 164);
+            this.lblDrive.Location = new System.Drawing.Point(324, 127);
             this.lblDrive.Name = "lblDrive";
             this.lblDrive.Size = new System.Drawing.Size(112, 21);
             this.lblDrive.TabIndex = 11;
@@ -75,10 +75,11 @@
             // comboDrive
             // 
             this.comboDrive.FormattingEnabled = true;
-            this.comboDrive.Location = new System.Drawing.Point(430, 164);
+            this.comboDrive.Location = new System.Drawing.Point(430, 127);
             this.comboDrive.Name = "comboDrive";
             this.comboDrive.Size = new System.Drawing.Size(133, 21);
-            this.comboDrive.TabIndex = 10;
+            this.comboDrive.TabIndex = 0;
+            this.comboDrive.SelectedIndexChanged += new System.EventHandler(this.comboDrive_SelectedIndexChanged);
             this.comboDrive.Click += new System.EventHandler(this.comboDrive_Click);
             this.comboDrive.MouseClick += new System.Windows.Forms.MouseEventHandler(this.comboDrive_MouseClick);
             // 
@@ -87,13 +88,14 @@
             this.radioCD.AutoSize = true;
             this.radioCD.BackColor = System.Drawing.Color.Transparent;
             this.radioCD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioCD.Location = new System.Drawing.Point(493, 118);
+            this.radioCD.Location = new System.Drawing.Point(493, 70);
             this.radioCD.Name = "radioCD";
             this.radioCD.Size = new System.Drawing.Size(67, 17);
             this.radioCD.TabIndex = 9;
             this.radioCD.TabStop = true;
             this.radioCD.Text = "CD-RW";
             this.radioCD.UseVisualStyleBackColor = false;
+            this.radioCD.Visible = false;
             this.radioCD.CheckedChanged += new System.EventHandler(this.radioCD_CheckedChanged);
             // 
             // radioHD
@@ -101,13 +103,14 @@
             this.radioHD.AutoSize = true;
             this.radioHD.BackColor = System.Drawing.Color.Transparent;
             this.radioHD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioHD.Location = new System.Drawing.Point(430, 118);
+            this.radioHD.Location = new System.Drawing.Point(430, 70);
             this.radioHD.Name = "radioHD";
             this.radioHD.Size = new System.Drawing.Size(52, 17);
             this.radioHD.TabIndex = 8;
             this.radioHD.TabStop = true;
             this.radioHD.Text = "HDD";
             this.radioHD.UseVisualStyleBackColor = false;
+            this.radioHD.Visible = false;
             this.radioHD.CheckedChanged += new System.EventHandler(this.radioHD_CheckedChanged);
             // 
             // grdBackup
@@ -127,20 +130,21 @@
             // 
             // lblSelect
             // 
-            this.lblSelect.Location = new System.Drawing.Point(324, 120);
+            this.lblSelect.Location = new System.Drawing.Point(324, 72);
             this.lblSelect.Name = "lblSelect";
             this.lblSelect.Size = new System.Drawing.Size(103, 23);
             this.lblSelect.TabIndex = 14;
             this.lblSelect.Text = "Select ";
+            this.lblSelect.Visible = false;
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::PtrCma.Properties.Resources.closeBtnBg;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Image = global::PtrCma.Properties.Resources.close;
-            this.pictureBox1.Location = new System.Drawing.Point(619, 21);
+            this.pictureBox1.Location = new System.Drawing.Point(607, 21);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(25, 30);
+            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 80;
             this.pictureBox1.TabStop = false;
@@ -179,6 +183,7 @@
             this.Name = "FrmPtrBack";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "FrmPtrBack";
+            this.Activated += new System.EventHandler(this.FrmPtrBack_Load);
             this.Load += new System.EventHandler(this.FrmPtrBack_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdBackup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

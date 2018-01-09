@@ -62,6 +62,7 @@
             this.txtOutst.Name = "txtOutst";
             this.txtOutst.Size = new System.Drawing.Size(230, 20);
             this.txtOutst.TabIndex = 11;
+            this.txtOutst.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtLimit
             // 
@@ -70,6 +71,7 @@
             this.txtLimit.Name = "txtLimit";
             this.txtLimit.Size = new System.Drawing.Size(230, 20);
             this.txtLimit.TabIndex = 10;
+            this.txtLimit.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtBank
             // 
@@ -78,6 +80,7 @@
             this.txtBank.Name = "txtBank";
             this.txtBank.Size = new System.Drawing.Size(230, 20);
             this.txtBank.TabIndex = 9;
+            this.txtBank.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtProp
             // 
@@ -86,6 +89,7 @@
             this.txtProp.Name = "txtProp";
             this.txtProp.Size = new System.Drawing.Size(230, 20);
             this.txtProp.TabIndex = 8;
+            this.txtProp.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtName
             // 
@@ -94,6 +98,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(230, 20);
             this.txtName.TabIndex = 7;
+            this.txtName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // lblOutst
             // 
@@ -185,7 +190,7 @@
             this.cmdUpdate.Name = "cmdUpdate";
             this.cmdUpdate.Size = new System.Drawing.Size(60, 30);
             this.cmdUpdate.TabIndex = 3;
-            this.cmdUpdate.Text = "Save";
+            this.cmdUpdate.Text = "&Save";
             this.cmdUpdate.UseVisualStyleBackColor = true;
             this.cmdUpdate.Click += new System.EventHandler(this.cmdUpdate_Click);
             // 
@@ -195,7 +200,7 @@
             this.cmdEdit.Name = "cmdEdit";
             this.cmdEdit.Size = new System.Drawing.Size(50, 30);
             this.cmdEdit.TabIndex = 2;
-            this.cmdEdit.Text = "Edit";
+            this.cmdEdit.Text = "&Edit";
             this.cmdEdit.UseVisualStyleBackColor = true;
             this.cmdEdit.Click += new System.EventHandler(this.cmdEdit_Click);
             // 
@@ -205,7 +210,7 @@
             this.cmdAdd.Name = "cmdAdd";
             this.cmdAdd.Size = new System.Drawing.Size(50, 30);
             this.cmdAdd.TabIndex = 1;
-            this.cmdAdd.Text = "Add";
+            this.cmdAdd.Text = "&Add";
             this.cmdAdd.UseVisualStyleBackColor = true;
             this.cmdAdd.Click += new System.EventHandler(this.cmdAdd_Click);
             // 
@@ -215,7 +220,7 @@
             this.cmdExit.Name = "cmdExit";
             this.cmdExit.Size = new System.Drawing.Size(50, 30);
             this.cmdExit.TabIndex = 6;
-            this.cmdExit.Text = "Exit";
+            this.cmdExit.Text = "E&xit";
             this.cmdExit.UseVisualStyleBackColor = true;
             this.cmdExit.Click += new System.EventHandler(this.picFrmClose_Click);
             // 
@@ -225,7 +230,7 @@
             this.cmdDel.Name = "cmdDel";
             this.cmdDel.Size = new System.Drawing.Size(60, 30);
             this.cmdDel.TabIndex = 4;
-            this.cmdDel.Text = "Delete";
+            this.cmdDel.Text = "&Delete";
             this.cmdDel.UseVisualStyleBackColor = true;
             this.cmdDel.Click += new System.EventHandler(this.cmdDelete_Click);
             // 
@@ -235,7 +240,7 @@
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(50, 30);
             this.cmdCancel.TabIndex = 5;
-            this.cmdCancel.Text = "Cancel";
+            this.cmdCancel.Text = "&Cancel";
             this.cmdCancel.UseVisualStyleBackColor = true;
             this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
             // 

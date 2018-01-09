@@ -93,7 +93,7 @@
             this.cmdUpdate.Name = "cmdUpdate";
             this.cmdUpdate.Size = new System.Drawing.Size(60, 30);
             this.cmdUpdate.TabIndex = 43;
-            this.cmdUpdate.Text = "Save";
+            this.cmdUpdate.Text = "&Save";
             this.cmdUpdate.UseVisualStyleBackColor = true;
             // 
             // cmdEdit
@@ -102,7 +102,7 @@
             this.cmdEdit.Name = "cmdEdit";
             this.cmdEdit.Size = new System.Drawing.Size(50, 30);
             this.cmdEdit.TabIndex = 42;
-            this.cmdEdit.Text = "Edit";
+            this.cmdEdit.Text = "&Edit";
             this.cmdEdit.UseVisualStyleBackColor = true;
             // 
             // cmdAdd
@@ -111,7 +111,7 @@
             this.cmdAdd.Name = "cmdAdd";
             this.cmdAdd.Size = new System.Drawing.Size(50, 30);
             this.cmdAdd.TabIndex = 41;
-            this.cmdAdd.Text = "Add";
+            this.cmdAdd.Text = "&Add";
             this.cmdAdd.UseVisualStyleBackColor = true;
             // 
             // cmdExit
@@ -120,7 +120,7 @@
             this.cmdExit.Name = "cmdExit";
             this.cmdExit.Size = new System.Drawing.Size(50, 30);
             this.cmdExit.TabIndex = 46;
-            this.cmdExit.Text = "Exit";
+            this.cmdExit.Text = "E&xit";
             this.cmdExit.UseVisualStyleBackColor = true;
             // 
             // cmdDel
@@ -129,7 +129,7 @@
             this.cmdDel.Name = "cmdDel";
             this.cmdDel.Size = new System.Drawing.Size(60, 30);
             this.cmdDel.TabIndex = 44;
-            this.cmdDel.Text = "Delete";
+            this.cmdDel.Text = "&Delete";
             this.cmdDel.UseVisualStyleBackColor = true;
             this.cmdDel.Click += new System.EventHandler(this.cmdDelete_Click);
             // 
@@ -139,7 +139,7 @@
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(50, 30);
             this.cmdCancel.TabIndex = 45;
-            this.cmdCancel.Text = "Cancel";
+            this.cmdCancel.Text = "&Cancel";
             this.cmdCancel.UseVisualStyleBackColor = true;
             // 
             // txtDoc
@@ -149,6 +149,7 @@
             this.txtDoc.Name = "txtDoc";
             this.txtDoc.Size = new System.Drawing.Size(696, 20);
             this.txtDoc.TabIndex = 47;
+            this.txtDoc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // lblData
             // 

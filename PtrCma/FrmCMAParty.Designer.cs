@@ -102,7 +102,7 @@
             this.txtFind.Location = new System.Drawing.Point(98, 102);
             this.txtFind.Name = "txtFind";
             this.txtFind.Size = new System.Drawing.Size(163, 19);
-            this.txtFind.TabIndex = 1;
+            this.txtFind.TabIndex = 0;
             this.txtFind.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             this.txtFind.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtFind_KeyUp);
             // 
@@ -114,7 +114,7 @@
             this.cmdReset.Location = new System.Drawing.Point(300, 99);
             this.cmdReset.Name = "cmdReset";
             this.cmdReset.Size = new System.Drawing.Size(56, 21);
-            this.cmdReset.TabIndex = 200;
+            this.cmdReset.TabIndex = 1;
             this.cmdReset.Text = "Reset";
             this.cmdReset.UseVisualStyleBackColor = false;
             this.cmdReset.EnabledChanged += new System.EventHandler(this.cmdReset_EnabledChanged);
@@ -668,6 +668,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "FrmCMAParty";
             this.TransparencyKey = System.Drawing.Color.LightCyan;
+            this.Activated += new System.EventHandler(this.FrmCMAParty_Load);
             this.Load += new System.EventHandler(this.FrmCMAParty_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdViewParty)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

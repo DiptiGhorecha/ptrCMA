@@ -1421,10 +1421,10 @@ private void cmdSave_Click(object sender, EventArgs e)
             }
             else
             {
-                DataGridViewRow row = (DataGridViewRow)grdViewCMAOther.Rows[0].Clone();
-                row.Cells[0].Value = "XYZ";
-                row.Cells[1].Value = 50.2;
-                grdViewCMAOther.Rows.Add(row);
+                //DataGridViewRow row = (DataGridViewRow)grdViewCMAOther.Rows[0].Clone();
+                //row.Cells[0].Value = "XYZ";
+                //row.Cells[1].Value = 50.2;
+                //grdViewCMAOther.Rows.Add(row);
             }
 
         }

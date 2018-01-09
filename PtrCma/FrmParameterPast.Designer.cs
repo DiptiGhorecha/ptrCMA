@@ -118,6 +118,7 @@
             this.txtPastSales.Name = "txtPastSales";
             this.txtPastSales.Size = new System.Drawing.Size(100, 20);
             this.txtPastSales.TabIndex = 7;
+            this.txtPastSales.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtPastNet
             // 
@@ -126,6 +127,7 @@
             this.txtPastNet.Name = "txtPastNet";
             this.txtPastNet.Size = new System.Drawing.Size(100, 20);
             this.txtPastNet.TabIndex = 8;
+            this.txtPastNet.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtPastDep
             // 
@@ -134,6 +136,7 @@
             this.txtPastDep.Name = "txtPastDep";
             this.txtPastDep.Size = new System.Drawing.Size(100, 20);
             this.txtPastDep.TabIndex = 9;
+            this.txtPastDep.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtPastCash
             // 
@@ -142,6 +145,7 @@
             this.txtPastCash.Name = "txtPastCash";
             this.txtPastCash.Size = new System.Drawing.Size(100, 20);
             this.txtPastCash.TabIndex = 10;
+            this.txtPastCash.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtPastTangible
             // 
@@ -150,6 +154,7 @@
             this.txtPastTangible.Name = "txtPastTangible";
             this.txtPastTangible.Size = new System.Drawing.Size(100, 20);
             this.txtPastTangible.TabIndex = 11;
+            this.txtPastTangible.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtProjectedSales
             // 
@@ -158,6 +163,7 @@
             this.txtProjectedSales.Name = "txtProjectedSales";
             this.txtProjectedSales.Size = new System.Drawing.Size(100, 20);
             this.txtProjectedSales.TabIndex = 12;
+            this.txtProjectedSales.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtProjectedNet
             // 
@@ -166,6 +172,7 @@
             this.txtProjectedNet.Name = "txtProjectedNet";
             this.txtProjectedNet.Size = new System.Drawing.Size(100, 20);
             this.txtProjectedNet.TabIndex = 13;
+            this.txtProjectedNet.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtProjectedDep
             // 
@@ -174,6 +181,7 @@
             this.txtProjectedDep.Name = "txtProjectedDep";
             this.txtProjectedDep.Size = new System.Drawing.Size(100, 20);
             this.txtProjectedDep.TabIndex = 14;
+            this.txtProjectedDep.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtProjectedCash
             // 
@@ -182,6 +190,7 @@
             this.txtProjectedCash.Name = "txtProjectedCash";
             this.txtProjectedCash.Size = new System.Drawing.Size(100, 20);
             this.txtProjectedCash.TabIndex = 15;
+            this.txtProjectedCash.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtProjectedTangible
             // 
@@ -190,6 +199,7 @@
             this.txtProjectedTangible.Name = "txtProjectedTangible";
             this.txtProjectedTangible.Size = new System.Drawing.Size(100, 20);
             this.txtProjectedTangible.TabIndex = 16;
+            this.txtProjectedTangible.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // cmdExit
             // 
@@ -197,7 +207,7 @@
             this.cmdExit.Name = "cmdExit";
             this.cmdExit.Size = new System.Drawing.Size(75, 23);
             this.cmdExit.TabIndex = 17;
-            this.cmdExit.Text = "Exit";
+            this.cmdExit.Text = "E&xit";
             this.cmdExit.UseVisualStyleBackColor = true;
             this.cmdExit.Click += new System.EventHandler(this.btnExit_Click);
             // 

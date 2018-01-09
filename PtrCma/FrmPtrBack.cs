@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using System.Data.OleDb;
 using System.Configuration;
 
-
 namespace PtrCma
 {
     
@@ -37,6 +36,7 @@ namespace PtrCma
             grdBackup.DataSource = null;
             grdBackup.Rows.Clear();
             grdBackup.Refresh();
+            fillgrid();
         }
 
         private void Settings()
@@ -133,16 +133,11 @@ namespace PtrCma
             DateTime dt = DateTime.Now;
             try
             { 
-            if (comboDrive.SelectedText == "")
-            {
-                   
+            //if (comboDrive.SelectedText == "")
+            //{
                     string mdbSourceFilePath = Application.StartupPath + "\\Resources\\PtrCma.accdb";
-                    //string mdbTargetFileName = "PtrCma_" + String.Format("yyyyMMdd_HHmmss", dt) +".mdb";
-                    //string mdbTargetFileName = "PtrCma_" + DateTime.Now.ToString("yyyymmddhhmmss") + ".mdb";
-                    string mdbTargetFileName = "PtrCma_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".mdb";
-                    // String abc=String.Format("{0:d/M/yyyy HH:mm:ss}", DateTime.Now);
+                    string mdbTargetFileName = "PtrCma_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".accdb";
                     string fullDirectory = Path.Combine(comboDrive.Text, "PtrBack");
-
                     if (!Directory.Exists(fullDirectory))
                     {
                         if (!Directory.Exists(comboDrive.Text))
@@ -157,14 +152,13 @@ namespace PtrCma
                             string mdbTargetFilePath = Path.Combine(fullDirectory, mdbTargetFileName);
                             File.Copy(mdbSourceFilePath, mdbTargetFilePath);
                             MessageBox.Show(GlobalMsg.backMsg, GlobalMsg.titleMsg);
-
                         }
                     }
                     catch (Exception er)
                     {
                         MessageBox.Show(er.Message, GlobalMsg.titleMsg);
                     }
-                }
+               // }
                 fillgrid();
             }       
              catch (Exception er)
@@ -176,6 +170,9 @@ namespace PtrCma
     
         private void fillgrid()
         {
+            grdBackup.DataSource = null;
+            grdBackup.Rows.Clear();
+            grdBackup.Refresh();
             //string fullDirectory = Path.Combine(comboDrive.Text, "PtrBack");
             //if (radioCD != null)
             //{ 
@@ -183,18 +180,18 @@ namespace PtrCma
             //    grdBackup.CurrentRow.Cells[0].Value.ToString();
 
             //if(radioHD.Checked == true)
-           // string path = @"E:\PtrBack";
-           string path = @"comboDrive.SelectedValue\PtrBack";
+            // string path = @"E:\PtrBack";
+            string path = comboDrive.Text+"PtrBack";
+    
+
             if (Directory.Exists(path))
             {
                 var currentDirInfo = new DirectoryInfo(this.comboDrive.Text + "\\PtrBack");
                 var files = currentDirInfo.GetFiles("*", SearchOption.AllDirectories);
                 grdBackup.DataSource = files;
-
                 grdBackup.Columns[0].Visible = true;
                 grdBackup.Columns[0].HeaderText = "Name";
                 grdBackup.Columns[0].Width = 200;
-
                 grdBackup.Columns[1].Visible = false;
                 grdBackup.Columns[2].Visible = false;
                 grdBackup.Columns[3].Visible = false;
@@ -213,7 +210,7 @@ namespace PtrCma
             else
 
             {
-                MessageBox.Show("No Record Found");
+               // MessageBox.Show("No Record Found");
             }
               //  return;
            // }
@@ -268,7 +265,15 @@ namespace PtrCma
                 {
                     if (drive.IsReady == true)
                     {
-                        comboDrive.Items.Add(drive.Name);
+                        if (drive.VolumeLabel == "System Reserved")
+                        {
+                           // Console.WriteLine(mo["DeviceID"].ToString());
+                        }
+                        else
+                        {
+                            comboDrive.Items.Add(drive.Name);
+                        }
+                        
                         //fillgrid();
                     }
                     else if(drive.DriveType != DriveType.CDRom)
@@ -276,16 +281,18 @@ namespace PtrCma
 
                     }
                 }
-                fillgrid();
+                //  fillgrid();
+                if (comboDrive.Items.Count > 0)
+                {
+                    comboDrive.SelectedIndex = 0;
+                }
             }
-            //fillgrid();
+            fillgrid();
         }
 
 
         private void radioCD_CheckedChanged(object sender, EventArgs e)
         {
-            
-            
             if (radioCD.Checked == true)
             {
                 comboDrive.Items.Remove(comboDrive.Text);
@@ -305,7 +312,12 @@ namespace PtrCma
 
                     }
                 }
+               if (comboDrive.Items.Count > 0)
+                {
+                    comboDrive.SelectedIndex = 0;
+                }
             }
+            fillgrid();
         }
 
         private void cmdExit_Click(object sender, EventArgs e)
@@ -314,8 +326,6 @@ namespace PtrCma
             if (dialogResult == DialogResult.Yes)
             {
                 comboDrive.Items.Remove(comboDrive.Text);
-                //comboDrive.DataSource = null;
-                //comboDrive.ResetText();
                 NotifyMainFormToCloseChildFormBackup();
                 this.Hide();
             }
@@ -334,7 +344,6 @@ namespace PtrCma
                 comboDrive.Items.Remove(comboDrive.Text);
                 NotifyMainFormToCloseChildFormBackup();
                 this.Hide();
-                
             }
             comboDrive.Items.Remove(comboDrive.Text);
             comboDrive.Items.Clear();
@@ -345,102 +354,60 @@ namespace PtrCma
 
         private void comboDrive_Click(object sender, EventArgs e)
         {
-            if (radioCD.Checked == true)
-            {
-                comboDrive.Items.Remove(comboDrive.Text);
-                comboDrive.Items.Clear();
-                foreach (var drive in DriveInfo.GetDrives())
-                {
-                    
-                        //if (drive.IsReady != true
-                    if (drive.DriveType == DriveType.Removable)
-                    {
-                        comboDrive.Items.Add(drive.Name);
-
-                    }
-                    else if(drive.DriveType == DriveType.CDRom)
-                    {
-                        comboDrive.Items.Add(drive.Name);
-                    }
-                    else
-                    {
-
-                    }
-                   
-                }
-            }
-            else
-            {
-                comboDrive.Items.Clear();
-                foreach (var drive in DriveInfo.GetDrives())
-                {
-                    
-                    if (drive.IsReady == true)
-                    {
-                        
-                        comboDrive.Items.Add(drive.Name);
-                        fillgrid();
-                    }
-                    else
-                    {
-
-                    }
-                }
-                fillgrid();
-            }
-
-        }
-
-        private void comboDrive_MouseClick(object sender, MouseEventArgs e)
-        {
-            //fillgrid();
             //if (radioCD.Checked == true)
             //{
             //    comboDrive.Items.Remove(comboDrive.Text);
             //    comboDrive.Items.Clear();
             //    foreach (var drive in DriveInfo.GetDrives())
             //    {
-            //        if (drive.DriveType == DriveType.CDRom)
+                    
+            //            //if (drive.IsReady != true
+            //        if (drive.DriveType == DriveType.Removable)
+            //        {
+            //            comboDrive.Items.Add(drive.Name);
+
+            //        }
+            //        else if(drive.DriveType == DriveType.CDRom)
             //        {
             //            comboDrive.Items.Add(drive.Name);
             //        }
-            //        else if (drive.DriveType == DriveType.Removable)
+            //        else
             //        {
-            //            try
-            //            {
-            //                comboDrive.Items.Add(drive.Name);
-            //            }
-            //            catch (Exception er)
-            //            {
-            //                MessageBox.Show(er.Message, GlobalMsg.titleMsg);
-            //            }
+
             //        }
+                   
             //    }
             //}
             //else
             //{
-            //    //fillgrid();
-            //    //grdBackup.Rows.Clear();
             //    comboDrive.Items.Clear();
             //    foreach (var drive in DriveInfo.GetDrives())
             //    {
+                    
             //        if (drive.IsReady == true)
             //        {
+                        
             //            comboDrive.Items.Add(drive.Name);
-            //            if (comboDrive.SelectedItem != "")
-            //            {
-            //                fillgrid();
-            //            }
-            //        }
-            //        else if (drive.DriveType != DriveType.CDRom)
-            //        {
+            //            fillgrid();
             //        }
             //        else
             //        {
+
             //        }
-                    
             //    }
+            //    fillgrid();
             //}
+
+        }
+
+        private void comboDrive_MouseClick(object sender, MouseEventArgs e)
+        {
+     
+        }
+
+        private void comboDrive_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            fillgrid();
         }
     }
 }

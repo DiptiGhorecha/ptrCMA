@@ -93,9 +93,42 @@ namespace PtrCma
 				MessageBox.Show(e.Message);
 			}
 		}
+        private void textBox_KeyDown(object sender, KeyEventArgs e)     // Cursor go to the Next TextBox After Pressing Enter
+        {
+            Control ctrl;
+            ctrl = (Control)sender;
+            if (ctrl is TextBox)
+            {
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Down)
+                //    if (e.KeyCode == Keys.Enter)
+                {
+                    this.SelectNextControl(ctrl, true, true, true, true);
+                }
+                else if (e.KeyCode == Keys.Up)
+                {
+                    this.SelectNextControl(ctrl, false, false, false, false);
+                }
+                else
+                    return;
 
+            }
+            else
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    this.SelectNextControl(ctrl, true, true, true, true);
+                }
+                else if (e.KeyCode == Keys.Up && e.Control)
+                {
+                    this.SelectNextControl(ctrl, false, false, false, false);
+                }
+                else
+                    return;
+            }
 
-		private void Settings()
+        }
+
+        private void Settings()
         {
             this.BackgroundImage = Global.partyFrmBackImg;
             setControlColor();

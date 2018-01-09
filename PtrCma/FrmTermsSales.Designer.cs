@@ -62,6 +62,7 @@
             this.txtCreditD.Name = "txtCreditD";
             this.txtCreditD.Size = new System.Drawing.Size(100, 20);
             this.txtCreditD.TabIndex = 1;
+            this.txtCreditD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtCreditE
             // 
@@ -70,6 +71,7 @@
             this.txtCreditE.Name = "txtCreditE";
             this.txtCreditE.Size = new System.Drawing.Size(100, 20);
             this.txtCreditE.TabIndex = 4;
+            this.txtCreditE.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // lblDomestic
             // 
@@ -112,6 +114,7 @@
             this.txtPeriodD.Name = "txtPeriodD";
             this.txtPeriodD.Size = new System.Drawing.Size(100, 20);
             this.txtPeriodD.TabIndex = 2;
+            this.txtPeriodD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtPeriodE
             // 
@@ -120,6 +123,7 @@
             this.txtPeriodE.Name = "txtPeriodE";
             this.txtPeriodE.Size = new System.Drawing.Size(100, 20);
             this.txtPeriodE.TabIndex = 5;
+            this.txtPeriodE.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtAverageD
             // 
@@ -128,6 +132,7 @@
             this.txtAverageD.Name = "txtAverageD";
             this.txtAverageD.Size = new System.Drawing.Size(100, 20);
             this.txtAverageD.TabIndex = 3;
+            this.txtAverageD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtAverageE
             // 
@@ -136,6 +141,7 @@
             this.txtAverageE.Name = "txtAverageE";
             this.txtAverageE.Size = new System.Drawing.Size(100, 20);
             this.txtAverageE.TabIndex = 6;
+            this.txtAverageE.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // cmdExit
             // 
@@ -143,7 +149,7 @@
             this.cmdExit.Name = "cmdExit";
             this.cmdExit.Size = new System.Drawing.Size(40, 23);
             this.cmdExit.TabIndex = 23;
-            this.cmdExit.Text = "Exit";
+            this.cmdExit.Text = "E&xit";
             this.cmdExit.UseVisualStyleBackColor = true;
             this.cmdExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -165,7 +171,7 @@
             this.pictitle.BackColor = System.Drawing.Color.Transparent;
             this.pictitle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictitle.Image = ((System.Drawing.Image)(resources.GetObject("pictitle.Image")));
-            this.pictitle.Location = new System.Drawing.Point(86, 23);
+            this.pictitle.Location = new System.Drawing.Point(101, 23);
             this.pictitle.Name = "pictitle";
             this.pictitle.Size = new System.Drawing.Size(532, 30);
             this.pictitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

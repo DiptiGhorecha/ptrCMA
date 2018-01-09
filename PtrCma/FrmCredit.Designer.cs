@@ -109,6 +109,7 @@
             this.txtFCash.Name = "txtFCash";
             this.txtFCash.Size = new System.Drawing.Size(100, 20);
             this.txtFCash.TabIndex = 1;
+            this.txtFCash.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // lblDraft
             // 
@@ -167,6 +168,7 @@
             this.txtFDraft.Name = "txtFDraft";
             this.txtFDraft.Size = new System.Drawing.Size(100, 20);
             this.txtFDraft.TabIndex = 2;
+            this.txtFDraft.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtFPC
             // 
@@ -175,6 +177,7 @@
             this.txtFPC.Name = "txtFPC";
             this.txtFPC.Size = new System.Drawing.Size(100, 20);
             this.txtFPC.TabIndex = 3;
+            this.txtFPC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtFLC
             // 
@@ -183,6 +186,7 @@
             this.txtFLC.Name = "txtFLC";
             this.txtFLC.Size = new System.Drawing.Size(100, 20);
             this.txtFLC.TabIndex = 4;
+            this.txtFLC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtFTeam
             // 
@@ -191,6 +195,7 @@
             this.txtFTeam.Name = "txtFTeam";
             this.txtFTeam.Size = new System.Drawing.Size(100, 20);
             this.txtFTeam.TabIndex = 5;
+            this.txtFTeam.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtFTotal
             // 
@@ -200,6 +205,7 @@
             this.txtFTotal.Size = new System.Drawing.Size(100, 20);
             this.txtFTotal.TabIndex = 6;
             this.txtFTotal.TextChanged += new System.EventHandler(this.txtFTotal_TextChanged);
+            this.txtFTotal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtNTotal
             // 
@@ -208,6 +214,7 @@
             this.txtNTotal.Name = "txtNTotal";
             this.txtNTotal.Size = new System.Drawing.Size(100, 20);
             this.txtNTotal.TabIndex = 12;
+            this.txtNTotal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtNTeam
             // 
@@ -216,6 +223,7 @@
             this.txtNTeam.Name = "txtNTeam";
             this.txtNTeam.Size = new System.Drawing.Size(100, 20);
             this.txtNTeam.TabIndex = 11;
+            this.txtNTeam.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtNLC
             // 
@@ -224,6 +232,7 @@
             this.txtNLC.Name = "txtNLC";
             this.txtNLC.Size = new System.Drawing.Size(100, 20);
             this.txtNLC.TabIndex = 10;
+            this.txtNLC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtNPC
             // 
@@ -232,6 +241,7 @@
             this.txtNPC.Name = "txtNPC";
             this.txtNPC.Size = new System.Drawing.Size(100, 20);
             this.txtNPC.TabIndex = 9;
+            this.txtNPC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtNDraft
             // 
@@ -240,6 +250,7 @@
             this.txtNDraft.Name = "txtNDraft";
             this.txtNDraft.Size = new System.Drawing.Size(100, 20);
             this.txtNDraft.TabIndex = 8;
+            this.txtNDraft.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtNCash
             // 
@@ -248,6 +259,7 @@
             this.txtNCash.Name = "txtNCash";
             this.txtNCash.Size = new System.Drawing.Size(100, 20);
             this.txtNCash.TabIndex = 7;
+            this.txtNCash.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtTTotal
             // 
@@ -256,6 +268,7 @@
             this.txtTTotal.Name = "txtTTotal";
             this.txtTTotal.Size = new System.Drawing.Size(100, 20);
             this.txtTTotal.TabIndex = 18;
+            this.txtTTotal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtTTeam
             // 
@@ -264,6 +277,7 @@
             this.txtTTeam.Name = "txtTTeam";
             this.txtTTeam.Size = new System.Drawing.Size(100, 20);
             this.txtTTeam.TabIndex = 17;
+            this.txtTTeam.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtTLC
             // 
@@ -272,6 +286,7 @@
             this.txtTLC.Name = "txtTLC";
             this.txtTLC.Size = new System.Drawing.Size(100, 20);
             this.txtTLC.TabIndex = 16;
+            this.txtTLC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtTPC
             // 
@@ -280,6 +295,7 @@
             this.txtTPC.Name = "txtTPC";
             this.txtTPC.Size = new System.Drawing.Size(100, 20);
             this.txtTPC.TabIndex = 15;
+            this.txtTPC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtTDraft
             // 
@@ -288,6 +304,7 @@
             this.txtTDraft.Name = "txtTDraft";
             this.txtTDraft.Size = new System.Drawing.Size(100, 20);
             this.txtTDraft.TabIndex = 14;
+            this.txtTDraft.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtTCash
             // 
@@ -296,6 +313,7 @@
             this.txtTCash.Name = "txtTCash";
             this.txtTCash.Size = new System.Drawing.Size(100, 20);
             this.txtTCash.TabIndex = 13;
+            this.txtTCash.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // lblFund
             // 
@@ -443,7 +461,7 @@
             this.cmdExit.Name = "cmdExit";
             this.cmdExit.Size = new System.Drawing.Size(40, 23);
             this.cmdExit.TabIndex = 37;
-            this.cmdExit.Text = "Exit";
+            this.cmdExit.Text = "E&xit";
             this.cmdExit.UseVisualStyleBackColor = true;
             this.cmdExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -454,6 +472,7 @@
             this.txtTTotal1.Name = "txtTTotal1";
             this.txtTTotal1.Size = new System.Drawing.Size(100, 20);
             this.txtTTotal1.TabIndex = 36;
+            this.txtTTotal1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtTTeam1
             // 
@@ -462,6 +481,7 @@
             this.txtTTeam1.Name = "txtTTeam1";
             this.txtTTeam1.Size = new System.Drawing.Size(100, 20);
             this.txtTTeam1.TabIndex = 35;
+            this.txtTTeam1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtTLC1
             // 
@@ -470,6 +490,7 @@
             this.txtTLC1.Name = "txtTLC1";
             this.txtTLC1.Size = new System.Drawing.Size(100, 20);
             this.txtTLC1.TabIndex = 34;
+            this.txtTLC1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtTPC1
             // 
@@ -478,6 +499,7 @@
             this.txtTPC1.Name = "txtTPC1";
             this.txtTPC1.Size = new System.Drawing.Size(100, 20);
             this.txtTPC1.TabIndex = 33;
+            this.txtTPC1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtTDraft1
             // 
@@ -486,6 +508,7 @@
             this.txtTDraft1.Name = "txtTDraft1";
             this.txtTDraft1.Size = new System.Drawing.Size(100, 20);
             this.txtTDraft1.TabIndex = 32;
+            this.txtTDraft1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtTCash1
             // 
@@ -494,6 +517,7 @@
             this.txtTCash1.Name = "txtTCash1";
             this.txtTCash1.Size = new System.Drawing.Size(100, 20);
             this.txtTCash1.TabIndex = 31;
+            this.txtTCash1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtNTotal1
             // 
@@ -502,6 +526,7 @@
             this.txtNTotal1.Name = "txtNTotal1";
             this.txtNTotal1.Size = new System.Drawing.Size(100, 20);
             this.txtNTotal1.TabIndex = 30;
+            this.txtNTotal1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtNTeam1
             // 
@@ -510,6 +535,7 @@
             this.txtNTeam1.Name = "txtNTeam1";
             this.txtNTeam1.Size = new System.Drawing.Size(100, 20);
             this.txtNTeam1.TabIndex = 29;
+            this.txtNTeam1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtNLC1
             // 
@@ -518,6 +544,7 @@
             this.txtNLC1.Name = "txtNLC1";
             this.txtNLC1.Size = new System.Drawing.Size(100, 20);
             this.txtNLC1.TabIndex = 28;
+            this.txtNLC1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtNPC1
             // 
@@ -526,6 +553,7 @@
             this.txtNPC1.Name = "txtNPC1";
             this.txtNPC1.Size = new System.Drawing.Size(100, 20);
             this.txtNPC1.TabIndex = 27;
+            this.txtNPC1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtNDraft1
             // 
@@ -534,6 +562,7 @@
             this.txtNDraft1.Name = "txtNDraft1";
             this.txtNDraft1.Size = new System.Drawing.Size(100, 20);
             this.txtNDraft1.TabIndex = 26;
+            this.txtNDraft1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtNCash1
             // 
@@ -542,6 +571,7 @@
             this.txtNCash1.Name = "txtNCash1";
             this.txtNCash1.Size = new System.Drawing.Size(100, 20);
             this.txtNCash1.TabIndex = 25;
+            this.txtNCash1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtFTotal1
             // 
@@ -550,6 +580,7 @@
             this.txtFTotal1.Name = "txtFTotal1";
             this.txtFTotal1.Size = new System.Drawing.Size(100, 20);
             this.txtFTotal1.TabIndex = 24;
+            this.txtFTotal1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtFTeam1
             // 
@@ -558,6 +589,7 @@
             this.txtFTeam1.Name = "txtFTeam1";
             this.txtFTeam1.Size = new System.Drawing.Size(100, 20);
             this.txtFTeam1.TabIndex = 23;
+            this.txtFTeam1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtFLC1
             // 
@@ -566,6 +598,7 @@
             this.txtFLC1.Name = "txtFLC1";
             this.txtFLC1.Size = new System.Drawing.Size(100, 20);
             this.txtFLC1.TabIndex = 22;
+            this.txtFLC1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtFPC1
             // 
@@ -574,6 +607,7 @@
             this.txtFPC1.Name = "txtFPC1";
             this.txtFPC1.Size = new System.Drawing.Size(100, 20);
             this.txtFPC1.TabIndex = 21;
+            this.txtFPC1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtFDraft1
             // 
@@ -582,6 +616,7 @@
             this.txtFDraft1.Name = "txtFDraft1";
             this.txtFDraft1.Size = new System.Drawing.Size(100, 20);
             this.txtFDraft1.TabIndex = 20;
+            this.txtFDraft1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtFCash1
             // 
@@ -590,6 +625,7 @@
             this.txtFCash1.Name = "txtFCash1";
             this.txtFCash1.Size = new System.Drawing.Size(100, 20);
             this.txtFCash1.TabIndex = 19;
+            this.txtFCash1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // pictureBox1
             // 

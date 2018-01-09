@@ -28,119 +28,126 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtYr1 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.cmdExit = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInsertRow));
+            this.lblDesc = new System.Windows.Forms.Label();
+            this.lblSr = new System.Windows.Forms.Label();
+            this.txtSr = new System.Windows.Forms.TextBox();
+            this.txtDesc = new System.Windows.Forms.TextBox();
+            this.txtSr1 = new System.Windows.Forms.TextBox();
+            this.cmdOk = new System.Windows.Forms.Button();
+            this.cmdCancel = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictitle = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictitle)).BeginInit();
             this.SuspendLayout();
             // 
-            // label2
+            // lblDesc
             // 
-            this.label2.Location = new System.Drawing.Point(114, 127);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 23);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Description";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.lblDesc.Location = new System.Drawing.Point(114, 144);
+            this.lblDesc.Name = "lblDesc";
+            this.lblDesc.Size = new System.Drawing.Size(100, 23);
+            this.lblDesc.TabIndex = 3;
+            this.lblDesc.Text = "Description";
+            this.lblDesc.Click += new System.EventHandler(this.label2_Click);
             // 
-            // label1
+            // lblSr
             // 
-            this.label1.Location = new System.Drawing.Point(114, 97);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 23);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Sr. No.";
+            this.lblSr.Location = new System.Drawing.Point(114, 114);
+            this.lblSr.Name = "lblSr";
+            this.lblSr.Size = new System.Drawing.Size(100, 23);
+            this.lblSr.TabIndex = 2;
+            this.lblSr.Text = "Sr. No.";
             // 
-            // txtYr1
+            // txtSr
             // 
-            this.txtYr1.Location = new System.Drawing.Point(222, 94);
-            this.txtYr1.MaxLength = 20;
-            this.txtYr1.Name = "txtYr1";
-            this.txtYr1.Size = new System.Drawing.Size(74, 20);
-            this.txtYr1.TabIndex = 13;
+            this.txtSr.Location = new System.Drawing.Point(222, 111);
+            this.txtSr.MaxLength = 20;
+            this.txtSr.Name = "txtSr";
+            this.txtSr.Size = new System.Drawing.Size(74, 20);
+            this.txtSr.TabIndex = 13;
             // 
-            // textBox1
+            // txtDesc
             // 
-            this.textBox1.Location = new System.Drawing.Point(222, 127);
-            this.textBox1.MaxLength = 20;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(299, 20);
-            this.textBox1.TabIndex = 14;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtDesc.Location = new System.Drawing.Point(222, 144);
+            this.txtDesc.MaxLength = 20;
+            this.txtDesc.Name = "txtDesc";
+            this.txtDesc.Size = new System.Drawing.Size(299, 20);
+            this.txtDesc.TabIndex = 14;
+            this.txtDesc.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // textBox2
+            // txtSr1
             // 
-            this.textBox2.Location = new System.Drawing.Point(312, 94);
-            this.textBox2.MaxLength = 20;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(74, 20);
-            this.textBox2.TabIndex = 15;
+            this.txtSr1.Location = new System.Drawing.Point(312, 111);
+            this.txtSr1.MaxLength = 20;
+            this.txtSr1.Name = "txtSr1";
+            this.txtSr1.Size = new System.Drawing.Size(74, 20);
+            this.txtSr1.TabIndex = 15;
             // 
-            // cmdExit
+            // cmdOk
             // 
-            this.cmdExit.Location = new System.Drawing.Point(413, 201);
-            this.cmdExit.Name = "cmdExit";
-            this.cmdExit.Size = new System.Drawing.Size(50, 23);
-            this.cmdExit.TabIndex = 38;
-            this.cmdExit.Text = "Ok";
-            this.cmdExit.UseVisualStyleBackColor = true;
-            this.cmdExit.Click += new System.EventHandler(this.cmdExit_Click);
+            this.cmdOk.Location = new System.Drawing.Point(413, 218);
+            this.cmdOk.Name = "cmdOk";
+            this.cmdOk.Size = new System.Drawing.Size(50, 23);
+            this.cmdOk.TabIndex = 38;
+            this.cmdOk.Text = "Ok";
+            this.cmdOk.UseVisualStyleBackColor = true;
+            this.cmdOk.Click += new System.EventHandler(this.cmdExit_Click);
             // 
-            // button1
+            // cmdCancel
             // 
-            this.button1.Location = new System.Drawing.Point(467, 201);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(50, 23);
-            this.button1.TabIndex = 39;
-            this.button1.Text = "Cancel";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label3
-            // 
-            this.label3.Location = new System.Drawing.Point(265, 34);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 23);
-            this.label3.TabIndex = 40;
-            this.label3.Text = "Insert Row";
+            this.cmdCancel.Location = new System.Drawing.Point(467, 218);
+            this.cmdCancel.Name = "cmdCancel";
+            this.cmdCancel.Size = new System.Drawing.Size(50, 23);
+            this.cmdCancel.TabIndex = 39;
+            this.cmdCancel.Text = "Cancel";
+            this.cmdCancel.UseVisualStyleBackColor = true;
+            this.cmdCancel.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::PtrCma.Properties.Resources.closeBtnBg;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Image = global::PtrCma.Properties.Resources.close;
-            this.pictureBox1.Location = new System.Drawing.Point(598, 25);
+            this.pictureBox1.Location = new System.Drawing.Point(569, 25);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(32, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 79;
             this.pictureBox1.TabStop = false;
             // 
+            // pictitle
+            // 
+            this.pictitle.BackColor = System.Drawing.Color.Transparent;
+            this.pictitle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictitle.Image = ((System.Drawing.Image)(resources.GetObject("pictitle.Image")));
+            this.pictitle.Location = new System.Drawing.Point(12, 25);
+            this.pictitle.Name = "pictitle";
+            this.pictitle.Size = new System.Drawing.Size(532, 30);
+            this.pictitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictitle.TabIndex = 80;
+            this.pictitle.TabStop = false;
+            // 
             // FrmInsertRow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(652, 269);
+            this.ClientSize = new System.Drawing.Size(615, 269);
+            this.Controls.Add(this.pictitle);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.cmdExit);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.txtYr1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cmdCancel);
+            this.Controls.Add(this.cmdOk);
+            this.Controls.Add(this.txtSr1);
+            this.Controls.Add(this.txtDesc);
+            this.Controls.Add(this.txtSr);
+            this.Controls.Add(this.lblDesc);
+            this.Controls.Add(this.lblSr);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmInsertRow";
             this.Text = "FrmInsertRow";
             this.Load += new System.EventHandler(this.FrmInsertRow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictitle)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,14 +155,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtYr1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button cmdExit;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblDesc;
+        private System.Windows.Forms.Label lblSr;
+        private System.Windows.Forms.TextBox txtSr;
+        private System.Windows.Forms.TextBox txtDesc;
+        private System.Windows.Forms.TextBox txtSr1;
+        private System.Windows.Forms.Button cmdOk;
+        private System.Windows.Forms.Button cmdCancel;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictitle;
     }
 }

@@ -71,6 +71,7 @@
             this.txtDoc.Name = "txtDoc";
             this.txtDoc.Size = new System.Drawing.Size(712, 20);
             this.txtDoc.TabIndex = 7;
+            this.txtDoc.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // picFrmClose
             // 
@@ -103,7 +104,7 @@
             this.cmdUpdate.Name = "cmdUpdate";
             this.cmdUpdate.Size = new System.Drawing.Size(60, 30);
             this.cmdUpdate.TabIndex = 3;
-            this.cmdUpdate.Text = "Save";
+            this.cmdUpdate.Text = "&Save";
             this.cmdUpdate.UseVisualStyleBackColor = true;
             this.cmdUpdate.Click += new System.EventHandler(this.cmdUpdate_Click);
             // 
@@ -113,7 +114,7 @@
             this.cmdEdit.Name = "cmdEdit";
             this.cmdEdit.Size = new System.Drawing.Size(50, 30);
             this.cmdEdit.TabIndex = 2;
-            this.cmdEdit.Text = "Edit";
+            this.cmdEdit.Text = "&Edit";
             this.cmdEdit.UseVisualStyleBackColor = true;
             this.cmdEdit.Click += new System.EventHandler(this.cmdEdit_Click);
             // 
@@ -123,7 +124,7 @@
             this.cmdAdd.Name = "cmdAdd";
             this.cmdAdd.Size = new System.Drawing.Size(50, 30);
             this.cmdAdd.TabIndex = 1;
-            this.cmdAdd.Text = "Add";
+            this.cmdAdd.Text = "&Add";
             this.cmdAdd.UseVisualStyleBackColor = true;
             this.cmdAdd.Click += new System.EventHandler(this.cmdAdd_Click);
             // 
@@ -133,7 +134,7 @@
             this.cmdExit.Name = "cmdExit";
             this.cmdExit.Size = new System.Drawing.Size(50, 30);
             this.cmdExit.TabIndex = 6;
-            this.cmdExit.Text = "Exit";
+            this.cmdExit.Text = "E&xit";
             this.cmdExit.UseVisualStyleBackColor = true;
             this.cmdExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -143,7 +144,7 @@
             this.cmdDel.Name = "cmdDel";
             this.cmdDel.Size = new System.Drawing.Size(60, 30);
             this.cmdDel.TabIndex = 4;
-            this.cmdDel.Text = "Delete";
+            this.cmdDel.Text = "&Delete";
             this.cmdDel.UseVisualStyleBackColor = true;
             this.cmdDel.Click += new System.EventHandler(this.cmdDelete_Click);
             // 
@@ -153,7 +154,7 @@
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(50, 30);
             this.cmdCancel.TabIndex = 5;
-            this.cmdCancel.Text = "Cancel";
+            this.cmdCancel.Text = "&Cancel";
             this.cmdCancel.UseVisualStyleBackColor = true;
             this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
             // 

@@ -62,6 +62,7 @@
             this.txtIncome.Name = "txtIncome";
             this.txtIncome.Size = new System.Drawing.Size(100, 20);
             this.txtIncome.TabIndex = 2;
+            this.txtIncome.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // lblSales
             // 
@@ -102,6 +103,7 @@
             this.txtSales.Name = "txtSales";
             this.txtSales.Size = new System.Drawing.Size(100, 20);
             this.txtSales.TabIndex = 3;
+            this.txtSales.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtService
             // 
@@ -110,6 +112,7 @@
             this.txtService.Name = "txtService";
             this.txtService.Size = new System.Drawing.Size(100, 20);
             this.txtService.TabIndex = 4;
+            this.txtService.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtExcise
             // 
@@ -118,6 +121,7 @@
             this.txtExcise.Name = "txtExcise";
             this.txtExcise.Size = new System.Drawing.Size(100, 20);
             this.txtExcise.TabIndex = 5;
+            this.txtExcise.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtOther
             // 
@@ -126,6 +130,7 @@
             this.txtOther.Name = "txtOther";
             this.txtOther.Size = new System.Drawing.Size(100, 20);
             this.txtOther.TabIndex = 6;
+            this.txtOther.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // cmdExit
             // 
@@ -133,7 +138,7 @@
             this.cmdExit.Name = "cmdExit";
             this.cmdExit.Size = new System.Drawing.Size(40, 23);
             this.cmdExit.TabIndex = 1;
-            this.cmdExit.Text = "Exit";
+            this.cmdExit.Text = "E&xit";
             this.cmdExit.UseVisualStyleBackColor = true;
             this.cmdExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -155,7 +160,7 @@
             this.pictitle.BackColor = System.Drawing.Color.Transparent;
             this.pictitle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictitle.Image = ((System.Drawing.Image)(resources.GetObject("pictitle.Image")));
-            this.pictitle.Location = new System.Drawing.Point(100, 25);
+            this.pictitle.Location = new System.Drawing.Point(107, 25);
             this.pictitle.Name = "pictitle";
             this.pictitle.Size = new System.Drawing.Size(511, 30);
             this.pictitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

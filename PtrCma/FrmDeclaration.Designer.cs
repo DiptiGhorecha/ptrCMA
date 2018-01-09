@@ -107,6 +107,7 @@
             this.txtPlace.Name = "txtPlace";
             this.txtPlace.Size = new System.Drawing.Size(184, 20);
             this.txtPlace.TabIndex = 46;
+            this.txtPlace.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // txtDate
             // 
@@ -114,6 +115,7 @@
             this.txtDate.Name = "txtDate";
             this.txtDate.Size = new System.Drawing.Size(184, 20);
             this.txtDate.TabIndex = 47;
+            this.txtDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // cmdExit
             // 
@@ -121,7 +123,7 @@
             this.cmdExit.Name = "cmdExit";
             this.cmdExit.Size = new System.Drawing.Size(49, 23);
             this.cmdExit.TabIndex = 48;
-            this.cmdExit.Text = "Exit";
+            this.cmdExit.Text = "E&xit";
             this.cmdExit.UseVisualStyleBackColor = true;
             // 
             // txtFacility
@@ -130,6 +132,7 @@
             this.txtFacility.Name = "txtFacility";
             this.txtFacility.Size = new System.Drawing.Size(598, 20);
             this.txtFacility.TabIndex = 49;
+            this.txtFacility.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_KeyDown);
             // 
             // FrmDeclaration
             // 
