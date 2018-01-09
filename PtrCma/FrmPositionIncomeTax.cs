@@ -175,9 +175,8 @@ namespace PtrCma
         private void Settings()
         {
             this.BackgroundImage = Global.partyFrmBackImg;
-
-
-            
+            setControlColor();
+            setControlSize();
         }
 
         private void btnExit_Click(object sender, EventArgs e)

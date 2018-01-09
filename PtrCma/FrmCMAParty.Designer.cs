@@ -78,6 +78,8 @@
             this.richAreaNotes = new System.Windows.Forms.RichTextBox();
             this.lblData = new System.Windows.Forms.Label();
             this.txtRefParty = new System.Windows.Forms.TextBox();
+            this.txtYr = new System.Windows.Forms.TextBox();
+            this.txtRs = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewParty)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictFrmClose)).BeginInit();
@@ -581,6 +583,22 @@
             this.txtRefParty.TabIndex = 47;
             this.txtRefParty.Visible = false;
             // 
+            // txtYr
+            // 
+            this.txtYr.Location = new System.Drawing.Point(30, 42);
+            this.txtYr.Name = "txtYr";
+            this.txtYr.Size = new System.Drawing.Size(68, 21);
+            this.txtYr.TabIndex = 201;
+            this.txtYr.Visible = false;
+            // 
+            // txtRs
+            // 
+            this.txtRs.Location = new System.Drawing.Point(30, 69);
+            this.txtRs.Name = "txtRs";
+            this.txtRs.Size = new System.Drawing.Size(68, 21);
+            this.txtRs.TabIndex = 202;
+            this.txtRs.Visible = false;
+            // 
             // FrmCMAParty
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -588,6 +606,8 @@
             this.BackColor = System.Drawing.Color.LightGray;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(881, 564);
+            this.Controls.Add(this.txtRs);
+            this.Controls.Add(this.txtYr);
             this.Controls.Add(this.txtRefParty);
             this.Controls.Add(this.lblData);
             this.Controls.Add(this.richAreaNotes);
@@ -709,5 +729,7 @@
         private System.Windows.Forms.RichTextBox richAreaNotes;
         private System.Windows.Forms.Label lblData;
         private System.Windows.Forms.TextBox txtRefParty;
+        private System.Windows.Forms.TextBox txtYr;
+        private System.Windows.Forms.TextBox txtRs;
     }
 }

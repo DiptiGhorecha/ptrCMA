@@ -123,6 +123,12 @@
     <Compile Include="FrmGuarantor.Designer.cs">
       <DependentUpon>FrmGuarantor.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmInsertRow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInsertRow.Designer.cs">
+      <DependentUpon>FrmInsertRow.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMainCma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -246,6 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmGuarantor.resx">
       <DependentUpon>FrmGuarantor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInsertRow.resx">
+      <DependentUpon>FrmInsertRow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMainCma.resx">
       <DependentUpon>FrmMainCma.cs</DependentUpon>

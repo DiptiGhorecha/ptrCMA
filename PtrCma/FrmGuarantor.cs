@@ -48,6 +48,7 @@ namespace PtrCma
                 grdViewGuarantor.CurrentCell = grdViewGuarantor.Rows[0].Cells[0];  //Set 1st row as current row by default
                 LoadDatatoTextBox();  // show data in Textbox from Gridview
             }
+            cmdAdd.Focus();
         }
 
         private void filltempTable()
@@ -201,7 +202,8 @@ namespace PtrCma
 
         private void cmdDelete_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult1 = MessageBox.Show(GlobalMsg.deleteMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
+            if (grdViewGuarantor.Rows.Count > 0) { 
+                DialogResult dialogResult1 = MessageBox.Show(GlobalMsg.deleteMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
             if (dialogResult1 == DialogResult.Yes)
             {
                 con = new OleDbConnection(connectionString);
@@ -215,9 +217,14 @@ namespace PtrCma
                 con.Close();
 
                 MessageBox.Show(GlobalMsg.deleteMsg, "Perfect Tax Reporter - CMA 1.0");
+                foreach (TextBox txt in Controls.OfType<TextBox>())
+                {
+                    txt.Clear();
+                }
                 fillgrid();
                 LoadDatatoTextBox();
             }
+        }
         }
 
         private void grdViewSecurities_CellClick(object sender, DataGridViewCellEventArgs e)

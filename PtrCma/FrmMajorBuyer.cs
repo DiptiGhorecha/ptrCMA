@@ -44,6 +44,7 @@ namespace PtrCma
                 grdPurchase.CurrentCell = grdPurchase.Rows[0].Cells[0];  //Set 1st row as current row by default
                 LoadDatatoTextBox();  // show data in Textbox from Gridview
             }
+            cmdAdd.Focus();
         }
 
 		private void filltempTable()
@@ -98,8 +99,8 @@ namespace PtrCma
 				}
 
 				grdPurchase.Columns[0].Visible = true;
-				grdPurchase.Columns[0].HeaderText = "Director Name";
-				grdPurchase.Columns[0].Width = 250;
+				grdPurchase.Columns[0].HeaderText = "Major Buyers";
+				grdPurchase.Columns[0].Width = 710;
 			}
 			catch (Exception e)
 			{
@@ -211,21 +212,30 @@ namespace PtrCma
 
 		private void cmdDelete_Click(object sender, EventArgs e)
 		{
-			DialogResult dialogResult1 = MessageBox.Show(GlobalMsg.deleteMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
-			if (dialogResult1 == DialogResult.Yes)
-			{
-				con = new OleDbConnection(connectionString);
-				if (con.State == ConnectionState.Closed)
-				{
-					con.Open();
-				}
-				String sql = "delete from Cx_Cd106 WHERE CL_REFNO=" + Global.prtyCode;
-				cmd = new OleDbCommand(sql, con);
-				cmd.ExecuteNonQuery();
-				con.Close();
-				fillgrid();
-				MessageBox.Show(GlobalMsg.deleteMsg, "Perfect Tax Reporter - CMA 1.0");
-			}
+            if (grdPurchase.Rows.Count > 0)
+            {
+                DialogResult dialogResult1 = MessageBox.Show(GlobalMsg.deleteMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
+                if (dialogResult1 == DialogResult.Yes)
+                {
+                    con = new OleDbConnection(connectionString);
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+                    String sql = "delete from Cx_Cd106 WHERE CL_REFNO=" + Global.prtyCode;
+                    cmd = new OleDbCommand(sql, con);
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    //fillgrid();
+                    MessageBox.Show(GlobalMsg.deleteMsg, "Perfect Tax Reporter - CMA 1.0");
+                    foreach (TextBox txt in Controls.OfType<TextBox>())
+                    {
+                        txt.Clear();
+                    }
+                    fillgrid();
+                    LoadDatatoTextBox();
+                }
+            }
 		}
 
         private void grdPurchase_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -278,11 +288,11 @@ namespace PtrCma
             String sql = "";
             if (isAddEdit == "A")
             {
-                sql = "insert into Cp_Cd101(CTXT01,CL_REFNO) values ('" + txtDoc.Text +"'," + Global.prtyCode + ")";
+                sql = "insert into Cp_Cd106(CTXT01,CL_REFNO) values ('" + txtDoc.Text +"'," + Global.prtyCode + ")";
             }
             else
             {
-                sql = "update Cp_Cd101 set CTXT01='" + txtDoc.Text+"' WHERE CTX_REF=" + txtRef.Text + " AND CL_REFNO=" + Global.prtyCode;
+                sql = "update Cp_Cd106 set CTXT01='" + txtDoc.Text+"' WHERE CTX_REF=" + txtRef.Text + " AND CL_REFNO=" + Global.prtyCode;
             }
             OleDbCommand cmd = new OleDbCommand(sql, con);
             cmd.ExecuteNonQuery();

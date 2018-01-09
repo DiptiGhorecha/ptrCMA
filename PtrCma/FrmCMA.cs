@@ -16,7 +16,7 @@ namespace PtrCma
     public partial class FrmCMA : Form
     {
 
-        public Action NotifyMainFormToCloseChildFormParty;
+        public Action NotifyMainFormToCloseChildFormCma;
         //public Action NotifyMainFormToOpenChildFormCma;
         public Action NotifyMainFormToOpenChildFormDirector;
         public Action NotifyMainFormToOpenChildFormBanking;
@@ -95,25 +95,38 @@ namespace PtrCma
             
             this.KeyPreview = true; //To handle enter key
             Settings();
-            //  ((DataGridViewTextBoxColumn) gridViewCMA.Columns[11]).MaxInputLength = 250;
-            gridViewCMA.EditingControlShowing += new DataGridViewEditingControlShowingEventHandler(gridViewCMA_EditingControlShowing);
+                //  ((DataGridViewTextBoxColumn) gridViewCMA.Columns[11]).MaxInputLength = 250;
+                gridViewCMA.Visible = true;
+                gridViewCMA.EditingControlShowing += new DataGridViewEditingControlShowingEventHandler(gridViewCMA_EditingControlShowing);
                 grdViewCMAOther.Visible = false;
-            txtPrtyName.Enabled = false;
-            txtCurYear.Enabled = false;
-            comboBxYear.Enabled = false;
-            comboBoxCopyYear.Enabled = false;
-            comboBoxRsIn.Enabled = false;
-            cmdSave.Enabled = false;
-            cmdCancel.Enabled = false;
-                //cmdInsRow.Enabled = false;
-                //cmdDelRow.Enabled = false;
-                //cmdChngDesc.Enabled = false;
-                //cmdFormula.Enabled = false;
-                //cmdResetDeta.Enabled = false;
-               // cmdCopyYr.Enabled = false;
+                txtPrtyName.Visible = true;
+                txtPrtyName.Enabled = false;
+                txtCurYear.Enabled = false;
+                comboBxYear.Enabled = false;
+                comboBoxCopyYear.Enabled = false;
+                comboBoxRsIn.Enabled = false;
+                cmdSave.Enabled = false;
+                cmdCancel.Enabled = false;
                 txtPrtyName.Text = Global.prtyName;
-                comboBoxRsIn.SelectedIndex = comboBoxRsIn.FindStringExact("Rs");
-                comboBxYear.SelectedIndex = comboBxYear.FindStringExact("6");
+                //fillcombo();
+                if (Global.curYr.Trim().Equals(""))
+                {
+                    comboBxYear.Text = "4";
+                }
+                else
+                {
+                    comboBxYear.Text = Global.curYr;
+                }
+                if (Global.inrS.Trim().Equals(""))
+                {
+                    
+                    comboBoxRsIn.Text = "Rs";
+                }
+                else
+                {
+                    comboBoxRsIn.Text = Global.inrS;
+                }
+                ///////////////////////////////
                 checkTables();
             fillTopicListBox();
             lstViewTopic.Items[0].Selected = true;
@@ -139,6 +152,8 @@ namespace PtrCma
 
         public void Settings()
         {
+           // TextBox.CheckForIllegalCrossThreadCalls = false;
+            //txtCurYear.che
             this.BackgroundImage = Global.cmsFrmBackImg;
             // panelCmdBtns.BackgroundImage = Global.cmsFrmBackImg;
             this.Width = this.Parent.Width - 4;
@@ -288,7 +303,7 @@ namespace PtrCma
                     if (chkrs1.EOF == false)
                     {
                        
-                        txtCurYear.Text = chkrs1.Fields[0].Value.Substring(0, 5) + chkrs1.Fields[0].Value.Substring(7, 2);
+                       txtCurYear.Text = chkrs1.Fields[0].Value.Substring(0, 5) + chkrs1.Fields[0].Value.Substring(7, 2);
                         //txtCurYear.Text = chkrs1.Fields[0].Value;
 
                     }
@@ -458,7 +473,7 @@ namespace PtrCma
                 grdViewCMAOther.Columns[7].Width = 50;
 
                 grdViewCMAOther.Columns[12].Visible = true;
-                grdViewCMAOther.Columns[12].ReadOnly = false;
+                grdViewCMAOther.Columns[12].ReadOnly = true;
                 grdViewCMAOther.Columns[12].HeaderText = "Description";
                 grdViewCMAOther.Columns[12].Width = ((grdViewCMAOther.Width - 200) - (120 * Convert.ToInt16(comboBxYear.Text)));
 
@@ -582,8 +597,8 @@ namespace PtrCma
             else
             {
                 grdViewCMAOther.CurrentCell = grdViewCMAOther.Rows[0].Cells[30];
-              
-               // txtCurYear.Enabled = true;
+
+                txtCurYear.Enabled = true;
                 comboBxYear.Enabled = true;
                 comboBoxCopyYear.Enabled = true;
                 comboBoxRsIn.Enabled = true;
@@ -596,8 +611,55 @@ namespace PtrCma
             }
 
         }
+        private void fillcombo()
+        {
+            try {
+                if (InvokeRequired)
+                {
+                    MethodInvoker method = new MethodInvoker(fillcombo);
+                    Invoke(method);
+                    return;
+                }
+                OleDbConnection conn = new OleDbConnection(connectionString);
+           
+            OleDbDataAdapter myadapter = new OleDbDataAdapter();
+            DataSet ds1 = new DataSet();
+            
+            String sql2 = "SELECT CL_YEARS,CL_RSIN FROM Cd_MsCln where CL_REFNO=" + Global.prtyCode;
+            myadapter.SelectCommand = new OleDbCommand(sql2, conn);
+            myadapter.Fill(ds1, "Cd_MsCln");
+            if (ds1.Tables[0].Rows.Count > 0)
+            {
+               // for (int i = 0; i < ds1.Tables[0].Rows.Count; i++)
+               // {
+     
+                //    comboBoxRsIn.Invoke(new Action(() => comboBoxRsIn.Text = ds1.Tables[0].Rows[0]["CL_RSIN"].ToString()));
+                  //  comboBxYear.Invoke(new Action(() => comboBoxRsIn.Text = ds1.Tables[0].Rows[0]["CL_YEARS"].ToString()));
+                    comboBoxRsIn.Text = ds1.Tables[0].Rows[0]["CL_RSIN"].ToString();
+                   comboBxYear.Text = ds1.Tables[0].Rows[0]["CL_YEARS"].ToString();
+               // }
+            }
 
-        private void cmdSave_Click(object sender, EventArgs e)
+            ds1.Dispose();
+
+            conn.Close();
+                if (comboBoxRsIn.Text.Trim().Equals(""))
+                {
+                    comboBoxRsIn.Text = "Rs";
+                }
+                if (comboBxYear.Text.Trim().Equals(""))
+                {
+                    comboBxYear.Text = "4";
+                }
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show(e1.Message);
+            }
+
+}
+
+private void cmdSave_Click(object sender, EventArgs e)
         {
             try
             {
@@ -623,6 +685,34 @@ namespace PtrCma
                     OleDbCommand cmd1 = new OleDbCommand(sql1, con);
                     cmd1.Transaction = transaction;
                     cmd1.ExecuteNonQuery();
+
+                }
+                for (int i = 0; i <= grdViewCMAOther.Rows.Count - 1; i++)
+                {
+                    refno = Convert.ToString(grdViewCMAOther.Rows[i].Cells[0].Value);
+                    String ctx11, ctx12, ctx13, ctx14, ctx15, ctx16, ctx17, ctx18, ctx19, ctx20, ctx21, ctx22, ctx23, ctx24 = "";
+                    ctx11 = ((grdViewCMAOther.Rows[i].Cells[30].Value != null && grdViewCMAOther.Rows[i].Cells[30].Value.ToString() != String.Empty) ? grdViewCMAOther.Rows[i].Cells[30].Value.ToString() : "Null");
+                    ctx12 = ((grdViewCMAOther.Rows[i].Cells[31].Value != null && grdViewCMAOther.Rows[i].Cells[31].Value.ToString() != String.Empty) ? grdViewCMAOther.Rows[i].Cells[31].Value.ToString() : "Null");
+                    ctx13 = ((grdViewCMAOther.Rows[i].Cells[32].Value != null && grdViewCMAOther.Rows[i].Cells[32].Value.ToString() != String.Empty) ? grdViewCMAOther.Rows[i].Cells[32].Value.ToString() : "Null");
+                    ctx14 = ((grdViewCMAOther.Rows[i].Cells[33].Value != null && grdViewCMAOther.Rows[i].Cells[33].Value.ToString() != String.Empty) ? grdViewCMAOther.Rows[i].Cells[33].Value.ToString() : "Null");
+                    ctx15 = ((grdViewCMAOther.Rows[i].Cells[34].Value != null && grdViewCMAOther.Rows[i].Cells[34].Value.ToString() != String.Empty) ? grdViewCMAOther.Rows[i].Cells[34].Value.ToString() : "Null");
+                    ctx16 = ((grdViewCMAOther.Rows[i].Cells[35].Value != null && grdViewCMAOther.Rows[i].Cells[35].Value.ToString() != String.Empty) ? grdViewCMAOther.Rows[i].Cells[35].Value.ToString() : "Null");
+                    ctx17 = ((grdViewCMAOther.Rows[i].Cells[36].Value != null && grdViewCMAOther.Rows[i].Cells[36].Value.ToString() != String.Empty) ? grdViewCMAOther.Rows[i].Cells[36].Value.ToString() : "Null");
+                    ctx18 = ((grdViewCMAOther.Rows[i].Cells[37].Value != null && grdViewCMAOther.Rows[i].Cells[37].Value.ToString() != String.Empty) ? grdViewCMAOther.Rows[i].Cells[37].Value.ToString() : "Null");
+                    ctx19 = ((grdViewCMAOther.Rows[i].Cells[38].Value != null && grdViewCMAOther.Rows[i].Cells[38].Value.ToString() != String.Empty) ? grdViewCMAOther.Rows[i].Cells[38].Value.ToString() : "Null");
+                    ctx20 = ((grdViewCMAOther.Rows[i].Cells[39].Value != null && grdViewCMAOther.Rows[i].Cells[39].Value.ToString() != String.Empty) ? grdViewCMAOther.Rows[i].Cells[39].Value.ToString() : "Null");
+                    ctx21 = ((grdViewCMAOther.Rows[i].Cells[40].Value != null && grdViewCMAOther.Rows[i].Cells[40].Value.ToString() != String.Empty) ? grdViewCMAOther.Rows[i].Cells[40].Value.ToString() : "Null");
+                    ctx22 = ((grdViewCMAOther.Rows[i].Cells[41].Value != null && grdViewCMAOther.Rows[i].Cells[41].Value.ToString() != String.Empty) ? grdViewCMAOther.Rows[i].Cells[41].Value.ToString() : "Null");
+
+
+                    String sql = "update Cp_CdFm3 set FM_YR01=" + ctx11 + ",FM_YR02=" + ctx12 + ",FM_YR03=" + ctx13 + ",FM_YR04=" + ctx14 + ",FM_YR05=" + ctx15 + ",FM_YR06=" + ctx16 + ",FM_YR07=" + ctx17 + ",FM_YR08=" + ctx18 + ",FM_YR09=" + ctx19 + ",FM_YR10=" + ctx20 + ",FM_YR11=" + ctx21 + ",FM_YR12=" + ctx22 + " WHERE FM_CLREFNO=" + Global.prtyCode + " AND FM_REFNO=" + refno;
+                    String sql1 = "update Cx_CdFm3 set FM_YR01=" + ctx11 + ",FM_YR02=" + ctx12 + ",FM_YR03=" + ctx13 + ",FM_YR04=" + ctx14 + ",FM_YR05=" + ctx15 + ",FM_YR06=" + ctx16 + ",FM_YR07=" + ctx17 + ",FM_YR08=" + ctx18 + ",FM_YR09=" + ctx19 + ",FM_YR10=" + ctx20 + ",FM_YR11=" + ctx21 + ",FM_YR12=" + ctx22 + " WHERE FM_CLREFNO=" + Global.prtyCode + " AND FM_REFNO=" + refno;
+                    OleDbCommand cmd3 = new OleDbCommand(sql, con);
+                    cmd3.Transaction = transaction;
+                    cmd3.ExecuteNonQuery();
+                    OleDbCommand cmd4 = new OleDbCommand(sql1, con);
+                    cmd4.Transaction = transaction;
+                    cmd4.ExecuteNonQuery();
 
                 }
                 transaction.Commit();
@@ -1092,7 +1182,16 @@ namespace PtrCma
                 }
                 ds1.Dispose();
 
-                conn.Close();
+                //DETAIL Associates
+                
+              myadapter1 = new OleDbDataAdapter();
+                ds1 = new DataSet();
+                sql2 = "update Cd_MsCln set CL_YEARS=" + comboBxYear.Text+",CL_RSIN='"+comboBoxRsIn.Text+"' where CL_REFNO=" + Global.prtyCode;
+                myadapter1.SelectCommand = new OleDbCommand(sql2, conn);
+                myadapter1.Fill(ds1, "Cd_MsCln");
+                ds1.Dispose();
+
+                conn.Close();  
                 isEdited = "n";
                 MessageBox.Show(GlobalMsg.insertMsg, "Perfect Tax Reporter - CMA 1.0");
             }
@@ -1120,7 +1219,8 @@ namespace PtrCma
             DialogResult dialogResult = MessageBox.Show("Are You Sure Want to Exit ?", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
             if (dialogResult == DialogResult.Yes)
             {
-                NotifyMainFormToCloseChildFormParty();
+               // NotifyMainFormToCloseChildFormParty();
+                NotifyMainFormToCloseChildFormCma();
                 this.Hide();
             }
         }
@@ -1268,7 +1368,8 @@ namespace PtrCma
 
         private void cmdChngPrty_Click(object sender, EventArgs e)
         {
-            NotifyMainFormToCloseChildFormParty();
+//NotifyMainFormToCloseChildFormParty();
+            NotifyMainFormToCloseChildFormCma();
             this.Hide();
         }
 
@@ -1314,7 +1415,10 @@ namespace PtrCma
             }
             else
             {
-
+                DataGridViewRow row = (DataGridViewRow)grdViewCMAOther.Rows[0].Clone();
+                row.Cells[0].Value = "XYZ";
+                row.Cells[1].Value = 50.2;
+                grdViewCMAOther.Rows.Add(row);
             }
 
         }
@@ -1367,6 +1471,78 @@ namespace PtrCma
 
             }
 
+        }
+
+        private void grdViewCMAOther_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void grdViewCMAOther_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void grdViewCMAOther_DoubleClick(object sender, EventArgs e)
+        {
+                isEdited = "y";
+                cmdSave.Enabled = true;
+                cmdCancel.Enabled = true;
+            }
+
+        private void grdViewCMAOther_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            DataGridViewCell cell = grdViewCMAOther.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            e.CellStyle.BackColor = Global.gridBackColorCMS;
+
+            //if (e.ColumnIndex == 1)
+            //{
+            //    e.Value = Convert.ToString(e.Value).Substring(2, 2);
+            //}
+            var list = new List<int> { 0, 8, 39,43,55,56,75,84,112,134,138,159,190,210,217,225,251,264,275,284,291,305,306,307,317,327,337 };
+            var listCol = new List<int> { 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41};
+            var listGreen = new List<int> { 0 };
+            if (list.Contains(e.RowIndex) && listCol.Contains(e.ColumnIndex))
+            {
+                e.CellStyle.BackColor = Color.DarkGray;
+                cell.ReadOnly = true;
+            }
+            if (list.Contains(e.RowIndex))
+            {
+                e.CellStyle.ForeColor = Color.Green;
+            }
+        }
+
+        private void grdViewCMAOther_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewCell cell = grdViewCMAOther.Rows[3].Cells[30];
+            cell.Value = Convert.ToDecimal(grdViewCMAOther.Rows[1].Cells[30].Value) + Convert.ToDecimal(grdViewCMAOther.Rows[1].Cells[30].Value);
+            //int rowIndex = -1;
+
+            //DataGridViewRow row = grdViewCMAOther.Rows
+            //    .Cast<DataGridViewRow>()
+            //    .Where(r => r.Cells[1].Value.ToString().Equals(cell.Value))
+            //    .First();
+
+            //rowIndex = row.Index;
+            //String formula = Convert.ToString(grdViewCMAOther.Rows[rowIndex].Cells[e.ColumnIndex].Value);
+            //Decimal vall1 = 0;
+            //Decimal vall2 = 0;
+            //Decimal vall3 = 0;
+            //if (!string.IsNullOrEmpty(txtOwn.Text) && !string.IsNullOrEmpty(txtOwn.Text))
+            //{
+            //    vall1 = Convert.ToDecimal(txtOwn.Text);
+
+            //}
+            //if (!string.IsNullOrEmpty(txtLoan.Text) && !string.IsNullOrEmpty(txtLoan.Text))
+            //{
+            //    vall2 = Convert.ToDecimal(txtLoan.Text);
+            //}
+            //if (!string.IsNullOrEmpty(txtBank.Text) && !string.IsNullOrEmpty(txtBank.Text))
+            //{
+            //    vall3 = Convert.ToDecimal(txtBank.Text);
+            //}
+            //txtTotal1.Text = Convert.ToString((vall1 + vall2 + vall3));
         }
     }
 }

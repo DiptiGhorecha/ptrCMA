@@ -104,8 +104,8 @@ namespace PtrCma
             foreach (Label lbl in Controls.OfType<Label>()) //Set Size of Label
             {
                 lbl.Font = Global.lblSize;
-                lbl.Size = Global.lblmedSize;
-                lbl.AutoSize = false;
+              //  lbl.Size = Global.lblmedSize;
+               // lbl.AutoSize = false;
             }
             //pictitle.Size = Global.titlelbl;
 

@@ -45,6 +45,7 @@ namespace PtrCma
                 grdAssests.CurrentCell = grdAssests.Rows[0].Cells[0];  //Set 1st row as current row by default
                 LoadDatatoTextBox();  // show data in Textbox from Gridview
             }
+            cmdAdd.Focus();
         }
 
         private void LoadDatatoTextBox()
@@ -221,10 +222,15 @@ namespace PtrCma
                     con.Close();
 
                     MessageBox.Show(GlobalMsg.deleteMsg, "Perfect Tax Reporter - CMA 1.0");
+                    foreach (TextBox txt in Controls.OfType<TextBox>())
+                    {
+                        txt.Clear();
+                    }
                     fillgrid();
                     LoadDatatoTextBox();
                 }
             }
+        
         }
 
         private void grdAssests_CellClick(object sender, DataGridViewCellEventArgs e)

@@ -187,5 +187,15 @@ namespace PtrCma
                 this.Hide();
             }
         }
+
+        private void picFrmClose_Click_1(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show(GlobalMsg.exitMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
+            if (dialogResult == DialogResult.Yes)
+            {
+                NotifyMainFormToCloseChildFormYear();
+                this.Hide();
+            }
+        }
     }
 }

@@ -126,7 +126,7 @@ namespace PtrCma
             frmCmaa = new FrmCMA();
             frmCmaa.MdiParent = this;
             frmCmaa.Location = new Point(0, 70);
-            frmCmaa.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
+            frmCmaa.NotifyMainFormToCloseChildFormCma += NotifyMainFormToCloseFormCma;
             frmCmaa.NotifyMainFormToOpenChildFormDirector += NotifyMainFormToOpenFormDirector;  //Use to open Detail of Director Form
             frmCmaa.NotifyMainFormToOpenChildFormBanking += NotifyMainFormToOpenFormBanking;    //Use to open Banking Arrangements Form    
             frmCmaa.NotifyMainFormToOpenChildFormCredit += NotifyMainFormToOpenFormCredit;      //Use to open Credit Form
@@ -503,6 +503,12 @@ namespace PtrCma
         }
 
 
+        private void NotifyMainFormToCloseFormCma()
+        {
+            // frmCmaa.Enabled = true;
+            frmCmaa.Hide();
+            frmMain.Enabled = true;
+        }
 
         //Form CMA
         private void NotifyMainFormToOpenFormCma()

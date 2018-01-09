@@ -159,6 +159,7 @@
             // txtYr1
             // 
             this.txtYr1.Location = new System.Drawing.Point(192, 69);
+            this.txtYr1.MaxLength = 20;
             this.txtYr1.Name = "txtYr1";
             this.txtYr1.Size = new System.Drawing.Size(299, 20);
             this.txtYr1.TabIndex = 12;
@@ -166,6 +167,7 @@
             // txtYr2
             // 
             this.txtYr2.Location = new System.Drawing.Point(192, 95);
+            this.txtYr2.MaxLength = 20;
             this.txtYr2.Name = "txtYr2";
             this.txtYr2.Size = new System.Drawing.Size(299, 20);
             this.txtYr2.TabIndex = 13;
@@ -173,6 +175,7 @@
             // txtYr3
             // 
             this.txtYr3.Location = new System.Drawing.Point(192, 118);
+            this.txtYr3.MaxLength = 20;
             this.txtYr3.Name = "txtYr3";
             this.txtYr3.Size = new System.Drawing.Size(299, 20);
             this.txtYr3.TabIndex = 14;
@@ -180,6 +183,7 @@
             // txtYr4
             // 
             this.txtYr4.Location = new System.Drawing.Point(192, 141);
+            this.txtYr4.MaxLength = 20;
             this.txtYr4.Name = "txtYr4";
             this.txtYr4.Size = new System.Drawing.Size(299, 20);
             this.txtYr4.TabIndex = 15;
@@ -187,6 +191,7 @@
             // txtYr5
             // 
             this.txtYr5.Location = new System.Drawing.Point(192, 164);
+            this.txtYr5.MaxLength = 20;
             this.txtYr5.Name = "txtYr5";
             this.txtYr5.Size = new System.Drawing.Size(299, 20);
             this.txtYr5.TabIndex = 16;
@@ -194,6 +199,7 @@
             // txtYr6
             // 
             this.txtYr6.Location = new System.Drawing.Point(192, 187);
+            this.txtYr6.MaxLength = 20;
             this.txtYr6.Name = "txtYr6";
             this.txtYr6.Size = new System.Drawing.Size(299, 20);
             this.txtYr6.TabIndex = 17;
@@ -201,6 +207,7 @@
             // txtYr7
             // 
             this.txtYr7.Location = new System.Drawing.Point(192, 210);
+            this.txtYr7.MaxLength = 20;
             this.txtYr7.Name = "txtYr7";
             this.txtYr7.Size = new System.Drawing.Size(299, 20);
             this.txtYr7.TabIndex = 18;
@@ -208,6 +215,7 @@
             // txtYr8
             // 
             this.txtYr8.Location = new System.Drawing.Point(192, 233);
+            this.txtYr8.MaxLength = 20;
             this.txtYr8.Name = "txtYr8";
             this.txtYr8.Size = new System.Drawing.Size(299, 20);
             this.txtYr8.TabIndex = 19;
@@ -215,6 +223,7 @@
             // txtYr9
             // 
             this.txtYr9.Location = new System.Drawing.Point(192, 256);
+            this.txtYr9.MaxLength = 20;
             this.txtYr9.Name = "txtYr9";
             this.txtYr9.Size = new System.Drawing.Size(299, 20);
             this.txtYr9.TabIndex = 20;
@@ -222,6 +231,7 @@
             // txtYr10
             // 
             this.txtYr10.Location = new System.Drawing.Point(192, 279);
+            this.txtYr10.MaxLength = 20;
             this.txtYr10.Name = "txtYr10";
             this.txtYr10.Size = new System.Drawing.Size(299, 20);
             this.txtYr10.TabIndex = 21;
@@ -229,6 +239,7 @@
             // txtYr11
             // 
             this.txtYr11.Location = new System.Drawing.Point(192, 302);
+            this.txtYr11.MaxLength = 20;
             this.txtYr11.Name = "txtYr11";
             this.txtYr11.Size = new System.Drawing.Size(299, 20);
             this.txtYr11.TabIndex = 22;
@@ -236,6 +247,7 @@
             // txtYr12
             // 
             this.txtYr12.Location = new System.Drawing.Point(192, 325);
+            this.txtYr12.MaxLength = 20;
             this.txtYr12.Name = "txtYr12";
             this.txtYr12.Size = new System.Drawing.Size(299, 20);
             this.txtYr12.TabIndex = 23;
@@ -260,6 +272,7 @@
             this.picFrmClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picFrmClose.TabIndex = 51;
             this.picFrmClose.TabStop = false;
+            this.picFrmClose.Click += new System.EventHandler(this.picFrmClose_Click_1);
             // 
             // pictitle
             // 
@@ -306,7 +319,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmYears";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmYears";
             this.Load += new System.EventHandler(this.FrmYears_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picFrmClose)).EndInit();

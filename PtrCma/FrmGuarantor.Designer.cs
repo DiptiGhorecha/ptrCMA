@@ -118,45 +118,49 @@
             // 
             // txtBank
             // 
-            this.txtBank.Location = new System.Drawing.Point(488, 272);
+            this.txtBank.Location = new System.Drawing.Point(488, 271);
+            this.txtBank.MaxLength = 40;
             this.txtBank.Name = "txtBank";
             this.txtBank.Size = new System.Drawing.Size(230, 20);
-            this.txtBank.TabIndex = 74;
+            this.txtBank.TabIndex = 12;
             // 
             // lblPValue
             // 
             this.lblPValue.Location = new System.Drawing.Point(275, 271);
             this.lblPValue.Name = "lblPValue";
-            this.lblPValue.Size = new System.Drawing.Size(160, 14);
+            this.lblPValue.Size = new System.Drawing.Size(160, 16);
             this.lblPValue.TabIndex = 73;
             this.lblPValue.Text = "Banking With";
             // 
             // txtNWorth
             // 
             this.txtNWorth.Location = new System.Drawing.Point(488, 246);
+            this.txtNWorth.MaxLength = 40;
             this.txtNWorth.Name = "txtNWorth";
             this.txtNWorth.Size = new System.Drawing.Size(230, 20);
-            this.txtNWorth.TabIndex = 72;
+            this.txtNWorth.TabIndex = 10;
             // 
             // txtQual
             // 
             this.txtQual.Location = new System.Drawing.Point(488, 220);
+            this.txtQual.MaxLength = 40;
             this.txtQual.Name = "txtQual";
             this.txtQual.Size = new System.Drawing.Size(230, 20);
-            this.txtQual.TabIndex = 71;
+            this.txtQual.TabIndex = 9;
             // 
             // txtAge
             // 
             this.txtAge.Location = new System.Drawing.Point(488, 196);
+            this.txtAge.MaxLength = 40;
             this.txtAge.Name = "txtAge";
             this.txtAge.Size = new System.Drawing.Size(230, 20);
-            this.txtAge.TabIndex = 70;
+            this.txtAge.TabIndex = 8;
             // 
             // lblAcq
             // 
-            this.lblAcq.Location = new System.Drawing.Point(275, 245);
+            this.lblAcq.Location = new System.Drawing.Point(275, 246);
             this.lblAcq.Name = "lblAcq";
-            this.lblAcq.Size = new System.Drawing.Size(160, 14);
+            this.lblAcq.Size = new System.Drawing.Size(160, 16);
             this.lblAcq.TabIndex = 68;
             this.lblAcq.Text = "Net Worth";
             // 
@@ -164,7 +168,7 @@
             // 
             this.lblFValue.Location = new System.Drawing.Point(275, 222);
             this.lblFValue.Name = "lblFValue";
-            this.lblFValue.Size = new System.Drawing.Size(198, 14);
+            this.lblFValue.Size = new System.Drawing.Size(198, 16);
             this.lblFValue.TabIndex = 67;
             this.lblFValue.Text = "Qualification";
             // 
@@ -172,7 +176,7 @@
             // 
             this.lblAge.Location = new System.Drawing.Point(275, 199);
             this.lblAge.Name = "lblAge";
-            this.lblAge.Size = new System.Drawing.Size(198, 23);
+            this.lblAge.Size = new System.Drawing.Size(198, 16);
             this.lblAge.TabIndex = 66;
             this.lblAge.Text = "Age";
             // 
@@ -180,7 +184,7 @@
             // 
             this.lblDes.Location = new System.Drawing.Point(275, 140);
             this.lblDes.Name = "lblDes";
-            this.lblDes.Size = new System.Drawing.Size(207, 31);
+            this.lblDes.Size = new System.Drawing.Size(207, 40);
             this.lblDes.TabIndex = 65;
             this.lblDes.Text = "Name of Guarantor and Address";
             // 
@@ -189,7 +193,7 @@
             this.cmdUpdate.Location = new System.Drawing.Point(479, 334);
             this.cmdUpdate.Name = "cmdUpdate";
             this.cmdUpdate.Size = new System.Drawing.Size(60, 30);
-            this.cmdUpdate.TabIndex = 77;
+            this.cmdUpdate.TabIndex = 3;
             this.cmdUpdate.Text = "Save";
             this.cmdUpdate.UseVisualStyleBackColor = true;
             this.cmdUpdate.Click += new System.EventHandler(this.cmdUpdate_Click);
@@ -199,7 +203,7 @@
             this.cmdEdit.Location = new System.Drawing.Point(423, 334);
             this.cmdEdit.Name = "cmdEdit";
             this.cmdEdit.Size = new System.Drawing.Size(50, 30);
-            this.cmdEdit.TabIndex = 76;
+            this.cmdEdit.TabIndex = 2;
             this.cmdEdit.Text = "Edit";
             this.cmdEdit.UseVisualStyleBackColor = true;
             this.cmdEdit.Click += new System.EventHandler(this.cmdEdit_Click);
@@ -209,7 +213,7 @@
             this.cmdAdd.Location = new System.Drawing.Point(367, 334);
             this.cmdAdd.Name = "cmdAdd";
             this.cmdAdd.Size = new System.Drawing.Size(50, 30);
-            this.cmdAdd.TabIndex = 75;
+            this.cmdAdd.TabIndex = 1;
             this.cmdAdd.Text = "Add";
             this.cmdAdd.UseVisualStyleBackColor = true;
             this.cmdAdd.Click += new System.EventHandler(this.cmdAdd_Click);
@@ -219,7 +223,7 @@
             this.cmdExit.Location = new System.Drawing.Point(667, 334);
             this.cmdExit.Name = "cmdExit";
             this.cmdExit.Size = new System.Drawing.Size(50, 30);
-            this.cmdExit.TabIndex = 80;
+            this.cmdExit.TabIndex = 6;
             this.cmdExit.Text = "Exit";
             this.cmdExit.UseVisualStyleBackColor = true;
             this.cmdExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -229,7 +233,7 @@
             this.cmdDel.Location = new System.Drawing.Point(545, 334);
             this.cmdDel.Name = "cmdDel";
             this.cmdDel.Size = new System.Drawing.Size(60, 30);
-            this.cmdDel.TabIndex = 78;
+            this.cmdDel.TabIndex = 4;
             this.cmdDel.Text = "Delete";
             this.cmdDel.UseVisualStyleBackColor = true;
             this.cmdDel.Click += new System.EventHandler(this.cmdDelete_Click);
@@ -239,7 +243,7 @@
             this.cmdCancel.Location = new System.Drawing.Point(611, 334);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(50, 30);
-            this.cmdCancel.TabIndex = 79;
+            this.cmdCancel.TabIndex = 5;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.UseVisualStyleBackColor = true;
             this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
@@ -247,9 +251,10 @@
             // txtDes
             // 
             this.txtDes.Location = new System.Drawing.Point(488, 134);
+            this.txtDes.MaxLength = 140;
             this.txtDes.Name = "txtDes";
             this.txtDes.Size = new System.Drawing.Size(227, 56);
-            this.txtDes.TabIndex = 81;
+            this.txtDes.TabIndex = 7;
             this.txtDes.Text = "";
             // 
             // FrmGuarantor
@@ -280,6 +285,7 @@
             this.Controls.Add(this.pictitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmGuarantor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmGuarantor";
             this.Load += new System.EventHandler(this.FrmGuarantor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictitle)).EndInit();

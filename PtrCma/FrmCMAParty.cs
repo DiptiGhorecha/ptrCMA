@@ -192,7 +192,9 @@ namespace PtrCma
             {
             DataGridViewRow row = this.grdViewParty.Rows[0];
             txtRefParty.Text = row.Cells["CL_REFNO"].Value.ToString();
-            txtCodeno.Text = row.Cells["CL_CODENO"].Value.ToString();
+                txtYr.Text = row.Cells["CL_YEARS"].Value.ToString();
+                txtRs.Text = row.Cells["CL_RSIN"].Value.ToString();
+                txtCodeno.Text = row.Cells["CL_CODENO"].Value.ToString();
             txtActivity.Text = row.Cells["CL_ACT"].Value.ToString();
             txtBranch.Text = row.Cells["CL_BRANCH"].Value.ToString();
             txtName.Text = row.Cells["CL_NAME"].Value.ToString();
@@ -225,6 +227,8 @@ namespace PtrCma
             //Current Selected Value Show in Textbox
             DataGridViewRow row = this.grdViewParty.Rows[rowNum];
             txtRefParty.Text= row.Cells["CL_REFNO"].Value.ToString();
+            txtYr.Text = row.Cells["CL_YEARS"].Value.ToString();
+            txtRs.Text = row.Cells["CL_RSIN"].Value.ToString();
             txtCodeno.Text = row.Cells["CL_CODENO"].Value.ToString();
             txtActivity.Text = row.Cells["CL_ACT"].Value.ToString();
             txtBranch.Text = row.Cells["CL_BRANCH"].Value.ToString();
@@ -648,8 +652,13 @@ namespace PtrCma
                 grdViewParty.CurrentCell = grdViewParty.Rows[0].Cells[1];  //Set 1st row as current row by default
                 Global.prtyCode = txtRefParty.Text;  //grdViewParty.Rows[0].Cells[0].Value.ToString;  // txtCodeno.Text;
                 Global.prtyName = txtName.Text;
+                Global.curYr = txtYr.Text;
+                Global.inrS = txtRs.Text;
+                
                 if (NotifyMainFormToOpenChildFormCma != null)
                 {
+                    this.Hide();
+                  //  NotifyMainFormToCloseChildFormParty();
                     NotifyMainFormToOpenChildFormCma();
                 }
                 
@@ -706,6 +715,8 @@ namespace PtrCma
             {
                 DataGridViewRow row = this.grdViewParty.Rows[e.RowIndex];
                 txtRefParty.Text = row.Cells["CL_REFNO"].Value.ToString();
+                txtYr.Text = row.Cells["CL_YEARS"].Value.ToString();
+                txtRs.Text = row.Cells["CL_RSIN"].Value.ToString();
                 txtCodeno.Text = row.Cells["CL_CODENO"].Value.ToString();
                 txtActivity.Text = row.Cells["CL_ACT"].Value.ToString();
                 txtBranch.Text = row.Cells["CL_BRANCH"].Value.ToString();
@@ -831,6 +842,8 @@ namespace PtrCma
                         int i = grdViewParty.CurrentRow.Index + 1;
                         DataGridViewRow row = this.grdViewParty.Rows[i];
                         txtRefParty.Text = row.Cells["CL_REFNO"].Value.ToString();
+                        txtYr.Text = row.Cells["CL_YEARS"].Value.ToString();
+                        txtRs.Text = row.Cells["CL_RSIN"].Value.ToString();
                         txtCodeno.Text = row.Cells["CL_CODENO"].Value.ToString();
                         txtActivity.Text = row.Cells["CL_ACT"].Value.ToString();
                         txtBranch.Text = row.Cells["CL_BRANCH"].Value.ToString();

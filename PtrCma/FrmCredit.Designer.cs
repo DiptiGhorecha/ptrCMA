@@ -105,6 +105,7 @@
             // txtFCash
             // 
             this.txtFCash.Location = new System.Drawing.Point(107, 174);
+            this.txtFCash.MaxLength = 20;
             this.txtFCash.Name = "txtFCash";
             this.txtFCash.Size = new System.Drawing.Size(100, 20);
             this.txtFCash.TabIndex = 1;
@@ -162,122 +163,139 @@
             // txtFDraft
             // 
             this.txtFDraft.Location = new System.Drawing.Point(107, 200);
+            this.txtFDraft.MaxLength = 20;
             this.txtFDraft.Name = "txtFDraft";
             this.txtFDraft.Size = new System.Drawing.Size(100, 20);
-            this.txtFDraft.TabIndex = 7;
+            this.txtFDraft.TabIndex = 2;
             // 
             // txtFPC
             // 
             this.txtFPC.Location = new System.Drawing.Point(107, 226);
+            this.txtFPC.MaxLength = 20;
             this.txtFPC.Name = "txtFPC";
             this.txtFPC.Size = new System.Drawing.Size(100, 20);
-            this.txtFPC.TabIndex = 8;
+            this.txtFPC.TabIndex = 3;
             // 
             // txtFLC
             // 
             this.txtFLC.Location = new System.Drawing.Point(107, 252);
+            this.txtFLC.MaxLength = 20;
             this.txtFLC.Name = "txtFLC";
             this.txtFLC.Size = new System.Drawing.Size(100, 20);
-            this.txtFLC.TabIndex = 9;
+            this.txtFLC.TabIndex = 4;
             // 
             // txtFTeam
             // 
             this.txtFTeam.Location = new System.Drawing.Point(107, 278);
+            this.txtFTeam.MaxLength = 20;
             this.txtFTeam.Name = "txtFTeam";
             this.txtFTeam.Size = new System.Drawing.Size(100, 20);
-            this.txtFTeam.TabIndex = 10;
+            this.txtFTeam.TabIndex = 5;
             // 
             // txtFTotal
             // 
             this.txtFTotal.Location = new System.Drawing.Point(107, 304);
+            this.txtFTotal.MaxLength = 40;
             this.txtFTotal.Name = "txtFTotal";
             this.txtFTotal.Size = new System.Drawing.Size(100, 20);
-            this.txtFTotal.TabIndex = 11;
+            this.txtFTotal.TabIndex = 6;
             this.txtFTotal.TextChanged += new System.EventHandler(this.txtFTotal_TextChanged);
             // 
             // txtNTotal
             // 
             this.txtNTotal.Location = new System.Drawing.Point(213, 304);
+            this.txtNTotal.MaxLength = 40;
             this.txtNTotal.Name = "txtNTotal";
             this.txtNTotal.Size = new System.Drawing.Size(100, 20);
-            this.txtNTotal.TabIndex = 17;
+            this.txtNTotal.TabIndex = 12;
             // 
             // txtNTeam
             // 
-            this.txtNTeam.Location = new System.Drawing.Point(213, 278);
+            this.txtNTeam.Location = new System.Drawing.Point(213, 279);
+            this.txtNTeam.MaxLength = 20;
             this.txtNTeam.Name = "txtNTeam";
             this.txtNTeam.Size = new System.Drawing.Size(100, 20);
-            this.txtNTeam.TabIndex = 16;
+            this.txtNTeam.TabIndex = 11;
             // 
             // txtNLC
             // 
             this.txtNLC.Location = new System.Drawing.Point(213, 252);
+            this.txtNLC.MaxLength = 20;
             this.txtNLC.Name = "txtNLC";
             this.txtNLC.Size = new System.Drawing.Size(100, 20);
-            this.txtNLC.TabIndex = 15;
+            this.txtNLC.TabIndex = 10;
             // 
             // txtNPC
             // 
             this.txtNPC.Location = new System.Drawing.Point(213, 226);
+            this.txtNPC.MaxLength = 20;
             this.txtNPC.Name = "txtNPC";
             this.txtNPC.Size = new System.Drawing.Size(100, 20);
-            this.txtNPC.TabIndex = 14;
+            this.txtNPC.TabIndex = 9;
             // 
             // txtNDraft
             // 
             this.txtNDraft.Location = new System.Drawing.Point(213, 200);
+            this.txtNDraft.MaxLength = 20;
             this.txtNDraft.Name = "txtNDraft";
             this.txtNDraft.Size = new System.Drawing.Size(100, 20);
-            this.txtNDraft.TabIndex = 13;
+            this.txtNDraft.TabIndex = 8;
             // 
             // txtNCash
             // 
             this.txtNCash.Location = new System.Drawing.Point(213, 174);
+            this.txtNCash.MaxLength = 20;
             this.txtNCash.Name = "txtNCash";
             this.txtNCash.Size = new System.Drawing.Size(100, 20);
-            this.txtNCash.TabIndex = 12;
+            this.txtNCash.TabIndex = 7;
             // 
             // txtTTotal
             // 
             this.txtTTotal.Location = new System.Drawing.Point(319, 304);
+            this.txtTTotal.MaxLength = 40;
             this.txtTTotal.Name = "txtTTotal";
             this.txtTTotal.Size = new System.Drawing.Size(100, 20);
-            this.txtTTotal.TabIndex = 23;
+            this.txtTTotal.TabIndex = 18;
             // 
             // txtTTeam
             // 
             this.txtTTeam.Location = new System.Drawing.Point(319, 278);
+            this.txtTTeam.MaxLength = 40;
             this.txtTTeam.Name = "txtTTeam";
             this.txtTTeam.Size = new System.Drawing.Size(100, 20);
-            this.txtTTeam.TabIndex = 22;
+            this.txtTTeam.TabIndex = 17;
             // 
             // txtTLC
             // 
             this.txtTLC.Location = new System.Drawing.Point(319, 252);
+            this.txtTLC.MaxLength = 40;
             this.txtTLC.Name = "txtTLC";
             this.txtTLC.Size = new System.Drawing.Size(100, 20);
-            this.txtTLC.TabIndex = 21;
+            this.txtTLC.TabIndex = 16;
             // 
             // txtTPC
             // 
             this.txtTPC.Location = new System.Drawing.Point(319, 226);
+            this.txtTPC.MaxLength = 40;
             this.txtTPC.Name = "txtTPC";
             this.txtTPC.Size = new System.Drawing.Size(100, 20);
-            this.txtTPC.TabIndex = 20;
+            this.txtTPC.TabIndex = 15;
             // 
             // txtTDraft
             // 
             this.txtTDraft.Location = new System.Drawing.Point(319, 200);
+            this.txtTDraft.MaxLength = 40;
             this.txtTDraft.Name = "txtTDraft";
             this.txtTDraft.Size = new System.Drawing.Size(100, 20);
-            this.txtTDraft.TabIndex = 19;
+            this.txtTDraft.TabIndex = 14;
             // 
             // txtTCash
             // 
             this.txtTCash.Location = new System.Drawing.Point(319, 174);
+            this.txtTCash.MaxLength = 40;
             this.txtTCash.Name = "txtTCash";
             this.txtTCash.Size = new System.Drawing.Size(100, 20);
-            this.txtTCash.TabIndex = 18;
+            this.txtTCash.TabIndex = 13;
             // 
             // lblFund
             // 
@@ -424,7 +442,7 @@
             this.cmdExit.Location = new System.Drawing.Point(818, 355);
             this.cmdExit.Name = "cmdExit";
             this.cmdExit.Size = new System.Drawing.Size(40, 23);
-            this.cmdExit.TabIndex = 58;
+            this.cmdExit.TabIndex = 37;
             this.cmdExit.Text = "Exit";
             this.cmdExit.UseVisualStyleBackColor = true;
             this.cmdExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -432,128 +450,146 @@
             // txtTTotal1
             // 
             this.txtTTotal1.Location = new System.Drawing.Point(767, 304);
+            this.txtTTotal1.MaxLength = 40;
             this.txtTTotal1.Name = "txtTTotal1";
             this.txtTTotal1.Size = new System.Drawing.Size(100, 20);
-            this.txtTTotal1.TabIndex = 76;
+            this.txtTTotal1.TabIndex = 36;
             // 
             // txtTTeam1
             // 
             this.txtTTeam1.Location = new System.Drawing.Point(767, 278);
+            this.txtTTeam1.MaxLength = 40;
             this.txtTTeam1.Name = "txtTTeam1";
             this.txtTTeam1.Size = new System.Drawing.Size(100, 20);
-            this.txtTTeam1.TabIndex = 75;
+            this.txtTTeam1.TabIndex = 35;
             // 
             // txtTLC1
             // 
             this.txtTLC1.Location = new System.Drawing.Point(767, 252);
+            this.txtTLC1.MaxLength = 40;
             this.txtTLC1.Name = "txtTLC1";
             this.txtTLC1.Size = new System.Drawing.Size(100, 20);
-            this.txtTLC1.TabIndex = 74;
+            this.txtTLC1.TabIndex = 34;
             // 
             // txtTPC1
             // 
             this.txtTPC1.Location = new System.Drawing.Point(767, 226);
+            this.txtTPC1.MaxLength = 40;
             this.txtTPC1.Name = "txtTPC1";
             this.txtTPC1.Size = new System.Drawing.Size(100, 20);
-            this.txtTPC1.TabIndex = 73;
+            this.txtTPC1.TabIndex = 33;
             // 
             // txtTDraft1
             // 
             this.txtTDraft1.Location = new System.Drawing.Point(767, 200);
+            this.txtTDraft1.MaxLength = 40;
             this.txtTDraft1.Name = "txtTDraft1";
             this.txtTDraft1.Size = new System.Drawing.Size(100, 20);
-            this.txtTDraft1.TabIndex = 72;
+            this.txtTDraft1.TabIndex = 32;
             // 
             // txtTCash1
             // 
             this.txtTCash1.Location = new System.Drawing.Point(767, 174);
+            this.txtTCash1.MaxLength = 40;
             this.txtTCash1.Name = "txtTCash1";
             this.txtTCash1.Size = new System.Drawing.Size(100, 20);
-            this.txtTCash1.TabIndex = 71;
+            this.txtTCash1.TabIndex = 31;
             // 
             // txtNTotal1
             // 
             this.txtNTotal1.Location = new System.Drawing.Point(661, 304);
+            this.txtNTotal1.MaxLength = 40;
             this.txtNTotal1.Name = "txtNTotal1";
             this.txtNTotal1.Size = new System.Drawing.Size(100, 20);
-            this.txtNTotal1.TabIndex = 70;
+            this.txtNTotal1.TabIndex = 30;
             // 
             // txtNTeam1
             // 
             this.txtNTeam1.Location = new System.Drawing.Point(661, 278);
+            this.txtNTeam1.MaxLength = 20;
             this.txtNTeam1.Name = "txtNTeam1";
             this.txtNTeam1.Size = new System.Drawing.Size(100, 20);
-            this.txtNTeam1.TabIndex = 69;
+            this.txtNTeam1.TabIndex = 29;
             // 
             // txtNLC1
             // 
             this.txtNLC1.Location = new System.Drawing.Point(661, 252);
+            this.txtNLC1.MaxLength = 20;
             this.txtNLC1.Name = "txtNLC1";
             this.txtNLC1.Size = new System.Drawing.Size(100, 20);
-            this.txtNLC1.TabIndex = 68;
+            this.txtNLC1.TabIndex = 28;
             // 
             // txtNPC1
             // 
             this.txtNPC1.Location = new System.Drawing.Point(661, 226);
+            this.txtNPC1.MaxLength = 20;
             this.txtNPC1.Name = "txtNPC1";
             this.txtNPC1.Size = new System.Drawing.Size(100, 20);
-            this.txtNPC1.TabIndex = 67;
+            this.txtNPC1.TabIndex = 27;
             // 
             // txtNDraft1
             // 
             this.txtNDraft1.Location = new System.Drawing.Point(661, 200);
+            this.txtNDraft1.MaxLength = 20;
             this.txtNDraft1.Name = "txtNDraft1";
             this.txtNDraft1.Size = new System.Drawing.Size(100, 20);
-            this.txtNDraft1.TabIndex = 66;
+            this.txtNDraft1.TabIndex = 26;
             // 
             // txtNCash1
             // 
             this.txtNCash1.Location = new System.Drawing.Point(661, 174);
+            this.txtNCash1.MaxLength = 20;
             this.txtNCash1.Name = "txtNCash1";
             this.txtNCash1.Size = new System.Drawing.Size(100, 20);
-            this.txtNCash1.TabIndex = 65;
+            this.txtNCash1.TabIndex = 25;
             // 
             // txtFTotal1
             // 
             this.txtFTotal1.Location = new System.Drawing.Point(555, 304);
+            this.txtFTotal1.MaxLength = 40;
             this.txtFTotal1.Name = "txtFTotal1";
             this.txtFTotal1.Size = new System.Drawing.Size(100, 20);
-            this.txtFTotal1.TabIndex = 64;
+            this.txtFTotal1.TabIndex = 24;
             // 
             // txtFTeam1
             // 
             this.txtFTeam1.Location = new System.Drawing.Point(555, 278);
+            this.txtFTeam1.MaxLength = 20;
             this.txtFTeam1.Name = "txtFTeam1";
             this.txtFTeam1.Size = new System.Drawing.Size(100, 20);
-            this.txtFTeam1.TabIndex = 63;
+            this.txtFTeam1.TabIndex = 23;
             // 
             // txtFLC1
             // 
             this.txtFLC1.Location = new System.Drawing.Point(555, 252);
+            this.txtFLC1.MaxLength = 20;
             this.txtFLC1.Name = "txtFLC1";
             this.txtFLC1.Size = new System.Drawing.Size(100, 20);
-            this.txtFLC1.TabIndex = 62;
+            this.txtFLC1.TabIndex = 22;
             // 
             // txtFPC1
             // 
             this.txtFPC1.Location = new System.Drawing.Point(555, 226);
+            this.txtFPC1.MaxLength = 20;
             this.txtFPC1.Name = "txtFPC1";
             this.txtFPC1.Size = new System.Drawing.Size(100, 20);
-            this.txtFPC1.TabIndex = 61;
+            this.txtFPC1.TabIndex = 21;
             // 
             // txtFDraft1
             // 
             this.txtFDraft1.Location = new System.Drawing.Point(555, 200);
+            this.txtFDraft1.MaxLength = 20;
             this.txtFDraft1.Name = "txtFDraft1";
             this.txtFDraft1.Size = new System.Drawing.Size(100, 20);
-            this.txtFDraft1.TabIndex = 60;
+            this.txtFDraft1.TabIndex = 20;
             // 
             // txtFCash1
             // 
             this.txtFCash1.Location = new System.Drawing.Point(555, 174);
+            this.txtFCash1.MaxLength = 20;
             this.txtFCash1.Name = "txtFCash1";
             this.txtFCash1.Size = new System.Drawing.Size(100, 20);
-            this.txtFCash1.TabIndex = 59;
+            this.txtFCash1.TabIndex = 19;
             // 
             // pictureBox1
             // 

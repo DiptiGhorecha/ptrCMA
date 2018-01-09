@@ -136,7 +136,8 @@ namespace PtrCma
         private void Settings()
         {
             this.BackgroundImage = Global.partyFrmBackImg;
-
+            setControlColor();
+            setControlSize();
         }
 
 

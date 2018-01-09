@@ -131,6 +131,7 @@
             this.cmdDel.TabIndex = 44;
             this.cmdDel.Text = "Delete";
             this.cmdDel.UseVisualStyleBackColor = true;
+            this.cmdDel.Click += new System.EventHandler(this.cmdDelete_Click);
             // 
             // cmdCancel
             // 
@@ -186,6 +187,7 @@
             this.Controls.Add(this.pictitle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmDocuments";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmDocuments";
             this.Load += new System.EventHandler(this.FrmDocuments_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picFrmClose)).EndInit();

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCMA));
             this.lstViewTopic = new System.Windows.Forms.ListView();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -86,16 +86,16 @@
             // chart2
             // 
             this.chart2.BackColor = System.Drawing.Color.Transparent;
-            chartArea8.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            this.chart2.Legends.Add(legend8);
+            chartArea1.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart2.Legends.Add(legend1);
             this.chart2.Location = new System.Drawing.Point(718, 47);
             this.chart2.Name = "chart2";
-            series8.ChartArea = "ChartArea1";
-            series8.Legend = "Legend1";
-            series8.Name = "Series1";
-            this.chart2.Series.Add(series8);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart2.Series.Add(series1);
             this.chart2.Size = new System.Drawing.Size(328, 118);
             this.chart2.TabIndex = 2;
             this.chart2.Text = "chart2";
@@ -409,6 +409,11 @@
             this.grdViewCMAOther.Size = new System.Drawing.Size(865, 103);
             this.grdViewCMAOther.TabIndex = 47;
             this.grdViewCMAOther.Visible = false;
+            this.grdViewCMAOther.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdViewCMAOther_CellClick);
+            this.grdViewCMAOther.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdViewCMAOther_CellContentClick);
+            this.grdViewCMAOther.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdViewCMAOther_CellEndEdit);
+            this.grdViewCMAOther.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdViewCMAOther_CellFormatting);
+            this.grdViewCMAOther.DoubleClick += new System.EventHandler(this.grdViewCMAOther_DoubleClick);
             // 
             // FrmCMA
             // 
@@ -430,6 +435,7 @@
             this.Name = "FrmCMA";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "FrmCMA";
+            this.TopMost = true;
             this.Activated += new System.EventHandler(this.FrmCMA_Load);
             this.Load += new System.EventHandler(this.FrmCMA_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();

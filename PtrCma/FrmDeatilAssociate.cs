@@ -47,6 +47,7 @@ namespace PtrCma
                 grdAssociate.CurrentCell = grdAssociate.Rows[0].Cells[0];  //Set 1st row as current row by default
                 LoadDatatoTextBox();  // show data in Textbox from Gridview
             }
+            cmdAdd.Focus();
         }
 
         private void filltempTable()
@@ -218,20 +219,29 @@ namespace PtrCma
 
         private void cmdDelete_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult1 = MessageBox.Show(GlobalMsg.deleteMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
-            if (dialogResult1 == DialogResult.Yes)
+            if (grdAssociate.Rows.Count > 0)
             {
-                con = new OleDbConnection(connectionString);
-                if (con.State == ConnectionState.Closed)
+                DialogResult dialogResult1 = MessageBox.Show(GlobalMsg.deleteMsgDialog, "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
+                if (dialogResult1 == DialogResult.Yes)
                 {
-                    con.Open();
+                    con = new OleDbConnection(connectionString);
+                    if (con.State == ConnectionState.Closed)
+                    {
+                        con.Open();
+                    }
+                    String sql = "delete from Cp_Cd103 where CTX_REF=" + txtRef.Text;
+                    cmd = new OleDbCommand(sql, con);
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+
+                    MessageBox.Show(GlobalMsg.deleteMsg, "Perfect Tax Reporter - CMA 1.0");
+                    foreach (TextBox txt in Controls.OfType<TextBox>())
+                    {
+                        txt.Clear();
+                    }
+                    fillgrid();
+                    LoadDatatoTextBox();
                 }
-                String sql = "delete from Cp_Cd103 where CTX_REF=" + txtRef.Text;
-                cmd = new OleDbCommand(sql, con);
-                cmd.ExecuteNonQuery();
-                con.Close();
-                fillgrid();
-                MessageBox.Show(GlobalMsg.deleteMsg, "Perfect Tax Reporter - CMA 1.0");
             }
         }
 
