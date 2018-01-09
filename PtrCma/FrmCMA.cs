@@ -1230,9 +1230,15 @@ private void cmdSave_Click(object sender, EventArgs e)
             isEdited = "y";
             cmdSave.Enabled = true;
             cmdCancel.Enabled = true;
-			DataGridViewCell cell = gridViewCMA.Rows[e.RowIndex].Cells[e.ColumnIndex];
-			cell.Value = "";
-			switch (e.RowIndex)
+			//DataGridViewCell cell = gridViewCMA.Rows[e.RowIndex].Cells[e.ColumnIndex];
+           
+            var list = new List<int> { 13, 14, 15, 16, 17, 18, 23, 30, 31, 35, 36, 37, 40, 41, 42, 44, 45 };
+            if (list.Contains(e.RowIndex))
+            {
+                DataGridViewCell cell = gridViewCMA.Rows[e.RowIndex].Cells[11];
+                cell.Value = "";
+            }
+            switch (e.RowIndex)
             {
                 case 13:
                     if (NotifyMainFormToOpenChildFormDirector != null)
