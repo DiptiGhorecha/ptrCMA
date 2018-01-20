@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCMA));
             this.lstViewTopic = new System.Windows.Forms.ListView();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -60,12 +60,62 @@
             this.lblPic = new System.Windows.Forms.PictureBox();
             this.picFrmClose = new System.Windows.Forms.PictureBox();
             this.grdViewCMAOther = new System.Windows.Forms.DataGridView();
+            this.grdReoCMAOther = new unvell.ReoGrid.ReoGridControl();
+            this.pnlInsRow = new System.Windows.Forms.Panel();
+            this.cmdCancelInsRow = new System.Windows.Forms.Button();
+            this.cmdOk = new System.Windows.Forms.Button();
+            this.txtSr1 = new System.Windows.Forms.TextBox();
+            this.txtDesc = new System.Windows.Forms.TextBox();
+            this.txtSr = new System.Windows.Forms.TextBox();
+            this.lblDesc = new System.Windows.Forms.Label();
+            this.lblSr = new System.Windows.Forms.Label();
+            this.pictitle = new System.Windows.Forms.PictureBox();
+            this.pictInsRowClose = new System.Windows.Forms.PictureBox();
+            this.pnlChangeDesc = new System.Windows.Forms.Panel();
+            this.cmdCancelChangeDesc = new System.Windows.Forms.Button();
+            this.cmdOKChangeDesc = new System.Windows.Forms.Button();
+            this.txtSr1ChangeDesc = new System.Windows.Forms.TextBox();
+            this.txtDescChangeDesc = new System.Windows.Forms.TextBox();
+            this.txtSrChangeDesc = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.picTitleDesc = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pnlFormula = new System.Windows.Forms.Panel();
+            this.grdViewFormula = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cmdCancelFormula = new System.Windows.Forms.Button();
+            this.CmdOkFormula = new System.Windows.Forms.Button();
+            this.txtStdFrom = new System.Windows.Forms.TextBox();
+            this.txtFormula = new System.Windows.Forms.TextBox();
+            this.txtStdTo = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblFormula = new System.Windows.Forms.Label();
+            this.picTitleFormula = new System.Windows.Forms.PictureBox();
+            this.pictFormula = new System.Windows.Forms.PictureBox();
+            this.grdViewYr = new System.Windows.Forms.DataGridView();
+            this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.srno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Year1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCMA)).BeginInit();
             this.panelCmdBtns.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lblPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picFrmClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewCMAOther)).BeginInit();
+            this.pnlInsRow.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictitle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictInsRowClose)).BeginInit();
+            this.pnlChangeDesc.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picTitleDesc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.pnlFormula.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdViewFormula)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picTitleFormula)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictFormula)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdViewYr)).BeginInit();
             this.SuspendLayout();
             // 
             // lstViewTopic
@@ -86,16 +136,16 @@
             // chart2
             // 
             this.chart2.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart2.Legends.Add(legend1);
+            chartArea8.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea8);
+            legend8.Name = "Legend1";
+            this.chart2.Legends.Add(legend8);
             this.chart2.Location = new System.Drawing.Point(718, 47);
             this.chart2.Name = "chart2";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart2.Series.Add(series1);
+            series8.ChartArea = "ChartArea1";
+            series8.Legend = "Legend1";
+            series8.Name = "Series1";
+            this.chart2.Series.Add(series8);
             this.chart2.Size = new System.Drawing.Size(328, 118);
             this.chart2.TabIndex = 2;
             this.chart2.Text = "chart2";
@@ -415,13 +465,419 @@
             this.grdViewCMAOther.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdViewCMAOther_CellFormatting);
             this.grdViewCMAOther.DoubleClick += new System.EventHandler(this.grdViewCMAOther_DoubleClick);
             // 
+            // grdReoCMAOther
+            // 
+            this.grdReoCMAOther.BackColor = System.Drawing.Color.White;
+            this.grdReoCMAOther.ColumnHeaderContextMenuStrip = null;
+            this.grdReoCMAOther.LeadHeaderContextMenuStrip = null;
+            this.grdReoCMAOther.Location = new System.Drawing.Point(0, 206);
+            this.grdReoCMAOther.Name = "grdReoCMAOther";
+            this.grdReoCMAOther.RowHeaderContextMenuStrip = null;
+            this.grdReoCMAOther.Script = null;
+            this.grdReoCMAOther.SheetTabContextMenuStrip = null;
+            this.grdReoCMAOther.SheetTabNewButtonVisible = false;
+            this.grdReoCMAOther.SheetTabVisible = false;
+            this.grdReoCMAOther.SheetTabWidth = 60;
+            this.grdReoCMAOther.ShowScrollEndSpacing = true;
+            this.grdReoCMAOther.Size = new System.Drawing.Size(874, 90);
+            this.grdReoCMAOther.TabIndex = 48;
+            this.grdReoCMAOther.Text = "reoGridControl1";
+            this.grdReoCMAOther.Visible = false;
+            // 
+            // pnlInsRow
+            // 
+            this.pnlInsRow.BackColor = System.Drawing.Color.LightGray;
+            this.pnlInsRow.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlInsRow.Controls.Add(this.cmdCancelInsRow);
+            this.pnlInsRow.Controls.Add(this.cmdOk);
+            this.pnlInsRow.Controls.Add(this.txtSr1);
+            this.pnlInsRow.Controls.Add(this.txtDesc);
+            this.pnlInsRow.Controls.Add(this.txtSr);
+            this.pnlInsRow.Controls.Add(this.lblDesc);
+            this.pnlInsRow.Controls.Add(this.lblSr);
+            this.pnlInsRow.Controls.Add(this.pictitle);
+            this.pnlInsRow.Controls.Add(this.pictInsRowClose);
+            this.pnlInsRow.Location = new System.Drawing.Point(76, 432);
+            this.pnlInsRow.Name = "pnlInsRow";
+            this.pnlInsRow.Size = new System.Drawing.Size(671, 222);
+            this.pnlInsRow.TabIndex = 49;
+            // 
+            // cmdCancelInsRow
+            // 
+            this.cmdCancelInsRow.Location = new System.Drawing.Point(489, 181);
+            this.cmdCancelInsRow.Name = "cmdCancelInsRow";
+            this.cmdCancelInsRow.Size = new System.Drawing.Size(50, 23);
+            this.cmdCancelInsRow.TabIndex = 89;
+            this.cmdCancelInsRow.Text = "Cancel";
+            this.cmdCancelInsRow.UseVisualStyleBackColor = true;
+            this.cmdCancelInsRow.Click += new System.EventHandler(this.cmdCancelInsRow_Click);
+            // 
+            // cmdOk
+            // 
+            this.cmdOk.Location = new System.Drawing.Point(435, 181);
+            this.cmdOk.Name = "cmdOk";
+            this.cmdOk.Size = new System.Drawing.Size(50, 23);
+            this.cmdOk.TabIndex = 88;
+            this.cmdOk.Text = "Ok";
+            this.cmdOk.UseVisualStyleBackColor = true;
+            this.cmdOk.Click += new System.EventHandler(this.cmdOk_Click);
+            // 
+            // txtSr1
+            // 
+            this.txtSr1.Location = new System.Drawing.Point(388, 74);
+            this.txtSr1.MaxLength = 20;
+            this.txtSr1.Name = "txtSr1";
+            this.txtSr1.Size = new System.Drawing.Size(74, 20);
+            this.txtSr1.TabIndex = 87;
+            // 
+            // txtDesc
+            // 
+            this.txtDesc.Location = new System.Drawing.Point(244, 107);
+            this.txtDesc.MaxLength = 250;
+            this.txtDesc.Name = "txtDesc";
+            this.txtDesc.Size = new System.Drawing.Size(299, 20);
+            this.txtDesc.TabIndex = 86;
+            // 
+            // txtSr
+            // 
+            this.txtSr.Location = new System.Drawing.Point(244, 74);
+            this.txtSr.MaxLength = 20;
+            this.txtSr.Name = "txtSr";
+            this.txtSr.Size = new System.Drawing.Size(74, 20);
+            this.txtSr.TabIndex = 85;
+            // 
+            // lblDesc
+            // 
+            this.lblDesc.Location = new System.Drawing.Point(136, 107);
+            this.lblDesc.Name = "lblDesc";
+            this.lblDesc.Size = new System.Drawing.Size(100, 23);
+            this.lblDesc.TabIndex = 84;
+            this.lblDesc.Text = "Description";
+            // 
+            // lblSr
+            // 
+            this.lblSr.Location = new System.Drawing.Point(136, 77);
+            this.lblSr.Name = "lblSr";
+            this.lblSr.Size = new System.Drawing.Size(100, 23);
+            this.lblSr.TabIndex = 83;
+            this.lblSr.Text = "Sr. No.";
+            // 
+            // pictitle
+            // 
+            this.pictitle.BackColor = System.Drawing.Color.Transparent;
+            this.pictitle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictitle.Image = ((System.Drawing.Image)(resources.GetObject("pictitle.Image")));
+            this.pictitle.Location = new System.Drawing.Point(64, 23);
+            this.pictitle.Name = "pictitle";
+            this.pictitle.Size = new System.Drawing.Size(532, 30);
+            this.pictitle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictitle.TabIndex = 82;
+            this.pictitle.TabStop = false;
+            // 
+            // pictInsRowClose
+            // 
+            this.pictInsRowClose.BackgroundImage = global::PtrCma.Properties.Resources.closeBtnBg;
+            this.pictInsRowClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictInsRowClose.Image = global::PtrCma.Properties.Resources.close;
+            this.pictInsRowClose.Location = new System.Drawing.Point(625, 23);
+            this.pictInsRowClose.Name = "pictInsRowClose";
+            this.pictInsRowClose.Size = new System.Drawing.Size(32, 32);
+            this.pictInsRowClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictInsRowClose.TabIndex = 81;
+            this.pictInsRowClose.TabStop = false;
+            this.pictInsRowClose.Click += new System.EventHandler(this.pictInsRowClose_Click);
+            // 
+            // pnlChangeDesc
+            // 
+            this.pnlChangeDesc.BackColor = System.Drawing.Color.LightGray;
+            this.pnlChangeDesc.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlChangeDesc.Controls.Add(this.cmdCancelChangeDesc);
+            this.pnlChangeDesc.Controls.Add(this.cmdOKChangeDesc);
+            this.pnlChangeDesc.Controls.Add(this.txtSr1ChangeDesc);
+            this.pnlChangeDesc.Controls.Add(this.txtDescChangeDesc);
+            this.pnlChangeDesc.Controls.Add(this.txtSrChangeDesc);
+            this.pnlChangeDesc.Controls.Add(this.label1);
+            this.pnlChangeDesc.Controls.Add(this.label2);
+            this.pnlChangeDesc.Controls.Add(this.picTitleDesc);
+            this.pnlChangeDesc.Controls.Add(this.pictureBox2);
+            this.pnlChangeDesc.Location = new System.Drawing.Point(189, 283);
+            this.pnlChangeDesc.Name = "pnlChangeDesc";
+            this.pnlChangeDesc.Size = new System.Drawing.Size(671, 222);
+            this.pnlChangeDesc.TabIndex = 50;
+            this.pnlChangeDesc.Visible = false;
+            // 
+            // cmdCancelChangeDesc
+            // 
+            this.cmdCancelChangeDesc.Location = new System.Drawing.Point(489, 181);
+            this.cmdCancelChangeDesc.Name = "cmdCancelChangeDesc";
+            this.cmdCancelChangeDesc.Size = new System.Drawing.Size(50, 23);
+            this.cmdCancelChangeDesc.TabIndex = 89;
+            this.cmdCancelChangeDesc.Text = "Cancel";
+            this.cmdCancelChangeDesc.UseVisualStyleBackColor = true;
+            this.cmdCancelChangeDesc.Click += new System.EventHandler(this.cmdCancelChangeDesc_Click);
+            // 
+            // cmdOKChangeDesc
+            // 
+            this.cmdOKChangeDesc.Location = new System.Drawing.Point(435, 181);
+            this.cmdOKChangeDesc.Name = "cmdOKChangeDesc";
+            this.cmdOKChangeDesc.Size = new System.Drawing.Size(50, 23);
+            this.cmdOKChangeDesc.TabIndex = 88;
+            this.cmdOKChangeDesc.Text = "Ok";
+            this.cmdOKChangeDesc.UseVisualStyleBackColor = true;
+            this.cmdOKChangeDesc.Click += new System.EventHandler(this.cmdOKChangeDesc_Click);
+            // 
+            // txtSr1ChangeDesc
+            // 
+            this.txtSr1ChangeDesc.Location = new System.Drawing.Point(388, 74);
+            this.txtSr1ChangeDesc.MaxLength = 20;
+            this.txtSr1ChangeDesc.Name = "txtSr1ChangeDesc";
+            this.txtSr1ChangeDesc.Size = new System.Drawing.Size(74, 20);
+            this.txtSr1ChangeDesc.TabIndex = 87;
+            // 
+            // txtDescChangeDesc
+            // 
+            this.txtDescChangeDesc.Location = new System.Drawing.Point(244, 107);
+            this.txtDescChangeDesc.MaxLength = 250;
+            this.txtDescChangeDesc.Name = "txtDescChangeDesc";
+            this.txtDescChangeDesc.Size = new System.Drawing.Size(299, 20);
+            this.txtDescChangeDesc.TabIndex = 86;
+            // 
+            // txtSrChangeDesc
+            // 
+            this.txtSrChangeDesc.Location = new System.Drawing.Point(244, 74);
+            this.txtSrChangeDesc.MaxLength = 20;
+            this.txtSrChangeDesc.Name = "txtSrChangeDesc";
+            this.txtSrChangeDesc.Size = new System.Drawing.Size(74, 20);
+            this.txtSrChangeDesc.TabIndex = 85;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(136, 107);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 23);
+            this.label1.TabIndex = 84;
+            this.label1.Text = "Description";
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(136, 77);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 23);
+            this.label2.TabIndex = 83;
+            this.label2.Text = "Sr. No.";
+            // 
+            // picTitleDesc
+            // 
+            this.picTitleDesc.BackColor = System.Drawing.Color.Transparent;
+            this.picTitleDesc.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picTitleDesc.Image = ((System.Drawing.Image)(resources.GetObject("picTitleDesc.Image")));
+            this.picTitleDesc.Location = new System.Drawing.Point(64, 23);
+            this.picTitleDesc.Name = "picTitleDesc";
+            this.picTitleDesc.Size = new System.Drawing.Size(532, 30);
+            this.picTitleDesc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picTitleDesc.TabIndex = 82;
+            this.picTitleDesc.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = global::PtrCma.Properties.Resources.closeBtnBg;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Image = global::PtrCma.Properties.Resources.close;
+            this.pictureBox2.Location = new System.Drawing.Point(625, 23);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 81;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // pnlFormula
+            // 
+            this.pnlFormula.BackColor = System.Drawing.Color.LightGray;
+            this.pnlFormula.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlFormula.Controls.Add(this.grdViewFormula);
+            this.pnlFormula.Controls.Add(this.label5);
+            this.pnlFormula.Controls.Add(this.label4);
+            this.pnlFormula.Controls.Add(this.cmdCancelFormula);
+            this.pnlFormula.Controls.Add(this.CmdOkFormula);
+            this.pnlFormula.Controls.Add(this.txtStdFrom);
+            this.pnlFormula.Controls.Add(this.txtFormula);
+            this.pnlFormula.Controls.Add(this.txtStdTo);
+            this.pnlFormula.Controls.Add(this.label3);
+            this.pnlFormula.Controls.Add(this.lblFormula);
+            this.pnlFormula.Controls.Add(this.picTitleFormula);
+            this.pnlFormula.Controls.Add(this.pictFormula);
+            this.pnlFormula.Controls.Add(this.grdViewYr);
+            this.pnlFormula.Location = new System.Drawing.Point(184, 411);
+            this.pnlFormula.Name = "pnlFormula";
+            this.pnlFormula.Size = new System.Drawing.Size(671, 332);
+            this.pnlFormula.TabIndex = 51;
+            this.pnlFormula.Visible = false;
+            // 
+            // grdViewFormula
+            // 
+            this.grdViewFormula.AllowUserToAddRows = false;
+            this.grdViewFormula.AllowUserToDeleteRows = false;
+            this.grdViewFormula.AllowUserToResizeRows = false;
+            this.grdViewFormula.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdViewFormula.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.srno,
+            this.Desc,
+            this.Year1});
+            this.grdViewFormula.Location = new System.Drawing.Point(85, 102);
+            this.grdViewFormula.Name = "grdViewFormula";
+            this.grdViewFormula.RowHeadersVisible = false;
+            this.grdViewFormula.ShowEditingIcon = false;
+            this.grdViewFormula.Size = new System.Drawing.Size(581, 178);
+            this.grdViewFormula.TabIndex = 94;
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(93, 79);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(83, 19);
+            this.label5.TabIndex = 93;
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(517, 80);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(79, 19);
+            this.label4.TabIndex = 91;
+            this.label4.Text = "Std To";
+            // 
+            // cmdCancelFormula
+            // 
+            this.cmdCancelFormula.Location = new System.Drawing.Point(595, 301);
+            this.cmdCancelFormula.Name = "cmdCancelFormula";
+            this.cmdCancelFormula.Size = new System.Drawing.Size(50, 23);
+            this.cmdCancelFormula.TabIndex = 89;
+            this.cmdCancelFormula.Text = "Cancel";
+            this.cmdCancelFormula.UseVisualStyleBackColor = true;
+            // 
+            // CmdOkFormula
+            // 
+            this.CmdOkFormula.Location = new System.Drawing.Point(539, 301);
+            this.CmdOkFormula.Name = "CmdOkFormula";
+            this.CmdOkFormula.Size = new System.Drawing.Size(50, 23);
+            this.CmdOkFormula.TabIndex = 88;
+            this.CmdOkFormula.Text = "Ok";
+            this.CmdOkFormula.UseVisualStyleBackColor = true;
+            // 
+            // txtStdFrom
+            // 
+            this.txtStdFrom.Location = new System.Drawing.Point(599, 57);
+            this.txtStdFrom.MaxLength = 20;
+            this.txtStdFrom.Name = "txtStdFrom";
+            this.txtStdFrom.Size = new System.Drawing.Size(67, 20);
+            this.txtStdFrom.TabIndex = 87;
+            // 
+            // txtFormula
+            // 
+            this.txtFormula.Location = new System.Drawing.Point(181, 58);
+            this.txtFormula.MaxLength = 20;
+            this.txtFormula.Multiline = true;
+            this.txtFormula.Name = "txtFormula";
+            this.txtFormula.Size = new System.Drawing.Size(332, 40);
+            this.txtFormula.TabIndex = 86;
+            // 
+            // txtStdTo
+            // 
+            this.txtStdTo.Location = new System.Drawing.Point(599, 78);
+            this.txtStdTo.MaxLength = 20;
+            this.txtStdTo.Name = "txtStdTo";
+            this.txtStdTo.Size = new System.Drawing.Size(67, 20);
+            this.txtStdTo.TabIndex = 85;
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(517, 60);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 19);
+            this.label3.TabIndex = 84;
+            this.label3.Text = "Std From";
+            // 
+            // lblFormula
+            // 
+            this.lblFormula.Location = new System.Drawing.Point(93, 58);
+            this.lblFormula.Name = "lblFormula";
+            this.lblFormula.Size = new System.Drawing.Size(83, 30);
+            this.lblFormula.TabIndex = 83;
+            this.lblFormula.Text = "Formula";
+            // 
+            // picTitleFormula
+            // 
+            this.picTitleFormula.BackColor = System.Drawing.Color.Transparent;
+            this.picTitleFormula.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picTitleFormula.Image = ((System.Drawing.Image)(resources.GetObject("picTitleFormula.Image")));
+            this.picTitleFormula.Location = new System.Drawing.Point(85, 13);
+            this.picTitleFormula.Name = "picTitleFormula";
+            this.picTitleFormula.Size = new System.Drawing.Size(516, 32);
+            this.picTitleFormula.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picTitleFormula.TabIndex = 82;
+            this.picTitleFormula.TabStop = false;
+            // 
+            // pictFormula
+            // 
+            this.pictFormula.BackgroundImage = global::PtrCma.Properties.Resources.closeBtnBg;
+            this.pictFormula.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictFormula.Image = global::PtrCma.Properties.Resources.close;
+            this.pictFormula.Location = new System.Drawing.Point(631, 13);
+            this.pictFormula.Name = "pictFormula";
+            this.pictFormula.Size = new System.Drawing.Size(32, 32);
+            this.pictFormula.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictFormula.TabIndex = 81;
+            this.pictFormula.TabStop = false;
+            this.pictFormula.Click += new System.EventHandler(this.pictFormula_Click);
+            // 
+            // grdViewYr
+            // 
+            this.grdViewYr.AllowUserToAddRows = false;
+            this.grdViewYr.AllowUserToDeleteRows = false;
+            this.grdViewYr.AllowUserToResizeRows = false;
+            this.grdViewYr.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdViewYr.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Year});
+            this.grdViewYr.Location = new System.Drawing.Point(15, 58);
+            this.grdViewYr.Name = "grdViewYr";
+            this.grdViewYr.RowHeadersVisible = false;
+            this.grdViewYr.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.grdViewYr.ShowEditingIcon = false;
+            this.grdViewYr.Size = new System.Drawing.Size(67, 255);
+            this.grdViewYr.TabIndex = 92;
+            this.grdViewYr.Click += new System.EventHandler(this.grdViewYr_Click);
+            // 
+            // Year
+            // 
+            this.Year.HeaderText = "Year";
+            this.Year.Name = "Year";
+            // 
+            // srno
+            // 
+            this.srno.HeaderText = "Sr.No.";
+            this.srno.Name = "srno";
+            // 
+            // Desc
+            // 
+            this.Desc.HeaderText = "Description";
+            this.Desc.Name = "Desc";
+            this.Desc.Width = 377;
+            // 
+            // Year1
+            // 
+            this.Year1.HeaderText = "Year";
+            this.Year1.Name = "Year1";
+            // 
             // FrmCMA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1049, 417);
+            this.ClientSize = new System.Drawing.Size(1049, 788);
             this.ControlBox = false;
+            this.Controls.Add(this.pnlFormula);
+            this.Controls.Add(this.pnlChangeDesc);
+            this.Controls.Add(this.grdReoCMAOther);
             this.Controls.Add(this.grdViewCMAOther);
             this.Controls.Add(this.picFrmClose);
             this.Controls.Add(this.lblPic);
@@ -429,6 +885,7 @@
             this.Controls.Add(this.gridViewCMA);
             this.Controls.Add(this.chart2);
             this.Controls.Add(this.lstViewTopic);
+            this.Controls.Add(this.pnlInsRow);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -445,6 +902,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.lblPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picFrmClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewCMAOther)).EndInit();
+            this.pnlInsRow.ResumeLayout(false);
+            this.pnlInsRow.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictitle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictInsRowClose)).EndInit();
+            this.pnlChangeDesc.ResumeLayout(false);
+            this.pnlChangeDesc.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picTitleDesc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.pnlFormula.ResumeLayout(false);
+            this.pnlFormula.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdViewFormula)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picTitleFormula)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictFormula)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdViewYr)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -479,5 +950,44 @@
         private System.Windows.Forms.PictureBox lblPic;
         private System.Windows.Forms.PictureBox picFrmClose;
         private System.Windows.Forms.DataGridView grdViewCMAOther;
+        private unvell.ReoGrid.ReoGridControl grdReoCMAOther;
+        private System.Windows.Forms.Panel pnlInsRow;
+        private System.Windows.Forms.PictureBox pictitle;
+        private System.Windows.Forms.PictureBox pictInsRowClose;
+        private System.Windows.Forms.Button cmdCancelInsRow;
+        private System.Windows.Forms.Button cmdOk;
+        private System.Windows.Forms.TextBox txtSr1;
+        private System.Windows.Forms.TextBox txtDesc;
+        private System.Windows.Forms.TextBox txtSr;
+        private System.Windows.Forms.Label lblDesc;
+        private System.Windows.Forms.Label lblSr;
+        private System.Windows.Forms.Panel pnlChangeDesc;
+        private System.Windows.Forms.Button cmdCancelChangeDesc;
+        private System.Windows.Forms.Button cmdOKChangeDesc;
+        private System.Windows.Forms.TextBox txtSr1ChangeDesc;
+        private System.Windows.Forms.TextBox txtDescChangeDesc;
+        private System.Windows.Forms.TextBox txtSrChangeDesc;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox picTitleDesc;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Panel pnlFormula;
+        private System.Windows.Forms.Button cmdCancelFormula;
+        private System.Windows.Forms.Button CmdOkFormula;
+        private System.Windows.Forms.TextBox txtStdFrom;
+        private System.Windows.Forms.TextBox txtFormula;
+        private System.Windows.Forms.TextBox txtStdTo;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblFormula;
+        private System.Windows.Forms.PictureBox picTitleFormula;
+        private System.Windows.Forms.PictureBox pictFormula;
+        private System.Windows.Forms.DataGridView grdViewYr;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Year;
+        private System.Windows.Forms.DataGridView grdViewFormula;
+        private System.Windows.Forms.DataGridViewTextBoxColumn srno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Desc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Year1;
     }
 }

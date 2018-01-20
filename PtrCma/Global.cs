@@ -97,6 +97,9 @@ namespace PtrCma
         public static String prtyName;
         public static String curYr;
         public static String inrS;
+        public static String currSr1;
+        public static string currSr2;
+        public static string currDesc;
 
         // Sales,Purchase,Credit,Parameter,Proposed Form
         public static Size lblbig = new System.Drawing.Size(200, 20);       //Terms of Purchase Form

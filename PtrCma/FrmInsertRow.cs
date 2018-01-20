@@ -45,6 +45,9 @@ namespace PtrCma
         {
             try
             {
+                //current row information
+                String sno1, sno2 = "";
+                
                 OleDbConnection conn = new OleDbConnection(connectionString);
 
                 OleDbDataAdapter myadapter = new OleDbDataAdapter();

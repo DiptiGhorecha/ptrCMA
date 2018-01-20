@@ -10,6 +10,12 @@ using System.Text;
 using System.Windows.Forms;
 using ADODB;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
+using Microsoft.CSharp;
+using System.CodeDom.Compiler;
+using System.Reflection;
+using unvell.ReoGrid;
+using unvell.ReoGrid.DataFormat;
 
 namespace PtrCma
 {
@@ -102,6 +108,8 @@ namespace PtrCma
                 txtPrtyName.Visible = true;
                 txtPrtyName.Enabled = false;
                 txtCurYear.Enabled = false;
+                pnlInsRow.Visible = false;
+                pnlChangeDesc.Visible = false;
                 comboBxYear.Enabled = false;
                 comboBoxCopyYear.Enabled = false;
                 comboBoxRsIn.Enabled = false;
@@ -132,14 +140,15 @@ namespace PtrCma
             lstViewTopic.Items[0].Selected = true;
             fillTempTable();
             fillCMSDataGrid();
-                fillCMSOtherDataGrid();
+                // fillCMSOtherDataGrid();
+                fillCMSReoDataGrid();
                 setControlSize();
             foreach (Button btn in Controls.OfType<Button>())
             {
                 btn.BackgroundImage = Global.cmdBackImg;
             }
-
-        }
+               
+                    }
         }
 
 
@@ -206,8 +215,24 @@ namespace PtrCma
             grdViewCMAOther.EnableHeadersVisualStyles = false;
 
             grdViewCMAOther.RowsDefaultCellStyle.BackColor = Color.White;    // Row Color of Gridview
-            ///////////////////////////////
+            pnlInsRow.BackgroundImage = Global.partyFrmBackImg;
+            pnlInsRow.Location = new Point((this.Width - pnlInsRow.Width) / 2, ((this.Height - pnlInsRow.Height) / 2) + 20);
+            pnlChangeDesc.BackgroundImage = Global.partyFrmBackImg;
+            pnlChangeDesc.Location = new Point((this.Width - pnlChangeDesc.Width) / 2, ((this.Height - pnlChangeDesc.Height) / 2) + 20);
 
+            pnlFormula.BackgroundImage = Global.partyFrmBackImg;
+            pnlFormula.Location = new Point((this.Width - pnlFormula.Width) / 2, ((this.Height - pnlFormula.Height) / 2) + 20);
+                    ///////////////////////////////
+                    var worksheet = grdReoCMAOther.CurrentWorksheet;
+
+            // Set settings
+         //  worksheet.SetSettings(WorksheetSettings.View_ShowColumnHeader, false);
+            worksheet.SetSettings(WorksheetSettings.View_ShowRowHeader, false);
+            grdReoCMAOther.Width = this.Width - 3;
+            
+            grdReoCMAOther.Top = lstViewTopic.Bottom + 25;
+            grdReoCMAOther.Height = this.Height - Global.chrtLstViewHeight - 50;
+            grdReoCMAOther.Left = this.Left + 1;
             setPanelControlColor();
         }
 
@@ -225,7 +250,98 @@ namespace PtrCma
                 btn.FlatStyle = FlatStyle.Flat;
                 btn.BackgroundImageLayout = ImageLayout.Stretch;
             }
-            
+            foreach (Button btn in pnlInsRow.Controls.OfType<Button>())   //Disable Textbox
+            {
+                btn.BackgroundImage = Global.cmdImg;
+                btn.ForeColor = Global.btnfore;
+                btn.FlatStyle = FlatStyle.Flat;
+                btn.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+            foreach (Label lbl in pnlInsRow.Controls.OfType<Label>())   //Disable Textbox
+            {
+                lbl.Font = Global.lblSize;
+                lbl.Size = Global.lblsmallCredit;
+                lbl.AutoSize = false;
+                lbl.BackColor = Global.lblbackdetail;
+                lbl.ForeColor = Global.lblforedetail;
+            }
+
+            foreach (TextBox txt in pnlInsRow.Controls.OfType<TextBox>())  //Set Size of TextBox
+            {
+                txt.Font = Global.txtSize;
+                if (txt.Name.Equals("txtDesc")){
+                    //txt.Size = Global.medsizelbl;
+                }
+                else
+                {
+                    txt.Size = Global.txtsmall;
+                }
+                
+                txt.AutoSize = false;
+            }
+
+            foreach (Button btn in pnlChangeDesc.Controls.OfType<Button>())   //Disable Textbox
+            {
+                btn.BackgroundImage = Global.cmdImg;
+                btn.ForeColor = Global.btnfore;
+                btn.FlatStyle = FlatStyle.Flat;
+                btn.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+            foreach (Label lbl in pnlChangeDesc.Controls.OfType<Label>())   //Disable Textbox
+            {
+                lbl.Font = Global.lblSize;
+                lbl.Size = Global.lblsmallCredit;
+                lbl.AutoSize = false;
+                lbl.BackColor = Global.lblbackdetail;
+                lbl.ForeColor = Global.lblforedetail;
+            }
+
+            foreach (TextBox txt in pnlChangeDesc.Controls.OfType<TextBox>())  //Set Size of TextBox
+            {
+                txt.Font = Global.txtSize;
+                if (txt.Name.Equals("txtDescChangeDesc"))
+                {
+                    //txt.Size = Global.medsizelbl;
+                }
+                else
+                {
+                    txt.Size = Global.txtsmall;
+                }
+
+                txt.AutoSize = false;
+            }
+
+
+            foreach (Button btn in pnlFormula.Controls.OfType<Button>())   //Disable Textbox
+            {
+                btn.BackgroundImage = Global.cmdImg;
+                btn.ForeColor = Global.btnfore;
+                btn.FlatStyle = FlatStyle.Flat;
+                btn.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+            foreach (Label lbl in pnlFormula.Controls.OfType<Label>())   //Disable Textbox
+            {
+                lbl.Font = Global.lblSize;
+             //   lbl.Size = Global.lblsmallCredit;
+                lbl.AutoSize = false;
+                lbl.BackColor = Global.lblbackdetail;
+                lbl.ForeColor = Global.lblforedetail;
+            }
+
+            foreach (TextBox txt in pnlFormula.Controls.OfType<TextBox>())  //Set Size of TextBox
+            {
+                txt.Font = Global.txtSize;
+                if (txt.Name.Equals("txtFormula"))
+                {
+                    //txt.Size = Global.medsizelbl;
+                }
+                else
+                {
+                    txt.Size = Global.txtsmall;
+                }
+
+                txt.AutoSize = false;
+            }
             picFrmClose.BackColor = System.Drawing.Color.FromArgb(124,236,246);
             //picFrmClose.BackColor = System.Drawing.Color.Transparent;
         }
@@ -331,7 +447,7 @@ namespace PtrCma
                     for (int i = 0; i < ds3.Tables[0].Rows.Count; i++)
                     {
                         DataSet ds22 = new DataSet();
-                        String sql = "INSERT INTO Cx_CdFm3 (FM_SEQNO,FM_TYPE,FM_FC,FM_BN,FM_MTNO,FM_SNO1,FM_SNO2,FM_CV,FM_FORM,FM_DESC,FM_CLREFNO,FM_FOLIST,FM_FO01,FM_FO02,FM_FO03,FM_FO04,FM_FO05,FM_FO06,FM_FO07,FM_FO08,FM_FO09,FM_FO10,FM_FO11,FM_FO12) values ('" + ds3.Tables[0].Rows[i]["FM_SEQNO"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_TYPE"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FC"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_BN"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_MTNO"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_SNO1"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_SNO2"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_CV"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FORM"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_DESC"].ToString() + "'," + ds3.Tables[0].Rows[i]["FM_CLREFNO"].ToString() + ",'" + ds3.Tables[0].Rows[i]["FM_FOLIST"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO01"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO02"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO03"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO04"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO05"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO06"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO07"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO08"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO09"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO10"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO11"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO12"].ToString() + "')";
+                        String sql = "INSERT INTO Cx_CdFm3 (FM_SEQNO,FM_TYPE,FM_FC,FM_BN,FM_MTNO,FM_SNO1,FM_SNO2,FM_CV,FM_FORM,FM_ADDROW,FM_TOTROW,FM_DESC,FM_CLREFNO,FM_FOLIST,FM_FO01,FM_FO02,FM_FO03,FM_FO04,FM_FO05,FM_FO06,FM_FO07,FM_FO08,FM_FO09,FM_FO10,FM_FO11,FM_FO12) values ('" + ds3.Tables[0].Rows[i]["FM_SEQNO"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_TYPE"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FC"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_BN"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_MTNO"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_SNO1"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_SNO2"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_CV"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FORM"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_ADDROW"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_TOTROW"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_DESC"].ToString() + "'," + ds3.Tables[0].Rows[i]["FM_CLREFNO"].ToString() + ",'" + ds3.Tables[0].Rows[i]["FM_FOLIST"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO01"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO02"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO03"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO04"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO05"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO06"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO07"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO08"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO09"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO10"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO11"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO12"].ToString() + "')";
                         myadapter1.SelectCommand = new OleDbCommand(sql, conn);
                         myadapter1.Fill(ds22, "Cx_CdFm3");
                         ds22.Dispose();
@@ -443,6 +559,237 @@ namespace PtrCma
             gridViewCMA.Refresh();
         }
 
+        private void fillCMSReoDataGrid()
+        {
+            try {
+                ControlAppearanceStyle rgcs = new ControlAppearanceStyle(Global.grdPartyBackColor, Color.Gray, false);
+                rgcs[ControlAppearanceColors.ColHeadText] = Global.grdPartyForeColor;
+                rgcs[ControlAppearanceColors.GridBackground] = Global.gridBackColorCMS;
+                grdReoCMAOther.CurrentWorksheet.SelectionForwardDirection = SelectionForwardDirection.Down;
+                grdReoCMAOther.ControlStyle = rgcs;
+                grdReoCMAOther.CurrentWorksheet.SetSettings(WorksheetSettings.Formula_AutoUpdateReferenceCell, true);
+                grdReoCMAOther.CurrentWorksheet.SetSettings(WorksheetSettings.Formula_AutoPickingCellAddress, true);
+                grdReoCMAOther.CurrentWorksheet.SetSettings(WorksheetSettings.Formula_AutoFormat, true);
+                OleDbConnection conn = new OleDbConnection(connectionString);
+            OleDbDataAdapter myadapter = new OleDbDataAdapter();
+            DataSet ds = new DataSet();
+            myadapter.SelectCommand = new OleDbCommand("Select * from Cp_CdFm3 where FM_CLREFNO=" + Global.prtyCode + " order by FM_SEQNO", conn);
+            myadapter.Fill(ds, "Cp_CdFm3");
+            //   grdReoCMAOther.CurrentWorksheet = ds.Tables[0];
+            grdReoCMAOther.CurrentWorksheet.RowCount = ds.Tables[0].Rows.Count;
+            grdReoCMAOther.CurrentWorksheet.ColumnCount = ds.Tables[0].Columns.Count;
+            var list = new List<int> { 18,19,20,21 };
+                var listRow = new List<int> { 0, 8, 39, 43, 55, 56, 75, 84, 112, 134, 138, 159, 190, 210, 217, 225, 251, 264, 275, 284, 291, 305, 306, 307, 317, 327, 337 };
+                var listCol = new List<int> { 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41 };
+                   var listn = new List<int> { 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29 };
+                for (int row = 0; row < ds.Tables[0].Rows.Count; row++)
+            {
+                for (int col = 0; col < ds.Tables[0].Columns.Count; col++)
+                {
+                        if (!string.IsNullOrEmpty(Convert.ToString(ds.Tables[0].Rows[row][col])))
+                        {
+                            grdReoCMAOther.CurrentWorksheet.SetCellData(row, col, ds.Tables[0].Rows[row][col]);
+                        }
+                        else
+                        {
+                            if (listn.Contains(col))
+                                grdReoCMAOther.CurrentWorksheet.SetCellData(row, col+12, Convert.ToDouble("0.00"));
+                        }
+                        //}
+                    //if (list.Contains(col))
+                    //{
+                    //    if (!string.IsNullOrEmpty(Convert.ToString(ds.Tables[0].Rows[row][col])))
+                    //    { String frmula = Convert.ToString(ds.Tables[0].Rows[row][col]);
+                    //       grdReoCMAOther.CurrentWorksheet.SetCellFormula(row, (col+12), frmula);
+                    //    }
+                    // }
+                   // cell.Readonly = true;
+                }
+            }
+            var range = grdReoCMAOther.CurrentWorksheet.Ranges["A1:AN1"];
+            
+            //  range.Style.BackColor = Global.grdPartyBackColor;
+            //  range.Style.TextColor = Global.grdPartyForeColor;
+            range = grdReoCMAOther.CurrentWorksheet.Ranges["A1:AN348"];
+           // range.Style.BackColor = Global.gridBackColorCMS;
+          //  range.Style.TextColor = Global.grdPartyForeColor;
+            
+
+            grdReoCMAOther.CurrentWorksheet.HideColumns(0, 1);
+            grdReoCMAOther.CurrentWorksheet.HideColumns(2,4);
+            grdReoCMAOther.CurrentWorksheet.HideColumns(8, 4);
+            grdReoCMAOther.CurrentWorksheet.HideColumns(13, 29);
+
+           // ControlAppearanceStyle rgcs = new ControlAppearanceStyle();
+          //  rgcs[ControlAppearanceColors.LeadHeadNormal] = Global.grdPartyBackColor;
+            // rgcs[ControlAppearanceColors.LeadHeadHover] = Global.grdPartyBackColor;
+            //   rgcs[ControlAppearanceColors.LeadHeadSelected] = Global.grdPartyBackColor;
+            //  rgcs[ControlAppearanceColors.LeadHeadIndicatorStart] = Global.grdPartyBackColor;
+
+            grdReoCMAOther.CurrentWorksheet.SetColumnsWidth(1, 1, 100);
+            grdReoCMAOther.CurrentWorksheet.SetColumnsWidth(6, 2, 50);
+            ushort ggd =(ushort)((grdReoCMAOther.Width - 220) - (120 * Convert.ToInt16(comboBxYear.Text)));
+            grdReoCMAOther.CurrentWorksheet.SetColumnsWidth(12, 1,ggd );
+                String frmula1= "AE2+AE3";
+                // grdReoCMAOther.CurrentWorksheet.Cells["AE4"].Formula= "AE2+AE3";
+               // grdReoCMAOther.CurrentWorksheet.SetCellFormula(4, 30, frmula1);
+            grdReoCMAOther.CurrentWorksheet.ColumnHeaders["B"].Text = "";
+            grdReoCMAOther.CurrentWorksheet.ColumnHeaders["H"].Text = "";
+            grdReoCMAOther.CurrentWorksheet.ColumnHeaders["I"].Text = "";
+            grdReoCMAOther.CurrentWorksheet.ColumnHeaders["M"].Text="Description";
+           // String[] arrayYr = new String[] {"AE","AF","AG","AH","AI","AJ","AK","AL","AM","AN","AO","AP"};
+            /////////////////////////
+            String sql2 = "SELECT * FROM Cx_Cd120 WHERE [CL_REFNO]=" + Global.prtyCode + ";";
+            DataSet ds1 = new DataSet();
+            myadapter.SelectCommand = new OleDbCommand(sql2, conn);
+            myadapter.Fill(ds1, "Cx_Cd120");
+            int counter = 30;
+            if (ds1.Tables[0].Rows.Count > 0)
+            {
+                for (int i = 0; i < ds1.Tables[0].Rows.Count; i++)
+                {
+
+                    for (int ii = 1; ii <= Convert.ToInt16(comboBxYear.Text); ii++)
+                    {
+                        
+                        switch (ii)
+                        {
+                            case 1:
+                                grdReoCMAOther.CurrentWorksheet.ShowColumns(30, 1);
+                                grdReoCMAOther.CurrentWorksheet.ColumnHeaders["AE"].Text = ds1.Tables[0].Rows[i]["CTXT01"].ToString();
+                                grdReoCMAOther.CurrentWorksheet.SetColumnsWidth(30, 1, 120);
+                                break;
+                            case 2:
+                                grdReoCMAOther.CurrentWorksheet.ShowColumns(31, 1);
+                                grdReoCMAOther.CurrentWorksheet.ColumnHeaders["AF"].Text = ds1.Tables[0].Rows[i]["CTXT02"].ToString();
+                                grdReoCMAOther.CurrentWorksheet.SetColumnsWidth(31, 1, 120);
+                                break;
+                            case 3:
+                                grdReoCMAOther.CurrentWorksheet.ShowColumns(32, 1);
+                                grdReoCMAOther.CurrentWorksheet.ColumnHeaders["AG"].Text = ds1.Tables[0].Rows[i]["CTXT03"].ToString();
+                                grdReoCMAOther.CurrentWorksheet.SetColumnsWidth(32, 1, 120);
+                                break;
+                            case 4:
+                                grdReoCMAOther.CurrentWorksheet.ShowColumns(33, 1);
+                                grdReoCMAOther.CurrentWorksheet.ColumnHeaders["AH"].Text = ds1.Tables[0].Rows[i]["CTXT04"].ToString();
+                                grdReoCMAOther.CurrentWorksheet.SetColumnsWidth(33, 1, 120);
+                                break;
+                            case 5:
+                                grdReoCMAOther.CurrentWorksheet.ShowColumns(34, 1);
+                                grdReoCMAOther.CurrentWorksheet.ColumnHeaders["AI"].Text = ds1.Tables[0].Rows[i]["CTXT05"].ToString();
+                                grdReoCMAOther.CurrentWorksheet.SetColumnsWidth(34, 1, 120);
+                                break;
+                            case 6:
+                                grdReoCMAOther.CurrentWorksheet.ShowColumns(35, 1);
+                                grdReoCMAOther.CurrentWorksheet.ColumnHeaders["AJ"].Text = ds1.Tables[0].Rows[i]["CTXT06"].ToString();
+                                grdReoCMAOther.CurrentWorksheet.SetColumnsWidth(35, 1, 120);
+                                break;
+                            case 7:
+                                grdReoCMAOther.CurrentWorksheet.ShowColumns(36, 1);
+                                grdReoCMAOther.CurrentWorksheet.ColumnHeaders["AK"].Text = ds1.Tables[0].Rows[i]["CTXT07"].ToString();
+                                grdReoCMAOther.CurrentWorksheet.SetColumnsWidth(36, 1, 120);
+                                break;
+                            case 8:
+                                grdReoCMAOther.CurrentWorksheet.ShowColumns(37, 1);
+                                grdReoCMAOther.CurrentWorksheet.ColumnHeaders["AL"].Text = ds1.Tables[0].Rows[i]["CTXT08"].ToString();
+                                grdReoCMAOther.CurrentWorksheet.SetColumnsWidth(37, 1, 120);
+                                break;
+                            case 9:
+                                grdReoCMAOther.CurrentWorksheet.ShowColumns(38, 1);
+                                grdReoCMAOther.CurrentWorksheet.ColumnHeaders["AM"].Text = ds1.Tables[0].Rows[i]["CTXT09"].ToString();
+                                grdReoCMAOther.CurrentWorksheet.SetColumnsWidth(38, 1, 120);
+                                break;
+                            case 10:
+                                grdReoCMAOther.CurrentWorksheet.ShowColumns(39, 1);
+                                grdReoCMAOther.CurrentWorksheet.ColumnHeaders["AN"].Text = ds1.Tables[0].Rows[i]["CTXT10"].ToString();
+                                grdReoCMAOther.CurrentWorksheet.SetColumnsWidth(39, 1, 120);
+                                break;
+                            case 11:
+                                grdReoCMAOther.CurrentWorksheet.ShowColumns(40, 1);
+                                grdReoCMAOther.CurrentWorksheet.ColumnHeaders["AO"].Text = ds1.Tables[0].Rows[i]["CTXT11"].ToString();
+                                grdReoCMAOther.CurrentWorksheet.SetColumnsWidth(40, 1, 120);
+                                break;
+                            case 12:
+                                grdReoCMAOther.CurrentWorksheet.ShowColumns(41, 1);
+                                grdReoCMAOther.CurrentWorksheet.ColumnHeaders["AP"].Text = ds1.Tables[0].Rows[i]["CTXT12"].ToString();
+                                grdReoCMAOther.CurrentWorksheet.SetColumnsWidth(41, 1, 120);
+                                break;
+                            default:
+                                //optional 
+                                //statements 
+                                break;
+                        }
+                        counter = counter + 1;
+                    }
+                }
+            }
+                // String frmula11 = "AE2+AE3";
+                //  grdReoCMAOther.CurrentWorksheet.SetCellFormula(3, 30, frmula11);
+
+                for (int row = 0; row < grdReoCMAOther.CurrentWorksheet.RowCount; row++)
+                {
+                   // MessageBox.Show(Convert.ToString(grdReoCMAOther.CurrentWorksheet.ColumnCount));
+                    for (int col = 0; col < grdReoCMAOther.CurrentWorksheet.ColumnCount; col++)
+                    {
+                        if (list.Contains(col))
+                        {
+                            String MM = (String)grdReoCMAOther.CurrentWorksheet.GetCellData(row, col);
+                            if (!string.IsNullOrEmpty(MM))
+                            {
+                                // String frmula = Convert.ToString(ds.Tables[0].Rows[row][col]);
+                                grdReoCMAOther.CurrentWorksheet.SetCellFormula(row, (col + 12), MM);
+                                // grdReoCMAOther.CurrentWorksheet.SetCellData(row, col+12, MM);
+                                var cell = grdReoCMAOther.CurrentWorksheet.GetCell(row, col + 12);
+                               // cell.IsReadOnly = true;
+                                cell.Style.TextColor = Color.Magenta;
+                                //.SetCellFormula(row, (col + 12), MM);
+                                // Console.Out.WriteLine(row+"  "+col+"  ");
+                            }
+
+                        }
+
+                        if (listCol.Contains(col))
+                        {
+                            if (Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(row, 3)).Equals("Gr") && col <= (30 + Convert.ToInt16(comboBxYear.Text)))
+                            {
+                                var cell = grdReoCMAOther.CurrentWorksheet.GetCell(row, col);
+                                cell.Style.BackColor = Color.Gray;
+                                cell.Data = "";
+                            }
+                        }
+
+                        // cell.Readonly = true;
+                    }
+                }
+
+                grdReoCMAOther.CurrentWorksheet.SetRangeDataFormat("AE0:AP348", CellDataFormatFlag.Number,
+  new NumberDataFormatter.NumberFormatArgs()
+  {
+      // decimal digit places, e.g. 0.1234
+      DecimalPlaces = 2,
+
+      // negative number style, e.g. -123 -> (123) 
+      NegativeStyle = NumberDataFormatter.NumberNegativeStyle.RedBrackets,
+
+      // use separator, e.g.123,456
+      UseSeparator = false,
+  });
+               
+                ds1.Dispose();
+           
+            ////////////////////////
+
+            // colHeader.Text = "Year-1";
+            ///(0, 12, 100);
+            ds.Dispose();
+            conn.Close();
+            }
+            catch (Exception e)
+            {
+                //  Console.WriteLine(e.Message);//
+                MessageBox.Show(e.Message);
+            }
+        }
         private void fillCMSOtherDataGrid()
         {
             try
@@ -486,7 +833,6 @@ namespace PtrCma
                 {
                     for (int i = 0; i < ds1.Tables[0].Rows.Count; i++)
                     {
-
                         for (int ii = 1; ii <= Convert.ToInt16(comboBxYear.Text); ii++)
                         {
                             grdViewCMAOther.Columns[counter].Visible = true;
@@ -532,8 +878,6 @@ namespace PtrCma
                                     grdViewCMAOther.Columns[counter].HeaderText = ds1.Tables[0].Rows[i]["CTXT12"].ToString();
                                     break;
                                 default:
-                                    //optional 
-                                    //statements 
                                     break;
                             }
                             counter = counter + 1;
@@ -559,8 +903,8 @@ namespace PtrCma
             lstViewTopic.View = View.Details;
             lstViewTopic.GridLines = true;
             lstViewTopic.FullRowSelect = true;
-            ColumnHeader header1;
-            header1 = new ColumnHeader();
+            System.Windows.Forms.ColumnHeader header1;
+            header1 = new System.Windows.Forms.ColumnHeader();
             lstViewTopic.Columns.Clear();
             // Set the text, alignment and width for each column header.
             header1.Text = "Select Topic";
@@ -584,6 +928,60 @@ namespace PtrCma
             lstViewTopic.Items.Add("Calculation of Drawing power");
         }
 
+        private void FillYrListBox()
+        {
+            try
+            {
+                xconn = new ADODB.Connection();
+                xconn.Open("Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " + Application.StartupPath + "\\Resources\\PtrCma.accdb;", "", "", -1);
+                ADODB.Recordset chkrs1 = new ADODB.Recordset();
+                String stttr = "SELECT * FROM Cx_Cd120 where CL_REFNO=" + Global.prtyCode;
+                chkrs1.Open("SELECT * FROM Cx_Cd120 where CL_REFNO=" + Global.prtyCode, xconn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockBatchOptimistic, 0);
+
+                while (chkrs1.EOF == false)
+                {
+                   
+                    grdViewFormula.Columns[2].HeaderText = chkrs1.Fields[0].Value.Substring(0, 5);
+                    grdViewYr.Rows.Add(chkrs1.Fields[0].Value.Substring(0, 5) + chkrs1.Fields[0].Value.Substring(7, 2));
+                    grdViewYr.Rows.Add(chkrs1.Fields[1].Value.Substring(0, 5) + chkrs1.Fields[1].Value.Substring(7, 2));
+                    grdViewYr.Rows.Add(chkrs1.Fields[2].Value.Substring(0, 5) + chkrs1.Fields[2].Value.Substring(7, 2));
+                    grdViewYr.Rows.Add(chkrs1.Fields[3].Value.Substring(0, 5) + chkrs1.Fields[3].Value.Substring(7, 2));
+                    grdViewYr.Rows.Add(chkrs1.Fields[4].Value.Substring(0, 5) + chkrs1.Fields[4].Value.Substring(7, 2));
+                    grdViewYr.Rows.Add(chkrs1.Fields[5].Value.Substring(0, 5) + chkrs1.Fields[5].Value.Substring(7, 2));
+                    grdViewYr.Rows.Add(chkrs1.Fields[6].Value.Substring(0, 5) + chkrs1.Fields[6].Value.Substring(7, 2));
+                    grdViewYr.Rows.Add(chkrs1.Fields[7].Value.Substring(0, 5) + chkrs1.Fields[7].Value.Substring(7, 2));
+                    grdViewYr.Rows.Add(chkrs1.Fields[8].Value.Substring(0, 5) + chkrs1.Fields[8].Value.Substring(7, 2));
+                    grdViewYr.Rows.Add(chkrs1.Fields[9].Value.Substring(0, 5) + chkrs1.Fields[9].Value.Substring(7, 2));
+                    grdViewYr.Rows.Add(chkrs1.Fields[10].Value.Substring(0, 5) + chkrs1.Fields[10].Value.Substring(7, 2));
+                    grdViewYr.Rows.Add(chkrs1.Fields[11].Value.Substring(0, 5) + chkrs1.Fields[11].Value.Substring(7, 2));
+                    //lstViewYr.Items.Add(chkrs1.Fields[1].Value.Substring(0, 5) + chkrs1.Fields[1].Value.Substring(7, 2));
+                    //lstViewYr.Items.Add(chkrs1.Fields[2].Value.Substring(0, 5) + chkrs1.Fields[2].Value.Substring(7, 2));
+                    //lstViewYr.Items.Add(chkrs1.Fields[3].Value.Substring(0, 5) + chkrs1.Fields[3].Value.Substring(7, 2));
+                    //lstViewYr.Items.Add(chkrs1.Fields[4].Value.Substring(0, 5) + chkrs1.Fields[4].Value.Substring(7, 2));
+                    //lstViewYr.Items.Add(chkrs1.Fields[5].Value.Substring(0, 5) + chkrs1.Fields[5].Value.Substring(7, 2));
+                    //lstViewYr.Items.Add(chkrs1.Fields[6].Value.Substring(0, 5) + chkrs1.Fields[6].Value.Substring(7, 2));
+                    //lstViewYr.Items.Add(chkrs1.Fields[7].Value.Substring(0, 5) + chkrs1.Fields[7].Value.Substring(7, 2));
+                    //lstViewYr.Items.Add(chkrs1.Fields[8].Value.Substring(0, 5) + chkrs1.Fields[8].Value.Substring(7, 2));
+                    //lstViewYr.Items.Add(chkrs1.Fields[9].Value.Substring(0, 5) + chkrs1.Fields[9].Value.Substring(7, 2));
+                    //lstViewYr.Items.Add(chkrs1.Fields[10].Value.Substring(0, 5) + chkrs1.Fields[10].Value.Substring(7, 2));
+                    //lstViewYr.Items.Add(chkrs1.Fields[11].Value.Substring(0, 5) + chkrs1.Fields[11].Value.Substring(7, 2));
+
+                    //txtCurYear.Text = chkrs1.Fields[0].Value;
+                    if (chkrs1.EOF == false)
+                    {
+                        chkrs1.MoveNext();
+                    }
+                }
+                chkrs1.Close();
+                xconn.Close();
+                
+                pnlFormula.Refresh();
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show(e1.Message);
+            }
+}
         private void cmdEdit_Click(object sender, EventArgs e)
         {
             isEdited = "y";
@@ -596,7 +994,7 @@ namespace PtrCma
             }
             else
             {
-                grdViewCMAOther.CurrentCell = grdViewCMAOther.Rows[0].Cells[30];
+               // grdViewCMAOther.CurrentCell = grdViewCMAOther.Rows[0].Cells[30];
 
                 txtCurYear.Enabled = true;
                 comboBxYear.Enabled = true;
@@ -687,26 +1085,40 @@ private void cmdSave_Click(object sender, EventArgs e)
                     cmd1.ExecuteNonQuery();
 
                 }
-                for (int i = 0; i <= grdViewCMAOther.Rows.Count - 1; i++)
+                string sqlTrunc = "DELETE FROM Cx_CdFm3 WHERE FM_CLREFNO=" + Global.prtyCode;
+                OleDbCommand cmd333 = new OleDbCommand(sqlTrunc, con);
+                cmd333.Transaction = transaction;
+                cmd333.ExecuteNonQuery();
+
+                string sqlTrunc1 = "DELETE FROM Cp_CdFm3 WHERE FM_CLREFNO=" + Global.prtyCode;
+                OleDbCommand cmd334= new OleDbCommand(sqlTrunc1, con);
+                cmd334.Transaction = transaction;
+                cmd334.ExecuteNonQuery();
+
+
+                for (int i = 0; i <= grdReoCMAOther.CurrentWorksheet.RowCount - 1; i++)
                 {
-                    refno = Convert.ToString(grdViewCMAOther.Rows[i].Cells[0].Value);
-                    String ctx11, ctx12, ctx13, ctx14, ctx15, ctx16, ctx17, ctx18, ctx19, ctx20, ctx21, ctx22, ctx23, ctx24 = "";
-                    ctx11 = ((grdViewCMAOther.Rows[i].Cells[30].Value != null && grdViewCMAOther.Rows[i].Cells[30].Value.ToString() != String.Empty) ? grdViewCMAOther.Rows[i].Cells[30].Value.ToString() : "Null");
-                    ctx12 = ((grdViewCMAOther.Rows[i].Cells[31].Value != null && grdViewCMAOther.Rows[i].Cells[31].Value.ToString() != String.Empty) ? grdViewCMAOther.Rows[i].Cells[31].Value.ToString() : "Null");
-                    ctx13 = ((grdViewCMAOther.Rows[i].Cells[32].Value != null && grdViewCMAOther.Rows[i].Cells[32].Value.ToString() != String.Empty) ? grdViewCMAOther.Rows[i].Cells[32].Value.ToString() : "Null");
-                    ctx14 = ((grdViewCMAOther.Rows[i].Cells[33].Value != null && grdViewCMAOther.Rows[i].Cells[33].Value.ToString() != String.Empty) ? grdViewCMAOther.Rows[i].Cells[33].Value.ToString() : "Null");
-                    ctx15 = ((grdViewCMAOther.Rows[i].Cells[34].Value != null && grdViewCMAOther.Rows[i].Cells[34].Value.ToString() != String.Empty) ? grdViewCMAOther.Rows[i].Cells[34].Value.ToString() : "Null");
-                    ctx16 = ((grdViewCMAOther.Rows[i].Cells[35].Value != null && grdViewCMAOther.Rows[i].Cells[35].Value.ToString() != String.Empty) ? grdViewCMAOther.Rows[i].Cells[35].Value.ToString() : "Null");
-                    ctx17 = ((grdViewCMAOther.Rows[i].Cells[36].Value != null && grdViewCMAOther.Rows[i].Cells[36].Value.ToString() != String.Empty) ? grdViewCMAOther.Rows[i].Cells[36].Value.ToString() : "Null");
-                    ctx18 = ((grdViewCMAOther.Rows[i].Cells[37].Value != null && grdViewCMAOther.Rows[i].Cells[37].Value.ToString() != String.Empty) ? grdViewCMAOther.Rows[i].Cells[37].Value.ToString() : "Null");
-                    ctx19 = ((grdViewCMAOther.Rows[i].Cells[38].Value != null && grdViewCMAOther.Rows[i].Cells[38].Value.ToString() != String.Empty) ? grdViewCMAOther.Rows[i].Cells[38].Value.ToString() : "Null");
-                    ctx20 = ((grdViewCMAOther.Rows[i].Cells[39].Value != null && grdViewCMAOther.Rows[i].Cells[39].Value.ToString() != String.Empty) ? grdViewCMAOther.Rows[i].Cells[39].Value.ToString() : "Null");
-                    ctx21 = ((grdViewCMAOther.Rows[i].Cells[40].Value != null && grdViewCMAOther.Rows[i].Cells[40].Value.ToString() != String.Empty) ? grdViewCMAOther.Rows[i].Cells[40].Value.ToString() : "Null");
-                    ctx22 = ((grdViewCMAOther.Rows[i].Cells[41].Value != null && grdViewCMAOther.Rows[i].Cells[41].Value.ToString() != String.Empty) ? grdViewCMAOther.Rows[i].Cells[41].Value.ToString() : "Null");
-
-
-                    String sql = "update Cp_CdFm3 set FM_YR01=" + ctx11 + ",FM_YR02=" + ctx12 + ",FM_YR03=" + ctx13 + ",FM_YR04=" + ctx14 + ",FM_YR05=" + ctx15 + ",FM_YR06=" + ctx16 + ",FM_YR07=" + ctx17 + ",FM_YR08=" + ctx18 + ",FM_YR09=" + ctx19 + ",FM_YR10=" + ctx20 + ",FM_YR11=" + ctx21 + ",FM_YR12=" + ctx22 + " WHERE FM_CLREFNO=" + Global.prtyCode + " AND FM_REFNO=" + refno;
-                    String sql1 = "update Cx_CdFm3 set FM_YR01=" + ctx11 + ",FM_YR02=" + ctx12 + ",FM_YR03=" + ctx13 + ",FM_YR04=" + ctx14 + ",FM_YR05=" + ctx15 + ",FM_YR06=" + ctx16 + ",FM_YR07=" + ctx17 + ",FM_YR08=" + ctx18 + ",FM_YR09=" + ctx19 + ",FM_YR10=" + ctx20 + ",FM_YR11=" + ctx21 + ",FM_YR12=" + ctx22 + " WHERE FM_CLREFNO=" + Global.prtyCode + " AND FM_REFNO=" + refno;
+                    refno = Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i,0));
+                    String ctx09,ctx10,ctx11, ctx12, ctx13, ctx14, ctx15, ctx16, ctx17, ctx18, ctx19, ctx20, ctx21, ctx22, ctx23, ctx24 = "";
+                    ctx09 = ((Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 15)) != null && Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 15)) != String.Empty) ? Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 15)) : "Null");
+                    ctx10 = ((Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 16)) != null && Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 16)) != String.Empty) ? Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 16)) : "Null");
+                    ctx11 = ((Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 30)) != null && Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 30)) != String.Empty) ? Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 30)) : "Null");
+                    ctx12 = ((Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 31)) != null && Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 31)) != String.Empty) ? Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 31)) : "Null");
+                    ctx13 = ((Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 32)) != null && Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 32)) != String.Empty) ? Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 32)) : "Null");
+                    ctx14 = ((Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 33)) != null && Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 33)) != String.Empty) ? Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 33)) : "Null");
+                    ctx15 = ((Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 34)) != null && Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 34)) != String.Empty) ? Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 34)) : "Null");
+                    ctx16 = ((Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 35)) != null && Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 35)) != String.Empty) ? Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 35)) : "Null");
+                    ctx17 = ((Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 36)) != null && Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 36)) != String.Empty) ? Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 36)) : "Null");
+                    ctx18 = ((Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 37)) != null && Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 37)) != String.Empty) ? Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 37)) : "Null");
+                    ctx19 = ((Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 38)) != null && Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 38)) != String.Empty) ? Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 38)) : "Null");
+                    ctx20 = ((Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 39)) != null && Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 39)) != String.Empty) ? Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 39)) : "Null");
+                    ctx21 = ((Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 40)) != null && Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 40)) != String.Empty) ? Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 40)) : "Null");
+                    ctx22 = ((Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 41)) != null && Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 41)) != String.Empty) ? Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 41)) : "Null");
+                    //String sql = "INSERT INTO Cp_CdFm3 (FM_SEQNO,set FM_YR01=" + ctx11 + ",FM_YR02=" + ctx12 + ",FM_YR03=" + ctx13 + ",FM_YR04=" + ctx14 + ",FM_YR05=" + ctx15 + ",FM_YR06=" + ctx16 + ",FM_YR07=" + ctx17 + ",FM_YR08=" + ctx18 + ",FM_YR09=" + ctx19 + ",FM_YR10=" + ctx20 + ",FM_YR11=" + ctx21 + ",FM_YR12=" + ctx22 + " WHERE FM_CLREFNO=" + Global.prtyCode + " AND FM_REFNO=" + refno;
+                    String sql = "INSERT INTO Cp_CdFm3(FM_SEQNO,FM_TYPE,FM_FC,FM_BN,FM_MTNO,FM_SNO1,FM_SNO2,FM_CV,FM_FORM,FM_ADDROW,FM_TOTROW,FM_DESC,FM_CLREFNO,FM_OTHER,FM_STBST,FM_ENBST,FM_FOLIST,FM_FO01,FM_FO02,FM_FO03,FM_FO04,FM_FO05,FM_FO06,FM_FO07,FM_FO08,FM_FO09,FM_FO10,FM_FO11,FM_FO12,FM_YR01,FM_YR02,FM_YR03,FM_YR04,FM_YR05,FM_YR06,FM_YR07,FM_YR08,FM_YR09,FM_YR10,FM_YR11,FM_YR12) values ('" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 1)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 2)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 3)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 4)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 5)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 6)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 7)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 8)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 9)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 10)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 11)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 12)) + "'," + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 13)) + ",'" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 14)) + "'," + ctx09 + "," + ctx10 + ",'" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 17)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 18)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 19)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 20)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 21)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 22)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 23)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 24)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 25)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 26)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 27)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 28)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 29)) + "'," + ctx11 + "," + ctx12 + "," + ctx13 + "," + ctx14 + "," + ctx15 + "," + ctx16 + "," + ctx17 + "," + ctx18 + "," + ctx19 + "," + ctx20 + "," + ctx21 + "," + ctx22 + ")";
+                    //String sql = "update Cp_CdFm3 set FM_YR01=" + ctx11 + ",FM_YR02=" + ctx12 + ",FM_YR03=" + ctx13 + ",FM_YR04=" + ctx14 + ",FM_YR05=" + ctx15 + ",FM_YR06=" + ctx16 + ",FM_YR07=" + ctx17 + ",FM_YR08=" + ctx18 + ",FM_YR09=" + ctx19 + ",FM_YR10=" + ctx20 + ",FM_YR11=" + ctx21 + ",FM_YR12=" + ctx22 + " WHERE FM_CLREFNO=" + Global.prtyCode + " AND FM_REFNO=" + refno;
+                    String sql1 = "INSERT INTO Cx_CdFm3(FM_SEQNO,FM_TYPE,FM_FC,FM_BN,FM_MTNO,FM_SNO1,FM_SNO2,FM_CV,FM_FORM,FM_ADDROW,FM_TOTROW,FM_DESC,FM_CLREFNO,FM_OTHER,FM_STBST,FM_ENBST,FM_FOLIST,FM_FO01,FM_FO02,FM_FO03,FM_FO04,FM_FO05,FM_FO06,FM_FO07,FM_FO08,FM_FO09,FM_FO10,FM_FO11,FM_FO12,FM_YR01,FM_YR02,FM_YR03,FM_YR04,FM_YR05,FM_YR06,FM_YR07,FM_YR08,FM_YR09,FM_YR10,FM_YR11,FM_YR12) values ('" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 1)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 2)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 3)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 4)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 5)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 6)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 7)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 8)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 9)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 10)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 11)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 12)) + "'," + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 13)) + ",'" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 14)) + "'," + ctx09 + "," + ctx10 + ",'" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 17)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 18)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 19)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 20)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 21)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 22)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 23)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 24)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 25)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 26)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 27)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 28)) + "','" + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(i, 29)) + "'," + ctx11 + "," + ctx12 + "," + ctx13 + "," + ctx14 + "," + ctx15 + "," + ctx16 + "," + ctx17 + "," + ctx18 + "," + ctx19 + "," + ctx20 + "," + ctx21 + "," + ctx22 + ")";
+                    //String sql1 = "update Cx_CdFm3 set FM_YR01=" + ctx11 + ",FM_YR02=" + ctx12 + ",FM_YR03=" + ctx13 + ",FM_YR04=" + ctx14 + ",FM_YR05=" + ctx15 + ",FM_YR06=" + ctx16 + ",FM_YR07=" + ctx17 + ",FM_YR08=" + ctx18 + ",FM_YR09=" + ctx19 + ",FM_YR10=" + ctx20 + ",FM_YR11=" + ctx21 + ",FM_YR12=" + ctx22 + " WHERE FM_CLREFNO=" + Global.prtyCode + " AND FM_REFNO=" + refno;
                     OleDbCommand cmd3 = new OleDbCommand(sql, con);
                     cmd3.Transaction = transaction;
                     cmd3.ExecuteNonQuery();
@@ -718,7 +1130,7 @@ private void cmdSave_Click(object sender, EventArgs e)
                 transaction.Commit();
                 con.Close();
                 OleDbConnection conn = new OleDbConnection(connectionString);
-                string sqlTrunc = "DELETE FROM Cx_Cd101 WHERE CL_REFNO=" + Global.prtyCode;
+                sqlTrunc = "DELETE FROM Cx_Cd101 WHERE CL_REFNO=" + Global.prtyCode;
                 OleDbDataAdapter myadapter = new OleDbDataAdapter();
                 DataSet ds11 = new DataSet();
                 myadapter.SelectCommand = new OleDbCommand(sqlTrunc, conn);
@@ -1391,13 +1803,15 @@ private void cmdSave_Click(object sender, EventArgs e)
         {
             if (lstViewTopic.SelectedItems[0].Text.Equals("Party Information"))
             {
-                grdViewCMAOther.Visible = false;
+               // grdViewCMAOther.Visible = false;
+                grdReoCMAOther.Visible = false;
                 gridViewCMA.Visible = true;
             }
             else
             {
-                grdViewCMAOther.Visible = true;
+                //   grdViewCMAOther.Visible = true;
                 gridViewCMA.Visible = false;
+                grdReoCMAOther.Visible = true;
             }
         }
 
@@ -1421,10 +1835,27 @@ private void cmdSave_Click(object sender, EventArgs e)
             }
             else
             {
-                //DataGridViewRow row = (DataGridViewRow)grdViewCMAOther.Rows[0].Clone();
-                //row.Cells[0].Value = "XYZ";
-                //row.Cells[1].Value = 50.2;
-                //grdViewCMAOther.Rows.Add(row);
+               // MessageBox.Show(Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 10)));
+                if(Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 10)).Equals("Y"))
+                {
+                  //   grdReoCMAOther.CurrentWorksheet.SetSettings(WorksheetSettings.Formula_AutoUpdateReferenceCell, true);
+                    pnlInsRow.BringToFront();
+                    pnlInsRow.Visible = true;
+                    grdReoCMAOther.Enabled = false;
+                    panelCmdBtns.Enabled = false;
+                    lstViewTopic.Enabled = false;
+                    chart2.Enabled = false;
+                    txtDesc.Text = Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 12));
+                    txtSr.Text = Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 6));
+                    txtSr1.Text = Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 7));
+                    //grdReoCMAOther.CurrentWorksheet.InsertRows(3, 1);
+                }
+                else
+                {
+                    MessageBox.Show(GlobalMsg.insRowMsg, "Perfect Tax Reporter - CMA 1.0");
+                }
+               
+
             }
 
         }
@@ -1450,7 +1881,16 @@ private void cmdSave_Click(object sender, EventArgs e)
             }
             else
             {
-
+                pnlChangeDesc.BringToFront();
+                pnlChangeDesc.Visible = true;
+                grdReoCMAOther.Enabled = false;
+                panelCmdBtns.Enabled = false;
+                lstViewTopic.Enabled = false;
+                chart2.Enabled = false;
+                txtDescChangeDesc.Text = Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 12));
+                txtSrChangeDesc.Text = Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 6));
+                txtSr1ChangeDesc.Text = Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 7));
+                //grdReoCMAOther.CurrentWorksheet.InsertRows(3, 1);
             }
         }
 
@@ -1474,11 +1914,38 @@ private void cmdSave_Click(object sender, EventArgs e)
             }
             else
             {
-
+                if (Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 18)).Equals(""))
+                {
+                    //MessageBox.Show(GlobalMsg.editMsg, "Perfect Tax Reporter - CMA 1.0");
+                    MessageBox.Show("No Formula Exist", "Perfect Tax Reporter - CMA 1.0");
+                }
+                else
+                {
+                    pnlFormula.BringToFront();
+                    pnlFormula.Visible = true;
+                    grdReoCMAOther.Enabled = false;
+                    panelCmdBtns.Enabled = false;
+                    lstViewTopic.Enabled = false;
+                    chart2.Enabled = false;
+                    FillYrListBox();
+                    var cell = grdReoCMAOther.CurrentWorksheet.GetCell(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, grdReoCMAOther.CurrentWorksheet.FocusPos.Col);
+                    txtFormula.Text = cell.Formula;
+                    String[] delimiterChars = { ",", "*", "%", "/", "+", "-", "IF(", ")", "MAX(", "MIN(", ">", "<", "(", "=" };
+                    string[] words = cell.Formula.Split(delimiterChars, StringSplitOptions.None);
+                    Array.Sort(words);
+                    // Array.Reverse(words);
+                    //  System.Console.WriteLine("Formula : " + MM);
+                    int counter = 1;
+                    String newSt, ss;
+                    
+                    foreach (string s in words)
+                    {
+                      grdViewFormula.Rows.Add(s,grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.GetCell(s).Row, 12), grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.GetCell(s).Row, grdReoCMAOther.CurrentWorksheet.FocusPos.Col));
+                    }
+                }
             }
 
         }
-
         private void grdViewCMAOther_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -1499,6 +1966,7 @@ private void cmdSave_Click(object sender, EventArgs e)
         private void grdViewCMAOther_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             DataGridViewCell cell = grdViewCMAOther.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            
             e.CellStyle.BackColor = Global.gridBackColorCMS;
 
             //if (e.ColumnIndex == 1)
@@ -1508,9 +1976,77 @@ private void cmdSave_Click(object sender, EventArgs e)
             var list = new List<int> { 0, 8, 39,43,55,56,75,84,112,134,138,159,190,210,217,225,251,264,275,284,291,305,306,307,317,327,337 };
             var listCol = new List<int> { 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41};
             var listGreen = new List<int> { 0 };
+            if (e.ColumnIndex == 30)
+            {
+                String formula = "";
+                formula = Convert.ToString(grdViewCMAOther.Rows[e.RowIndex].Cells[18].Value);
+                if (!string.IsNullOrEmpty(formula))
+                {
+                    //A004A = A002A + A003A
+                    String[] delimiterChars = { " ", ",", ".", ":", "\t", "IIF(", ">=", "<=", ">", "<", "*", "%", "/", "{", "}", ")", "[", "]", "+", "-","?",":" };
+
+
+                    System.Console.WriteLine("Original text: '{0}'", formula);
+                    formula = formula.Substring(6, formula.Length - 6);
+                    string[] words = formula.Split(delimiterChars, StringSplitOptions.None);
+                    // System.Console.WriteLine("{0} words in text:", words.Length);
+                    int counter = 1;
+                    foreach (string s in words)
+                    {
+                        int n;
+ 
+                        if (!string.IsNullOrEmpty(s) && int.TryParse(s, out n)==false)
+                       {    String kk = "";
+                            String ss = "";
+                            if (s.IndexOf("=") >= 0)
+                            {
+                                ss = s.Substring(0, s.IndexOf("="));
+                                DataGridViewRow row = grdViewCMAOther.Rows
+                                   .Cast<DataGridViewRow>()
+                                   .Where(r => r.Cells[1].Value.ToString().Equals(ss))
+                                   .First();
+                                formula = formula.Replace(ss, "grdViewCMAOther.Rows["+row.Index+"].Cells[30].Value");
+                            }
+                            else
+                            {
+                                ss = s;
+                                System.Console.WriteLine(ss);
+                                DataGridViewRow row = grdViewCMAOther.Rows
+                                    .Cast<DataGridViewRow>()
+                                    .Where(r => r.Cells[1].Value.ToString().Equals(ss))
+                                    .First();
+                                if (Convert.ToString(grdViewCMAOther.Rows[row.Index].Cells[18].Value).Equals(formula))
+                                {
+                                    formula = formula.Replace(s, "");
+                                    if (counter == 1)
+                                    {
+                                        var regex = new Regex(Regex.Escape("="));
+                                        formula = regex.Replace(formula, "", 1);
+                                        // formula = formula.Replace("=", "");
+                                        counter = counter + 1;
+                                    }
+                                }
+                                else
+                                {
+                                    formula = formula.Replace(s, string.IsNullOrEmpty(Convert.ToString(grdViewCMAOther.Rows[row.Index].Cells[30].Value)) ? "0" : Convert.ToString(grdViewCMAOther.Rows[row.Index].Cells[30].Value));
+                                }
+                            }
+                              
+ 
+                        }
+                    }
+                    if (!string.IsNullOrEmpty(formula))
+                    {
+        
+                        System.Console.WriteLine("New text: '{0}'", formula + "  ====  " + Evaluate(formula));
+                        grdViewCMAOther.Rows[e.RowIndex].Cells[30].Value = Evaluate(formula);
+                    }
+                }
+            }
             if (list.Contains(e.RowIndex) && listCol.Contains(e.ColumnIndex))
             {
                 e.CellStyle.BackColor = Color.DarkGray;
+
                 cell.ReadOnly = true;
             }
             if (list.Contains(e.RowIndex))
@@ -1518,37 +2054,209 @@ private void cmdSave_Click(object sender, EventArgs e)
                 e.CellStyle.ForeColor = Color.Green;
             }
         }
-
+        public static double Evaluate(string expression)
+        {
+            System.Data.DataTable table = new System.Data.DataTable();
+            table.Columns.Add("expression", string.Empty.GetType(), expression);
+            System.Data.DataRow row = table.NewRow();
+            table.Rows.Add(row);
+            return double.Parse((string)row["expression"]);
+        }
         private void grdViewCMAOther_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridViewCell cell = grdViewCMAOther.Rows[3].Cells[30];
-            cell.Value = Convert.ToDecimal(grdViewCMAOther.Rows[1].Cells[30].Value) + Convert.ToDecimal(grdViewCMAOther.Rows[1].Cells[30].Value);
-            //int rowIndex = -1;
+        }
 
-            //DataGridViewRow row = grdViewCMAOther.Rows
-            //    .Cast<DataGridViewRow>()
-            //    .Where(r => r.Cells[1].Value.ToString().Equals(cell.Value))
-            //    .First();
+        private void pictInsRowClose_Click(object sender, EventArgs e)
+        {
+            pnlInsRow.Visible = false;
+            grdReoCMAOther.Enabled = true;
+            panelCmdBtns.Enabled = true;
+            lstViewTopic.Enabled = true;
+            chart2.Enabled = true;
+        }
 
-            //rowIndex = row.Index;
-            //String formula = Convert.ToString(grdViewCMAOther.Rows[rowIndex].Cells[e.ColumnIndex].Value);
-            //Decimal vall1 = 0;
-            //Decimal vall2 = 0;
-            //Decimal vall3 = 0;
-            //if (!string.IsNullOrEmpty(txtOwn.Text) && !string.IsNullOrEmpty(txtOwn.Text))
-            //{
-            //    vall1 = Convert.ToDecimal(txtOwn.Text);
+        private void cmdOk_Click(object sender, EventArgs e)
+        {
+            grdReoCMAOther.CurrentWorksheet.ResumeFormulaReferenceUpdates();
+            var listRow = new List<char> { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y' };
+            var listReplRow = new List<char> { 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
 
-            //}
-            //if (!string.IsNullOrEmpty(txtLoan.Text) && !string.IsNullOrEmpty(txtLoan.Text))
-            //{
-            //    vall2 = Convert.ToDecimal(txtLoan.Text);
-            //}
-            //if (!string.IsNullOrEmpty(txtBank.Text) && !string.IsNullOrEmpty(txtBank.Text))
-            //{
-            //    vall3 = Convert.ToDecimal(txtBank.Text);
-            //}
-            //txtTotal1.Text = Convert.ToString((vall1 + vall2 + vall3));
+            Char chr = Convert.ToChar(Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 1)).Substring(4, 1));
+            String fld1 = Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 1)).Substring(0, 4) + Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 1)).Substring(4, 1).Replace(chr, listReplRow[listRow.FindIndex(x => x.Equals(chr))]);
+            String fld2 = Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 2));
+            String fld3 = Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 3));
+            String fld4 = Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 4));
+            String fld5 = Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 5));
+            String fld6 = txtSr.Text;   // Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 6));
+            String fld7 = txtSr1.Text;   // Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 7));
+            String fld8 = Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 8));
+            String fld9 = Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 9));
+            String fld10 = Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 10));
+            String fld11 = Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 11));
+            String fld12 = txtDesc.Text;    // Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 12));
+            String fld13 = Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 13));
+            String fld14 = Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 14));
+            String fld15 = Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 15));
+            String fld16 = Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 16));
+            String fld17 = Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 17));
+            pnlInsRow.Visible = false;
+            grdReoCMAOther.Enabled = true;
+            panelCmdBtns.Enabled = true;
+            lstViewTopic.Enabled = true;
+            chart2.Enabled = true;
+            grdReoCMAOther.CurrentWorksheet.InsertRows(grdReoCMAOther.CurrentWorksheet.FocusPos.Row + 1, 1);
+            int newRow = grdReoCMAOther.CurrentWorksheet.FocusPos.Row + 1;
+            grdReoCMAOther.CurrentWorksheet.SetCellData(newRow, 1, fld1);
+            grdReoCMAOther.CurrentWorksheet.SetCellData(newRow, 2, fld2);
+            grdReoCMAOther.CurrentWorksheet.SetCellData(newRow, 3, fld3);
+            grdReoCMAOther.CurrentWorksheet.SetCellData(newRow, 4, fld4);
+            grdReoCMAOther.CurrentWorksheet.SetCellData(newRow, 5, fld5);
+            grdReoCMAOther.CurrentWorksheet.SetCellData(newRow, 6, fld6);
+            grdReoCMAOther.CurrentWorksheet.SetCellData(newRow, 7, fld7);
+            grdReoCMAOther.CurrentWorksheet.SetCellData(newRow, 8, fld8);
+            grdReoCMAOther.CurrentWorksheet.SetCellData(newRow, 9, fld9);
+            grdReoCMAOther.CurrentWorksheet.SetCellData(newRow, 10, fld10);
+            grdReoCMAOther.CurrentWorksheet.SetCellData(newRow, 11, fld11);
+            grdReoCMAOther.CurrentWorksheet.SetCellData(newRow, 12, fld12);
+            grdReoCMAOther.CurrentWorksheet.SetCellData(newRow, 13, fld13);
+            grdReoCMAOther.CurrentWorksheet.SetCellData(newRow, 14, fld14);
+            grdReoCMAOther.CurrentWorksheet.SetCellData(newRow, 15, fld15);
+            grdReoCMAOther.CurrentWorksheet.SetCellData(newRow, 16, fld16);
+            grdReoCMAOther.CurrentWorksheet.SetCellData(newRow, 17, fld17);
+
+          //   String[] delimiterChars = { " ", ",", ".", ":", "\t", "IF(", ">=", "<=", ">", "<", "*", "%", "/", "{", "}", ")", "[", "]", "+", "-", "?", ":" };
+            String[] delimiterChars = { "," , "*", "%", "/", "+", "-","IF(",")","MAX(","MIN(",">","<","(","=" };
+            String[] origCell = { };
+
+            for (int row = 0; row < grdReoCMAOther.CurrentWorksheet.RowCount; row++)
+            {
+                for (int col = 18; col < (18+Convert.ToInt16(comboBxYear.Text)); col++)
+                {
+                    String MM = "";
+                    if (String.IsNullOrEmpty(Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(row, col))) || String.IsNullOrEmpty(Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(row, col))).Equals("null"))
+                    {
+                    }
+                    else
+                    {
+                        MM = (String)grdReoCMAOther.CurrentWorksheet.GetCellData(row, col);
+                        string[] words = MM.Split(delimiterChars, StringSplitOptions.None);
+                        Array.Sort(words);
+                        Array.Reverse(words);
+                        System.Console.WriteLine("Formula : " + MM);
+                        int counter = 1;
+                        String newSt;
+                        foreach (string s in words)
+                        {
+                            int n = 0;
+                            if (!string.IsNullOrEmpty(s) && int.TryParse(s, out n) == false)
+                            { 
+                                System.Console.WriteLine(s + "    ----   " + (Convert.ToInt16(s.Substring(2, s.Length - 2)) + 1));
+                                newSt=MM.Replace(s.Substring(2, s.Length - 2),Convert.ToString(Convert.ToInt16(s.Substring(2, s.Length - 2)) + 1));
+                                MM = newSt;
+                        }
+                    }
+                    }
+                    System.Console.WriteLine("Formula NEW : " + MM);
+                    //cell.Readonly = true;
+                    grdReoCMAOther.CurrentWorksheet.SetCellFormula(row, col + 12, MM);
+                }
+            }
+
+        }
+            
+
+        private void cmdCancelInsRow_Click(object sender, EventArgs e)
+        {
+            pnlInsRow.Visible = false;
+            grdReoCMAOther.Enabled = true;
+            panelCmdBtns.Enabled = true;
+            lstViewTopic.Enabled = true;
+            chart2.Enabled = true;
+        }
+
+        private void cmdOKChangeDesc_Click(object sender, EventArgs e)
+        {
+ 
+            String fld6 = txtSrChangeDesc.Text;   // Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 6));
+            String fld7 = txtSr1ChangeDesc.Text;   // Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 7));
+            String fld12 = txtDescChangeDesc.Text;    // Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, 12));
+            pnlChangeDesc.Visible = false;
+            grdReoCMAOther.Enabled = true;
+            panelCmdBtns.Enabled = true;
+            lstViewTopic.Enabled = true;
+            chart2.Enabled = true;
+            int newRow = grdReoCMAOther.CurrentWorksheet.FocusPos.Row;
+            grdReoCMAOther.CurrentWorksheet.SetCellData(newRow, 6, fld6);
+            grdReoCMAOther.CurrentWorksheet.SetCellData(newRow, 7, fld7);
+            grdReoCMAOther.CurrentWorksheet.SetCellData(newRow, 12, fld12);
+        }
+
+        private void cmdCancelChangeDesc_Click(object sender, EventArgs e)
+        {
+            pnlChangeDesc.Visible = false;
+            grdReoCMAOther.Enabled = true;
+            panelCmdBtns.Enabled = true;
+            lstViewTopic.Enabled = true;
+            chart2.Enabled = true;
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            pnlChangeDesc.Visible = false;
+            grdReoCMAOther.Enabled = true;
+            panelCmdBtns.Enabled = true;
+            lstViewTopic.Enabled = true;
+            chart2.Enabled = true;
+        }
+
+        private void pictFormula_Click(object sender, EventArgs e)
+        {
+            pnlFormula.Visible = false;
+            grdReoCMAOther.Enabled = true;
+            panelCmdBtns.Enabled = true;
+            lstViewTopic.Enabled = true;
+            chart2.Enabled = true;
+        }
+
+        private void pictFormula_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grdViewYr_Click(object sender, EventArgs e)
+        {
+            int i = grdViewYr.CurrentRow.Index;
+          
+            DataGridViewRow rows = this.grdViewYr.Rows[i];
+            grdViewFormula.Columns[2].HeaderText = Convert.ToString(rows.Cells["Year"].Value);
+
+            if (Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, (i+18))).Equals(""))
+            {
+                //MessageBox.Show(GlobalMsg.editMsg, "Perfect Tax Reporter - CMA 1.0");
+                MessageBox.Show("No Formula Exist", "Perfect Tax Reporter - CMA 1.0");
+            }
+            else
+            {
+                var cell = grdReoCMAOther.CurrentWorksheet.GetCell(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, (grdReoCMAOther.CurrentWorksheet.FocusPos.Col+i));
+                txtFormula.Text = cell.Formula;
+                String[] delimiterChars = { ",", "*", "%", "/", "+", "-", "IF(", ")", "MAX(", "MIN(", ">", "<", "(", "=" };
+                string[] words = cell.Formula.Split(delimiterChars, StringSplitOptions.None);
+                Array.Sort(words);
+                // Array.Reverse(words);
+                //  System.Console.WriteLine("Formula : " + MM);
+                int counter = 1;
+                String newSt, ss;
+                for (int RowCount = 0; RowCount <= grdViewFormula.RowCount; RowCount++)
+                {
+                    grdViewFormula.Rows.RemoveAt(0);
+                }
+                
+                foreach (string s in words)
+                {
+                    grdViewFormula.Rows.Add(s, grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.GetCell(s).Row, 12), grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.GetCell(s).Row, (grdReoCMAOther.CurrentWorksheet.FocusPos.Col+i)));
+                }
+            }
+
         }
     }
 }

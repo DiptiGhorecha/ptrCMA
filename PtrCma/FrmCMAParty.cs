@@ -760,6 +760,7 @@ namespace PtrCma
             grdViewParty.DataSource = ds;
            // grdViewParty.Focus();
             con.Close();
+            LoadDatatoTextBox();
         }
 
         private void textBox_KeyDown(object sender, KeyEventArgs e)     // Cursor go to the Next TextBox After Pressing Enter
