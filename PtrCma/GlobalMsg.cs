@@ -22,6 +22,7 @@ namespace PtrCma
         public static string titleMsg = "Perfect Tax Reporter - CMA 1.0";
         public static string editMsg = "Enter edit mode and Select Topic other than Party Information";
         public static string insRowMsg = "You can not insert a Row for this line";
+        public static string CopyPercentMsg = "Please enter %";
 
         //Dialog Message Box
         public static string updateMsgDialog = "Are you sure you want to update ?";

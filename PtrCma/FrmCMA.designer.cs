@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCMA));
             this.lstViewTopic = new System.Windows.Forms.ListView();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -82,7 +82,12 @@
             this.picTitleDesc = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pnlFormula = new System.Windows.Forms.Panel();
+            this.btnCanForm = new System.Windows.Forms.Button();
+            this.btnSaveFrm = new System.Windows.Forms.Button();
             this.grdViewFormula = new System.Windows.Forms.DataGridView();
+            this.srno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Year1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cmdCancelFormula = new System.Windows.Forms.Button();
@@ -96,9 +101,39 @@
             this.pictFormula = new System.Windows.Forms.PictureBox();
             this.grdViewYr = new System.Windows.Forms.DataGridView();
             this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.srno = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Year1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlCopyYr = new System.Windows.Forms.Panel();
+            this.txtIncrease = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.grdCopyYr = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.selected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.comboDestYr = new System.Windows.Forms.ComboBox();
+            this.comboSrYr = new System.Windows.Forms.ComboBox();
+            this.cmdCancelCopyYr = new System.Windows.Forms.Button();
+            this.cmdOkCopyYr = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictCopyYr = new System.Windows.Forms.PictureBox();
+            this.pnlGraph = new System.Windows.Forms.Panel();
+            this.txtChart = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.grdChartSelected = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.refno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.radioWithin = new System.Windows.Forms.RadioButton();
+            this.radioStart = new System.Windows.Forms.RadioButton();
+            this.grdChart = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.pnlChartDet = new System.Windows.Forms.Panel();
+            this.pictChartDet = new System.Windows.Forms.PictureBox();
+            this.MyPrintDocument = new System.Drawing.Printing.PrintDocument();
+            this.pictPrint = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCMA)).BeginInit();
             this.panelCmdBtns.SuspendLayout();
@@ -116,6 +151,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.picTitleFormula)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictFormula)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewYr)).BeginInit();
+            this.pnlCopyYr.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdCopyYr)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictCopyYr)).BeginInit();
+            this.pnlGraph.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdChartSelected)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdChart)).BeginInit();
+            this.pnlChartDet.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictChartDet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictPrint)).BeginInit();
             this.SuspendLayout();
             // 
             // lstViewTopic
@@ -136,16 +181,16 @@
             // chart2
             // 
             this.chart2.BackColor = System.Drawing.Color.Transparent;
-            chartArea8.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            this.chart2.Legends.Add(legend8);
+            chartArea3.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart2.Legends.Add(legend3);
             this.chart2.Location = new System.Drawing.Point(718, 47);
             this.chart2.Name = "chart2";
-            series8.ChartArea = "ChartArea1";
-            series8.Legend = "Legend1";
-            series8.Name = "Series1";
-            this.chart2.Series.Add(series8);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart2.Series.Add(series3);
             this.chart2.Size = new System.Drawing.Size(328, 118);
             this.chart2.TabIndex = 2;
             this.chart2.Text = "chart2";
@@ -195,6 +240,7 @@
             this.panelCmdBtns.Name = "panelCmdBtns";
             this.panelCmdBtns.Size = new System.Drawing.Size(449, 149);
             this.panelCmdBtns.TabIndex = 26;
+            this.panelCmdBtns.EnabledChanged += new System.EventHandler(this.panelCmdBtns_EnabledChanged);
             // 
             // txtCurYear
             // 
@@ -304,6 +350,7 @@
             this.cmdCancel.TabIndex = 35;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.UseVisualStyleBackColor = true;
+            this.cmdCancel.EnabledChanged += new System.EventHandler(this.cmdCancel_EnabledChanged);
             this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
             // 
             // cmdSave
@@ -314,6 +361,7 @@
             this.cmdSave.TabIndex = 34;
             this.cmdSave.Text = "Save";
             this.cmdSave.UseVisualStyleBackColor = true;
+            this.cmdSave.EnabledChanged += new System.EventHandler(this.cmdSave_EnabledChanged);
             this.cmdSave.Click += new System.EventHandler(this.cmdSave_Click);
             // 
             // cmdEdit
@@ -337,6 +385,7 @@
             this.cmdPrntGrph.Text = "Print Graph";
             this.cmdPrntGrph.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.cmdPrntGrph.UseVisualStyleBackColor = true;
+            this.cmdPrntGrph.Click += new System.EventHandler(this.cmdPrntGrph_Click);
             // 
             // cmdResetDeta
             // 
@@ -483,6 +532,7 @@
             this.grdReoCMAOther.TabIndex = 48;
             this.grdReoCMAOther.Text = "reoGridControl1";
             this.grdReoCMAOther.Visible = false;
+            this.grdReoCMAOther.Click += new System.EventHandler(this.grdReoCMAOther_Click);
             // 
             // pnlInsRow
             // 
@@ -497,7 +547,7 @@
             this.pnlInsRow.Controls.Add(this.lblSr);
             this.pnlInsRow.Controls.Add(this.pictitle);
             this.pnlInsRow.Controls.Add(this.pictInsRowClose);
-            this.pnlInsRow.Location = new System.Drawing.Point(76, 432);
+            this.pnlInsRow.Location = new System.Drawing.Point(19, 431);
             this.pnlInsRow.Name = "pnlInsRow";
             this.pnlInsRow.Size = new System.Drawing.Size(671, 222);
             this.pnlInsRow.TabIndex = 49;
@@ -600,7 +650,7 @@
             this.pnlChangeDesc.Controls.Add(this.label2);
             this.pnlChangeDesc.Controls.Add(this.picTitleDesc);
             this.pnlChangeDesc.Controls.Add(this.pictureBox2);
-            this.pnlChangeDesc.Location = new System.Drawing.Point(189, 283);
+            this.pnlChangeDesc.Location = new System.Drawing.Point(160, 242);
             this.pnlChangeDesc.Name = "pnlChangeDesc";
             this.pnlChangeDesc.Size = new System.Drawing.Size(671, 222);
             this.pnlChangeDesc.TabIndex = 50;
@@ -695,6 +745,8 @@
             // 
             this.pnlFormula.BackColor = System.Drawing.Color.LightGray;
             this.pnlFormula.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlFormula.Controls.Add(this.btnCanForm);
+            this.pnlFormula.Controls.Add(this.btnSaveFrm);
             this.pnlFormula.Controls.Add(this.grdViewFormula);
             this.pnlFormula.Controls.Add(this.label5);
             this.pnlFormula.Controls.Add(this.label4);
@@ -708,11 +760,31 @@
             this.pnlFormula.Controls.Add(this.picTitleFormula);
             this.pnlFormula.Controls.Add(this.pictFormula);
             this.pnlFormula.Controls.Add(this.grdViewYr);
-            this.pnlFormula.Location = new System.Drawing.Point(184, 411);
+            this.pnlFormula.Location = new System.Drawing.Point(26, 406);
             this.pnlFormula.Name = "pnlFormula";
-            this.pnlFormula.Size = new System.Drawing.Size(671, 332);
+            this.pnlFormula.Size = new System.Drawing.Size(671, 354);
             this.pnlFormula.TabIndex = 51;
             this.pnlFormula.Visible = false;
+            // 
+            // btnCanForm
+            // 
+            this.btnCanForm.Location = new System.Drawing.Point(460, 79);
+            this.btnCanForm.Name = "btnCanForm";
+            this.btnCanForm.Size = new System.Drawing.Size(50, 23);
+            this.btnCanForm.TabIndex = 96;
+            this.btnCanForm.Text = "&Cancel";
+            this.btnCanForm.UseVisualStyleBackColor = true;
+            this.btnCanForm.Click += new System.EventHandler(this.btnCanForm_Click);
+            // 
+            // btnSaveFrm
+            // 
+            this.btnSaveFrm.Location = new System.Drawing.Point(404, 79);
+            this.btnSaveFrm.Name = "btnSaveFrm";
+            this.btnSaveFrm.Size = new System.Drawing.Size(50, 23);
+            this.btnSaveFrm.TabIndex = 95;
+            this.btnSaveFrm.Text = "&Save";
+            this.btnSaveFrm.UseVisualStyleBackColor = true;
+            this.btnSaveFrm.Click += new System.EventHandler(this.button1_Click);
             // 
             // grdViewFormula
             // 
@@ -728,8 +800,24 @@
             this.grdViewFormula.Name = "grdViewFormula";
             this.grdViewFormula.RowHeadersVisible = false;
             this.grdViewFormula.ShowEditingIcon = false;
-            this.grdViewFormula.Size = new System.Drawing.Size(581, 178);
+            this.grdViewFormula.Size = new System.Drawing.Size(581, 209);
             this.grdViewFormula.TabIndex = 94;
+            // 
+            // srno
+            // 
+            this.srno.HeaderText = "Sr.No.";
+            this.srno.Name = "srno";
+            // 
+            // Desc
+            // 
+            this.Desc.HeaderText = "Description";
+            this.Desc.Name = "Desc";
+            this.Desc.Width = 377;
+            // 
+            // Year1
+            // 
+            this.Year1.HeaderText = "Year";
+            this.Year1.Name = "Year1";
             // 
             // label5
             // 
@@ -748,21 +836,22 @@
             // 
             // cmdCancelFormula
             // 
-            this.cmdCancelFormula.Location = new System.Drawing.Point(595, 301);
+            this.cmdCancelFormula.Location = new System.Drawing.Point(595, 317);
             this.cmdCancelFormula.Name = "cmdCancelFormula";
             this.cmdCancelFormula.Size = new System.Drawing.Size(50, 23);
             this.cmdCancelFormula.TabIndex = 89;
-            this.cmdCancelFormula.Text = "Cancel";
+            this.cmdCancelFormula.Text = "E&xit";
             this.cmdCancelFormula.UseVisualStyleBackColor = true;
             // 
             // CmdOkFormula
             // 
-            this.CmdOkFormula.Location = new System.Drawing.Point(539, 301);
+            this.CmdOkFormula.Location = new System.Drawing.Point(539, 317);
             this.CmdOkFormula.Name = "CmdOkFormula";
             this.CmdOkFormula.Size = new System.Drawing.Size(50, 23);
             this.CmdOkFormula.TabIndex = 88;
-            this.CmdOkFormula.Text = "Ok";
+            this.CmdOkFormula.Text = "&Ok";
             this.CmdOkFormula.UseVisualStyleBackColor = true;
+            this.CmdOkFormula.Click += new System.EventHandler(this.CmdOkFormula_Click);
             // 
             // txtStdFrom
             // 
@@ -778,7 +867,7 @@
             this.txtFormula.MaxLength = 20;
             this.txtFormula.Multiline = true;
             this.txtFormula.Name = "txtFormula";
-            this.txtFormula.Size = new System.Drawing.Size(332, 40);
+            this.txtFormula.Size = new System.Drawing.Size(332, 21);
             this.txtFormula.TabIndex = 86;
             // 
             // txtStdTo
@@ -843,7 +932,7 @@
             this.grdViewYr.RowHeadersVisible = false;
             this.grdViewYr.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.grdViewYr.ShowEditingIcon = false;
-            this.grdViewYr.Size = new System.Drawing.Size(67, 255);
+            this.grdViewYr.Size = new System.Drawing.Size(67, 279);
             this.grdViewYr.TabIndex = 92;
             this.grdViewYr.Click += new System.EventHandler(this.grdViewYr_Click);
             // 
@@ -852,30 +941,356 @@
             this.Year.HeaderText = "Year";
             this.Year.Name = "Year";
             // 
-            // srno
+            // pnlCopyYr
             // 
-            this.srno.HeaderText = "Sr.No.";
-            this.srno.Name = "srno";
+            this.pnlCopyYr.BackColor = System.Drawing.Color.LightGray;
+            this.pnlCopyYr.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlCopyYr.Controls.Add(this.txtIncrease);
+            this.pnlCopyYr.Controls.Add(this.label12);
+            this.pnlCopyYr.Controls.Add(this.grdCopyYr);
+            this.pnlCopyYr.Controls.Add(this.label11);
+            this.pnlCopyYr.Controls.Add(this.label10);
+            this.pnlCopyYr.Controls.Add(this.label9);
+            this.pnlCopyYr.Controls.Add(this.label8);
+            this.pnlCopyYr.Controls.Add(this.comboDestYr);
+            this.pnlCopyYr.Controls.Add(this.comboSrYr);
+            this.pnlCopyYr.Controls.Add(this.cmdCancelCopyYr);
+            this.pnlCopyYr.Controls.Add(this.cmdOkCopyYr);
+            this.pnlCopyYr.Controls.Add(this.label6);
+            this.pnlCopyYr.Controls.Add(this.label7);
+            this.pnlCopyYr.Controls.Add(this.pictureBox1);
+            this.pnlCopyYr.Controls.Add(this.pictCopyYr);
+            this.pnlCopyYr.Location = new System.Drawing.Point(705, 478);
+            this.pnlCopyYr.Name = "pnlCopyYr";
+            this.pnlCopyYr.Size = new System.Drawing.Size(669, 298);
+            this.pnlCopyYr.TabIndex = 52;
+            this.pnlCopyYr.Visible = false;
             // 
-            // Desc
+            // txtIncrease
             // 
-            this.Desc.HeaderText = "Description";
-            this.Desc.Name = "Desc";
-            this.Desc.Width = 377;
+            this.txtIncrease.Location = new System.Drawing.Point(582, 127);
+            this.txtIncrease.MaxLength = 20;
+            this.txtIncrease.Name = "txtIncrease";
+            this.txtIncrease.Size = new System.Drawing.Size(68, 20);
+            this.txtIncrease.TabIndex = 103;
+            this.txtIncrease.Text = "0";
             // 
-            // Year1
+            // label12
             // 
-            this.Year1.HeaderText = "Year";
-            this.Year1.Name = "Year1";
+            this.label12.Location = new System.Drawing.Point(416, 127);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(100, 23);
+            this.label12.TabIndex = 102;
+            this.label12.Text = "Increase By %";
+            // 
+            // grdCopyYr
+            // 
+            this.grdCopyYr.AllowUserToAddRows = false;
+            this.grdCopyYr.AllowUserToDeleteRows = false;
+            this.grdCopyYr.AllowUserToResizeRows = false;
+            this.grdCopyYr.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdCopyYr.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.selected});
+            this.grdCopyYr.Location = new System.Drawing.Point(18, 69);
+            this.grdCopyYr.Name = "grdCopyYr";
+            this.grdCopyYr.RowHeadersVisible = false;
+            this.grdCopyYr.ShowEditingIcon = false;
+            this.grdCopyYr.Size = new System.Drawing.Size(375, 209);
+            this.grdCopyYr.TabIndex = 95;
+            this.grdCopyYr.DoubleClick += new System.EventHandler(this.grdCopyYr_DoubleClick);
+            this.grdCopyYr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdCopyYr_KeyDown);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Topic";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 250;
+            // 
+            // selected
+            // 
+            this.selected.HeaderText = "Selected";
+            this.selected.Name = "selected";
+            this.selected.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.selected.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // label11
+            // 
+            this.label11.Location = new System.Drawing.Point(416, 224);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(234, 23);
+            this.label11.TabIndex = 101;
+            this.label11.Text = "Enter Key : Select/Deselect";
+            // 
+            // label10
+            // 
+            this.label10.Location = new System.Drawing.Point(416, 201);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(234, 23);
+            this.label10.TabIndex = 100;
+            this.label10.Text = "Double Click : Select/Deselect";
+            // 
+            // label9
+            // 
+            this.label9.Location = new System.Drawing.Point(416, 178);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(234, 23);
+            this.label9.TabIndex = 99;
+            this.label9.Text = "Minus Key : Deselect All";
+            // 
+            // label8
+            // 
+            this.label8.Location = new System.Drawing.Point(416, 155);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(234, 23);
+            this.label8.TabIndex = 98;
+            this.label8.Text = "Plus Key : Select All";
+            // 
+            // comboDestYr
+            // 
+            this.comboDestYr.FormattingEnabled = true;
+            this.comboDestYr.Location = new System.Drawing.Point(582, 97);
+            this.comboDestYr.Name = "comboDestYr";
+            this.comboDestYr.Size = new System.Drawing.Size(68, 21);
+            this.comboDestYr.TabIndex = 97;
+            // 
+            // comboSrYr
+            // 
+            this.comboSrYr.FormattingEnabled = true;
+            this.comboSrYr.Location = new System.Drawing.Point(582, 69);
+            this.comboSrYr.Name = "comboSrYr";
+            this.comboSrYr.Size = new System.Drawing.Size(68, 21);
+            this.comboSrYr.TabIndex = 96;
+            // 
+            // cmdCancelCopyYr
+            // 
+            this.cmdCancelCopyYr.Location = new System.Drawing.Point(582, 256);
+            this.cmdCancelCopyYr.Name = "cmdCancelCopyYr";
+            this.cmdCancelCopyYr.Size = new System.Drawing.Size(50, 23);
+            this.cmdCancelCopyYr.TabIndex = 89;
+            this.cmdCancelCopyYr.Text = "Cancel";
+            this.cmdCancelCopyYr.UseVisualStyleBackColor = true;
+            this.cmdCancelCopyYr.Click += new System.EventHandler(this.cmdCancelCopyYr_Click);
+            // 
+            // cmdOkCopyYr
+            // 
+            this.cmdOkCopyYr.Location = new System.Drawing.Point(508, 256);
+            this.cmdOkCopyYr.Name = "cmdOkCopyYr";
+            this.cmdOkCopyYr.Size = new System.Drawing.Size(50, 23);
+            this.cmdOkCopyYr.TabIndex = 88;
+            this.cmdOkCopyYr.Text = "Ok";
+            this.cmdOkCopyYr.UseVisualStyleBackColor = true;
+            this.cmdOkCopyYr.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label6
+            // 
+            this.label6.Location = new System.Drawing.Point(416, 95);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(100, 23);
+            this.label6.TabIndex = 84;
+            this.label6.Text = "Destination Year";
+            // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(416, 67);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(100, 23);
+            this.label7.TabIndex = 83;
+            this.label7.Text = "Source Year";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(64, 23);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(532, 30);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 82;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictCopyYr
+            // 
+            this.pictCopyYr.BackgroundImage = global::PtrCma.Properties.Resources.closeBtnBg;
+            this.pictCopyYr.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictCopyYr.Image = global::PtrCma.Properties.Resources.close;
+            this.pictCopyYr.Location = new System.Drawing.Point(618, 23);
+            this.pictCopyYr.Name = "pictCopyYr";
+            this.pictCopyYr.Size = new System.Drawing.Size(32, 32);
+            this.pictCopyYr.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictCopyYr.TabIndex = 81;
+            this.pictCopyYr.TabStop = false;
+            this.pictCopyYr.Click += new System.EventHandler(this.pictCopyYr_Click);
+            // 
+            // pnlGraph
+            // 
+            this.pnlGraph.BackColor = System.Drawing.Color.LightGray;
+            this.pnlGraph.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlGraph.Controls.Add(this.txtChart);
+            this.pnlGraph.Controls.Add(this.label13);
+            this.pnlGraph.Controls.Add(this.grdChartSelected);
+            this.pnlGraph.Controls.Add(this.radioWithin);
+            this.pnlGraph.Controls.Add(this.radioStart);
+            this.pnlGraph.Controls.Add(this.grdChart);
+            this.pnlGraph.Controls.Add(this.button1);
+            this.pnlGraph.Controls.Add(this.button2);
+            this.pnlGraph.Location = new System.Drawing.Point(359, 245);
+            this.pnlGraph.Name = "pnlGraph";
+            this.pnlGraph.Size = new System.Drawing.Size(598, 290);
+            this.pnlGraph.TabIndex = 53;
+            this.pnlGraph.Visible = false;
+            // 
+            // txtChart
+            // 
+            this.txtChart.Location = new System.Drawing.Point(151, 20);
+            this.txtChart.Name = "txtChart";
+            this.txtChart.Size = new System.Drawing.Size(79, 20);
+            this.txtChart.TabIndex = 108;
+            this.txtChart.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtChart_KeyUp);
+            // 
+            // label13
+            // 
+            this.label13.Location = new System.Drawing.Point(236, 23);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(233, 28);
+            this.label13.TabIndex = 107;
+            this.label13.Text = "To remove select again or double click";
+            // 
+            // grdChartSelected
+            // 
+            this.grdChartSelected.AllowUserToAddRows = false;
+            this.grdChartSelected.AllowUserToDeleteRows = false;
+            this.grdChartSelected.AllowUserToResizeRows = false;
+            this.grdChartSelected.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdChartSelected.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn3,
+            this.refno});
+            this.grdChartSelected.Location = new System.Drawing.Point(306, 59);
+            this.grdChartSelected.Name = "grdChartSelected";
+            this.grdChartSelected.RowHeadersVisible = false;
+            this.grdChartSelected.ShowEditingIcon = false;
+            this.grdChartSelected.Size = new System.Drawing.Size(273, 209);
+            this.grdChartSelected.TabIndex = 106;
+            this.grdChartSelected.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdChartSelected_CellContentClick);
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Description";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 253;
+            // 
+            // refno
+            // 
+            this.refno.HeaderText = "refno";
+            this.refno.Name = "refno";
+            this.refno.Visible = false;
+            // 
+            // radioWithin
+            // 
+            this.radioWithin.AutoSize = true;
+            this.radioWithin.Location = new System.Drawing.Point(97, 20);
+            this.radioWithin.Name = "radioWithin";
+            this.radioWithin.Size = new System.Drawing.Size(55, 17);
+            this.radioWithin.TabIndex = 105;
+            this.radioWithin.TabStop = true;
+            this.radioWithin.Text = "Within";
+            this.radioWithin.UseVisualStyleBackColor = true;
+            // 
+            // radioStart
+            // 
+            this.radioStart.AutoSize = true;
+            this.radioStart.Location = new System.Drawing.Point(18, 20);
+            this.radioStart.Name = "radioStart";
+            this.radioStart.Size = new System.Drawing.Size(73, 17);
+            this.radioStart.TabIndex = 104;
+            this.radioStart.TabStop = true;
+            this.radioStart.Text = "From Start";
+            this.radioStart.UseVisualStyleBackColor = true;
+            this.radioStart.CheckedChanged += new System.EventHandler(this.radioStart_CheckedChanged);
+            // 
+            // grdChart
+            // 
+            this.grdChart.AllowUserToAddRows = false;
+            this.grdChart.AllowUserToDeleteRows = false;
+            this.grdChart.AllowUserToResizeRows = false;
+            this.grdChart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdChart.Location = new System.Drawing.Point(18, 59);
+            this.grdChart.Name = "grdChart";
+            this.grdChart.RowHeadersVisible = false;
+            this.grdChart.ShowEditingIcon = false;
+            this.grdChart.Size = new System.Drawing.Size(273, 209);
+            this.grdChart.TabIndex = 95;
+            this.grdChart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdChart_CellContentClick);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(529, 22);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(50, 23);
+            this.button1.TabIndex = 89;
+            this.button1.Text = "Cancel";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(473, 22);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(50, 23);
+            this.button2.TabIndex = 88;
+            this.button2.Text = "Ok";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // pnlChartDet
+            // 
+            this.pnlChartDet.AutoScroll = true;
+            this.pnlChartDet.AutoScrollMargin = new System.Drawing.Size(0, 50);
+            this.pnlChartDet.Controls.Add(this.pictPrint);
+            this.pnlChartDet.Controls.Add(this.pictChartDet);
+            this.pnlChartDet.Location = new System.Drawing.Point(1080, 48);
+            this.pnlChartDet.Name = "pnlChartDet";
+            this.pnlChartDet.Size = new System.Drawing.Size(294, 263);
+            this.pnlChartDet.TabIndex = 54;
+            // 
+            // pictChartDet
+            // 
+            this.pictChartDet.BackgroundImage = global::PtrCma.Properties.Resources.closeBtnBg;
+            this.pictChartDet.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictChartDet.Image = global::PtrCma.Properties.Resources.close;
+            this.pictChartDet.Location = new System.Drawing.Point(242, 18);
+            this.pictChartDet.Name = "pictChartDet";
+            this.pictChartDet.Size = new System.Drawing.Size(32, 32);
+            this.pictChartDet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictChartDet.TabIndex = 82;
+            this.pictChartDet.TabStop = false;
+            this.pictChartDet.Click += new System.EventHandler(this.pictChartDet_Click);
+            // 
+            // pictPrint
+            // 
+            this.pictPrint.BackgroundImage = global::PtrCma.Properties.Resources.closeBtnBg;
+            this.pictPrint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictPrint.Image = ((System.Drawing.Image)(resources.GetObject("pictPrint.Image")));
+            this.pictPrint.Location = new System.Drawing.Point(204, 18);
+            this.pictPrint.Name = "pictPrint";
+            this.pictPrint.Size = new System.Drawing.Size(32, 32);
+            this.pictPrint.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictPrint.TabIndex = 83;
+            this.pictPrint.TabStop = false;
+            this.pictPrint.Click += new System.EventHandler(this.pictPrint_Click);
             // 
             // FrmCMA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1049, 788);
+            this.ClientSize = new System.Drawing.Size(1378, 780);
             this.ControlBox = false;
-            this.Controls.Add(this.pnlFormula);
+            this.Controls.Add(this.pnlChartDet);
+            this.Controls.Add(this.pnlGraph);
+            this.Controls.Add(this.pnlCopyYr);
+            this.Controls.Add(this.pnlInsRow);
             this.Controls.Add(this.pnlChangeDesc);
             this.Controls.Add(this.grdReoCMAOther);
             this.Controls.Add(this.grdViewCMAOther);
@@ -885,7 +1300,7 @@
             this.Controls.Add(this.gridViewCMA);
             this.Controls.Add(this.chart2);
             this.Controls.Add(this.lstViewTopic);
-            this.Controls.Add(this.pnlInsRow);
+            this.Controls.Add(this.pnlFormula);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -895,6 +1310,8 @@
             this.TopMost = true;
             this.Activated += new System.EventHandler(this.FrmCMA_Load);
             this.Load += new System.EventHandler(this.FrmCMA_Load);
+            this.Shown += new System.EventHandler(this.FrmCMA_Shown);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmCMA_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCMA)).EndInit();
             this.panelCmdBtns.ResumeLayout(false);
@@ -916,6 +1333,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.picTitleFormula)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictFormula)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewYr)).EndInit();
+            this.pnlCopyYr.ResumeLayout(false);
+            this.pnlCopyYr.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdCopyYr)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictCopyYr)).EndInit();
+            this.pnlGraph.ResumeLayout(false);
+            this.pnlGraph.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdChartSelected)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdChart)).EndInit();
+            this.pnlChartDet.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictChartDet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictPrint)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -989,5 +1418,40 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn srno;
         private System.Windows.Forms.DataGridViewTextBoxColumn Desc;
         private System.Windows.Forms.DataGridViewTextBoxColumn Year1;
+        private System.Windows.Forms.Button btnCanForm;
+        private System.Windows.Forms.Button btnSaveFrm;
+        private System.Windows.Forms.Panel pnlCopyYr;
+        private System.Windows.Forms.Button cmdCancelCopyYr;
+        private System.Windows.Forms.Button cmdOkCopyYr;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictCopyYr;
+        private System.Windows.Forms.ComboBox comboDestYr;
+        private System.Windows.Forms.ComboBox comboSrYr;
+        private System.Windows.Forms.DataGridView grdCopyYr;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn selected;
+        private System.Windows.Forms.TextBox txtIncrease;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Panel pnlGraph;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DataGridView grdChartSelected;
+        private System.Windows.Forms.RadioButton radioWithin;
+        private System.Windows.Forms.RadioButton radioStart;
+        private System.Windows.Forms.DataGridView grdChart;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox txtChart;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn refno;
+        private System.Windows.Forms.Panel pnlChartDet;
+        private System.Windows.Forms.PictureBox pictChartDet;
+        private System.Drawing.Printing.PrintDocument MyPrintDocument;
+        private System.Windows.Forms.PictureBox pictPrint;
     }
 }

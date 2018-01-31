@@ -24,7 +24,8 @@ namespace PtrCma
         public static Bitmap cmdBackupIcon = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.icon3.png"));      
         public static Bitmap cmdRestoreIcon = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.icon4.png"));   
         public static Bitmap cmdExitIcon = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.icon5.png"));     
-        public static Bitmap cmdBtnBack = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.button1.png"));    
+        public static Bitmap cmdBtnBack = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.button1.png"));
+        public static Bitmap cmdBtnDisBack = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.disable.png"));
         public static Font cmdBtnfont = new System.Drawing.Font("Arial", 9.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         public static Color cmdFontColr = System.Drawing.Color.White;
         public static Font lblCMSfont = new System.Drawing.Font("Viner Hand ITC", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -37,6 +38,7 @@ namespace PtrCma
         public static Bitmap cmdImg = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.buton.png"));
         public static Bitmap partyLblBackImg = new Bitmap(Assembly.GetExecutingAssembly().GetManifestResourceStream("PtrCma.Resources.partybg.png"));
         public static Color btnfore = System.Drawing.Color.White;   //Button Fore Color
+        public static Color btnDisfore = System.Drawing.Color.White;   //Button Fore Color
         public static string PartyMaster = "Party Master"; //Title
         public static Color lblparty = System.Drawing.Color.CadetBlue; //Label BackColor of title
         public static Color lbltitle = System.Drawing.Color.FromArgb(68, 77, 62); //Label Fore Color of title

@@ -353,6 +353,7 @@
     <EmbeddedResource Include="Resources\Performancep_Parameters.png" />
     <EmbeddedResource Include="Resources\For_Term_Loan.png" />
     <EmbeddedResource Include="Resources\Need_for_Proposed.png" />
+    <EmbeddedResource Include="Resources\disable.png" />
     <Content Include="Resources\PtrCma.accdb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

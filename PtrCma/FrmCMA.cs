@@ -16,6 +16,7 @@ using System.CodeDom.Compiler;
 using System.Reflection;
 using unvell.ReoGrid;
 using unvell.ReoGrid.DataFormat;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace PtrCma
 {
@@ -50,6 +51,7 @@ namespace PtrCma
         ADODB.Recordset chkrs1;
         ADODB.Connection xconn;
         String isEdited = "n";
+       // private Chart chart = new Chart();
         public FrmCMA()
         {
             InitializeComponent();
@@ -103,18 +105,18 @@ namespace PtrCma
             Settings();
                 //  ((DataGridViewTextBoxColumn) gridViewCMA.Columns[11]).MaxInputLength = 250;
                 gridViewCMA.Visible = true;
-                gridViewCMA.EditingControlShowing += new DataGridViewEditingControlShowingEventHandler(gridViewCMA_EditingControlShowing);
+              //  gridViewCMA.EditingControlShowing += new DataGridViewEditingControlShowingEventHandler(gridViewCMA_EditingControlShowing);
                 grdViewCMAOther.Visible = false;
                 txtPrtyName.Visible = true;
                 txtPrtyName.Enabled = false;
                 txtCurYear.Enabled = false;
                 pnlInsRow.Visible = false;
+                pnlGraph.Visible = false;
+                pnlChartDet.Visible = false;
                 pnlChangeDesc.Visible = false;
                 comboBxYear.Enabled = false;
                 comboBoxCopyYear.Enabled = false;
                 comboBoxRsIn.Enabled = false;
-                cmdSave.Enabled = false;
-                cmdCancel.Enabled = false;
                 txtPrtyName.Text = Global.prtyName;
                 //fillcombo();
                 if (Global.curYr.Trim().Equals(""))
@@ -135,27 +137,22 @@ namespace PtrCma
                     comboBoxRsIn.Text = Global.inrS;
                 }
                 ///////////////////////////////
-                checkTables();
-            fillTopicListBox();
+                setControlSize();
+                fillTopicListBox();
             lstViewTopic.Items[0].Selected = true;
+            checkTables();
+            
+            }
+        }
+        private void FrmCMA_Shown(object sender, EventArgs e)
+        {
             fillTempTable();
             fillCMSDataGrid();
-                // fillCMSOtherDataGrid();
-                fillCMSReoDataGrid();
-                setControlSize();
-            foreach (Button btn in Controls.OfType<Button>())
-            {
-                btn.BackgroundImage = Global.cmdBackImg;
-            }
-               
-                    }
+            fillCMSReoDataGrid();
         }
-
-
 
         private void setControlSize()
         {
-            
             lblPic.Size = Global.lblPicTitle;
         }
 
@@ -222,14 +219,20 @@ namespace PtrCma
 
             pnlFormula.BackgroundImage = Global.partyFrmBackImg;
             pnlFormula.Location = new Point((this.Width - pnlFormula.Width) / 2, ((this.Height - pnlFormula.Height) / 2) + 20);
-                    ///////////////////////////////
-                    var worksheet = grdReoCMAOther.CurrentWorksheet;
 
-            // Set settings
-         //  worksheet.SetSettings(WorksheetSettings.View_ShowColumnHeader, false);
-            worksheet.SetSettings(WorksheetSettings.View_ShowRowHeader, false);
+            pnlCopyYr.BackgroundImage = Global.partyFrmBackImg;
+            pnlCopyYr.Location = new Point((this.Width - pnlChartDet.Width) / 2, ((this.Height - pnlChartDet.Height) / 2) + 20);
+            pnlChartDet.Width = 800;
+            pnlChartDet.Height = 400;
+            //pnlChartDet.BackgroundImage = Global.partyFrmBackImg;
+            pnlChartDet.Location = new Point((this.Width - pnlChartDet.Width) / 2, ((this.Height - pnlChartDet.Height) / 2) + 20);
+            pictChartDet.Left = pnlChartDet.Width - 55;
+            pictChartDet.Top = 10;   /// pnlChartDet.Top + 10;
+            pictPrint.Left = pnlChartDet.Width - 95;
+            pictPrint.Top = 10;   /// pnlChartDet.Top + 10;
+            ///////////////////////////////
+            var worksheet = grdReoCMAOther.CurrentWorksheet;
             grdReoCMAOther.Width = this.Width - 3;
-            
             grdReoCMAOther.Top = lstViewTopic.Bottom + 25;
             grdReoCMAOther.Height = this.Height - Global.chrtLstViewHeight - 50;
             grdReoCMAOther.Left = this.Left + 1;
@@ -245,11 +248,21 @@ namespace PtrCma
         {
             foreach (Button btn in panelCmdBtns.Controls.OfType<Button>())   //Disable Textbox
             {
-                btn.BackgroundImage = Global.cmdImg;
+                if(btn.Name.Equals("cmdSave") || btn.Name.Equals("cmdCancel"))
+                {
+                    btn.BackgroundImage = Global.cmdBtnDisBack;
+                }
+                else
+                {
+                    btn.BackgroundImage = Global.cmdImg;
+                }
+                
                 btn.ForeColor = Global.btnfore;
                 btn.FlatStyle = FlatStyle.Flat;
                 btn.BackgroundImageLayout = ImageLayout.Stretch;
             }
+            cmdSave.Enabled = false;
+            cmdCancel.Enabled = false;
             foreach (Button btn in pnlInsRow.Controls.OfType<Button>())   //Disable Textbox
             {
                 btn.BackgroundImage = Global.cmdImg;
@@ -329,6 +342,38 @@ namespace PtrCma
             }
 
             foreach (TextBox txt in pnlFormula.Controls.OfType<TextBox>())  //Set Size of TextBox
+            {
+                txt.Font = Global.txtSize;
+                if (txt.Name.Equals("txtFormula"))
+                {
+                    //txt.Size = Global.medsizelbl;
+                }
+                else
+                {
+                    txt.Size = Global.txtsmall;
+                }
+
+                txt.AutoSize = false;
+            }
+
+
+            foreach (Button btn in pnlCopyYr.Controls.OfType<Button>())   //Disable Textbox
+            {
+                btn.BackgroundImage = Global.cmdImg;
+                btn.ForeColor = Global.btnfore;
+                btn.FlatStyle = FlatStyle.Flat;
+                btn.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+            foreach (Label lbl in pnlCopyYr.Controls.OfType<Label>())   //Disable Textbox
+            {
+                lbl.Font = Global.lblSize;
+                //   lbl.Size = Global.lblsmallCredit;
+                lbl.AutoSize = false;
+                lbl.BackColor = Global.lblbackdetail;
+                lbl.ForeColor = Global.lblforedetail;
+            }
+
+            foreach (TextBox txt in pnlCopyYr.Controls.OfType<TextBox>())  //Set Size of TextBox
             {
                 txt.Font = Global.txtSize;
                 if (txt.Name.Equals("txtFormula"))
@@ -581,7 +626,7 @@ namespace PtrCma
             var list = new List<int> { 18,19,20,21 };
                 var listRow = new List<int> { 0, 8, 39, 43, 55, 56, 75, 84, 112, 134, 138, 159, 190, 210, 217, 225, 251, 264, 275, 284, 291, 305, 306, 307, 317, 327, 337 };
                 var listCol = new List<int> { 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41 };
-                   var listn = new List<int> { 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29 };
+                var listn = new List<int> { 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29 };
                 for (int row = 0; row < ds.Tables[0].Rows.Count; row++)
             {
                 for (int col = 0; col < ds.Tables[0].Columns.Count; col++)
@@ -595,49 +640,25 @@ namespace PtrCma
                             if (listn.Contains(col))
                                 grdReoCMAOther.CurrentWorksheet.SetCellData(row, col+12, Convert.ToDouble("0.00"));
                         }
-                        //}
-                    //if (list.Contains(col))
-                    //{
-                    //    if (!string.IsNullOrEmpty(Convert.ToString(ds.Tables[0].Rows[row][col])))
-                    //    { String frmula = Convert.ToString(ds.Tables[0].Rows[row][col]);
-                    //       grdReoCMAOther.CurrentWorksheet.SetCellFormula(row, (col+12), frmula);
-                    //    }
-                    // }
-                   // cell.Readonly = true;
                 }
             }
             var range = grdReoCMAOther.CurrentWorksheet.Ranges["A1:AN1"];
-            
-            //  range.Style.BackColor = Global.grdPartyBackColor;
-            //  range.Style.TextColor = Global.grdPartyForeColor;
             range = grdReoCMAOther.CurrentWorksheet.Ranges["A1:AN348"];
-           // range.Style.BackColor = Global.gridBackColorCMS;
-          //  range.Style.TextColor = Global.grdPartyForeColor;
-            
-
             grdReoCMAOther.CurrentWorksheet.HideColumns(0, 1);
             grdReoCMAOther.CurrentWorksheet.HideColumns(2,4);
             grdReoCMAOther.CurrentWorksheet.HideColumns(8, 4);
             grdReoCMAOther.CurrentWorksheet.HideColumns(13, 29);
 
-           // ControlAppearanceStyle rgcs = new ControlAppearanceStyle();
-          //  rgcs[ControlAppearanceColors.LeadHeadNormal] = Global.grdPartyBackColor;
-            // rgcs[ControlAppearanceColors.LeadHeadHover] = Global.grdPartyBackColor;
-            //   rgcs[ControlAppearanceColors.LeadHeadSelected] = Global.grdPartyBackColor;
-            //  rgcs[ControlAppearanceColors.LeadHeadIndicatorStart] = Global.grdPartyBackColor;
-
             grdReoCMAOther.CurrentWorksheet.SetColumnsWidth(1, 1, 100);
             grdReoCMAOther.CurrentWorksheet.SetColumnsWidth(6, 2, 50);
-            ushort ggd =(ushort)((grdReoCMAOther.Width - 220) - (120 * Convert.ToInt16(comboBxYear.Text)));
-            grdReoCMAOther.CurrentWorksheet.SetColumnsWidth(12, 1,ggd );
-                String frmula1= "AE2+AE3";
-                // grdReoCMAOther.CurrentWorksheet.Cells["AE4"].Formula= "AE2+AE3";
-               // grdReoCMAOther.CurrentWorksheet.SetCellFormula(4, 30, frmula1);
+            ushort ggd =(ushort)((grdReoCMAOther.Width - 220) - (120 * Convert.ToInt16(comboBxYear.Text))-40);
+            grdReoCMAOther.CurrentWorksheet.SetColumnsWidth(12, 1,ggd);
+            String frmula1= "AE2+AE3";
             grdReoCMAOther.CurrentWorksheet.ColumnHeaders["B"].Text = "";
+            grdReoCMAOther.CurrentWorksheet.ColumnHeaders["G"].Text = "";
             grdReoCMAOther.CurrentWorksheet.ColumnHeaders["H"].Text = "";
             grdReoCMAOther.CurrentWorksheet.ColumnHeaders["I"].Text = "";
             grdReoCMAOther.CurrentWorksheet.ColumnHeaders["M"].Text="Description";
-           // String[] arrayYr = new String[] {"AE","AF","AG","AH","AI","AJ","AK","AL","AM","AN","AO","AP"};
             /////////////////////////
             String sql2 = "SELECT * FROM Cx_Cd120 WHERE [CL_REFNO]=" + Global.prtyCode + ";";
             DataSet ds1 = new DataSet();
@@ -715,16 +736,12 @@ namespace PtrCma
                                 grdReoCMAOther.CurrentWorksheet.SetColumnsWidth(41, 1, 120);
                                 break;
                             default:
-                                //optional 
-                                //statements 
                                 break;
                         }
                         counter = counter + 1;
                     }
                 }
             }
-                // String frmula11 = "AE2+AE3";
-                //  grdReoCMAOther.CurrentWorksheet.SetCellFormula(3, 30, frmula11);
 
                 for (int row = 0; row < grdReoCMAOther.CurrentWorksheet.RowCount; row++)
                 {
@@ -736,18 +753,11 @@ namespace PtrCma
                             String MM = (String)grdReoCMAOther.CurrentWorksheet.GetCellData(row, col);
                             if (!string.IsNullOrEmpty(MM))
                             {
-                                // String frmula = Convert.ToString(ds.Tables[0].Rows[row][col]);
                                 grdReoCMAOther.CurrentWorksheet.SetCellFormula(row, (col + 12), MM);
-                                // grdReoCMAOther.CurrentWorksheet.SetCellData(row, col+12, MM);
                                 var cell = grdReoCMAOther.CurrentWorksheet.GetCell(row, col + 12);
-                               // cell.IsReadOnly = true;
                                 cell.Style.TextColor = Color.Magenta;
-                                //.SetCellFormula(row, (col + 12), MM);
-                                // Console.Out.WriteLine(row+"  "+col+"  ");
                             }
-
                         }
-
                         if (listCol.Contains(col))
                         {
                             if (Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCellData(row, 3)).Equals("Gr") && col <= (30 + Convert.ToInt16(comboBxYear.Text)))
@@ -757,8 +767,6 @@ namespace PtrCma
                                 cell.Data = "";
                             }
                         }
-
-                        // cell.Readonly = true;
                     }
                 }
 
@@ -1061,6 +1069,9 @@ private void cmdSave_Click(object sender, EventArgs e)
         {
             try
             {
+                isEdited = "n";
+                cmdSave.Enabled = false;
+                cmdCancel.Enabled = false;
                 String refno = "";
 
                 OleDbConnection con = new OleDbConnection();
@@ -1616,9 +1627,12 @@ private void cmdSave_Click(object sender, EventArgs e)
         private void cmdCancel_Click(object sender, EventArgs e)
         {
             isEdited = "n";
-            fillCMSDataGrid();
             cmdSave.Enabled = false;
             cmdCancel.Enabled = false;
+            fillTempTable();
+            fillCMSDataGrid();
+            fillCMSReoDataGrid();
+            
         }
 
         private void picFrmClose_Click(object sender, EventArgs e)
@@ -1823,7 +1837,67 @@ private void cmdSave_Click(object sender, EventArgs e)
             }
             else
             {
+                pnlCopyYr.BringToFront();
+                pnlCopyYr.Visible = true;
+                grdReoCMAOther.Enabled = false;
+                panelCmdBtns.Enabled = false;
+                lstViewTopic.Enabled = false;
+                chart2.Enabled = false;
+                grdCopyYr.Rows.Add("Party Information",1);
+                grdCopyYr.Rows.Add("Operating Statement", 0);
+                grdCopyYr.Rows.Add("Liability Statement", 1);
+                grdCopyYr.Rows.Add("Assets Statement", 1);
+                grdCopyYr.Rows.Add("Valid", 1);
+                grdCopyYr.Rows.Add("Financial Indicators", 1);
+                grdCopyYr.Rows.Add("WCC", 1);
+                grdCopyYr.Rows.Add("ABF Assessements", 1);
+                grdCopyYr.Rows.Add("Fundflow Statement", 1);
+                grdCopyYr.Rows.Add("Assessement of working capital required", 1);
+                grdCopyYr.Rows.Add("As per Nayak Comitee", 1);
+                grdCopyYr.Rows.Add("Calculation of Drawing power", 1);
 
+                xconn = new ADODB.Connection();
+                xconn.Open("Provider = Microsoft.ACE.OLEDB.12.0; Data Source = " + Application.StartupPath + "\\Resources\\PtrCma.accdb;", "", "", -1);
+                ADODB.Recordset chkrs1 = new ADODB.Recordset();
+                String stttr = "SELECT * FROM Cx_Cd120 where CL_REFNO=" + Global.prtyCode;
+                chkrs1.Open("SELECT * FROM Cx_Cd120 where CL_REFNO=" + Global.prtyCode, xconn, ADODB.CursorTypeEnum.adOpenStatic, ADODB.LockTypeEnum.adLockBatchOptimistic, 0);
+
+                //  MessageBox.Show(chkrs1.Fields[0].Value.Substring(0, 7));
+                if (chkrs1.EOF == false)
+                {
+
+                    comboSrYr.Items.Insert(0, chkrs1.Fields[0].Value.Substring(0, 5) + chkrs1.Fields[0].Value.Substring(7, 2));
+                    comboSrYr.Items.Insert(1, chkrs1.Fields[1].Value.Substring(0, 5) + chkrs1.Fields[1].Value.Substring(7, 2));
+                    comboSrYr.Items.Insert(2, chkrs1.Fields[2].Value.Substring(0, 5) + chkrs1.Fields[2].Value.Substring(7, 2));
+                    comboSrYr.Items.Insert(3, chkrs1.Fields[3].Value.Substring(0, 5) + chkrs1.Fields[3].Value.Substring(7, 2));
+                    comboSrYr.Items.Insert(4, chkrs1.Fields[4].Value.Substring(0, 5) + chkrs1.Fields[4].Value.Substring(7, 2));
+                    comboSrYr.Items.Insert(5, chkrs1.Fields[5].Value.Substring(0, 5) + chkrs1.Fields[5].Value.Substring(7, 2));
+                    comboSrYr.Items.Insert(6, chkrs1.Fields[6].Value.Substring(0, 5) + chkrs1.Fields[6].Value.Substring(7, 2));
+                    comboSrYr.Items.Insert(7, chkrs1.Fields[7].Value.Substring(0, 5) + chkrs1.Fields[7].Value.Substring(7, 2));
+                    comboSrYr.Items.Insert(8, chkrs1.Fields[8].Value.Substring(0, 5) + chkrs1.Fields[8].Value.Substring(7, 2));
+                    comboSrYr.Items.Insert(9, chkrs1.Fields[9].Value.Substring(0, 5) + chkrs1.Fields[9].Value.Substring(7, 2));
+                    comboSrYr.Items.Insert(10, chkrs1.Fields[10].Value.Substring(0, 5) + chkrs1.Fields[10].Value.Substring(7, 2));
+                    comboSrYr.Items.Insert(11, chkrs1.Fields[11].Value.Substring(0, 5) + chkrs1.Fields[11].Value.Substring(7, 2));
+                    comboSrYr.SelectedIndex = 0;
+                    comboDestYr.Items.Insert(0, chkrs1.Fields[0].Value.Substring(0, 5) + chkrs1.Fields[0].Value.Substring(7, 2));
+                    comboDestYr.Items.Insert(1, chkrs1.Fields[1].Value.Substring(0, 5) + chkrs1.Fields[1].Value.Substring(7, 2));
+                    comboDestYr.Items.Insert(2, chkrs1.Fields[2].Value.Substring(0, 5) + chkrs1.Fields[2].Value.Substring(7, 2));
+                    comboDestYr.Items.Insert(3, chkrs1.Fields[3].Value.Substring(0, 5) + chkrs1.Fields[3].Value.Substring(7, 2));
+                    comboDestYr.Items.Insert(4, chkrs1.Fields[4].Value.Substring(0, 5) + chkrs1.Fields[4].Value.Substring(7, 2));
+                    comboDestYr.Items.Insert(5, chkrs1.Fields[5].Value.Substring(0, 5) + chkrs1.Fields[5].Value.Substring(7, 2));
+                    comboDestYr.Items.Insert(6, chkrs1.Fields[6].Value.Substring(0, 5) + chkrs1.Fields[6].Value.Substring(7, 2));
+                    comboDestYr.Items.Insert(7, chkrs1.Fields[7].Value.Substring(0, 5) + chkrs1.Fields[7].Value.Substring(7, 2));
+                    comboDestYr.Items.Insert(8, chkrs1.Fields[8].Value.Substring(0, 5) + chkrs1.Fields[8].Value.Substring(7, 2));
+                    comboDestYr.Items.Insert(9, chkrs1.Fields[9].Value.Substring(0, 5) + chkrs1.Fields[9].Value.Substring(7, 2));
+                    comboDestYr.Items.Insert(10, chkrs1.Fields[10].Value.Substring(0, 5) + chkrs1.Fields[10].Value.Substring(7, 2));
+                    comboDestYr.Items.Insert(11, chkrs1.Fields[11].Value.Substring(0, 5) + chkrs1.Fields[11].Value.Substring(7, 2));
+                    comboDestYr.SelectedIndex = 1;
+                    // comboSrYr.Items.Insert(12, chkrs1.Fields[12].Value.Substring(0, 5) + chkrs1.Fields[12].Value.Substring(7, 2));
+                    //txtCurYear.Text = chkrs1.Fields[0].Value;
+
+                }
+                chkrs1.Close();
+                xconn.Close();
             }
         }
 
@@ -1902,7 +1976,107 @@ private void cmdSave_Click(object sender, EventArgs e)
             }
             else
             {
+                if (isEdited == "y")
+                {
+                    DialogResult dialogResult = MessageBox.Show("Reset data for this client????", "Perfect Tax Reporter - CMA 1.0", MessageBoxButtons.YesNo);       //Cancel Button
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        EmptyTables();
+                        resetTables();
+                        fillCMSDataGrid();
+                        fillCMSReoDataGrid();
+                    }
+                    else
+                    {
+                        
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Available in Edit mode only", "Perfect Tax Reporter - CMA 1.0");
+                }
+            }
+        }
 
+        private void EmptyTables()
+        {
+            try
+            {
+                OleDbConnection conn = new OleDbConnection(connectionString);
+                string sqlTrunc = "DELETE FROM Cp_CdFm1";
+
+                OleDbDataAdapter myadapter = new OleDbDataAdapter();
+                DataSet ds1 = new DataSet();
+                string sqlTruncOther = "DELETE FROM Cp_CdFm3";
+                myadapter.SelectCommand = new OleDbCommand(sqlTrunc, conn);
+                myadapter.Fill(ds1, "Cp_CdFm1");
+                myadapter.SelectCommand = new OleDbCommand(sqlTruncOther, conn);
+                myadapter.Fill(ds1, "Cp_CdFm3");
+            }
+            catch (Exception e)
+            {
+                //  Console.WriteLine(e.Message);//
+                MessageBox.Show(e.Message);
+            }
+        }
+
+        private void resetTables()
+        {
+            try
+            {
+                    OleDbConnection conn = GetConnection();
+                    OleDbDataAdapter myadapter1 = new OleDbDataAdapter();
+                    DataSet ds1 = new DataSet();
+                    String sql = "Update Cp_CdFm11 set [CM_CLREFNO]=" + Global.prtyCode + ";";
+                    myadapter1.SelectCommand = new OleDbCommand(sql, conn);
+                    myadapter1.Fill(ds1, "Cp_CdFm11");
+                    sql = "SELECT * FROM Cp_CdFm11 WHERE [CM_CLREFNO]=" + Global.prtyCode + ";";
+                    myadapter1.SelectCommand = new OleDbCommand(sql, conn);
+                    myadapter1.Fill(ds1, "Cp_CdFm11");
+                    for (int i = 0; i < ds1.Tables[0].Rows.Count; i++)
+                    {
+                        DataSet ds2 = new DataSet();
+                        sql = "INSERT INTO Cp_CdFm1 (CM_SEQNO,CM_TYPE,CM_FC,CM_BN,CM_DBNO,CM_MTNO,CM_HEAD,CM_DESC,CM_LNKFRM,CM_CLREFNO) values ('" + ds1.Tables[0].Rows[i]["CM_SEQNO"].ToString() + "','" + ds1.Tables[0].Rows[i]["CM_TYPE"].ToString() + "','" + ds1.Tables[0].Rows[i]["CM_FC"].ToString() + "','" + ds1.Tables[0].Rows[i]["CM_BN"].ToString() + "','" + ds1.Tables[0].Rows[i]["CM_DBNO"].ToString() + "','" + ds1.Tables[0].Rows[i]["CM_MTNO"].ToString() + "','" + ds1.Tables[0].Rows[i]["CM_HEAD"].ToString() + "','" + ds1.Tables[0].Rows[i]["CM_DESC"].ToString() + "','" + ds1.Tables[0].Rows[i]["CM_LNKFRM"].ToString() + "'," + ds1.Tables[0].Rows[i]["CM_CLREFNO"].ToString() + ")";
+                        myadapter1.SelectCommand = new OleDbCommand(sql, conn);
+                        myadapter1.Fill(ds2, "Cp_CdFm1");
+                        ds2.Dispose();
+                    }
+
+
+
+                    //'  sql = "INSERT INTO Cp_CdFm1 SELECT CM_SEQNO,CM_TYPE,CM_FC,CM_BN,CM_DBNO,CM_MTNO,CM_HEAD,CM_DESC,CM_LNKFRM,CM_CLREFNO FROM Cp_CdFm11";
+                    //'  myadapter1.SelectCommand = new OleDbCommand(sql, conn);
+                    // '  myadapter1.Fill(ds1, "Cp_CdFm11");
+                    ds1.Dispose();
+
+               ///////fm3
+
+
+                    DataSet ds3 = new DataSet();
+                    //OleDbDataAdapter myadapter1 = new OleDbDataAdapter();
+                    String sqlother = "Update Cp_CdFm33 set [FM_CLREFNO]=" + Global.prtyCode + ";";
+                    myadapter1.SelectCommand = new OleDbCommand(sqlother, conn);
+                    myadapter1.Fill(ds3, "Cp_CdFm33");
+                    sqlother = "SELECT * FROM Cp_CdFm33 WHERE [FM_CLREFNO]=" + Global.prtyCode + ";";
+                    myadapter1.SelectCommand = new OleDbCommand(sqlother, conn);
+                    myadapter1.Fill(ds3, "Cp_CdFm33");
+                    for (int i = 0; i < ds3.Tables[0].Rows.Count; i++)
+                    {
+                        DataSet ds22 = new DataSet();
+                        String sql33 = "INSERT INTO Cp_CdFm3 (FM_SEQNO,FM_TYPE,FM_FC,FM_BN,FM_MTNO,FM_SNO1,FM_SNO2,FM_CV,FM_FORM,FM_ADDROW,FM_TOTROW,FM_DESC,FM_CLREFNO,FM_FOLIST,FM_FO01,FM_FO02,FM_FO03,FM_FO04,FM_FO05,FM_FO06,FM_FO07,FM_FO08,FM_FO09,FM_FO10,FM_FO11,FM_FO12) values ('" + ds3.Tables[0].Rows[i]["FM_SEQNO"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_TYPE"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FC"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_BN"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_MTNO"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_SNO1"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_SNO2"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_CV"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FORM"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_ADDROW"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_TOTROW"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_DESC"].ToString() + "'," + ds3.Tables[0].Rows[i]["FM_CLREFNO"].ToString() + ",'" + ds3.Tables[0].Rows[i]["FM_FOLIST"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO01"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO02"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO03"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO04"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO05"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO06"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO07"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO08"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO09"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO10"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO11"].ToString() + "','" + ds3.Tables[0].Rows[i]["FM_FO12"].ToString() + "')";
+                        myadapter1.SelectCommand = new OleDbCommand(sql33, conn);
+                        myadapter1.Fill(ds22, "Cp_CdFm3");
+                        ds22.Dispose();
+                    }
+
+                    ds3.Dispose();
+                conn.Close();
+
+            }
+            catch (Exception e)
+            {
+                //  Console.WriteLine(e.Message);//
+                MessageBox.Show(e.Message);
             }
         }
 
@@ -1937,7 +2111,13 @@ private void cmdSave_Click(object sender, EventArgs e)
                     //  System.Console.WriteLine("Formula : " + MM);
                     int counter = 1;
                     String newSt, ss;
-                    
+                    if (grdViewFormula.RowCount > 0)
+                    {
+                        for (int RowCount = 0; RowCount <= grdViewFormula.RowCount; RowCount++)
+                        {
+                            grdViewFormula.Rows.RemoveAt(0);
+                        }
+                    }
                     foreach (string s in words)
                     {
                       grdViewFormula.Rows.Add(s,grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.GetCell(s).Row, 12), grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.GetCell(s).Row, grdReoCMAOther.CurrentWorksheet.FocusPos.Col));
@@ -2237,7 +2417,7 @@ private void cmdSave_Click(object sender, EventArgs e)
             }
             else
             {
-                var cell = grdReoCMAOther.CurrentWorksheet.GetCell(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, (grdReoCMAOther.CurrentWorksheet.FocusPos.Col+i));
+                var cell = grdReoCMAOther.CurrentWorksheet.GetCell(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, (30+i));
                 txtFormula.Text = cell.Formula;
                 String[] delimiterChars = { ",", "*", "%", "/", "+", "-", "IF(", ")", "MAX(", "MIN(", ">", "<", "(", "=" };
                 string[] words = cell.Formula.Split(delimiterChars, StringSplitOptions.None);
@@ -2257,6 +2437,638 @@ private void cmdSave_Click(object sender, EventArgs e)
                 }
             }
 
+        }
+
+
+        private void grdReoCMAOther_Click(object sender, EventArgs e)
+        {
+            isEdited = "y";
+            cmdSave.Enabled = true;
+            cmdCancel.Enabled = true;
+
+            if (lstViewTopic.SelectedItems[0].Text.Equals("Party Information"))
+            {
+                gridViewCMA.CurrentCell = gridViewCMA.Rows[0].Cells[11];
+            }
+            else
+            {
+                var cell = grdReoCMAOther.CurrentWorksheet.GetCell(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, (30));
+                if (cell.IsReadOnly){
+
+                }
+                else
+                {
+                    DisplayChart();
+                }
+                txtCurYear.Enabled = true;
+                comboBxYear.Enabled = true;
+                comboBoxCopyYear.Enabled = true;
+                comboBoxRsIn.Enabled = true;
+                cmdInsRow.Enabled = true;
+                cmdDelRow.Enabled = true;
+                cmdChngDesc.Enabled = true;
+                cmdFormula.Enabled = true;
+                cmdResetDeta.Enabled = true;
+                cmdCopyYr.Enabled = true;
+            }
+        }
+
+        private void DisplayChart()
+        {
+           
+            List<double> myCollectiony = new List<double>();
+            List<int> myCollectionx = new List<int>();
+            Boolean first = true;
+            OleDbConnection conn = new OleDbConnection(connectionString);
+            OleDbDataAdapter myadapter = new OleDbDataAdapter();
+            String sql2 = "SELECT * FROM Cx_Cd120 WHERE [CL_REFNO]=" + Global.prtyCode + ";";
+            DataSet ds1 = new DataSet();
+            myadapter.SelectCommand = new OleDbCommand(sql2, conn);
+            myadapter.Fill(ds1, "Cx_Cd120");
+            int counter = 30;
+            if (ds1.Tables[0].Rows.Count > 0)
+            {
+                for (int i = grdReoCMAOther.CurrentWorksheet.FocusPos.Row; i <= grdReoCMAOther.CurrentWorksheet.FocusPos.Row; i++)
+                {
+
+                    for (int ii = 30; ii <= (29+Convert.ToInt16(comboBxYear.Text)); ii++)
+                    {
+                        var cell = grdReoCMAOther.CurrentWorksheet.GetCell(i, ii);
+
+                            if (first)
+                            {
+                                switch (ii)
+                                {
+                                    case 30:
+                                        myCollectionx.Add(Convert.ToInt16(ds1.Tables[0].Rows[0]["CTXT01"].ToString().Substring(2, 2)));
+                                        break;
+                                    case 31:
+                                        myCollectionx.Add(Convert.ToInt16(ds1.Tables[0].Rows[0]["CTXT02"].ToString().Substring(2, 2)));
+                                        break;
+                                    case 32:
+                                        myCollectionx.Add(Convert.ToInt16(ds1.Tables[0].Rows[0]["CTXT03"].ToString().Substring(2, 2)));
+                                        break;
+                                    case 33:
+                                        myCollectionx.Add(Convert.ToInt16(ds1.Tables[0].Rows[0]["CTXT04"].ToString().Substring(2, 2)));
+                                        break;
+                                    case 34:
+                                        myCollectionx.Add(Convert.ToInt16(ds1.Tables[0].Rows[0]["CTXT05"].ToString().Substring(2, 2)));
+                                        break;
+                                    case 35:
+                                        myCollectionx.Add(Convert.ToInt16(ds1.Tables[0].Rows[0]["CTXT06"].ToString().Substring(2, 2)));
+                                        break;
+                                    case 36:
+                                        myCollectionx.Add(Convert.ToInt16(ds1.Tables[0].Rows[0]["CTXT07"].ToString().Substring(2, 2)));
+                                        break;
+                                    case 37:
+                                        myCollectionx.Add(Convert.ToInt16(ds1.Tables[0].Rows[0]["CTXT08"].ToString().Substring(2, 2)));
+                                        break;
+                                    case 38:
+                                        myCollectionx.Add(Convert.ToInt16(ds1.Tables[0].Rows[0]["CTXT09"].ToString().Substring(2, 2)));
+                                        break;
+                                    case 39:
+                                        myCollectionx.Add(Convert.ToInt16(ds1.Tables[0].Rows[0]["CTXT10"].ToString().Substring(2, 2)));
+                                        break;
+                                    case 40:
+                                        myCollectionx.Add(Convert.ToInt16(ds1.Tables[0].Rows[0]["CTXT11"].ToString().Substring(2, 2)));
+                                        break;
+                                    case 41:
+                                        myCollectionx.Add(Convert.ToInt16(ds1.Tables[0].Rows[0]["CTXT12"].ToString().Substring(2, 2)));
+                                        break;
+                                    default:
+                                        break;
+                                }
+
+                            }
+                        if (!String.IsNullOrEmpty(Convert.ToString(cell.Data)))
+                        {
+                            myCollectiony.Add(Convert.ToDouble(cell.Data));
+                            counter = counter + 1;
+                        }
+                       
+                    }
+                    first = false;
+                }
+                double[] yData = myCollectiony.ToArray();
+                int[] xData = myCollectionx.ToArray();
+                ChartArea area = chart2.ChartAreas[0];
+                //chart2.ChartAreas.Add(area);
+                //Create a series using the data
+                Series barSeries = new Series();
+                barSeries.Points.DataBindXY(xData,yData);
+                //Set the chart type, Bar; horizontal bars
+                barSeries.ChartType = SeriesChartType.Column;
+                //Assign it to the required area
+                barSeries.ChartArea = area.Name;
+                foreach (var series in chart2.Series)
+                {
+                    series.Points.Clear();
+                }
+                chart2.Legends[0].Enabled = false;
+                chart2.Series.Add(barSeries);
+            }
+
+        }
+        private void CmdOkFormula_Click(object sender, EventArgs e)
+        {
+            int i = grdViewYr.CurrentRow.Index;
+            var cell = grdReoCMAOther.CurrentWorksheet.GetCell(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, (30 + i));
+            grdReoCMAOther.CurrentWorksheet.SetCellFormula(cell.Row,cell.Column, txtFormula.Text);
+            
+                String[] delimiterChars = { ",", "*", "%", "/", "+", "-", "IF(", ")", "MAX(", "MIN(", ">", "<", "(", "=" };
+                string[] words = cell.Formula.Split(delimiterChars, StringSplitOptions.None);
+                Array.Sort(words);
+                int counter = 1;
+                String newSt, ss;
+
+            int ii = 0;
+            foreach (string s in words)
+                {
+                   Cell cl = grdReoCMAOther.CurrentWorksheet.GetCell(s);
+                   DataGridViewRow rowsf = this.grdViewFormula.Rows[ii];
+                   cl.Data = Convert.ToString(rowsf.Cells["Year1"].Value);
+            }
+     
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int i = grdViewYr.CurrentRow.Index;
+            var cell = grdReoCMAOther.CurrentWorksheet.GetCell(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, (30 + i));
+            grdReoCMAOther.CurrentWorksheet.SetCellFormula(cell.Row, cell.Column, txtFormula.Text);
+            String[] delimiterChars = { ",", "*", "%", "/", "+", "-", "IF(", ")", "MAX(", "MIN(", ">", "<", "(", "=" };
+            string[] words = txtFormula.Text.Split(delimiterChars, StringSplitOptions.None);
+            Array.Sort(words);
+            // Array.Reverse(words);
+            //  System.Console.WriteLine("Formula : " + MM);
+            int counter = 1;
+            String newSt, ss;
+            for (int RowCount = 0; RowCount <= grdViewFormula.RowCount; RowCount++)
+            {
+                grdViewFormula.Rows.RemoveAt(0);
+            }
+
+            foreach (string s in words)
+            {
+                grdViewFormula.Rows.Add(s, grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.GetCell(s).Row, 12), grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.GetCell(s).Row, (grdReoCMAOther.CurrentWorksheet.FocusPos.Col + i)));
+            }
+        }
+
+        private void btnCanForm_Click(object sender, EventArgs e)
+        {
+            int i = grdViewYr.CurrentRow.Index;
+            var cell = grdReoCMAOther.CurrentWorksheet.GetCell(grdReoCMAOther.CurrentWorksheet.FocusPos.Row, (30 + i));
+            txtFormula.Text = cell.Formula;
+            String[] delimiterChars = { ",", "*", "%", "/", "+", "-", "IF(", ")", "MAX(", "MIN(", ">", "<", "(", "=" };
+            string[] words = cell.Formula.Split(delimiterChars, StringSplitOptions.None);
+            Array.Sort(words);
+            // Array.Reverse(words);
+            //  System.Console.WriteLine("Formula : " + MM);
+            int counter = 1;
+            String newSt, ss;
+            for (int RowCount = 0; RowCount <= grdViewFormula.RowCount; RowCount++)
+            {
+                grdViewFormula.Rows.RemoveAt(0);
+            }
+
+            foreach (string s in words)
+            {
+                grdViewFormula.Rows.Add(s, grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.GetCell(s).Row, 12), grdReoCMAOther.CurrentWorksheet.GetCellData(grdReoCMAOther.CurrentWorksheet.GetCell(s).Row, (grdReoCMAOther.CurrentWorksheet.FocusPos.Col + i)));
+            }
+        }
+
+        private void cmdSave_EnabledChanged(object sender, EventArgs e)
+        {
+            cmdSave.ForeColor = cmdSave.Enabled ? Global.btnfore : Global.btnDisfore;
+            cmdSave.BackgroundImage = cmdSave.Enabled ? Global.cmdImg : Global.cmdBtnDisBack;
+        }
+
+        private void cmdCancel_EnabledChanged(object sender, EventArgs e)
+        {
+            cmdCancel.ForeColor = cmdCancel.Enabled ? Global.btnfore : Global.btnDisfore;
+            cmdCancel.BackgroundImage = cmdCancel.Enabled ? Global.cmdImg : Global.cmdBtnDisBack;
+        }
+
+        private void panelCmdBtns_EnabledChanged(object sender, EventArgs e)
+        {
+            foreach (Button btn in panelCmdBtns.Controls.OfType<Button>())   //Disable Textbox
+            {
+                if (btn.Name.Equals("cmdSave") || btn.Name.Equals("cmdCancel"))
+                {
+                    cmdSave.ForeColor = cmdSave.Enabled ? Global.btnfore : Global.btnDisfore;
+                    cmdSave.BackgroundImage = cmdSave.Enabled ? Global.cmdImg : Global.cmdBtnDisBack;
+                    cmdCancel.ForeColor = cmdCancel.Enabled ? Global.btnfore : Global.btnDisfore;
+                    cmdCancel.BackgroundImage = cmdCancel.Enabled ? Global.cmdImg : Global.cmdBtnDisBack;
+                }
+                else
+                {
+                    btn.ForeColor = btn.Enabled ? Global.btnfore : Global.btnDisfore;
+                    btn.BackgroundImage = btn.Enabled ? Global.cmdImg : Global.cmdBtnDisBack;
+                }
+
+               
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if(txtIncrease.Text.Equals("0") || txtIncrease.Text.Trim().Equals("")){
+                MessageBox.Show(GlobalMsg.CopyPercentMsg, "Perfect Tax Reporter - CMA 1.0");
+                txtIncrease.Focus();
+                return;
+            }
+            var colNo = comboSrYr.SelectedIndex + 30;
+            Double cellVal;
+            for (int row = 0; row < grdReoCMAOther.CurrentWorksheet.RowCount; row++)
+            {
+                var cell = grdReoCMAOther.CurrentWorksheet.GetCell(row, colNo);
+                var cellDest = grdReoCMAOther.CurrentWorksheet.GetCell(row, comboDestYr.SelectedIndex + 30);
+                if (cell.HasFormula && cell.IsReadOnly)
+                {
+
+                }
+                else
+                {
+                    cellVal =Convert.ToDouble(txtIncrease.Text);
+                    if (!string.IsNullOrEmpty(Convert.ToString(cell.Data)))
+                    {
+                        cellVal = Convert.ToDouble(cell.Data) + Convert.ToDouble(cell.Data) * cellVal / 100;
+                        cellDest.Data = cellVal;
+                    }
+                }
+                
+            }
+        }
+
+        private void pictCopyYr_Click(object sender, EventArgs e)
+        {
+            pnlCopyYr.Visible = false;
+            grdReoCMAOther.Enabled = true;
+            panelCmdBtns.Enabled = true;
+            lstViewTopic.Enabled = true;
+            chart2.Enabled = true;
+        }
+
+        private void grdCopyYr_DoubleClick(object sender, EventArgs e)
+        {
+            int i = grdCopyYr.CurrentRow.Index;
+            if (Convert.ToBoolean(grdCopyYr.CurrentRow.Cells["selected"].Value) == false)
+            {
+                grdCopyYr.CurrentRow.Cells["selected"].Value = true;
+            }
+            else { 
+                grdCopyYr.CurrentRow.Cells["selected"].Value = false;
+        }
+    }
+
+        private void grdCopyYr_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void grdCopyYr_KeyUp(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void grdCopyYr_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                int i = grdCopyYr.CurrentRow.Index;
+                if (Convert.ToBoolean(grdCopyYr.CurrentRow.Cells["selected"].Value) == false)
+                {
+                    grdCopyYr.CurrentRow.Cells["selected"].Value = true;
+                }
+                else
+                {
+                    grdCopyYr.CurrentRow.Cells["selected"].Value = false;
+                }
+            }
+            else
+            {
+                if (e.Control && e.KeyCode == Keys.Add)
+                {
+                    for (int i = 0; i < grdCopyYr.RowCount; i++)
+                    {
+                        grdCopyYr[i,1].Value = true;
+                    }
+                }
+                else
+                {
+                    if (e.Control && e.KeyCode == Keys.Subtract)
+                    {
+                        for (int i = 0; i < grdCopyYr.RowCount; i++)
+                        {
+                            grdCopyYr[i, 1].Value = false;
+                        }
+                    }
+
+                }
+            }
+        }
+
+        private void FrmCMA_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Modifiers == Keys.Control && (e.KeyCode == Keys.Oemplus || e.KeyCode==Keys.Add))
+            {
+                for (int i = 0; i < grdCopyYr.RowCount; i++)
+                {
+                    grdCopyYr[1,i].Value = true;
+                }
+            }
+            if (e.Control && (e.KeyCode == Keys.OemMinus || e.KeyCode == Keys.Subtract))
+            {
+                for (int i = 0; i < grdCopyYr.RowCount; i++)
+                {
+                    grdCopyYr[1,i].Value = false;
+                }
+            }
+        }
+
+        private void cmdCancelCopyYr_Click(object sender, EventArgs e)
+        {
+            pnlCopyYr.Visible = false;
+            grdReoCMAOther.Enabled = true;
+            panelCmdBtns.Enabled = true;
+            lstViewTopic.Enabled = true;
+            chart2.Enabled = true;
+        }
+
+        private void cmdPrntGrph_Click(object sender, EventArgs e)
+        {
+            pnlGraph.BringToFront();
+            pnlGraph.Visible = true;
+            grdReoCMAOther.Enabled = false;
+            panelCmdBtns.Enabled = false;
+            lstViewTopic.Enabled = false;
+            chart2.Enabled = false;
+            //grdChart.Rows.Add("Party Information");
+            //grdChart.Rows.Add("Operating Statement");
+            //grdChart.Rows.Add("Liability Statement");
+            //grdChart.Rows.Add("Assets Statement");
+            //grdChart.Rows.Add("Valid");
+            //grdChart.Rows.Add("Financial Indicators");
+            //grdChart.Rows.Add("WCC");
+            //grdChart.Rows.Add("ABF Assessements");
+            //grdChart.Rows.Add("Fundflow Statement");
+            //grdChart.Rows.Add("Assessement of working capital required");
+            //grdChart.Rows.Add("As per Nayak Comitee");
+            //grdChart.Rows.Add("Calculation of Drawing power");
+            con = new OleDbConnection(connectionString);
+            DataSet ds = new DataSet();
+            con.Open();
+            dataAdapter = new OleDbDataAdapter("SELECT FM_DESC,FM_REFNO from Cp_CdFm3  order by FM_REFNO", con);
+            dataAdapter.Fill(ds, "Cp_CdFm3");
+            grdChart.DataMember = "Cp_CdFm3";
+            grdChart.DataSource = ds;
+            grdChart.Columns[0].Visible = true;
+            grdChart.Columns[0].HeaderText = "Description";
+            grdChart.Columns[0].Width = 253;
+            grdChart.Columns[1].Visible = false;
+  
+            // grdViewParty.Focus();
+            con.Close();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            pnlGraph.Visible = false;
+            grdReoCMAOther.Enabled = true;
+            panelCmdBtns.Enabled = true;
+            lstViewTopic.Enabled = true;
+            chart2.Enabled = true;
+        }
+
+        private void radioStart_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioStart.Checked == true)
+            {
+                grdChart.Rows[0].Selected = true;
+            }
+        }
+
+        private void txtChart_KeyUp(object sender, KeyEventArgs e)
+        {
+            con = new OleDbConnection(connectionString);
+            DataSet ds = new DataSet();
+            con.Open();
+            dataAdapter = new OleDbDataAdapter("SELECT FM_DESC,FM_REFNO from Cp_CdFm3 where FM_DESC like '%" + txtChart.Text.Replace("'", "''") + "%'  order by FM_REFNO", con);
+            dataAdapter.Fill(ds, "Cp_CdFm3");
+            grdChart.DataMember = "Cp_CdFm3";
+            grdChart.DataSource = ds;
+            con.Close();
+            
+        }
+
+        private void grdChart_DoubleClick(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void grdChart_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+            // int row = grdChart.CurrentCell.RowIndex;
+            // grdChart.Rows.RemoveAt(row);
+            Boolean found = false;
+            if (grdChartSelected.Rows.Count > 0)
+            {
+            }
+            else
+            {
+                foreach (DataGridViewRow row1 in grdChartSelected.Rows)
+                {
+                    if (row1.Cells[1].Value.Equals(grdChart[e.ColumnIndex, e.RowIndex].Value.ToString()))
+                    {
+                        // row exists
+                        found = true;
+                        //  MessageBox.Show("Row already exists");
+                        break;
+                    }
+                }
+            }
+            if (!found)
+            {
+                grdChartSelected.Rows.Add(grdChart[e.ColumnIndex, e.RowIndex].Value.ToString(), grdChart[e.ColumnIndex+1, e.RowIndex].Value.ToString());
+            }
+        }
+
+        private void grdChartSelected_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int row = grdChartSelected.CurrentCell.RowIndex;
+            grdChartSelected.Rows.RemoveAt(row);
+            //grdChart.Rows.Add(grdChartSelected[e.ColumnIndex, e.RowIndex].Value.ToString(), grdChartSelected[e.ColumnIndex+1, e.RowIndex].Value.ToString());
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+
+            Boolean first = true;
+            OleDbConnection conn = new OleDbConnection(connectionString);
+            OleDbDataAdapter myadapter = new OleDbDataAdapter();
+            String sql2 = "SELECT * FROM Cx_Cd120 WHERE [CL_REFNO]=" + Global.prtyCode + ";";
+            DataSet ds1 = new DataSet();
+            myadapter.SelectCommand = new OleDbCommand(sql2, conn);
+            myadapter.Fill(ds1, "Cx_Cd120");
+            int counter = 30;
+            int chHeight = 40;
+            int chartCounter = 0;
+            if (ds1.Tables[0].Rows.Count > 0)
+            {
+                for (int j = 0; j < grdChartSelected.RowCount; j++)
+                {
+                    for (int i = 0; i < grdReoCMAOther.CurrentWorksheet.Rows; i++)
+                    {
+                        String str = Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCell(i, 0).Data);
+                        if (Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCell(i, 0).Data).Equals(Convert.ToString(grdChartSelected.Rows[j].Cells[1].Value)))
+                        {
+                            first = true;
+                            List<double> myCollectiony = new List<double>();
+                            List<int> myCollectionx = new List<int>();
+                            for (int ii = 30; ii <= (29 + Convert.ToInt16(comboBxYear.Text)); ii++)
+                            {
+
+                                var cell = grdReoCMAOther.CurrentWorksheet.GetCell(i, ii);
+
+                                if (first)
+                                {
+                                    switch (ii)
+                                    {
+                                        case 30:
+                                            myCollectionx.Add(Convert.ToInt16(ds1.Tables[0].Rows[0]["CTXT01"].ToString().Substring(2, 2)));
+                                            break;
+                                        case 31:
+                                            myCollectionx.Add(Convert.ToInt16(ds1.Tables[0].Rows[0]["CTXT02"].ToString().Substring(2, 2)));
+                                            break;
+                                        case 32:
+                                            myCollectionx.Add(Convert.ToInt16(ds1.Tables[0].Rows[0]["CTXT03"].ToString().Substring(2, 2)));
+                                            break;
+                                        case 33:
+                                            myCollectionx.Add(Convert.ToInt16(ds1.Tables[0].Rows[0]["CTXT04"].ToString().Substring(2, 2)));
+                                            break;
+                                        case 34:
+                                            myCollectionx.Add(Convert.ToInt16(ds1.Tables[0].Rows[0]["CTXT05"].ToString().Substring(2, 2)));
+                                            break;
+                                        case 35:
+                                            myCollectionx.Add(Convert.ToInt16(ds1.Tables[0].Rows[0]["CTXT06"].ToString().Substring(2, 2)));
+                                            break;
+                                        case 36:
+                                            myCollectionx.Add(Convert.ToInt16(ds1.Tables[0].Rows[0]["CTXT07"].ToString().Substring(2, 2)));
+                                            break;
+                                        case 37:
+                                            myCollectionx.Add(Convert.ToInt16(ds1.Tables[0].Rows[0]["CTXT08"].ToString().Substring(2, 2)));
+                                            break;
+                                        case 38:
+                                            myCollectionx.Add(Convert.ToInt16(ds1.Tables[0].Rows[0]["CTXT09"].ToString().Substring(2, 2)));
+                                            break;
+                                        case 39:
+                                            myCollectionx.Add(Convert.ToInt16(ds1.Tables[0].Rows[0]["CTXT10"].ToString().Substring(2, 2)));
+                                            break;
+                                        case 40:
+                                            myCollectionx.Add(Convert.ToInt16(ds1.Tables[0].Rows[0]["CTXT11"].ToString().Substring(2, 2)));
+                                            break;
+                                        case 41:
+                                            myCollectionx.Add(Convert.ToInt16(ds1.Tables[0].Rows[0]["CTXT12"].ToString().Substring(2, 2)));
+                                            break;
+                                        default:
+                                            break;
+                                    }
+
+                                }
+                                if (!String.IsNullOrEmpty(Convert.ToString(cell.Data)))
+                                {
+                                    myCollectiony.Add(Convert.ToDouble(cell.Data));
+                                    counter = counter + 1;
+                                }
+
+                            }
+                            first = false;
+                            double[] yData = myCollectiony.ToArray();
+                            int[] xData = myCollectionx.ToArray();
+                            if (xData.Length==yData.Length)
+                            {
+                                Chart chart = new Chart();
+                                this.Controls.Add(chart);
+                                chart.Name = "chart" + chartCounter;
+                                chart.Visible = true;
+                                chart.Show();
+                                chart.Titles.Add(Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCell(i, 12).Data));
+                                if (chartCounter % 2 == 0)
+                                {
+                                    chart.Left = 50;
+                                    chart.Top = 50 + 125 * (chartCounter);
+                                    chHeight = chart.Top;
+                                }
+                                else
+                                {
+                                    chart.Left = 400;
+                                    chart.Top = chHeight;
+                                }
+
+
+
+                                chart.Width = 300;
+                                chart.Height = 160;
+                                pnlChartDet.Controls.Add(chart);
+
+                                //  chart.ChartAreas.RemoveAt(0);
+                                ChartArea area = new ChartArea();
+                                chart.ChartAreas.Add(area);
+                                //Create a series using the data
+                                Series barSeries = new Series();
+                                //  String nme = "series" + j;
+                                barSeries.Points.DataBindXY(xData, yData);
+                                //Set the chart type, Bar; horizontal bars
+                                barSeries.ChartType = SeriesChartType.Column;
+                                //Assign it to the required area
+                                barSeries.ChartArea = area.Name;
+                                foreach (var series in chart.Series)
+                                {
+                                    series.Points.Clear();
+                                }
+                                //chart.Legends[0].Enabled = false;
+                                chart.Series.Add(barSeries);
+                                chartCounter++;
+                            }
+                            
+                           
+                        }
+                    }
+                }
+            }
+            pnlGraph.Visible = false;
+            pnlChartDet.Visible = true;
+        }
+
+        private void pictPrint_Click(object sender, EventArgs e)
+        {
+                System.Drawing.Printing.PrintDocument doc = new System.Drawing.Printing.PrintDocument();
+                doc.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(doc_PrintPage);
+                doc.Print();
+            
+        }
+        private void doc_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            int jj = 10;
+            int kk = 300;
+            int mm = 160;
+            foreach (Chart chrt in pnlChartDet.Controls.OfType<Chart>())   //Disable Textbox
+            {
+                chrt.Printing.PrintPaint(e.Graphics, new Rectangle(0, jj, kk,mm));
+                jj = jj+270;
+                kk = kk + 270;
+            }
+        }
+
+        private void pictChartDet_Click(object sender, EventArgs e)
+        {
+            pnlChartDet.Visible = false;
+            grdReoCMAOther.Enabled = true;
+            panelCmdBtns.Enabled = true;
+            lstViewTopic.Enabled = true;
+            chart2.Enabled = true;
         }
     }
 }
