@@ -290,7 +290,6 @@ namespace PtrCma
             foreach (TextBox txt in Controls.OfType<TextBox>())
             {
                 txt.Enabled = false;
-
             }
             grdPurchase.Enabled = true;
             cmdAdd.Enabled = true;
@@ -321,7 +320,7 @@ namespace PtrCma
                     this.SelectNextControl(ctrl, false, false, false, false);
                 }
                 else
-                    return;
+                return;
 
             }
             else
@@ -335,7 +334,7 @@ namespace PtrCma
                     this.SelectNextControl(ctrl, false, false, false, false);
                 }
                 else
-                    return;
+                return;
             }
 
         }

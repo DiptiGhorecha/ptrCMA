@@ -106,11 +106,12 @@ namespace PtrCma
 
             //Form Party
             frmParty = new FrmCMAParty();
+            IntPtr dummy = frmParty.Handle;
             frmParty.MdiParent = this;
             frmParty.Location = new Point(this.Location.X + (this.Width - frmParty.Width) / 2, (frmParty.Location.Y + (this.Height - frmParty.Height) / 2) + 20);
             frmParty.NotifyMainFormToCloseChildFormParty += NotifyMainFormToCloseFormParty;
             frmParty.NotifyMainFormToOpenChildFormCma += NotifyMainFormToOpenFormCma;
-
+           
             //Form Backup
             frmBackup = new FrmPtrBack();
             frmBackup.MdiParent = this;
@@ -124,6 +125,7 @@ namespace PtrCma
             frmRestore.NotifyMainFormToCloseChildFormRestore += NotifyMainFormToCloseFormRestore;
 
             frmCmaa = new FrmCMA();
+            IntPtr dummy1 = frmCmaa.Handle;
             frmCmaa.MdiParent = this;
             frmCmaa.Location = new Point(0, 70);
             frmCmaa.NotifyMainFormToCloseChildFormCma += NotifyMainFormToCloseFormCma;
@@ -145,7 +147,7 @@ namespace PtrCma
             frmCmaa.NotifyMainFormToOpenChildFormDeclaration += NotifyMainFormToOpenFormDeclaration;   //Use to open Movable Securities
             frmCmaa.NotifyMainFormToOpenChildFormDocuments += NotifyMainFormToOpenFormDocuments;   //Use to open Movable Securities
             frmCmaa.NotifyMainFormToOpenChildFormYear += NotifyMainFormToOpenFormYear;   //Use to open current year
-
+           //IntPtr dummy = frmCmaa.Handle;
             frmMain = new FrmMainCma();
             frmMain.MdiParent = this;
             frmMain.NotifyMainFormToOpenChildFormParty += NotifyMainFormToOpenFormParty;

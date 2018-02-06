@@ -95,6 +95,7 @@
             this.cmdUpdate.TabIndex = 43;
             this.cmdUpdate.Text = "&Save";
             this.cmdUpdate.UseVisualStyleBackColor = true;
+            this.cmdUpdate.Click += new System.EventHandler(this.cmdUpdate_Click);
             // 
             // cmdEdit
             // 

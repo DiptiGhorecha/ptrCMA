@@ -30,13 +30,12 @@ namespace PtrCma
         OleDbTransaction transaction;
         int rowNum;  // Variable to Store Current Row Number
 
-
         public FrmCMAParty()
         {
             InitializeComponent();
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
         }
-
+        
         private void FrmCMAParty_Load(object sender, EventArgs e)
         {
             
@@ -49,9 +48,7 @@ namespace PtrCma
             clearTextbox();     //Clear the Textbox
                           
             richAreaNotes.Enabled = false;
-            fillgird();         //Show Data in Gridview at Runtime
-
-            if (grdViewParty.RowCount>0)
+            if (grdViewParty.RowCount > 0)
             {
                 grdViewParty.CurrentCell = grdViewParty.Rows[0].Cells[1];  //Set 1st row as current row by default
                 LoadDatatoTextBox();  // show data in Textbox from Gridview
@@ -61,6 +58,7 @@ namespace PtrCma
                 cmdDelete.Visible = false;
                 cmdEdit.Visible = false;
             }
+
         }
 
 
@@ -874,6 +872,22 @@ namespace PtrCma
 
         private void txtFind_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void FrmCMAParty_Shown(object sender, EventArgs e)
+        {
+            fillgird();         //Show Data in Gridview at Runtime
+            if (grdViewParty.RowCount > 0)
+            {
+                grdViewParty.CurrentCell = grdViewParty.Rows[0].Cells[1];  //Set 1st row as current row by default
+                LoadDatatoTextBox();  // show data in Textbox from Gridview
+            }
+            else
+            {
+                cmdDelete.Visible = false;
+                cmdEdit.Visible = false;
+            }
 
         }
     }

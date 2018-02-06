@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCMA));
             this.lstViewTopic = new System.Windows.Forms.ListView();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -131,9 +131,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.pnlChartDet = new System.Windows.Forms.Panel();
+            this.pictPrint = new System.Windows.Forms.PictureBox();
             this.pictChartDet = new System.Windows.Forms.PictureBox();
             this.MyPrintDocument = new System.Drawing.Printing.PrintDocument();
-            this.pictPrint = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewCMA)).BeginInit();
             this.panelCmdBtns.SuspendLayout();
@@ -159,19 +159,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdChartSelected)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdChart)).BeginInit();
             this.pnlChartDet.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictChartDet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictPrint)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictChartDet)).BeginInit();
             this.SuspendLayout();
             // 
             // lstViewTopic
             // 
             this.lstViewTopic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lstViewTopic.HideSelection = false;
-            this.lstViewTopic.Location = new System.Drawing.Point(0, 47);
+            this.lstViewTopic.Location = new System.Drawing.Point(12, 47);
             this.lstViewTopic.MultiSelect = false;
             this.lstViewTopic.Name = "lstViewTopic";
             this.lstViewTopic.OwnerDraw = true;
-            this.lstViewTopic.Size = new System.Drawing.Size(265, 87);
+            this.lstViewTopic.Size = new System.Drawing.Size(184, 150);
             this.lstViewTopic.TabIndex = 0;
             this.lstViewTopic.UseCompatibleStateImageBehavior = false;
             this.lstViewTopic.DrawColumnHeader += new System.Windows.Forms.DrawListViewColumnHeaderEventHandler(this.lstViewTopic_DrawColumnHeader);
@@ -181,17 +181,17 @@
             // chart2
             // 
             this.chart2.BackColor = System.Drawing.Color.Transparent;
-            chartArea3.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart2.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart2.Legends.Add(legend1);
             this.chart2.Location = new System.Drawing.Point(718, 47);
             this.chart2.Name = "chart2";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart2.Series.Add(series3);
-            this.chart2.Size = new System.Drawing.Size(328, 118);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart2.Series.Add(series1);
+            this.chart2.Size = new System.Drawing.Size(328, 150);
             this.chart2.TabIndex = 2;
             this.chart2.Text = "chart2";
             this.chart2.Click += new System.EventHandler(this.chart2_Click);
@@ -202,7 +202,7 @@
             this.gridViewCMA.AllowUserToDeleteRows = false;
             this.gridViewCMA.AllowUserToResizeRows = false;
             this.gridViewCMA.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridViewCMA.Location = new System.Drawing.Point(0, 302);
+            this.gridViewCMA.Location = new System.Drawing.Point(13, 302);
             this.gridViewCMA.Name = "gridViewCMA";
             this.gridViewCMA.RowHeadersVisible = false;
             this.gridViewCMA.ShowEditingIcon = false;
@@ -322,6 +322,7 @@
             this.cmdExport.TabIndex = 38;
             this.cmdExport.Text = "Export";
             this.cmdExport.UseVisualStyleBackColor = true;
+            this.cmdExport.Click += new System.EventHandler(this.cmdExport_Click);
             // 
             // cmdFormula
             // 
@@ -475,9 +476,9 @@
             this.lblPic.BackColor = System.Drawing.Color.Transparent;
             this.lblPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.lblPic.Image = ((System.Drawing.Image)(resources.GetObject("lblPic.Image")));
-            this.lblPic.Location = new System.Drawing.Point(0, 5);
+            this.lblPic.Location = new System.Drawing.Point(2, 5);
             this.lblPic.Name = "lblPic";
-            this.lblPic.Size = new System.Drawing.Size(733, 30);
+            this.lblPic.Size = new System.Drawing.Size(626, 30);
             this.lblPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.lblPic.TabIndex = 45;
             this.lblPic.TabStop = false;
@@ -487,7 +488,7 @@
             this.picFrmClose.BackColor = System.Drawing.SystemColors.Control;
             this.picFrmClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.picFrmClose.Image = ((System.Drawing.Image)(resources.GetObject("picFrmClose.Image")));
-            this.picFrmClose.Location = new System.Drawing.Point(690, 9);
+            this.picFrmClose.Location = new System.Drawing.Point(566, 5);
             this.picFrmClose.Name = "picFrmClose";
             this.picFrmClose.Size = new System.Drawing.Size(28, 26);
             this.picFrmClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -519,7 +520,7 @@
             this.grdReoCMAOther.BackColor = System.Drawing.Color.White;
             this.grdReoCMAOther.ColumnHeaderContextMenuStrip = null;
             this.grdReoCMAOther.LeadHeaderContextMenuStrip = null;
-            this.grdReoCMAOther.Location = new System.Drawing.Point(0, 206);
+            this.grdReoCMAOther.Location = new System.Drawing.Point(13, 206);
             this.grdReoCMAOther.Name = "grdReoCMAOther";
             this.grdReoCMAOther.RowHeaderContextMenuStrip = null;
             this.grdReoCMAOther.Script = null;
@@ -1254,19 +1255,6 @@
             this.pnlChartDet.Size = new System.Drawing.Size(294, 263);
             this.pnlChartDet.TabIndex = 54;
             // 
-            // pictChartDet
-            // 
-            this.pictChartDet.BackgroundImage = global::PtrCma.Properties.Resources.closeBtnBg;
-            this.pictChartDet.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictChartDet.Image = global::PtrCma.Properties.Resources.close;
-            this.pictChartDet.Location = new System.Drawing.Point(242, 18);
-            this.pictChartDet.Name = "pictChartDet";
-            this.pictChartDet.Size = new System.Drawing.Size(32, 32);
-            this.pictChartDet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictChartDet.TabIndex = 82;
-            this.pictChartDet.TabStop = false;
-            this.pictChartDet.Click += new System.EventHandler(this.pictChartDet_Click);
-            // 
             // pictPrint
             // 
             this.pictPrint.BackgroundImage = global::PtrCma.Properties.Resources.closeBtnBg;
@@ -1280,10 +1268,24 @@
             this.pictPrint.TabStop = false;
             this.pictPrint.Click += new System.EventHandler(this.pictPrint_Click);
             // 
+            // pictChartDet
+            // 
+            this.pictChartDet.BackgroundImage = global::PtrCma.Properties.Resources.closeBtnBg;
+            this.pictChartDet.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictChartDet.Image = global::PtrCma.Properties.Resources.close;
+            this.pictChartDet.Location = new System.Drawing.Point(242, 18);
+            this.pictChartDet.Name = "pictChartDet";
+            this.pictChartDet.Size = new System.Drawing.Size(32, 32);
+            this.pictChartDet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictChartDet.TabIndex = 82;
+            this.pictChartDet.TabStop = false;
+            this.pictChartDet.Click += new System.EventHandler(this.pictChartDet_Click);
+            // 
             // FrmCMA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1378, 780);
             this.ControlBox = false;
@@ -1343,8 +1345,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdChartSelected)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdChart)).EndInit();
             this.pnlChartDet.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictChartDet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictPrint)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictChartDet)).EndInit();
             this.ResumeLayout(false);
 
         }

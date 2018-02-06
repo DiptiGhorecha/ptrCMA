@@ -125,6 +125,7 @@
             this.cmdExit.TabIndex = 48;
             this.cmdExit.Text = "E&xit";
             this.cmdExit.UseVisualStyleBackColor = true;
+            this.cmdExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // txtFacility
             // 

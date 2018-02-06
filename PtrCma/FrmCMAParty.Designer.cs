@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCMAParty));
             this.lblfind = new System.Windows.Forms.Label();
             this.txtFind = new System.Windows.Forms.TextBox();
             this.cmdReset = new System.Windows.Forms.Button();
@@ -523,9 +524,9 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::PtrCma.Properties.Resources.partybg;
-            this.pictureBox1.Location = new System.Drawing.Point(182, 21);
+            this.pictureBox1.Location = new System.Drawing.Point(200, 21);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(511, 30);
+            this.pictureBox1.Size = new System.Drawing.Size(493, 30);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 45;
             this.pictureBox1.TabStop = false;
@@ -551,7 +552,7 @@
             this.lblparty.Image = global::PtrCma.Properties.Resources.partybg;
             this.lblparty.Location = new System.Drawing.Point(196, 21);
             this.lblparty.Name = "lblparty";
-            this.lblparty.Size = new System.Drawing.Size(509, 26);
+            this.lblparty.Size = new System.Drawing.Size(497, 26);
             this.lblparty.TabIndex = 43;
             this.lblparty.Text = "Party Master";
             this.lblparty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -604,6 +605,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.LightGray;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(881, 564);
             this.Controls.Add(this.txtRs);
@@ -670,6 +672,7 @@
             this.TransparencyKey = System.Drawing.Color.LightCyan;
             this.Activated += new System.EventHandler(this.FrmCMAParty_Load);
             this.Load += new System.EventHandler(this.FrmCMAParty_Load);
+            this.Shown += new System.EventHandler(this.FrmCMAParty_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.grdViewParty)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictFrmClose)).EndInit();

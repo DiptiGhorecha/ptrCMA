@@ -102,7 +102,7 @@ namespace PtrCma
             if (isEdited == "n") { 
             
             this.KeyPreview = true; //To handle enter key
-            Settings();
+                Settings();
                 //  ((DataGridViewTextBoxColumn) gridViewCMA.Columns[11]).MaxInputLength = 250;
                 gridViewCMA.Visible = true;
               //  gridViewCMA.EditingControlShowing += new DataGridViewEditingControlShowingEventHandler(gridViewCMA_EditingControlShowing);
@@ -137,10 +137,11 @@ namespace PtrCma
                     comboBoxRsIn.Text = Global.inrS;
                 }
                 ///////////////////////////////
+                
                 setControlSize();
                 fillTopicListBox();
-            lstViewTopic.Items[0].Selected = true;
-            checkTables();
+                lstViewTopic.Items[0].Selected = true;
+                checkTables();
             
             }
         }
@@ -198,20 +199,20 @@ namespace PtrCma
             gridViewCMA.RowsDefaultCellStyle.BackColor = Color.White;    // Row Color of Gridview
 
             ////////////////////////////////
-            grdViewCMAOther.Width = this.Width - 3;
+            //grdViewCMAOther.Width = this.Width - 3;
 
-            grdViewCMAOther.Top = lstViewTopic.Bottom + 25;
-            grdViewCMAOther.Height = this.Height - Global.chrtLstViewHeight - 50;
-            grdViewCMAOther.Left = this.Left + 1;
+            //grdViewCMAOther.Top = lstViewTopic.Bottom + 25;
+            //grdViewCMAOther.Height = this.Height - Global.chrtLstViewHeight - 50;
+            //grdViewCMAOther.Left = this.Left + 1;
 
-            // Column Header Color of Gridview
-            grdViewCMAOther.ColumnHeadersDefaultCellStyle.BackColor = Global.grdPartyBackColor;
-            grdViewCMAOther.ColumnHeadersDefaultCellStyle.ForeColor = Global.grdPartyForeColor;
-            grdViewCMAOther.ColumnHeadersHeight = 30;
-            grdViewCMAOther.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            grdViewCMAOther.EnableHeadersVisualStyles = false;
+            //// Column Header Color of Gridview
+            //grdViewCMAOther.ColumnHeadersDefaultCellStyle.BackColor = Global.grdPartyBackColor;
+            //grdViewCMAOther.ColumnHeadersDefaultCellStyle.ForeColor = Global.grdPartyForeColor;
+            //grdViewCMAOther.ColumnHeadersHeight = 30;
+            //grdViewCMAOther.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            //grdViewCMAOther.EnableHeadersVisualStyles = false;
 
-            grdViewCMAOther.RowsDefaultCellStyle.BackColor = Color.White;    // Row Color of Gridview
+           // grdViewCMAOther.RowsDefaultCellStyle.BackColor = Color.White;    // Row Color of Gridview
             pnlInsRow.BackgroundImage = Global.partyFrmBackImg;
             pnlInsRow.Location = new Point((this.Width - pnlInsRow.Width) / 2, ((this.Height - pnlInsRow.Height) / 2) + 20);
             pnlChangeDesc.BackgroundImage = Global.partyFrmBackImg;
@@ -1789,8 +1790,35 @@ private void cmdSave_Click(object sender, EventArgs e)
 
         private void lstViewTopic_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
         {
-            e.Graphics.FillRectangle(Brushes.CadetBlue, e.Bounds);
-            e.DrawText();
+             
+            // e.DrawText();
+            using (StringFormat sf = new StringFormat())
+            {
+                // Store the column text alignment, letting it default
+                // to Left if it has not been set to Center or Right.
+                switch (e.Header.TextAlign)
+                {
+                    case HorizontalAlignment.Center:
+                        sf.Alignment = StringAlignment.Center;
+                        break;
+                    case HorizontalAlignment.Right:
+                        sf.Alignment = StringAlignment.Far;
+                        break;
+                }
+
+                // Draw the standard header background.
+                // e.DrawBackground();
+                e.Graphics.FillRectangle(Brushes.CadetBlue, e.Bounds);
+                // Draw the header text.
+                using (Font headerFont =
+                            new Font("Helvetica", 12, FontStyle.Bold)) //Font size!!!!
+                {
+                    e.Graphics.DrawString(e.Header.Text, headerFont,
+                        Brushes.White, e.Bounds, sf);
+                }
+            }
+            
+            return;
         }
 
         private void lstViewTopic_DrawItem(object sender, DrawListViewItemEventArgs e)
@@ -2560,6 +2588,8 @@ private void cmdSave_Click(object sender, EventArgs e)
                 barSeries.ChartType = SeriesChartType.Column;
                 //Assign it to the required area
                 barSeries.ChartArea = area.Name;
+                area.AxisX.Title = "Year";
+                area.AxisY.Title = "Rupees";
                 foreach (var series in chart2.Series)
                 {
                     series.Points.Clear();
@@ -2994,6 +3024,7 @@ private void cmdSave_Click(object sender, EventArgs e)
                                 chart.Name = "chart" + chartCounter;
                                 chart.Visible = true;
                                 chart.Show();
+               
                                 chart.Titles.Add(Convert.ToString(grdReoCMAOther.CurrentWorksheet.GetCell(i, 12).Data));
                                 if (chartCounter % 2 == 0)
                                 {
@@ -3011,11 +3042,14 @@ private void cmdSave_Click(object sender, EventArgs e)
 
                                 chart.Width = 300;
                                 chart.Height = 160;
+
                                 pnlChartDet.Controls.Add(chart);
 
                                 //  chart.ChartAreas.RemoveAt(0);
                                 ChartArea area = new ChartArea();
                                 chart.ChartAreas.Add(area);
+                                area.AxisX.Title = "Year";
+                                area.AxisY.Title = "Ruppes";
                                 //Create a series using the data
                                 Series barSeries = new Series();
                                 //  String nme = "series" + j;
@@ -3069,6 +3103,638 @@ private void cmdSave_Click(object sender, EventArgs e)
             panelCmdBtns.Enabled = true;
             lstViewTopic.Enabled = true;
             chart2.Enabled = true;
+        }
+
+        private void cmdExport_Click(object sender, EventArgs e)
+        {
+            CreateExcelDoc excell_app = new CreateExcelDoc();
+            //creates the main header
+            excell_app.createHeaders(2, 1, "CLIENT INFORMATION", "A2", "A2", 2, "", true, 10, "n");
+            excell_app.createHeaders(5, 1, "Description", "A5", "A5", 2, "", true, 10, "n");
+            excell_app.createHeaders(5, 2, "Data", "B5", "B5", 2, "", true, 10, "n");
+            OleDbConnection conn = new OleDbConnection(connectionString);
+            OleDbDataAdapter myadapter = new OleDbDataAdapter();
+            DataSet ds = new DataSet();
+            myadapter.SelectCommand = new OleDbCommand("Select * from Cp_CdFm1 where CM_CLREFNO=" + Global.prtyCode + " order by CM_SEQNO", conn);
+            myadapter.Fill(ds, "Cp_CdFm1");
+            //gridViewCMA.DataMember = "Cp_CdFm1";
+            //gridViewCMA.DataSource = ds;
+
+            int rowCounter = 7;
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                excell_app.createHeaders(rowCounter, 1, ds.Tables[0].Rows[i]["CM_DESC"].ToString(), "A"+ rowCounter, "A"+rowCounter, 2, "", true, 10, "n");
+                excell_app.addData(rowCounter, 2, ds.Tables[0].Rows[i]["CM_DATA"].ToString());
+
+                //excell_app.addData(i + 7, 1, Convert.ToString(gridViewCMA.Rows[i].Cells[8].Value));
+                //excell_app.addData(i + 7, 2, Convert.ToString(gridViewCMA.Rows[i].Cells[11].Value));
+                var list = new List<int> { 13, 14, 15, 16, 17, 18, 23, 30, 31, 35, 36, 37, 40, 41, 42, 44, 45 };
+                if (list.Contains(i))
+                {
+                    if (i == 13)
+                    {
+                        String strDirector="";
+                        DataSet ds1 = new DataSet();
+                        myadapter.SelectCommand = new OleDbCommand("Select * from Cp_Cd101 where CL_REFNO=" + Global.prtyCode, conn);
+                        myadapter.Fill(ds1, "Cp_Cd101");
+                        for (int ii = 0; ii < ds1.Tables[0].Rows.Count; ii++)
+                        {
+                            if (ii == 0)
+                            {
+                                excell_app.createHeaders(rowCounter, 2, "Name", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 3, "Age", "C" + rowCounter, "C" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 4, "Pan", "D" + rowCounter, "D" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 5, "Address", "E" + rowCounter, "E" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 6, "Phone", "F" + rowCounter, "F" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 7, "Net", "G" + rowCounter, "G" + rowCounter, 2, "", true, 10, "n");
+                                rowCounter = rowCounter + 1;
+                            }
+                            excell_app.addData(rowCounter, 2, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT01"]));
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT02"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT03"]));
+                            excell_app.addData(rowCounter, 5, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT04"]));
+                            excell_app.addData(rowCounter, 6, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT05"]));
+                            excell_app.addData(rowCounter, 7, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT06"]));
+                            if (ii< ds1.Tables[0].Rows.Count - 1)
+                            {
+                                rowCounter = rowCounter + 1;
+                            }
+                        }
+                        ds1.Dispose();
+                        }
+                    if (i == 14)
+                    {
+                        DataSet ds1 = new DataSet();
+                        myadapter.SelectCommand = new OleDbCommand("Select * from Cp_Cd102 where CL_REFNO=" + Global.prtyCode, conn);
+                        myadapter.Fill(ds1, "Cp_Cd102");
+                        for (int ii = 0; ii < ds1.Tables[0].Rows.Count; ii++)
+                        {
+                            if (ii == 0)
+                            {
+                                excell_app.createHeaders(rowCounter, 2, "Name of Bank/Branch", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 3, "Facility", "C" + rowCounter, "C" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 4, "Limit", "D" + rowCounter, "D" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 5, "Outstanding", "E" + rowCounter, "E" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 6, "Banking Since", "F" + rowCounter, "F" + rowCounter, 2, "", true, 10, "n");
+                                rowCounter = rowCounter + 1;
+                            }
+                            excell_app.addData(rowCounter, 2, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT01"]));
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT02"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT03"]));
+                            excell_app.addData(rowCounter, 5, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT04"]));
+                            excell_app.addData(rowCounter, 6, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT05"]));
+                          
+                            if (ii < ds1.Tables[0].Rows.Count - 1)
+                            {
+                                rowCounter = rowCounter + 1;
+                            }
+                        }
+                        ds1.Dispose();
+                    }
+                    if (i == 16)
+                    {
+                        DataSet ds1 = new DataSet();
+                        myadapter.SelectCommand = new OleDbCommand("Select * from Cp_Cd103 where CL_REFNO=" + Global.prtyCode, conn);
+                        myadapter.Fill(ds1, "Cp_Cd103");
+                        for (int ii = 0; ii < ds1.Tables[0].Rows.Count; ii++)
+                        {
+                            if (ii == 0)
+                            {
+                                excell_app.createHeaders(rowCounter, 2, "Name of Unit", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 3, "Name(s) of Prop", "C" + rowCounter, "C" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 4, "Banking with", "D" + rowCounter, "D" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 5, "Limit", "E" + rowCounter, "E" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 6, "Outstanding", "F" + rowCounter, "F" + rowCounter, 2, "", true, 10, "n");
+                                
+                                rowCounter = rowCounter + 1;
+                            }
+                            excell_app.addData(rowCounter, 2, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT01"]));
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT02"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT03"]));
+                            excell_app.addData(rowCounter, 5, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT04"]));
+                            excell_app.addData(rowCounter, 6, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT05"]));
+                           if (ii < ds1.Tables[0].Rows.Count - 1)
+                            {
+                                rowCounter = rowCounter + 1;
+                            }
+                        }
+                        ds1.Dispose();
+                    }
+                    if (i == 17)
+                    {
+                        DataSet ds1 = new DataSet();
+                        myadapter.SelectCommand = new OleDbCommand("Select * from Cp_Cd104 where CL_REFNO=" + Global.prtyCode, conn);
+                        myadapter.Fill(ds1, "Cp_Cd104");
+                        for (int ii = 0; ii < ds1.Tables[0].Rows.Count; ii++)
+                        {
+                            if (ii == 0)
+                            {
+                                excell_app.createHeaders(rowCounter, 2, "Pan", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 3, "Sales Tax", "C" + rowCounter, "C" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 4, "Service Tax", "D" + rowCounter, "D" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 5, "Excise", "E" + rowCounter, "E" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 6, "Other", "F" + rowCounter, "F" + rowCounter, 2, "", true, 10, "n");
+
+                                rowCounter = rowCounter + 1;
+                            }
+                            excell_app.addData(rowCounter, 2, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT01"]));
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT02"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT03"]));
+                            excell_app.addData(rowCounter, 5, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT04"]));
+                            excell_app.addData(rowCounter, 6, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT05"]));
+                            if (ii < ds1.Tables[0].Rows.Count - 1)
+                            {
+                                rowCounter = rowCounter + 1;
+                            }
+                        }
+                        ds1.Dispose();
+                    }
+                    if (i == 18)
+                    {
+                        DataSet ds1 = new DataSet();
+                        myadapter.SelectCommand = new OleDbCommand("Select * from Cp_Cd119 where CL_REFNO=" + Global.prtyCode, conn);
+                        myadapter.Fill(ds1, "Cp_Cd119");
+                        for (int ii = 0; ii < ds1.Tables[0].Rows.Count; ii++)
+                        {
+                            if (ii == 0)
+                            {
+                                excell_app.createHeaders(rowCounter, 2, "Income Tax", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 3, "Sales Tax", "C" + rowCounter, "C" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 4, "Service Tax", "D" + rowCounter, "D" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 5, "Excise", "E" + rowCounter, "E" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 6, "Other", "F" + rowCounter, "F" + rowCounter, 2, "", true, 10, "n");
+
+                                rowCounter = rowCounter + 1;
+                            }
+                            excell_app.addData(rowCounter, 2, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT01"]));
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT02"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT03"]));
+                            excell_app.addData(rowCounter, 5, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT04"]));
+                            excell_app.addData(rowCounter, 6, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT05"]));
+                            if (ii < ds1.Tables[0].Rows.Count - 1)
+                            {
+                                rowCounter = rowCounter + 1;
+                            }
+                        }
+                        ds1.Dispose();
+                    }
+                    if (i == 40)
+                    {
+                        DataSet ds1 = new DataSet();
+                        myadapter.SelectCommand = new OleDbCommand("Select * from Cp_Cd112 where CL_REFNO=" + Global.prtyCode, conn);
+                        myadapter.Fill(ds1, "Cp_Cd112");
+                        for (int ii = 0; ii < ds1.Tables[0].Rows.Count; ii++)
+                        {
+                            if (ii == 0)
+                            {
+                                excell_app.createHeaders(rowCounter, 2, "Description of property", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 3, "Name of owner", "C" + rowCounter, "C" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 4, "Value of property", "D" + rowCounter, "D" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 5, "Basis of valuation", "E" + rowCounter, "E" + rowCounter, 2, "", true, 10, "n");
+                                rowCounter = rowCounter + 1;
+                            }
+                            excell_app.addData(rowCounter, 2, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT01"]));
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT02"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT03"]));
+                            excell_app.addData(rowCounter, 5, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT04"]));
+                            if (ii < ds1.Tables[0].Rows.Count - 1)
+                            {
+                                rowCounter = rowCounter + 1;
+                            }
+                        }
+                        ds1.Dispose();
+                    }
+                    if (i == 41)
+                    {
+                        DataSet ds1 = new DataSet();
+                        myadapter.SelectCommand = new OleDbCommand("Select * from Cp_Cd113 where CL_REFNO=" + Global.prtyCode, conn);
+                        myadapter.Fill(ds1, "Cp_Cd113");
+                        for (int ii = 0; ii < ds1.Tables[0].Rows.Count; ii++)
+                        {
+                            if (ii == 0)
+                            {
+                                excell_app.createHeaders(rowCounter, 2, "Description", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 3, "Name of owner", "C" + rowCounter, "C" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 4, "Face value", "D" + rowCounter, "D" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 5, "When acquired", "E" + rowCounter, "E" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 6, "Present Value", "F" + rowCounter, "F" + rowCounter, 2, "", true, 10, "n");
+                                rowCounter = rowCounter + 1;
+                            }
+                            excell_app.addData(rowCounter, 2, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT01"]));
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT02"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT03"]));
+                            excell_app.addData(rowCounter, 5, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT04"]));
+                            excell_app.addData(rowCounter, 6, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT05"]));
+                            if (ii < ds1.Tables[0].Rows.Count - 1)
+                            {
+                                rowCounter = rowCounter + 1;
+                            }
+                        }
+                        ds1.Dispose();
+                    }
+                    if (i == 44)
+                    {
+                        DataSet ds1 = new DataSet();
+                        myadapter.SelectCommand = new OleDbCommand("Select * from Cp_Cd116 where CL_REFNO=" + Global.prtyCode, conn);
+                        myadapter.Fill(ds1, "Cp_Cd116");
+                        for (int ii = 0; ii < ds1.Tables[0].Rows.Count; ii++)
+                        {
+                            if (ii == 0)
+                            {
+                                excell_app.createHeaders(rowCounter, 2, "Facility", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 3, "Date", "C" + rowCounter, "C" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 4, "Place", "D" + rowCounter, "D" + rowCounter, 2, "", true, 10, "n");
+                                rowCounter = rowCounter + 1;
+                            }
+                            excell_app.addData(rowCounter, 2, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT01"]));
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT02"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT03"]));
+                            if (ii < ds1.Tables[0].Rows.Count - 1)
+                            {
+                                rowCounter = rowCounter + 1;
+                            }
+                        }
+                        ds1.Dispose();
+                    }
+                    if (i == 42)
+                    {
+                        DataSet ds1 = new DataSet();
+                        myadapter.SelectCommand = new OleDbCommand("Select * from Cp_Cd114 where CL_REFNO=" + Global.prtyCode, conn);
+                        myadapter.Fill(ds1, "Cp_Cd114");
+                        for (int ii = 0; ii < ds1.Tables[0].Rows.Count; ii++)
+                        {
+                            if (ii == 0)
+                            {
+                                excell_app.createHeaders(rowCounter, 2, "Name of Guarantor & Address", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 3, "Age", "C" + rowCounter, "C" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 4, "Qualification", "D" + rowCounter, "D" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 5, "Networth", "E" + rowCounter, "E" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 6, "Banking with", "F" + rowCounter, "F" + rowCounter, 2, "", true, 10, "n");
+                                rowCounter = rowCounter + 1;
+                            }
+                            excell_app.addData(rowCounter, 2, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT01"]));
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT02"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT03"]));
+                            excell_app.addData(rowCounter, 5, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT04"]));
+                            excell_app.addData(rowCounter, 6, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT05"]));
+                            if (ii < ds1.Tables[0].Rows.Count - 1)
+                            {
+                                rowCounter = rowCounter + 1;
+                            }
+                        }
+                        ds1.Dispose();
+                    }
+                    if (i == 45)
+                    {
+                        DataSet ds1 = new DataSet();
+                        myadapter.SelectCommand = new OleDbCommand("Select * from Cp_Cd115 where CL_REFNO=" + Global.prtyCode, conn);
+                        myadapter.Fill(ds1, "Cp_Cd115");
+                        for (int ii = 0; ii < ds1.Tables[0].Rows.Count; ii++)
+                        {
+                            if (ii == 0)
+                            {
+                                excell_app.createHeaders(rowCounter, 2, "Documents", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                                rowCounter = rowCounter + 1;
+                            }
+                            excell_app.addData(rowCounter, 2, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT01"]));
+                            
+                            if (ii < ds1.Tables[0].Rows.Count - 1)
+                            {
+                                rowCounter = rowCounter + 1;
+                            }
+                        }
+                        ds1.Dispose();
+                    }
+                    if (i == 36)
+                    {
+                        DataSet ds1 = new DataSet();
+                        myadapter.SelectCommand = new OleDbCommand("Select * from Cp_Cd110 where CL_REFNO=" + Global.prtyCode, conn);
+                        myadapter.Fill(ds1, "Cp_Cd110");
+                        for (int ii = 0; ii < ds1.Tables[0].Rows.Count; ii++)
+                        {
+                            if (ii == 0)
+                            {
+                                excell_app.createHeaders(rowCounter, 2, "Description", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 3, "Detail of Supplier", "C" + rowCounter, "C" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 4, "Cost", "D" + rowCounter, "D" + rowCounter, 2, "", true, 10, "n");
+                                excell_app.createHeaders(rowCounter, 5, "Time schedule for completion", "E" + rowCounter, "E" + rowCounter, 2, "", true, 10, "n");
+                                rowCounter = rowCounter + 1;
+                            }
+                            excell_app.addData(rowCounter, 2, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT01"]));
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT02"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT03"]));
+                            excell_app.addData(rowCounter, 5, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT04"]));
+                            if (ii < ds1.Tables[0].Rows.Count - 1)
+                            {
+                                rowCounter = rowCounter + 1;
+                            }
+                        }
+                        ds1.Dispose();
+                    }
+                    if (i == 30)
+                    {
+                        DataSet ds1 = new DataSet();
+                        myadapter.SelectCommand = new OleDbCommand("Select * from Cp_Cd106 where CL_REFNO=" + Global.prtyCode, conn);
+                        myadapter.Fill(ds1, "Cp_Cd106");
+                        for (int ii = 0; ii < ds1.Tables[0].Rows.Count; ii++)
+                        {
+                            if (ii == 0)
+                            {
+                                excell_app.createHeaders(rowCounter, 2, "Description", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                                rowCounter = rowCounter + 1;
+                            }
+                            excell_app.addData(rowCounter, 2, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT01"]));
+                            if (ii < ds1.Tables[0].Rows.Count - 1)
+                            {
+                                rowCounter = rowCounter + 1;
+                            }
+                        }
+                        ds1.Dispose();
+                    }
+
+                    if (i == 31)
+                    {
+                        DataSet ds1 = new DataSet();
+                        myadapter.SelectCommand = new OleDbCommand("Select * from Cp_Cd107 where CL_REFNO=" + Global.prtyCode, conn);
+                        myadapter.Fill(ds1, "Cp_Cd107");
+                        for (int ii = 0; ii < ds1.Tables[0].Rows.Count; ii++)
+                        {
+                            excell_app.createHeaders(rowCounter, 3, "Domestic", "C" + rowCounter, "C" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.createHeaders(rowCounter, 4, "Export", "D" + rowCounter, "D" + rowCounter, 2, "", true, 10, "n");
+                            rowCounter = rowCounter + 1;
+                            excell_app.createHeaders(rowCounter, 2, "Credit sales to Total Sales", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT01"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT04"]));
+                            rowCounter = rowCounter + 1;
+                            excell_app.createHeaders(rowCounter, 2, "Period of credit given", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT02"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT05"]));
+                            rowCounter = rowCounter + 1;
+                            excell_app.createHeaders(rowCounter, 2, "Average receivable Level", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT03"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT06"]));
+                     
+                        }
+                        ds1.Dispose();
+                    }
+
+                    if (i == 37)
+                    {
+                        DataSet ds1 = new DataSet();
+                        myadapter.SelectCommand = new OleDbCommand("Select * from Cp_Cd111 where CL_REFNO=" + Global.prtyCode, conn);
+                        myadapter.Fill(ds1, "Cp_Cd111");
+                        for (int ii = 0; ii < ds1.Tables[0].Rows.Count; ii++)
+                        {
+                            excell_app.createHeaders(rowCounter, 2, "Cost", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.createHeaders(rowCounter, 3, "Amt", "C" + rowCounter, "C" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.createHeaders(rowCounter, 4, "Means", "D" + rowCounter, "D" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.createHeaders(rowCounter, 5, "Amt", "E" + rowCounter, "E" + rowCounter, 2, "", true, 10, "n");
+                            rowCounter = rowCounter + 1;
+                            excell_app.createHeaders(rowCounter, 2, "Land & Building", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT01"]));
+                            excell_app.createHeaders(rowCounter, 4, "Own Funds", "D" + rowCounter, "D" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.addData(rowCounter, 5, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT04"]));
+                            rowCounter = rowCounter + 1;
+                            excell_app.createHeaders(rowCounter, 2, "Period of credit given", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT02"]));
+                            excell_app.createHeaders(rowCounter, 4, "Other Loans", "D" + rowCounter, "D" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.addData(rowCounter, 5, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT05"]));
+                            rowCounter = rowCounter + 1;
+                            excell_app.createHeaders(rowCounter, 2, "Average receivable Level", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT03"]));
+                            excell_app.createHeaders(rowCounter, 4, "Bank Loans", "D" + rowCounter, "D" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.addData(rowCounter, 5, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT06"]));
+                            excell_app.createHeaders(rowCounter, 2, "Total", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.addData(rowCounter, 3, Convert.ToString(Convert.ToDouble(ds1.Tables[0].Rows[ii]["CTXT01"])+ Convert.ToDouble(ds1.Tables[0].Rows[ii]["CTXT02"])+Convert.ToDouble(ds1.Tables[0].Rows[ii]["CTXT03"])));
+                            excell_app.createHeaders(rowCounter, 4, "Total", "D" + rowCounter, "D" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.addData(rowCounter, 5, Convert.ToString(Convert.ToDouble(ds1.Tables[0].Rows[ii]["CTXT04"]) + Convert.ToDouble(ds1.Tables[0].Rows[ii]["CTXT05"]) + Convert.ToDouble(ds1.Tables[0].Rows[ii]["CTXT06"])));
+
+                        }
+                        ds1.Dispose();
+                    }
+                    if (i == 35)
+                    {
+                        DataSet ds1 = new DataSet();
+                        myadapter.SelectCommand = new OleDbCommand("Select * from Cp_Cd108 where CL_REFNO=" + Global.prtyCode, conn);
+                        myadapter.Fill(ds1, "Cp_Cd108");
+                        for (int ii = 0; ii < ds1.Tables[0].Rows.Count; ii++)
+                        {
+                            excell_app.createHeaders(rowCounter, 3, "Past", "C" + rowCounter, "C" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.createHeaders(rowCounter, 4, "Projected", "D" + rowCounter, "D" + rowCounter, 2, "", true, 10, "n");
+                            rowCounter = rowCounter + 1;
+                            excell_app.createHeaders(rowCounter, 2, "Sales/Income", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT01"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT06"]));
+                            rowCounter = rowCounter + 1;
+                            excell_app.createHeaders(rowCounter, 2, "Net Profit", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT02"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT07"]));
+                            rowCounter = rowCounter + 1;
+                            excell_app.createHeaders(rowCounter, 2, "Depreciation/P & P", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT03"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT08"]));
+                            rowCounter = rowCounter + 1;
+                            excell_app.createHeaders(rowCounter, 2, "Cash Accurals", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT04"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT09"]));
+                            rowCounter = rowCounter + 1;
+                            excell_app.createHeaders(rowCounter, 2, "Tangible Net worth", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT05"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT10"]));
+                        }
+                        ds1.Dispose();
+                    }
+
+                    if (i == 23)
+                    {
+                        DataSet ds1 = new DataSet();
+                        myadapter.SelectCommand = new OleDbCommand("Select * from Cp_Cd105 where CL_REFNO=" + Global.prtyCode, conn);
+                        myadapter.Fill(ds1, "Cp_Cd105");
+                        for (int ii = 0; ii < ds1.Tables[0].Rows.Count; ii++)
+                        {
+                            excell_app.createHeaders(rowCounter, 3, "Domestic", "C" + rowCounter, "C" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.createHeaders(rowCounter, 4, "Import", "D" + rowCounter, "D" + rowCounter, 2, "", true, 10, "n");
+                            rowCounter = rowCounter + 1;
+                            excell_app.createHeaders(rowCounter, 2, "% of credit purchase to total purchase", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT01"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT05"]));
+                            rowCounter = rowCounter + 1;
+                            excell_app.createHeaders(rowCounter, 2, "Period of credit enjoyed", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT02"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT06"]));
+                            rowCounter = rowCounter + 1;
+                            excell_app.createHeaders(rowCounter, 2, "Average level of sundry creditors", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT03"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT07"]));
+                            rowCounter = rowCounter + 1;
+                            excell_app.createHeaders(rowCounter, 2, "Purchase under LC include above", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT04"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT08"]));
+                        }
+                        ds1.Dispose();
+                    }
+                    if (i == 15)
+                    {
+                        DataSet ds1 = new DataSet();
+                        myadapter.SelectCommand = new OleDbCommand("Select * from Cp_Cd109 where CL_REFNO=" + Global.prtyCode, conn);
+                        myadapter.Fill(ds1, "Cp_Cd109");
+                        for (int ii = 0; ii < ds1.Tables[0].Rows.Count; ii++)
+                        {
+                            excell_app.createHeaders(rowCounter, 4, "Limit Required", "D" + rowCounter, "D" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.createHeaders(rowCounter, 7, "Limit Existing", "G" + rowCounter, "G" + rowCounter, 2, "", true, 10, "n");
+                            rowCounter = rowCounter + 1;
+                            excell_app.createHeaders(rowCounter, 3, "Fund Based", "C" + rowCounter, "C" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.createHeaders(rowCounter, 4, "Non Fund Based", "D" + rowCounter, "D" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.createHeaders(rowCounter, 5, "Total", "E" + rowCounter, "E" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.createHeaders(rowCounter, 6, "Fund Based", "F" + rowCounter, "F" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.createHeaders(rowCounter, 7, "Non Fund Based", "G" + rowCounter, "G" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.createHeaders(rowCounter, 8, "Total", "H" + rowCounter, "H" + rowCounter, 2, "", true, 10, "n");
+                            rowCounter = rowCounter + 2;
+                            excell_app.createHeaders(rowCounter, 2, "Cash Credit", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT11"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT12"]));
+                            excell_app.addData(rowCounter, 5, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT13"]));
+                            excell_app.addData(rowCounter, 6, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT14"]));
+                            excell_app.addData(rowCounter, 7, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT15"]));
+                            excell_app.addData(rowCounter, 8, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT16"]));
+                            rowCounter = rowCounter + 1;
+                            excell_app.createHeaders(rowCounter, 2, "Over Draft", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT21"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT22"]));
+                            excell_app.addData(rowCounter, 5, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT23"]));
+                            excell_app.addData(rowCounter, 6, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT24"]));
+                            excell_app.addData(rowCounter, 7, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT25"]));
+                            excell_app.addData(rowCounter, 8, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT26"]));
+                            rowCounter = rowCounter + 1;
+                            excell_app.createHeaders(rowCounter, 2, "PC", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT31"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT32"]));
+                            excell_app.addData(rowCounter, 5, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT33"]));
+                            excell_app.addData(rowCounter, 6, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT34"]));
+                            excell_app.addData(rowCounter, 7, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT35"]));
+                            excell_app.addData(rowCounter, 8, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT36"]));
+                            rowCounter = rowCounter + 1;
+                            excell_app.createHeaders(rowCounter, 2, "LC", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT41"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT42"]));
+                            excell_app.addData(rowCounter, 5, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT43"]));
+                            excell_app.addData(rowCounter, 6, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT44"]));
+                            excell_app.addData(rowCounter, 7, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT45"]));
+                            excell_app.addData(rowCounter, 8, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT46"]));
+                            rowCounter = rowCounter + 1;
+                            excell_app.createHeaders(rowCounter, 2, "Term Loan", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT51"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT52"]));
+                            excell_app.addData(rowCounter, 5, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT53"]));
+                            excell_app.addData(rowCounter, 6, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT54"]));
+                            excell_app.addData(rowCounter, 7, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT55"]));
+                            excell_app.addData(rowCounter, 8, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT56"]));
+                            rowCounter = rowCounter + 1;
+                            excell_app.createHeaders(rowCounter, 2, "Total", "B" + rowCounter, "B" + rowCounter, 2, "", true, 10, "n");
+                            excell_app.addData(rowCounter, 3, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT61"]));
+                            excell_app.addData(rowCounter, 4, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT62"]));
+                            excell_app.addData(rowCounter, 5, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT63"]));
+                            excell_app.addData(rowCounter, 6, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT64"]));
+                            excell_app.addData(rowCounter, 7, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT65"]));
+                            excell_app.addData(rowCounter, 8, Convert.ToString(ds1.Tables[0].Rows[ii]["CTXT66"]));
+                        }
+                        ds1.Dispose();
+                    }
+                }
+                rowCounter = rowCounter + 1;
+            }
+            ds.Dispose();
+            for (int kk = 1; kk < 12; kk++)
+            {
+                rowCounter = 3;
+                String sql2 = "SELECT * FROM Cx_Cd120 WHERE [CL_REFNO]=" + Global.prtyCode + ";";
+                DataSet ds11 = new DataSet();
+                myadapter.SelectCommand = new OleDbCommand(sql2, conn);
+                myadapter.Fill(ds11, "Cx_Cd120");
+                int counter = 30;
+                if (ds11.Tables[0].Rows.Count > 0)
+                {
+                    for (int i = 0; i < ds11.Tables[0].Rows.Count; i++)
+                    {
+                        for (int ii = 1; ii <= Convert.ToInt16(comboBxYear.Text); ii++)
+                        {
+
+                            switch (ii)
+                            {
+                                case 1:
+                                    excell_app.createHeadersGross(rowCounter, 4, ds11.Tables[0].Rows[i]["CTXT01"].ToString(), "D" + rowCounter, "D" + rowCounter, 2, "", true, 10, "n",kk);
+
+                                    break;
+                                case 2:
+                                    excell_app.createHeadersGross(rowCounter, 5, ds11.Tables[0].Rows[i]["CTXT02"].ToString(), "E" + rowCounter, "E" + rowCounter, 2, "", true, 10, "n",kk);
+                                    break;
+                                case 3:
+                                    excell_app.createHeadersGross(rowCounter, 6, ds11.Tables[0].Rows[i]["CTXT03"].ToString(), "F" + rowCounter, "F" + rowCounter, 2, "", true, 10, "n",kk);
+                                    break;
+                                case 4:
+                                    excell_app.createHeadersGross(rowCounter, 7, ds11.Tables[0].Rows[i]["CTXT04"].ToString(), "G" + rowCounter, "G" + rowCounter, 2, "", true, 10, "n",kk);
+                                    break;
+                                case 5:
+                                    excell_app.createHeadersGross(rowCounter, 8, ds11.Tables[0].Rows[i]["CTXT05"].ToString(), "H" + rowCounter, "H" + rowCounter, 2, "", true, 10, "n",kk);
+                                    break;
+                                case 6:
+                                    excell_app.createHeadersGross(rowCounter, 9, ds11.Tables[0].Rows[i]["CTXT06"].ToString(), "I" + rowCounter, "I" + rowCounter, 2, "", true, 10, "n",kk);
+                                    break;
+                                case 7:
+                                    excell_app.createHeadersGross(rowCounter, 10, ds11.Tables[0].Rows[i]["CTXT07"].ToString(), "J" + rowCounter, "J" + rowCounter, 2, "", true, 10, "n",kk);
+                                    break;
+                                case 8:
+                                    excell_app.createHeadersGross(rowCounter, 11, ds11.Tables[0].Rows[i]["CTXT08"].ToString(), "K" + rowCounter, "K" + rowCounter, 2, "", true, 10, "n",kk);
+                                    break;
+                                case 9:
+                                    excell_app.createHeadersGross(rowCounter, 12, ds11.Tables[0].Rows[i]["CTXT09"].ToString(), "L" + rowCounter, "L" + rowCounter, 2, "", true, 10, "n",kk);
+                                    break;
+                                case 10:
+                                    excell_app.createHeadersGross(rowCounter, 13, ds11.Tables[0].Rows[i]["CTXT10"].ToString(), "M" + rowCounter, "M" + rowCounter, 2, "", true, 10, "n",kk);
+                                    break;
+                                case 11:
+                                    excell_app.createHeadersGross(rowCounter, 14, ds11.Tables[0].Rows[i]["CTXT11"].ToString(), "N" + rowCounter, "N" + rowCounter, 2, "", true, 10, "n",kk);
+                                    break;
+                                case 12:
+                                    excell_app.createHeadersGross(rowCounter, 15, ds11.Tables[0].Rows[i]["CTXT12"].ToString(), "O" + rowCounter, "O" + rowCounter, 2, "", true, 10, "n",kk);
+                                    break;
+                                default:
+                                    break;
+                            }
+                            counter = counter + 1;
+                        }
+                    }
+                }
+                ds11.Dispose();
+                DataSet dsn = new DataSet();
+                myadapter.SelectCommand = new OleDbCommand("Select * from Cp_CdFm3 where FM_CLREFNO=" + Global.prtyCode + " and FM_MTNO='" + kk + "' order by FM_SEQNO", conn);
+                myadapter.Fill(dsn, "Cp_CdFm3");
+                rowCounter = 5;
+                String YrCount = "01";
+                for (int i = 0; i < dsn.Tables[0].Rows.Count; i++)
+                {
+
+                    excell_app.addDataGross(rowCounter, 1, Convert.ToString(dsn.Tables[0].Rows[i]["FM_SNO1"]), kk);
+                    excell_app.addDataGross(rowCounter, 2, Convert.ToString(dsn.Tables[0].Rows[i]["FM_SNO2"]), kk);
+                    excell_app.addDataGross(rowCounter, 3, Convert.ToString(dsn.Tables[0].Rows[i]["FM_DESC"]), kk);
+                    for (int ii = 1; ii <= Convert.ToInt16(comboBxYear.Text); ii++)
+                    {
+                        if (ii < 9)
+                        {
+                            YrCount = "0" + Convert.ToString(ii);
+                        }
+                        else
+                        {
+                            YrCount = Convert.ToString(ii);
+                        }
+                        excell_app.addDataGross(rowCounter, (ii + 3), Convert.ToString(dsn.Tables[0].Rows[i]["FM_YR" + YrCount]), kk);
+                    }
+                    rowCounter = rowCounter + 1;
+                }
+                dsn.Dispose();
+            }
+            conn.Close();
+            excell_app.ShowApp();
         }
     }
 }
